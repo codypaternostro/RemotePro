@@ -24,10 +24,15 @@
         Version = '1.19.1'
     }
 
-    'MilestonePStools' = 'latest'
+    'MilestonePStools' = @{
+        Version = '*'
+    }
 
-    'ImportExcel' = 'latest'
+    'ImportExcel' = @{
+        Version = '*'
+    }
 
-    'PSWriteHTML' = 'latest'
-
+    'PSWriteHTML' = @{
+        Version = '*'
+    }
 }

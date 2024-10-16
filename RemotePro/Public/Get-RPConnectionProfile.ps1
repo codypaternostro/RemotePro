@@ -50,8 +50,6 @@ function Get-RPConnectionProfile {
         [switch]$ViewXml
     )
 
-    import-module C:\RemotePro\RemotePro\RemotePro.psd1
-
     switch ($PSCmdlet.ParameterSetName) {
         'ViewXml' {
             $credentialsPath = Join-Path $env:LOCALAPPDATA "MilestonePSTools\credentials.xml"

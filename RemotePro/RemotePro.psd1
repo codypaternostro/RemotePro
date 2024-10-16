@@ -51,7 +51,7 @@ Description = 'PowerShell WPF GUI for MilestonePSTools'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-#RequiredModules = @('MilestonePSTools','PSWriteHTML','ImportExcel')
+# RequiredModules = @('MilestonePSTools','PSWriteHTML','ImportExcel')
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @('PresentationFramework','System.Windows.Forms','System.Threading')

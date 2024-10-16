@@ -2,11 +2,9 @@
 $script:scriptRoot = $PSScriptRoot
 Set-Location -Path $script:scriptRoot #Redunancy
 
-
 # Load in main xaml file.
 $script:RemoteProXaml = Get-Content -Path "$PSScriptRoot\Xaml\RemoteProUI.xaml" -Raw
 #endregion
-
 
 #region Load necessary DLLs and Assemblies
 # Get all DLLs in the bin directory relative to the script root
@@ -58,6 +56,10 @@ foreach ($import in @($classes + $public + $private)) {
 }
 
 Export-ModuleMember -Function $public.Basename
+#endregion
+
+#region Install required modules
+Install-RpRequiredModules
 #endregion
 
 #region Initialize RemotePro main controller object with script scope "$script:RemotePro"
