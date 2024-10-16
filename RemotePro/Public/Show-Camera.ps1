@@ -9,7 +9,8 @@ function Show-Camera {
         different methods of camera selection. It supports viewing live feeds,
         playback of recorded sequences, and diagnostics overlay on the video feed.
         Users can select cameras by ID, through a direct camera object, or via user
-        interface dialogs.
+        interface dialogs. Please see link for original script from joshooaj who
+        inspired all of RemotePro from sharing this incredible function.
 
     .PARAMETER CameraObject
         Directly pass a camera object to alleviate object dependency between
@@ -61,6 +62,8 @@ function Show-Camera {
         crucial.
         - Flexible camera selection is provided to accommodate different user
         preferences and requirements.
+    .LINK
+        https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
     #>
     [CmdletBinding(DefaultParameterSetName='RPItemPickerSet')]
     param (
