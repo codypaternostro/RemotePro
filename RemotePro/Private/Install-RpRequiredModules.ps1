@@ -15,7 +15,7 @@ function Install-RpRequiredModules {
 
             try {
                 Install-Module -Name $module.Name -Scope CurrentUser -Force -Verbose
-                Write-Output "$($module.Name) installed successfully." -ForegroundColor Green
+                Write-Verbose "$($module.Name) installed successfully." -ForegroundColor Green
             } catch {
                 Write-Error "Failed to install $($module.Name): $_"
             }

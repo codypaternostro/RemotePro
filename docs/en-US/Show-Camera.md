@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
 schema: 2.0.0
 ---
 
@@ -44,6 +44,8 @@ It supports viewing live feeds,
 playback of recorded sequences, and diagnostics overlay on the video feed.
 Users can select cameras by ID, through a direct camera object, or via user
 interface dialogs.
+Please see link for original script from joshooaj who
+inspired all of RemotePro from sharing this incredible function.
 
 ## EXAMPLES
 
@@ -222,3 +224,6 @@ crucial.
 preferences and requirements.
 
 ## RELATED LINKS
+
+[https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f](https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f)
+

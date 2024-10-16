@@ -59,7 +59,7 @@ Export-ModuleMember -Function $public.Basename
 #endregion
 
 #region Install required modules
-Install-RpRequiredModules
+Install-RpRequiredModules -Verbose
 #endregion
 
 #region Initialize RemotePro main controller object with script scope "$script:RemotePro"

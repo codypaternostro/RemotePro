@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-RpConfigCommand
 
 ## SYNOPSIS
-Retrieves details of a specific command from the configuration file.
+Retrieves details of a specific command or all commands from the config file.
 
 ## SYNTAX
 
@@ -18,28 +18,33 @@ Get-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-ConfigF
 ```
 
 ## DESCRIPTION
-Get-ConfigCommand retrieves the details of a specific command, such as its
-ID, description, and parameters, from the provided configuration JSON file.
-It checks for the existence of the module and command before returning the
-command details.
+Get-RpConfigCommand retrieves the details of a specific command or all
+commands from the provided configuration JSON file.
+It can return command
+details for one command, all commands within a module, or all commands
+across all modules using the \`-All\` and \`-ByModule\` parameters.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-ConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
-                  -ConfigFilePath $(Get-RPConfigurationPath)
+Get-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
+                    -ConfigFilePath $(Get-RPConfigurationPath)
 Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
 using the configuration path from Get-RPConfigurationPath.
 ```
 
 ### EXAMPLE 2
 ```
-$details = Get-ConfigCommand -ModuleName 'RemotePro' `
-                             -CommandName 'Get-RpLogPath' `
-                             -ConfigFilePath $(Get-RPConfigurationPath)
-Stores the 'Get-RpLogPath' command details in the $details variable for
-further processing using the configuration path from Get-RPConfigurationPath.
+Get-RpConfigCommand -ByModule -ModuleName 'RemotePro' `
+                    -ConfigFilePath $(Get-RPConfigurationPath)
+Retrieves all commands within the 'RemotePro' module.
+```
+
+### EXAMPLE 3
+```
+Get-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
+Retrieves all commands from all modules in the configuration.
 ```
 
 ## PARAMETERS
