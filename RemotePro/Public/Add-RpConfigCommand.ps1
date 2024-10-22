@@ -1,10 +1,10 @@
-function Add-RpConfigurationCommand {
+function Add-RpConfigCommand {
     [CmdletBinding()]
     param (
         [string]$ModuleName,                  # Name of the module to export commands from
         [string]$ConfigFilePath,              # Path to save the configuration JSON file
         [string[]]$CommandNames = @(),        # Optional: List of specific commands to export
-        [int]$ID,                             # Unique ID for the command version
+        [int]$Id,                             # Unique ID for the command version
         [string]$Description = ""             # Optional description for the command
     )
 
@@ -43,11 +43,12 @@ function Add-RpConfigurationCommand {
         # Initialize a PSCustomObject for the command's parameters
         $paramConfig = [pscustomobject]@{}
 
-        # Loop through each parameter and store its metadata
+        # Loop through each parameter and store its metadata (initialize with $null for Value)
         foreach ($param in $parameters.Keys) {
             $paramDetails = [pscustomobject]@{
                 'Type'      = $parameters[$param].ParameterType.FullName
                 'Mandatory' = $parameters[$param].Attributes.Mandatory
+                'Value'     = $null  # Initialize Value to null
             }
             $paramConfig | Add-Member -MemberType NoteProperty -Name $param -Value $paramDetails
         }
@@ -55,8 +56,8 @@ function Add-RpConfigurationCommand {
         # Create a new command version with a unique ID and add it to the module's array
         $commandDetails = [pscustomobject]@{
             'CommandName' = $command.Name
-            'ID'          = $ID  # The ID is provided by the user
-            'Description' = if ($Description) { $Description } else { "$command.Name command description" }
+            'Id'          = $Id  # The ID is provided by the user
+            'Description' = if ($Description) { $Description } else { "$($command.Name) command description" }
             'Parameters'  = $paramConfig
         }
 
@@ -81,9 +82,7 @@ function Add-RpConfigurationCommand {
     Write-Host "Configuration for module '$ModuleName' saved to $ConfigFilePath"
 }
 
-
-
 <#
-Add-RpConfigurationCommand -ModuleName 'RemotePro' -ConfigFilePath 'C:\Path\To\Config.json' -CommandNames 'Get-RpEventHandlers' -ID 101 -Description "First version of Get-RpEventHandlers"
-Add-RpConfigurationCommand -ModuleName 'RemotePro' -ConfigFilePath 'C:\Path\To\Config.json' -CommandNames 'Get-RpEventHandlers' -ID 102 -Description "Second version of Get-RpEventHandlers"
+Add-RpConfigCommand -ModuleName 'RemotePro' -ConfigFilePath 'C:\Path\To\Config.json' -CommandNames 'Get-RpEventHandlers' -ID 101 -Description "First version of Get-RpEventHandlers"
+Add-RpConfigCommand -ModuleName 'RemotePro' -ConfigFilePath 'C:\Path\To\Config.json' -CommandNames 'Get-RpEventHandlers' -ID 102 -Description "Second version of Get-RpEventHandlers"
 #>

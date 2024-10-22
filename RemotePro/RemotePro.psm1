@@ -74,5 +74,5 @@ $script:RpRunspaceResults = Initialize-RpRunspaceResults
 
 #region set runspace log path
 $script:logPath = Get-RPLogPath
-$script:configPath = Get-RPConfigurationPath
+$script:configPath = Get-RPConfigPath
 #endregion

@@ -1,5 +1,5 @@
-function Get-RpConfigCommand {
-    <#
+function Get-RpconfigCommand {
+ <#
     .SYNOPSIS
     Retrieves details of a specific command or all commands from the config file.
 
@@ -39,8 +39,6 @@ function Get-RpConfigCommand {
     Get-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves all commands from all modules in the configuration.
 
-    .NOTES
-    Author: Your Name
     #>
     [CmdletBinding()]
     param (

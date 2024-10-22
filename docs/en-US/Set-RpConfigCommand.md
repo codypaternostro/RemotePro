@@ -1,11 +1,11 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
 schema: 2.0.0
 ---
 
-# Add-RpConfigurationCommand
+# Set-RpConfigCommand
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,8 +13,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Add-RpConfigurationCommand [[-ModuleName] <String>] [[-ConfigFilePath] <String>] [[-CommandNames] <String[]>]
- [[-ID] <Int32>] [[-Description] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Set-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [[-Id] <Int32>]
+ [[-ParameterValues] <Hashtable>] [[-ConfigFilePath] <String>] [-ShowDialog]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,16 +32,16 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -CommandNames
-{{ Fill CommandNames Description }}
+### -CommandName
+{{ Fill CommandName Description }}
 
 ```yaml
-Type: String[]
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -55,29 +56,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-{{ Fill Description Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ID
-{{ Fill ID Description }}
+### -Id
+{{ Fill Id Description }}
 
 ```yaml
 Type: Int32
@@ -85,7 +71,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -101,6 +87,36 @@ Aliases:
 
 Required: False
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterValues
+{{ Fill ParameterValues Description }}
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowDialog
+{{ Fill ShowDialog Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

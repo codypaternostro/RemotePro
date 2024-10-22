@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-RpConfigCommand
+# Get-RpconfigCommand
 
 ## SYNOPSIS
 Retrieves details of a specific command or all commands from the config file.
@@ -13,7 +13,7 @@ Retrieves details of a specific command or all commands from the config file.
 ## SYNTAX
 
 ```
-Get-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-ConfigFilePath] <String> [-All]
+Get-RpconfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-ConfigFilePath] <String> [-All]
  [-ByModule] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -147,6 +147,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-Author: Your Name
 
 ## RELATED LINKS

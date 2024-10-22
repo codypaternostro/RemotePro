@@ -1,4 +1,4 @@
-function Get-RPConfigurationPath {
+function Get-RPConfigPath {
     <#
     .SYNOPSIS
     Retrieves the path for RemotePro config uration file by using adapted logic from

@@ -5,24 +5,19 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Get-RPConfigurationPath
+# Import-RpConfig
 
 ## SYNOPSIS
-Retrieves the path for RemotePro config uration file by using adapted logic from
-MilestonePSTools.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Get-RPConfigurationPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Import-RpConfig [[-ConfigFilePath] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function, Get-RPConfigurationPath, calls New-RPDataAppPath to get the
-app data directory and then appends 'RemoteProParamConfig.json'.
-It
-showcases path handling adaptations from MilestonePSTools, tailored for log
-file retrieval in RemotePro.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
@@ -34,6 +29,21 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
+
+### -ConfigFilePath
+{{ Fill ConfigFilePath Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
@@ -55,12 +65,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
-### System.String
+### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description](https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description)
-
