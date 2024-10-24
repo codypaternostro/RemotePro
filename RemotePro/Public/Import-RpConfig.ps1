@@ -10,93 +10,136 @@ function Import-RpConfig {
         return
     }
 
-    # Load the JSON configuration file into a hashtable
+    # Load the JSON configuration file into a string
     $configContent = Get-Content -Path $ConfigFilePath -Raw
-    $config = $configContent | ConvertFrom-Json
+    Write-Host "Config content loaded from file."
 
-    # Create a custom hashtable to hold modules and commands
+    # Convert the JSON string into a PowerShell object
+    $config = $configContent | ConvertFrom-Json
+    Write-Host "Config successfully converted from JSON."
+
+    # Create a hashtable to hold modules and commands
     $modules = @{}
 
     # Iterate over each module in the configuration
     foreach ($moduleName in $config.ConfigCommands.PSObject.Properties.Name) {
-        # Create a hashtable to hold the commands in the module
-        $moduleCommands = @{}
+        Write-Host "Processing module: $moduleName"
+        $moduleCommands = @{}  # Each module will have a collection of commands
 
         # Iterate over each command in the module
         foreach ($commandDetails in $config.ConfigCommands.$moduleName) {
-            # Create a command object and add a script method that takes CommandName and Id
+            Write-Host "Processing command: $($commandDetails.CommandName) with ID $($commandDetails.Id)"
+
+            # Create a custom object to hold the command details
             $commandObject = [pscustomobject]@{
-                CommandName = $commandDetails.CommandName  # Store the command name for later reference
+                CommandName = $commandDetails.CommandName
                 Id = $commandDetails.Id
                 Description = $commandDetails.Description
-                Parameters = $commandDetails.Parameters
+                Parameters = $commandDetails.Parameters  # Nested parameters for each command
             }
 
-            # Add dynamic script method for invoking with a given ID and CommandName
+            # Add a script method to dynamically invoke the command
             $commandObject | Add-Member -MemberType ScriptMethod -Name "InvokeWithId" -Force -Value {
                 param ($Id)
 
-                # Check if the current command ID matches the input value
+                # Verify if the command ID matches the provided one
+                Write-Host "Checking if command ID matches. Expected: $Id, Actual: $($this.Id)"
                 if ($this.Id -eq $Id) {
                     Write-Host "Command '$($this.CommandName)' with ID $Id matched. Invoking now..."
 
-                    # Prepare the parameters to pass to the command dynamically based on config
-                    $paramHash = @{}
+                    # Prepare the parameter hashtable
+                    $paramHash = @{}  # To store valid parameters
+
+                    # Iterate over each parameter in the command
                     foreach ($paramName in $this.Parameters.PSObject.Properties.Name) {
-                        # Extract the actual parameter object from the config
                         $paramConfig = $this.Parameters.$paramName
+                        Write-Host "Processing parameter: $paramName"
 
-                        # Extract the Value from the parameter object (if it exists)
-                        $paramValue = if ($paramConfig -and $paramConfig.PSObject.Properties["Value"]) {
-                            $paramConfig.Value
-                        } else {
-                            $null  # Handle cases where no value is defined
-                        }
+                        # Extract the 'Value' part from the stringified hashtable
+                        if ($paramConfig -is [string] -and $paramConfig.StartsWith('@{')) {
+                            try {
+                                # Split and capture the 'Value' field manually
+                                $paramValue = ($paramConfig -split ';') | ForEach-Object {
+                                    if ($_ -match 'Value=(.*)$') { $matches[1].Trim('}') }
+                                }
 
-                        # Handle SwitchParameter conversions
-                        if ($paramConfig.Type -eq "System.Management.Automation.SwitchParameter") {
-                            if ($paramValue -eq 'True') {
-                                $paramHash[$paramName] = $true  # Only pass if true
+                                # Check if we successfully extracted the 'Value'
+                                if ($null -ne $paramValue -and -not [string]::IsNullOrEmpty($paramValue)) {
+                                    Write-Host "Extracted value for parameter '$paramName': $paramValue"
+
+                                    # Handle switch parameters
+                                    if ($paramConfig -match 'SwitchParameter') {
+                                        if ($paramValue -eq 'True') {
+                                            $paramHash[$paramName] = $true
+                                        } elseif ($paramValue -eq 'False') {
+                                            $paramHash[$paramName] = $false
+                                        }
+                                    } else {
+                                        # For regular parameters, assign the value
+                                        $paramHash[$paramName] = $paramValue
+                                    }
+                                } else {
+                                    Write-Warning "Skipping parameter '$paramName' due to missing or empty 'Value'."
+                                }
+                            } catch {
+                                Write-Warning "Skipping malformed parameter: '$paramName'. Error: $_"
+                                continue
                             }
-                        } elseif (![string]::IsNullOrEmpty($paramValue)) {
-                            # Pass all other parameters only if they are non-empty
-                            $paramHash[$paramName] = $paramValue
+                        } else {
+                            # Handle cases where the parameter is not a stringified hashtable
+                            if ($null -ne $paramConfig -and $null -ne $paramConfig.Value) {
+                                $paramHash[$paramName] = $paramConfig.Value
+                            }
                         }
                     }
 
-                    # DEBUG: Output the contents of the hashtable
-                    Write-Host "Parameters being passed to the command:"
-                    $paramHash.GetEnumerator() | ForEach-Object { "$($_.Key) = $($_.Value)" }
-
-                    try {
-                        # Check if the command is available
-                        if (Get-Command $this.CommandName -ErrorAction SilentlyContinue) {
-                            Write-Host "Running command '$($this.CommandName)'..."
-                            # Directly invoke the actual command with the parameters and values from config
-                            & $this.CommandName @paramHash
-                        } else {
-                            Write-Error "Command '$($this.CommandName)' is not available in the current session."
+                    # Debug: Show the final parameters being passed
+                    if ($paramHash.Count -gt 0) {
+                        Write-Host "Parameters being passed to the command:"
+                        foreach ($key in $paramHash.Keys) {
+                            Write-Host "$key = $($paramHash[$key])"
                         }
-                    } catch {
-                        Write-Error "Error invoking command '$($this.CommandName)': $_"
+
+                        # Try to invoke the command with splatted parameters
+                        try {
+                            if (Get-Command $this.CommandName -ErrorAction SilentlyContinue) {
+                                Write-Host "Running command '$($this.CommandName)'..."
+                                & $this.CommandName @paramHash  # Splat the hashtable with valid parameters
+                            } else {
+                                Write-Error "Command '$($this.CommandName)' not found."
+                            }
+                        } catch {
+                            Write-Error "Error invoking command '$($this.CommandName)': $_"
+                        }
+                    } else {
+                        Write-Host "No parameters with valid values are being passed."
                     }
                 } else {
                     Write-Error "Error: Command ID $Id not found."
                 }
             }
 
-            # Store the command using both CommandName and Id
+            # Store the command object by both CommandName and Id
             if (-not $moduleCommands.ContainsKey($commandDetails.CommandName)) {
                 $moduleCommands[$commandDetails.CommandName] = @{}
             }
 
-            # Use the Id as the key for uniqueness
+            # Store command object keyed by its unique Id
             $moduleCommands[$commandDetails.CommandName][$commandDetails.Id] = $commandObject
         }
 
-        # Add the module to the modules hashtable
+        # Add the processed module to the main hashtable
         $modules[$moduleName] = $moduleCommands
     }
 
+    # Return the final modules hashtable
     return $modules
 }
+<#
+add-RpConfigCommand -ModuleName 'MilestonePSTools' -ConfigFilePath $(Get-RpConfigPath) -CommandNames @('Get-VmsCameraReport') -ID 18
+Set-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName 'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -ShowDialog
+
+$modules = Import-RpConfig -ConfigFilePath $(Get-RPConfigPath)
+
+$modules.MilestonePSTools.'Get-VmsCameraReport'[18].InvokeWithId(18)
+#>

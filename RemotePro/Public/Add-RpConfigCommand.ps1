@@ -48,7 +48,7 @@ function Add-RpConfigCommand {
             $paramDetails = [pscustomobject]@{
                 'Type'      = $parameters[$param].ParameterType.FullName
                 'Mandatory' = $parameters[$param].Attributes.Mandatory
-                'Value'     = $null  # Initialize Value to null
+                'Value'     = "$null"  # Initialize Value to null
             }
             $paramConfig | Add-Member -MemberType NoteProperty -Name $param -Value $paramDetails
         }
