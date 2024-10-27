@@ -12,23 +12,27 @@ function Import-RpConfig {
 
     # Load the JSON configuration file into a string
     $configContent = Get-Content -Path $ConfigFilePath -Raw
-    Write-Host "Config content loaded from file."
+    Write-Verbose "Config content loaded from file."
 
     # Convert the JSON string into a PowerShell object
     $config = $configContent | ConvertFrom-Json
-    Write-Host "Config successfully converted from JSON."
+    Write-Verbose "Config successfully converted from JSON."
 
     # Create a hashtable to hold modules and commands
     $modules = @{}
 
     # Iterate over each module in the configuration
     foreach ($moduleName in $config.ConfigCommands.PSObject.Properties.Name) {
-        Write-Host "Processing module: $moduleName"
+        $moduleName.PSObject.TypeNames.Insert(0,"$moduleName")
+        Write-Verbose "Processing module: $moduleName"
+
         $moduleCommands = @{}  # Each module will have a collection of commands
+        $moduleCommands.PSObject.TypeNames.Insert(0,"$moduleName.ConfigCommands")
 
         # Iterate over each command in the module
         foreach ($commandDetails in $config.ConfigCommands.$moduleName) {
-            Write-Host "Processing command: $($commandDetails.CommandName) with ID $($commandDetails.Id)"
+            Write-Verbose "Processing command: $($commandDetails.CommandName) with ID $($commandDetails.Id)"
+            $commandDetails.PSObject.TypeNames.Insert(0,"$moduleName.ConfigCommands.$CommandName")
 
             # Create a custom object to hold the command details
             $commandObject = [pscustomobject]@{
@@ -38,14 +42,19 @@ function Import-RpConfig {
                 Parameters = $commandDetails.Parameters  # Nested parameters for each command
             }
 
+            $commandObject.PSObject.TypeNames.Insert(0,"$moduleName.ConfigCommands.$(($commandDetails.CommandName))[$(($commandDetails.Id))]")
+            $commandObject.Id.PSObject.TypeNames.Insert(0,"$moduleName.ConfigCommands.$(($commandDetails.CommandName))[$(($commandDetails.Id))].Id.Int32")
+            $commandObject.Parameters.PSObject.TypeNames.Insert(0,"$moduleName.ConfigCommands.$(($commandDetails.CommandName)).Parameters.PSCustomObject")
+
+
             # Add a script method to dynamically invoke the command
             $commandObject | Add-Member -MemberType ScriptMethod -Name "InvokeWithId" -Force -Value {
                 param ($Id)
 
                 # Verify if the command ID matches the provided one
-                Write-Host "Checking if command ID matches. Expected: $Id, Actual: $($this.Id)"
+                Write-Verbose "Checking if command ID matches. Expected: $Id, Actual: $($this.Id)"
                 if ($this.Id -eq $Id) {
-                    Write-Host "Command '$($this.CommandName)' with ID $Id matched. Invoking now..."
+                    Write-Verbose "Command '$($this.CommandName)' with ID $Id matched. Invoking now..."
 
                     # Prepare the parameter hashtable
                     $paramHash = @{}  # To store valid parameters
@@ -53,7 +62,7 @@ function Import-RpConfig {
                     # Iterate over each parameter in the command
                     foreach ($paramName in $this.Parameters.PSObject.Properties.Name) {
                         $paramConfig = $this.Parameters.$paramName
-                        Write-Host "Processing parameter: $paramName"
+                        Write-Verbose "Processing parameter: $paramName"
 
                         # Extract the 'Value' part from the stringified hashtable
                         if ($paramConfig -is [string] -and $paramConfig.StartsWith('@{')) {
@@ -65,7 +74,7 @@ function Import-RpConfig {
 
                                 # Check if we successfully extracted the 'Value'
                                 if ($null -ne $paramValue -and -not [string]::IsNullOrEmpty($paramValue)) {
-                                    Write-Host "Extracted value for parameter '$paramName': $paramValue"
+                                    Write-Verbose "Extracted value for parameter '$paramName': $paramValue"
 
                                     # Handle switch parameters
                                     if ($paramConfig -match 'SwitchParameter') {
@@ -95,15 +104,15 @@ function Import-RpConfig {
 
                     # Debug: Show the final parameters being passed
                     if ($paramHash.Count -gt 0) {
-                        Write-Host "Parameters being passed to the command:"
+                        Write-Verbose "Parameters being passed to the command:"
                         foreach ($key in $paramHash.Keys) {
-                            Write-Host "$key = $($paramHash[$key])"
+                            Write-Verbose "$key = $($paramHash[$key])"
                         }
 
                         # Try to invoke the command with splatted parameters
                         try {
                             if (Get-Command $this.CommandName -ErrorAction SilentlyContinue) {
-                                Write-Host "Running command '$($this.CommandName)'..."
+                                Write-Verbose "Running command '$($this.CommandName)'..."
                                 & $this.CommandName @paramHash  # Splat the hashtable with valid parameters
                             } else {
                                 Write-Error "Command '$($this.CommandName)' not found."
@@ -112,7 +121,7 @@ function Import-RpConfig {
                             Write-Error "Error invoking command '$($this.CommandName)': $_"
                         }
                     } else {
-                        Write-Host "No parameters with valid values are being passed."
+                        Write-Verbose "No parameters with valid values are being passed."
                     }
                 } else {
                     Write-Error "Error: Command ID $Id not found."
@@ -136,7 +145,8 @@ function Import-RpConfig {
     return $modules
 }
 <#
-add-RpConfigCommand -ModuleName 'MilestonePSTools' -ConfigFilePath $(Get-RpConfigPath) -CommandNames @('Get-VmsCameraReport') -ID 18
+Add-RpConfigCommand -ModuleName 'MilestonePSTools' -ConfigFilePath $(Get-RpConfigPath) -CommandNames @('Get-VmsCameraReport') -ID 18
+
 Set-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName 'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -ShowDialog
 
 $modules = Import-RpConfig -ConfigFilePath $(Get-RPConfigPath)

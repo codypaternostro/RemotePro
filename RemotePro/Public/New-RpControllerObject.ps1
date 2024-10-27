@@ -19,6 +19,7 @@ function New-RpControllerObject {
         $script:RemotePro = [PSCustomObject]@{
             EventHandlers   = @{}
             RunspaceEvents  = @{}
+            ConfigCommands  = @{}
         }
 
         # Add the RemotePro type to the object
