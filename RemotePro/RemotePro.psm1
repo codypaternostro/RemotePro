@@ -66,6 +66,7 @@ Install-RpRequiredModules -Verbose
 $script:RemotePro = New-RpControllerObject      #Initalize RemotePro controller object
 Set-RpEventHandlers     #Populate EventHandlers
 Set-RpRunspaceEvents    #Populate RunspaceEvents
+Set-RpConfigCommands    #Populate ConfigCommands
 
 $script:RpOpenRunspaces = Initialize-RpOpenRunspaces
 $script:RpRunspaceJobs = Initialize-RpRunspaceJobs
