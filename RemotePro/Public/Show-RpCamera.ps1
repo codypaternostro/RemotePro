@@ -1,11 +1,11 @@
-function Show-Camera {
+function Show-RpCamera {
     <#
     .SYNOPSIS
         Displays a UI for live viewing or playback of camera feeds in a security
         system.
 
     .DESCRIPTION
-        The Show-Camera function allows users to interact with camera feeds using
+        The Show-RpCamera function allows users to interact with camera feeds using
         different methods of camera selection. It supports viewing live feeds,
         playback of recorded sequences, and diagnostics overlay on the video feed.
         Users can select cameras by ID, through a direct camera object, or via user
@@ -41,17 +41,17 @@ function Show-Camera {
         connection is invalid, an error dialog is shown. This parameter is optional.
 
     .EXAMPLE
-        Show-Camera -ShowSelectCamera
+        Show-RpCamera -ShowSelectCamera
         # This command opens the standard camera selection dialog and displays the
         # selected camera feed without any diagnostic overlays.
 
     .EXAMPLE
-        Show-Camera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
+        Show-RpCamera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
         # This command displays the feed of a camera identified by the specified GUID
         # with sequence data for the past 7 days.
 
     .EXAMPLE
-        Show-Camera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
+        Show-RpCamera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
         # This command uses a custom item picker for camera selection and shows the
         # selected camera feed with a high diagnostic level overlay for the past 30
         # days.
@@ -109,7 +109,7 @@ function Show-Camera {
         $connectionValid = $true
 
         if ($CheckConnection) {
-            if (-not (Test-RPVmsConnection -ShowErrorDialog $true)) {
+            if (-not (Test-RpVmsConnection -ShowErrorDialog $true)) {
                 $connectionValid = $false
             }
         }
@@ -354,4 +354,4 @@ Title="$($MyInvocation.Line)" Height="450" Width="800">
 [System.GC]::Collect()
 [System.GC]::WaitForPendingFinalizers()
 
-#Show-Camera -SpecifiedDaysForSequences 90 -DiagnosticLevel 3
+#Show-RpCamera -SpecifiedDaysForSequences 90 -DiagnosticLevel 3

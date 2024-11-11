@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Get-RPConfigPath
+# Get-RpConfigPath
 
 ## SYNOPSIS
 Retrieves the path for RemotePro config uration file by using adapted logic from
@@ -14,11 +14,11 @@ MilestonePSTools.
 ## SYNTAX
 
 ```
-Get-RPConfigPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpConfigPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function, Get-RPConfigurationPath, calls New-RPDataAppPath to get the
+This function, Get-RPConfigurationPath, calls New-RpAppDataPath to get the
 app data directory and then appends 'RemoteProParamConfig.json'.
 It
 showcases path handling adaptations from MilestonePSTools, tailored for log

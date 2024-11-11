@@ -1,4 +1,4 @@
-function Test-RPVmsConnection {
+function Test-RpVmsConnection {
     <#
     .SYNOPSIS
         Tests the connection to the VMS management server.
@@ -13,10 +13,10 @@ function Test-RPVmsConnection {
         Default is $true (the error dialog will be shown).
 
     .EXAMPLE
-        Test-RPVmsConnection
+        Test-RpVmsConnection
 
     .EXAMPLE
-        Test-RPVmsConnection -ShowErrorDialog $false
+        Test-RpVmsConnection -ShowErrorDialog $false
     .LINK
     https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
     #>

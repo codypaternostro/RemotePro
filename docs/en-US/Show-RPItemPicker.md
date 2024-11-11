@@ -5,7 +5,7 @@ online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758
 schema: 2.0.0
 ---
 
-# Show-RPItemPicker
+# Show-RpItemPicker
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Show-RPItemPicker [-Title] <String> [-Kind] <String[]> [-ConfigItemsCamsOnly] [-CheckConnection]
+Show-RpItemPicker [-Title] <String> [-Kind] <String[]> [-ConfigItemsCamsOnly] [-CheckConnection]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 

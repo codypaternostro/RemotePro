@@ -8,91 +8,112 @@ schema: 2.0.0
 # Add-RpConfigCommand
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Exports command configurations from RemotePro to a JSON file.
+Allows GUI-based or parameter-based input for command selection.
 
 ## SYNTAX
 
+### ShowDialog (Default)
 ```
-Add-RpConfigCommand [[-ModuleName] <String>] [[-ConfigFilePath] <String>] [[-CommandNames] <String[]>]
- [[-Id] <Int32>] [[-Description] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Add-RpConfigCommand [-Description <String>] [-ShowDialog] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
+```
+
+### ConfigurationItems
+```
+Add-RpConfigCommand [-ModuleName] <String> [-CommandNames] <String[]> [-ConfigFilePath] <String>
+ [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The \`Add-RpConfigCommand\` function exports specified commands from a
+PowerShell module to a JSON configuration file.
+It can gather input
+interactively via a GUI dialog or directly through parameters.
+
+If the configuration file does not exist, a new one is created.
+Existing
+commands can be updated by specifying an ID.
+Parameters include a
+module name, command names, file path, optional description, and
+interactive mode.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Add-RpConfigCommand -ModuleName "RemotePro" -ConfigFilePath "C:\Config.json" `
+                    -CommandNames "Get-RpEventHandlers", "Set-RpConfig" `
+                    -Description "Initial configuration export"
 ```
 
-{{ Add example description here }}
+Exports "Get-RpEventHandlers" and "Set-RpConfig" commands from the
+"RemotePro" module to a JSON file at \`C:\Config.json\`.
+
+### EXAMPLE 2
+```
+Add-RpConfigCommand -ModuleName "RemotePro" -ShowDialog
+```
+
+Opens a GUI dialog for selecting module, commands, configuration path,
+and description, then exports the chosen commands to the JSON file.
 
 ## PARAMETERS
 
-### -CommandNames
-{{ Fill CommandNames Description }}
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigFilePath
-{{ Fill ConfigFilePath Description }}
+### -ModuleName
+Specifies the name of the PowerShell module from which to export
+commands.
+Required.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ConfigurationItems
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-{{ Fill Description Description }}
+### -CommandNames
+Specifies a list of specific commands to export from the
+module.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: String[]
+Parameter Sets: ConfigurationItems
 Aliases:
 
-Required: False
-Position: 4
-Default value: None
+Required: True
+Position: 2
+Default value: @()
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-{{ Fill Id Description }}
+### -ConfigFilePath
+Specifies the path where the JSON configuration file is saved.
+If the
+file does not exist, it will be created.
+Default: \`Get-RPConfigPath\`
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ConfigurationItems
 Aliases:
 
-Required: False
+Required: True
 Position: 3
-Default value: None
+Default value: $(Get-RPConfigPath)
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ModuleName
-{{ Fill ModuleName Description }}
+### -Description
+Optional.
+A brief description for the command being exported.
 
 ```yaml
 Type: String
@@ -100,8 +121,26 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowDialog
+Optional.
+Displays a GUI dialog for input.
+If selected, all other
+parameters are ignored, and user input is collected via the dialog.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ShowDialog
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -126,11 +165,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
+Ensure that the \`PresentationFramework\` assembly is available for WPF
+support to allow GUI interaction.
+A new configuration file will be created
+if it doesn't already exist.
 
 ## RELATED LINKS

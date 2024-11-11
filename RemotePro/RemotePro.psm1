@@ -11,14 +11,14 @@ $script:RemoteProXaml = Get-Content -Path "$PSScriptRoot\Xaml\RemoteProUI.xaml" 
 $bin = Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'bin') -Filter *.dll -Recurse -ErrorAction Stop
 
 # Verbose output to show the DLLs found in the bin path
-Write-Host "Found DLLs in binPath: $($bin.FullName -join ', ')"
+Write-Verbose "Found DLLs in binPath: $($bin.FullName -join ', ')"
 
 try {
     # Load necessary assemblies from .NET Framework using Add-Type
-    Write-Host "Loading .NET PresentationFramework assembly..."
-    Write-Host "Loading .NET PresentationCore..."
-    Write-Host "Loading .NET System.Windows.Forms..."
-    Write-Host "Loading .NET WindowsBase..."
+    Write-Verbose "Loading .NET PresentationFramework assembly..."
+    Write-Verbose "Loading .NET PresentationCore..."
+    Write-Verbose "Loading .NET System.Windows.Forms..."
+    Write-Verbose "Loading .NET WindowsBase..."
     Add-Type -AssemblyName PresentationFramework
     Add-Type -AssemblyName PresentationCore
     Add-Type -AssemblyName System.Windows.Forms
@@ -27,7 +27,7 @@ try {
 
     # Load each custom assembly found in the bin directory using in-memory loading
     foreach ($dll in $bin) {
-        Write-Host "Loading assembly from: $($dll.FullName)"
+        Write-Verbose "Loading assembly from: $($dll.FullName)"
 
         # Read the DLL bytes into memory
         $dllBytes = [System.IO.File]::ReadAllBytes($dll.FullName)
@@ -35,7 +35,7 @@ try {
         # Load the assembly from memory
         [System.Reflection.Assembly]::Load($dllBytes) | Out-Null
 
-        Write-Host "Successfully loaded $($dll.Name) from memory"
+        Write-Verbose "Successfully loaded $($dll.Name) from memory"
     }
 
 } catch {

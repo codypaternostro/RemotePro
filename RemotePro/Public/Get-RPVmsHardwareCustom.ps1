@@ -28,7 +28,7 @@ function Get-RPVmsHardwareCustom {
         $connectionValid = $true
 
         if ($CheckConnection) {
-            if (-not (Test-RPVmsConnection -ShowErrorDialog $true)) {
+            if (-not (Test-RpVmsConnection -ShowErrorDialog $true)) {
                 $connectionValid = $false
             }
         }

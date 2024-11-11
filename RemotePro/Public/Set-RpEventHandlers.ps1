@@ -74,10 +74,10 @@ function Set-RpEventHandlers {
         NewConnectionFile_Click = {
             [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
             try {
-                Set-RPConnectionProfile -CreateTemplate -ExcelFilePath $(Join-Path -Path (New-RPDataAppPath) -ChildPath 'ConnectionFileTemplate.xlsx')
+                Set-RPConnectionProfile -CreateTemplate -ExcelFilePath $(Join-Path -Path (New-RpAppDataPath) -ChildPath 'ConnectionFileTemplate.xlsx')
 
                 $openFileDialog = New-Object System.Windows.Forms.OpenFileDialog
-                $openFileDialog.InitialDirectory = New-RPDataAppPath
+                $openFileDialog.InitialDirectory = New-RpAppDataPath
                 $openFileDialog.Filter = "Excel Sheet (*.xlsx)|*.xlsx|All files (*.*)|*.*"
                 $openFileDialog.ShowDialog()
 
@@ -91,7 +91,7 @@ function Set-RpEventHandlers {
             [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
             try {
                 $openFileDialog = New-Object System.Windows.Forms.OpenFileDialog
-                $openFileDialog.InitialDirectory = New-RPDataAppPath
+                $openFileDialog.InitialDirectory = New-RpAppDataPath
                 $openFileDialog.Filter = "Excel Sheet (*.xlsx)|*.xlsx|All files (*.*)|*.*"
                 $result = $openFileDialog.ShowDialog()
 
@@ -137,13 +137,13 @@ function Set-RpEventHandlers {
         Connect_Click = {
             [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
             try {
-                $queuedConnection = Get-VmsConnectionProfile -name $script:selectedProfileName
+                $queuedConnection = Get-RpConnectionProfile -name $script:selectedProfileName
                 Connect-Vms -ServerAddress $queuedConnection.ServerAddress -Name $queuedConnection.Name -Credential $queuedConnection.Credential
                 Clear-VmsCache
                 $queuedConnection = $null
 
                 # Helper function for updating textbox
-                Set-LoadingMessageTextBox
+                Set-RpLoadingMessageTextBox
             } finally {
                 [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
             }
@@ -158,7 +158,7 @@ function Set-RpEventHandlers {
                 Disconnect-Vms
                 Disconnect-ManagementServer
 
-                Set-DefaultConnectionBox
+                Set-RpDefaultConnectionBox
             } finally {
                 [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
             }
@@ -173,7 +173,7 @@ function Set-RpEventHandlers {
         CSB_TextChanged = {
             $textBox = $args[0]
             if ($textBox.Text -eq "Loading connection properties...") {
-                $serverInfo = Get-ConnectionsOverview
+                $serverInfo = Get-RpConnectionsOverview
                 # Update the TextBox content
                 $script:Connection_Status_Box.Text = $serverInfo.Trim()
             }

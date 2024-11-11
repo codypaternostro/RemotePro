@@ -14,7 +14,7 @@ function Get-RemoteProConnections {
             Set-RPConnectionProfile -ExcelFilePath $ConnectionFilePath
         }
 
-        $connectionProfiles = Get-VmsConnectionProfile -All
+        $connectionProfiles = Get-RpConnectionProfile -All
 
         foreach ($name in $connectionProfiles) {
             # Pull each profile name for each site.

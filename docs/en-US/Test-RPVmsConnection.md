@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/about_Custom_Att
 schema: 2.0.0
 ---
 
-# Test-RPVmsConnection
+# Test-RpVmsConnection
 
 ## SYNOPSIS
 Tests the connection to the VMS management server.
@@ -13,7 +13,7 @@ Tests the connection to the VMS management server.
 ## SYNTAX
 
 ```
-Test-RPVmsConnection [-ShowErrorDialog <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Test-RpVmsConnection [-ShowErrorDialog <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,12 +26,12 @@ The user can optionally suppress the error dialog.
 
 ### EXAMPLE 1
 ```
-Test-RPVmsConnection
+Test-RpVmsConnection
 ```
 
 ### EXAMPLE 2
 ```
-Test-RPVmsConnection -ShowErrorDialog $false
+Test-RpVmsConnection -ShowErrorDialog $false
 ```
 
 ## PARAMETERS

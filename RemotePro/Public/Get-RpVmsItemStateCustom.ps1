@@ -1,4 +1,4 @@
-function Get-VmsItemStateCustom {
+function Get-RpVmsItemStateCustom {
     <#
     .SYNOPSIS
     Retrieves and displays the state of VMS items with optional connection validation.
@@ -12,7 +12,7 @@ function Get-VmsItemStateCustom {
     If the connection is not valid, the function will display an error message and exit early.
 
     .EXAMPLE
-    Get-VmsItemStateCustom -CheckConnection
+    Get-RpVmsItemStateCustom -CheckConnection
 
     This example validates the VMS connection before retrieving and displaying the state of the items.
     #>
@@ -29,7 +29,7 @@ function Get-VmsItemStateCustom {
         $connectionValid = $true
 
         if ($CheckConnection) {
-            if (-not (Test-RPVmsConnection -ShowErrorDialog $true)) {
+            if (-not (Test-RpVmsConnection -ShowErrorDialog $true)) {
                 $connectionValid = $false
             }
         }

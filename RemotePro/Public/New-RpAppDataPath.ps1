@@ -1,11 +1,11 @@
-function New-RPDataAppPath {
+function New-RpAppDataPath {
     <#
     .SYNOPSIS
     Creates a directory for RemotePro app data, adapting logic from
     MilestonePSTools for path handling.
 
     .DESCRIPTION
-    This function, New-RPDataAppPath, combines LOCALAPPDATA with a subdirectory
+    This function, New-RpAppDataPath, combines LOCALAPPDATA with a subdirectory
     specific to RemotePro. It ensures or creates this directory using modified
     item management techniques from MilestonePSTools. Returns the full path.
     See link for MilestonePSTool's explanation of AppData usage.

@@ -1,5 +1,5 @@
 # Get and format connection overview data for current connection
-function Get-ConnectionsOverview {
+function Get-RpConnectionsOverview {
     # Retrieve the site information
     $siteInfo = Get-Site
 

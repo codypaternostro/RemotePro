@@ -1,6 +1,6 @@
 # Helper function to format connection profiles for textbox
-function Format-ConnectionProfiles {
-    $profiles = Get-RPConnectionProfile -All
+function Format-RpConnectionProfiles {
+    $profiles = Get-RpConnectionProfile -All
     $formattedProfiles = @()
     foreach ($profile in $profiles) {
         $formattedText = "Name: $($profile.Name)`r`n"

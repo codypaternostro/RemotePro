@@ -1,4 +1,4 @@
-function Initialize-Dependencies {
+function Initialize-RpDependencies {
     [CmdletBinding()]
     param ()
 

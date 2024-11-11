@@ -5,7 +5,7 @@ online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758
 schema: 2.0.0
 ---
 
-# Show-Camera
+# Show-RpCamera
 
 ## SYNOPSIS
 Displays a UI for live viewing or playback of camera feeds in a security
@@ -15,30 +15,30 @@ system.
 
 ### RPItemPickerSet (Default)
 ```
-Show-Camera [-ShowRPItemPicker] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
+Show-RpCamera [-ShowRPItemPicker] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
  [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### CameraObjectSet
 ```
-Show-Camera -CameraObject <Object> [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
+Show-RpCamera -CameraObject <Object> [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
  [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### IdSet
 ```
-Show-Camera -Id <Guid[]> [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32> [-CheckConnection]
+Show-RpCamera -Id <Guid[]> [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32> [-CheckConnection]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SelectCameraSet
 ```
-Show-Camera [-ShowSelectCamera] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
+Show-RpCamera [-ShowSelectCamera] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
  [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Show-Camera function allows users to interact with camera feeds using
+The Show-RpCamera function allows users to interact with camera feeds using
 different methods of camera selection.
 It supports viewing live feeds,
 playback of recorded sequences, and diagnostics overlay on the video feed.
@@ -51,21 +51,21 @@ inspired all of RemotePro from sharing this incredible function.
 
 ### EXAMPLE 1
 ```
-Show-Camera -ShowSelectCamera
+Show-RpCamera -ShowSelectCamera
 # This command opens the standard camera selection dialog and displays the
 # selected camera feed without any diagnostic overlays.
 ```
 
 ### EXAMPLE 2
 ```
-Show-Camera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
+Show-RpCamera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
 # This command displays the feed of a camera identified by the specified GUID
 # with sequence data for the past 7 days.
 ```
 
 ### EXAMPLE 3
 ```
-Show-Camera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
+Show-RpCamera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
 # This command uses a custom item picker for camera selection and shows the
 # selected camera feed with a high diagnostic level overlay for the past 30
 # days.

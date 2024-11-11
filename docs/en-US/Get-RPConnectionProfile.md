@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Get-RPConnectionProfile
+# Get-RpConnectionProfile
 
 ## SYNOPSIS
 Retrieves and displays RemotePro connection profiles or the credentials XML.
@@ -14,16 +14,16 @@ Retrieves and displays RemotePro connection profiles or the credentials XML.
 
 ### ViewProfiles (Default)
 ```
-Get-RPConnectionProfile [-Name <String>] [-All] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpConnectionProfile [-Name <String>] [-All] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ViewXml
 ```
-Get-RPConnectionProfile [-ViewXml] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpConnectionProfile [-ViewXml] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-RPConnectionProfile function retrieves connection profiles based on
+The Get-RpConnectionProfile function retrieves connection profiles based on
 the provided parameters.
 It can either show all profiles, a specific profile
 by name, or open the credentials XML file for direct viewing.
@@ -32,19 +32,19 @@ by name, or open the credentials XML file for direct viewing.
 
 ### EXAMPLE 1
 ```
-Get-RPConnectionProfile -All
+Get-RpConnectionProfile -All
 # Displays all available RemotePro connection profiles.
 ```
 
 ### EXAMPLE 2
 ```
-Get-RPConnectionProfile -Name "ProfileName"
+Get-RpConnectionProfile -Name "ProfileName"
 # Retrieves and displays the connection profile named "ProfileName".
 ```
 
 ### EXAMPLE 3
 ```
-Get-RPConnectionProfile -ViewXml
+Get-RpConnectionProfile -ViewXml
 # Opens the credentials XML file associated with RemotePro connection
 profiles for direct viewing.
 ```

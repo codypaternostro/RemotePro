@@ -1,11 +1,11 @@
-function Show-RPItemPicker {
+function Show-RpItemPicker {
     <#
     .SYNOPSIS
         Displays an item picker dialog and allows selection of items based on specified
         types such as Camera, Hardware, or Server.
 
     .DESCRIPTION
-        The Show-RPItemPicker function opens a window with a customizable item picker
+        The Show-RpItemPicker function opens a window with a customizable item picker
         control. Users can select items categorized as Camera, Hardware, or Server.
         The function supports configuration for displaying only camera items and checks
         the connection to the VMS system before proceeding.
@@ -26,11 +26,11 @@ function Show-RPItemPicker {
             fails, the function will not proceed.
 
     .EXAMPLE
-        Show-RPItemPicker -Title "Select Cameras" -Kind 'Camera'
+        Show-RpItemPicker -Title "Select Cameras" -Kind 'Camera'
         # Opens the item picker with the title "Select Cameras" displaying only camera items.
 
     .EXAMPLE
-        Show-RPItemPicker -Title "Hardware Selection" -Kind 'Hardware' -CheckConnection
+        Show-RpItemPicker -Title "Hardware Selection" -Kind 'Hardware' -CheckConnection
         # Checks the connection first, then shows a picker for selecting hardware items.
 
     .NOTES
@@ -67,7 +67,7 @@ function Show-RPItemPicker {
         $connectionValid = $true
 
         if ($CheckConnection) {
-            if (-not (Test-RPVmsConnection -ShowErrorDialog $true)) {
+            if (-not (Test-RpVmsConnection -ShowErrorDialog $true)) {
                 $connectionValid = $false
             }
         }

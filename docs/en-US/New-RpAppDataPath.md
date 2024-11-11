@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# New-RPDataAppPath
+# New-RpAppDataPath
 
 ## SYNOPSIS
 Creates a directory for RemotePro app data, adapting logic from
@@ -14,11 +14,11 @@ MilestonePSTools for path handling.
 ## SYNTAX
 
 ```
-New-RPDataAppPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-RpAppDataPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function, New-RPDataAppPath, combines LOCALAPPDATA with a subdirectory
+This function, New-RpAppDataPath, combines LOCALAPPDATA with a subdirectory
 specific to RemotePro.
 It ensures or creates this directory using modified
 item management techniques from MilestonePSTools.

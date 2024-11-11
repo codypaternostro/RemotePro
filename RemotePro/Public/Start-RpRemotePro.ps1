@@ -4,7 +4,7 @@ function Start-RpRemotePro {
         Initializes and manages the RemotePro application interface.
 
     .DESCRIPTION
-        The Start-RemotePro function sets up a GUI for managing remote connections
+        The Start-RpRemotePro function sets up a GUI for managing remote connections
         and commands. It uses WPF for dynamic display and runspaces for managing
         multiple asynchronous tasks, allowing for responsive interactions during
         complex operations. This function incorporates the MilestonePSTools and
@@ -21,7 +21,7 @@ function Start-RpRemotePro {
         and event handling through the GUI.
 
     .EXAMPLE
-        Start-RemotePro
+        Start-RpRemotePro
         # Launches the RemotePro GUI, initializes all components, and sets up
         runspaces for asynchronous task management.
 
@@ -86,7 +86,7 @@ function Start-RpRemotePro {
     #endregion
 
     #region vms connection and updating main window.
-    Set-DefaultConnectionBox            # Helper function for clearing textbox
+    Set-RpDefaultConnectionBox            # Helper function for clearing textbox
     Set-DefaultConnectionProfileBox     # Helper function for populating connection profile textbox.
     Get-RemoteProConnections            # Fill Connections_Combo_Box with profile names.
                                         # Refresh "MilestonePSTools Connection Profile Details" tab.

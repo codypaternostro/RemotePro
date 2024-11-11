@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Get-VmsItemStateCustom
+# Get-RpVmsItemStateCustom
 
 ## SYNOPSIS
 Retrieves and displays the state of VMS items with optional connection validation.
@@ -14,12 +14,12 @@ Retrieves and displays the state of VMS items with optional connection validatio
 
 ### NoConnectionCheck (Default)
 ```
-Get-VmsItemStateCustom [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpVmsItemStateCustom [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ConnectionCheck
 ```
-Get-VmsItemStateCustom [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpVmsItemStateCustom [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ It also provides an optional parameter to validate the connection before process
 
 ### EXAMPLE 1
 ```
-Get-VmsItemStateCustom -CheckConnection
+Get-RpVmsItemStateCustom -CheckConnection
 ```
 
 This example validates the VMS connection before retrieving and displaying the state of the items.

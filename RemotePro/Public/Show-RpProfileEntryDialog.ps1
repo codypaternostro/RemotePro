@@ -125,7 +125,7 @@ function Show-RPProfileEntryDialog {
         $usernameBox.Text = $SelectedProfile.Credential
 
         # Explicitly check if the values are true or false and set the checkboxes accordingly
-        $checkBoxes = Get-VmsConnectionProfile -Name $SelectedProfile.Name
+        $checkBoxes = Get-RpConnectionProfile -Name $SelectedProfile.Name
         $secureOnlyCheckBox.IsChecked = if ($checkBoxes.SecureOnly -eq "true") { $true } else { $false }
         $acceptEulaCheckBox.IsChecked = if ($checkBoxes.AcceptEula -eq "true") { $true } else { $false }
         $basicUserCheckBox.IsChecked = if ($checkBoxes.BasicUser -eq "true") { $true } else { $false }

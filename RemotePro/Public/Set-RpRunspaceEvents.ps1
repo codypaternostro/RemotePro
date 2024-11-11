@@ -259,7 +259,7 @@ function Set-RpRunspaceEvents {
 
                     $result = Get-RPVmsHardwareCustom -CheckConnection
                     if ($null -eq $result) {
-                        Write-Output "No result returned from Get-VmsHardwareCustom."
+                        Write-Output "No result returned from Get-RpVmsHardwareCustom."
                     }
                     return $result | gm
                 } catch {

@@ -3,11 +3,11 @@ function Get-RpConnectionProfileRefresh {
     [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
 
     try {
-        $profiles = Get-RPConnectionProfile -All
+        $profiles = Get-RpConnectionProfile -All
         if ($profiles.Count -eq 0) {
             Set-DefaultConnectionProfileBox
         } else {
-            $formattedProfiles = Format-ConnectionProfiles
+            $formattedProfiles = Format-RpConnectionProfiles
             $script:ConnectionProfileListBox.ItemsSource = $formattedProfiles
         }
     } catch {

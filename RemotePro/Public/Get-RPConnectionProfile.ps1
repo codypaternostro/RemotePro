@@ -1,10 +1,10 @@
-function Get-RPConnectionProfile {
+function Get-RpConnectionProfile {
     <#
     .SYNOPSIS
         Retrieves and displays RemotePro connection profiles or the credentials XML.
 
     .DESCRIPTION
-        The Get-RPConnectionProfile function retrieves connection profiles based on
+        The Get-RpConnectionProfile function retrieves connection profiles based on
         the provided parameters. It can either show all profiles, a specific profile
         by name, or open the credentials XML file for direct viewing.
 
@@ -21,15 +21,15 @@ function Get-RPConnectionProfile {
         in the 'ViewXml' parameter set.
 
     .EXAMPLE
-        Get-RPConnectionProfile -All
+        Get-RpConnectionProfile -All
         # Displays all available RemotePro connection profiles.
 
     .EXAMPLE
-        Get-RPConnectionProfile -Name "ProfileName"
+        Get-RpConnectionProfile -Name "ProfileName"
         # Retrieves and displays the connection profile named "ProfileName".
 
     .EXAMPLE
-        Get-RPConnectionProfile -ViewXml
+        Get-RpConnectionProfile -ViewXml
         # Opens the credentials XML file associated with RemotePro connection
         profiles for direct viewing.
 
@@ -64,7 +64,7 @@ function Get-RPConnectionProfile {
         'ViewProfiles' {
             if ($Name) {
                 # Retrieve and display the specific profile using Get-VmsConnectionProfile
-                Get-VmsConnectionProfile -Name $Name
+                Get-VmsConnectionProfile  -Name $Name
             } elseif ($All) {
                 # Retrieve and display all profiles using Get-VmsConnectionProfile
                 Get-VmsConnectionProfile -All
@@ -77,10 +77,10 @@ function Get-RPConnectionProfile {
 
 # Example usage
 # To view all connection profiles
-# Get-RPConnectionProfile -All
+# Get-RpConnectionProfile -All
 
 # To view a specific profile
-# Get-RPConnectionProfile -Name "ProfileName"
+# Get-RpConnectionProfile -Name "ProfileName"
 
 # To open the XML file only
-# Get-RPConnectionProfile -ViewXml
+# Get-RpConnectionProfile -ViewXml

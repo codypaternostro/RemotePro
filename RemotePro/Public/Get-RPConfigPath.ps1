@@ -1,11 +1,11 @@
-function Get-RPConfigPath {
+function Get-RpConfigPath {
     <#
     .SYNOPSIS
     Retrieves the path for RemotePro config uration file by using adapted logic from
     MilestonePSTools.
 
     .DESCRIPTION
-    This function, Get-RPConfigurationPath, calls New-RPDataAppPath to get the
+    This function, Get-RPConfigurationPath, calls New-RpAppDataPath to get the
     app data directory and then appends 'RemoteProParamConfig.json'. It
     showcases path handling adaptations from MilestonePSTools, tailored for log
     file retrieval in RemotePro.
@@ -18,6 +18,6 @@ function Get-RPConfigPath {
     param()
 
     process {
-        Join-Path -Path (New-RPDataAppPath) -ChildPath 'RemoteProParamConfig.json'
+        Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfig.json'
     }
 }
