@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-RpconfigCommand
+# Get-RpConfigCommand
 
 ## SYNOPSIS
 Retrieves details of a specific command or all commands from the config file.
@@ -13,7 +13,7 @@ Retrieves details of a specific command or all commands from the config file.
 ## SYNTAX
 
 ```
-Get-RpconfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-ConfigFilePath] <String> [-All]
+Get-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-ConfigFilePath] <String> [-All]
  [-ByModule] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 

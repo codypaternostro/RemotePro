@@ -36,7 +36,7 @@ Existing
 commands can be updated by specifying an ID.
 Parameters include a
 module name, command names, file path, optional description, and
-interactive mode.
+show dialog.
 
 ## EXAMPLES
 
@@ -88,7 +88,7 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: @()
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -106,7 +106,7 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: $(Get-RPConfigPath)
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -1,4 +1,4 @@
-function Get-RpconfigCommand {
+function Get-RpConfigCommand {
  <#
     .SYNOPSIS
     Retrieves details of a specific command or all commands from the config file.

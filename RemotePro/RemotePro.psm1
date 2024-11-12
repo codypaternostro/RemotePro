@@ -66,14 +66,18 @@ Install-RpRequiredModules -Verbose
 $script:RemotePro = New-RpControllerObject      #Initalize RemotePro controller object
 Set-RpEventHandlers     #Populate EventHandlers
 Set-RpRunspaceEvents    #Populate RunspaceEvents
-Set-RpConfigCommands    #Populate ConfigCommands
+
 
 $script:RpOpenRunspaces = Initialize-RpOpenRunspaces
 $script:RpRunspaceJobs = Initialize-RpRunspaceJobs
 $script:RpRunspaceResults = Initialize-RpRunspaceResults
 #endregion
 
-#region set runspace log path
+#region set runspace log and configuration file.
 $script:logPath = Get-RPLogPath
 $script:configPath = Get-RPConfigPath
+if (-not (Test-Path -Path $(Get-RpConfigPath))){
+    New-RpConfigCommandJson -Type EmptyJson
+}
+Set-RpConfigCommands    #Populate ConfigCommands
 #endregion
