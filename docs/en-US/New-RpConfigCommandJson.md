@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Set-RpConfigCommands
+# New-RpConfigCommandJson
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Set-RpConfigCommands [[-ConfigFilePath] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-RpConfigCommandJson [-Type] <String> [[-ConfigFilePath] <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +40,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+{{ Fill Type Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: DefaultJson, EmptyJson
+
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False

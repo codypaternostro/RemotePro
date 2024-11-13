@@ -51,7 +51,7 @@ function Get-RpConfigCommand {
         [string]$CommandName,
 
         # Path to the configuration JSON file
-        [Parameter(Mandatory=$true, Position=2)]
+        [Parameter()]
         [string]$ConfigFilePath,
 
         # Retrieve all commands from all modules
@@ -61,40 +61,46 @@ function Get-RpConfigCommand {
         [switch]$ByModule
     )
 
-    # Check if the config file exists
-    if (-not (Test-Path -Path $ConfigFilePath)) {
-        Write-Error "Configuration file not found at $ConfigFilePath"
-        return
+    begin {
+        Add-Type -AssemblyName PresentationFramework
+
+        # Use appdata path if there is not a filepath value.
+        if (-not ($ConfigFilePath)){
+            $ConfigFilePath = Get-RPConfigPath
+        }
     }
 
-    # Load the configuration
-    $configContent = Get-Content -Path $ConfigFilePath -Raw
-    $config = $configContent | ConvertFrom-Json
+    process {
+        # Load the configuration
+        $configContent = Get-Content -Path $ConfigFilePath -Raw
+        $config = $configContent | ConvertFrom-Json
 
-    # Retrieve all commands across all modules
-    if ($All) {
-        return $config.ConfigCommands
+        # Retrieve all commands across all modules
+        if ($All) {
+            return $config.ConfigCommands
+        }
+
+        # Check if the module exists
+        if (-not $config.ConfigCommands.PSObject.Properties[$ModuleName]) {
+            Write-Error "Module '$ModuleName' not found in configuration."
+            return
+        }
+
+        # If ByModule is specified, retrieve all commands from the module
+        if ($ByModule) {
+            return $config.ConfigCommands.$ModuleName
+        }
+
+        # Check if the command exists
+        $commandDetails = $config.ConfigCommands.$ModuleName | Where-Object { $_.CommandName -eq $CommandName }
+
+        if (-not $commandDetails) {
+            Write-Error "Command '$CommandName' not found in module '$ModuleName'."
+            return
+        }
+
+        # Return the command details
+        return $commandDetails
     }
-
-    # Check if the module exists
-    if (-not $config.ConfigCommands.PSObject.Properties[$ModuleName]) {
-        Write-Error "Module '$ModuleName' not found in configuration."
-        return
-    }
-
-    # If ByModule is specified, retrieve all commands from the module
-    if ($ByModule) {
-        return $config.ConfigCommands.$ModuleName
-    }
-
-    # Check if the command exists
-    $commandDetails = $config.ConfigCommands.$ModuleName | Where-Object { $_.CommandName -eq $CommandName }
-
-    if (-not $commandDetails) {
-        Write-Error "Command '$CommandName' not found in module '$ModuleName'."
-        return
-    }
-
-    # Return the command details
-    return $commandDetails
+    end {}
 }

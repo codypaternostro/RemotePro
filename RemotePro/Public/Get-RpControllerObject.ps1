@@ -32,8 +32,13 @@ function Get-RpControllerObject {
     [CmdletBinding()]
     param (
         [switch]$ListProperties,
+
+        [Parameter()]
+        [ValidateSet("EventHandlers","RunspaceEvents","ConfigCommands")]
+        [OutputType([PSCustomObject])]
         [string]$Property
     )
+
 
     # Check if $script:RemotePro exists
     if (-not $script:RemotePro) {

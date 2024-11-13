@@ -86,14 +86,17 @@ function Add-RpConfigCommand {
         if (-not ($ConfigFilePath)){
             $ConfigFilePath = Get-RPConfigPath
         }
+        elseif ($ShowDialog) {
+            Add-Type -AssemblyName PresentationFramework
+
+            $resultText = @()
+        }
+
     }
 
     process {
         # Show WPF dialog if -ShowDialog is used
         if ($ShowDialog) {
-            Add-Type -AssemblyName PresentationFramework
-
-            $resultText = @()
 
         # Define XAML layout for WPF GUI
         $xaml = @"
@@ -230,15 +233,19 @@ function Add-RpConfigCommand {
         if (-not $config.PSObject.Properties['ConfigCommands']) {
             $config | Add-Member -MemberType NoteProperty -Name 'ConfigCommands' -Value @{}
         }
-        if (-not $config.ConfigCommands.PSObject.Properties[$ModuleName]) {
-            $config.ConfigCommands | Add-Member -MemberType NoteProperty -Name $ModuleName -Value @()
+        if (-not $config.ConfigCommands.PSObject.Properties[$moduleName]) {
+            $config.ConfigCommands | Add-Member -MemberType NoteProperty -Name $moduleName -Value @()
         }
 
         # Add selected commands to the configuration file
-        $commands = if ($CommandNames) {
-            Get-Command -Module $ModuleName | Where-Object { $CommandNames -contains $_.Name }
-        } else {
-            Get-Command -Module $ModuleName
+        $commands = if ($commandNames) {
+            try {
+                Get-Command -Module $ModuleName | Where-Object { $commandNames -contains $_.Name }
+            }
+            catch {
+                Write-Error "Command was not selected: $_"
+                return
+            }
         }
 
         foreach ($command in $commands) {
@@ -254,6 +261,7 @@ function Add-RpConfigCommand {
 
             # Create command details for configuration
             $commandDetails = [pscustomobject]@{
+                'ModuleName'  = $moduleName
                 'CommandName' = $command.Name
                 'Id'          = [System.Guid]::NewGuid().ToString()
                 'Description' = if ($Description) { $Description } else { "$($command.Name) command description" }
@@ -265,11 +273,11 @@ function Add-RpConfigCommand {
             if (-not ($existingCommands | Where-Object { $_.ID -eq $Id })) {
                 $config.ConfigCommands.$ModuleName += $commandDetails
             } else {
-                Write-Verbose "Command with ID $Id already exists in module '$ModuleName'. Skipping addition."
+                Write-Verbose "Command with ID $Id already exists in module '$moduleName'. Skipping addition."
             }
 
-            $resultText += " Assigned ModuleName: $ModuleName`n"
-            $resultText += "Assigned CommandNames: $CommandNames`n"
+            $resultText += " Assigned ModuleName: $moduleName`n"
+            $resultText += "Assigned CommandNames: $commandNames`n"
             $resultText += "Assigned Id: $($commandDetails.Id)`n"
             # Debugging output to confirm assignment
             Write-Verbose "$($resultText)"
@@ -277,14 +285,14 @@ function Add-RpConfigCommand {
 
         # Convert updated configuration back to JSON and save
         $jsonConfig = $config | ConvertTo-Json -Depth 4
-        if ($ConfigFilePath) {
+        if ($configFilePath) {
             Set-Content -Path $ConfigFilePath -Value $jsonConfig
-            Write-Verbose "Configuration for module '$ModuleName' saved to $ConfigFilePath"
+            Write-Verbose "Configuration for module '$ModuleName' saved to $configFilePath"
         } else {
             Write-Verbose "Error: ConfigFilePath is empty. Unable to save configuration."
         }
 
-        if ($ShowDialog){
+        if ($showDialog -and $commands){
             $window = New-Object System.Windows.Window
             $window.Title = "Information"
             $window.Width = 400
@@ -332,8 +340,10 @@ function Add-RpConfigCommand {
         }
     }
     end {
-        if ($ShowDialog){
+        if ($showDialog){
             $window.Close()
+        } elseif ($commands) {
+            Set-RpConfigCommands # Update RpControllerObject with added command.
         }
     }
 }

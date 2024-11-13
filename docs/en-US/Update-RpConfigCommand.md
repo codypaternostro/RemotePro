@@ -15,19 +15,19 @@ module using a configuration JSON file or an interactive WPF-based GUI.
 
 ### ShowDialog (Default)
 ```
-Update-RpConfigCommand -ModuleName <String> -CommandName <String> -Id <Int32> -ConfigFilePath <String>
+Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <String>] [-ConfigFilePath <String>]
  [-ShowDialog] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ConfigurationItems
 ```
-Update-RpConfigCommand -ModuleName <String> -CommandName <String> -Id <Int32> [-ParameterValues <Hashtable>]
- -ConfigFilePath <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <String>] [-Parameters <Hashtable>]
+ [-ConfigFilePath <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### NoDialog
 ```
-Update-RpConfigCommand [-ParameterValues <Hashtable>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-RpConfigCommand [-Parameters <Hashtable>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,10 +86,10 @@ Type: String
 Parameter Sets: ShowDialog, ConfigurationItems
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -104,10 +104,10 @@ Type: String
 Parameter Sets: ShowDialog, ConfigurationItems
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -118,22 +118,19 @@ This ensures that specific versions of the command can be targeted
 and modified.
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: ShowDialog, ConfigurationItems
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: 0
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ParameterValues
-(Optional) A hashtable containing parameter names as keys and their desired
-values as values.
-Use this parameter to bypass the GUI and directly update
-the command configuration with the specified values.
+### -Parameters
+{{ Fill Parameters Description }}
 
 ```yaml
 Type: Hashtable
@@ -143,7 +140,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -158,7 +155,7 @@ Type: String
 Parameter Sets: ShowDialog, ConfigurationItems
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
