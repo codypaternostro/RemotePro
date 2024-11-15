@@ -145,10 +145,10 @@ function Set-RpRunspaceEvents {
 
                     #$platformItemcameras | ogv
 
-                    Show-Camera -CameraObject $platformItemcameras -SpecifiedDaysForSequences 7 -DiagnosticLevel 3 | Out-Null
+                    Show-RpCamera -CameraObject $platformItemcameras -SpecifiedDaysForSequences 7 -DiagnosticLevel 3 | Out-Null
 
                     if ($null -eq $result) {
-                        Write-Output "`nNo result returned from Show-Camera."
+                        Write-Output "`nNo result returned from Show-RpCamera."
                     }
                     #return $result
 
@@ -172,10 +172,10 @@ function Set-RpRunspaceEvents {
 
 
                     $configItemCams += Get-VmsCamera -Id $platformItemcameras.FQID.ObjectId
-                    Get-RPTicketBlock -Cameras $configItemCams -ShowWindow
+                    Get-RpTicketBlock -Cameras $configItemCams -ShowWindow
 
                     if ($null -eq $result) {
-                        Write-Output "`nNo result returned from Get-RPTicketBlock."
+                        Write-Output "`nNo result returned from Get-RpTicketBlock."
                     }
                     #return $result
 
@@ -208,10 +208,10 @@ function Set-RpRunspaceEvents {
 
 
 
-                    Get-RPTicketBlock -Cameras $platformItemcameras -ShowWindow
+                    Get-RpTicketBlock -Cameras $platformItemcameras -ShowWindow
 
                     if ($null -eq $result) {
-                        Write-Output "No result returned from Get-RPTicketBlock."
+                        Write-Output "No result returned from Get-RpTicketBlock."
                     }
 
                     $error[0] | Out-GridView
@@ -237,7 +237,8 @@ function Set-RpRunspaceEvents {
 
                     $result = Select-VideoOSItem
                     $result | Add-Member -MemberType NoteProperty -Name ObjectID -Value $item.FQID.ObjectId.Guid
-                    $result | Select-Object FQID, ObjectId, Name, Enabled, Encrypt, Icon, MapIconKey, HasRelated, Properties, Authorization, ContextMenu  | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
+                    $result | Select-Object FQID, ObjectId, Name, Enabled, Encrypt, Icon, MapIconKey, HasRelated, Properties, Authorization, ContextMenu  |
+                        Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
                     if ($null -eq $result) {
                         Write-Output "No result returned from Show VideoOSItems."
                     }
@@ -257,7 +258,7 @@ function Set-RpRunspaceEvents {
 
                     Write-Host "$(Get-Location)"
 
-                    $result = Get-RPVmsHardwareCustom -CheckConnection
+                    $result = Get-RpVmsHardwareCustom -CheckConnection
                     if ($null -eq $result) {
                         Write-Output "No result returned from Get-RpVmsHardwareCustom."
                     }
@@ -275,9 +276,9 @@ function Set-RpRunspaceEvents {
                     # testing
                     import-module C:\RemotePro\RemotePro\RemotePro.psd1
 
-                    $result = Get-VmsItemStateCustom -CheckConnection
+                    $result = Get-RpVmsItemStateCustom -CheckConnection | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
                     if ($null -eq $result) {
-                        Write-Output "No result returned from Get-VmsItemStateCustom."
+                        Write-Output "No result returned from Get-RpVmsItemStateCustom."
                     }
                     return $result
                 } catch {

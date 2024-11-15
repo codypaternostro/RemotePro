@@ -1,4 +1,4 @@
-function Get-RPVmsHardwareCustom {
+function Get-RpVmsHardwareCustom {
     <#
     .SYNOPSIS
     Retrieves and displays the hardware settings of VMS items with optional connection validation.
@@ -12,7 +12,7 @@ function Get-RPVmsHardwareCustom {
     If the connection is not valid, the function will display an error message and exit early.
 
     .EXAMPLE
-    Get-RPVmsHardwareCustom -CheckConnection
+    Get-RpVmsHardwareCustom -CheckConnection
 
     This example validates the VMS connection before retrieving and displaying the hardware settings of the items.
     #>

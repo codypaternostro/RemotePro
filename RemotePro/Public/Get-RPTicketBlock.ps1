@@ -1,4 +1,4 @@
-function Get-RPTicketBlock {
+function Get-RpTicketBlock {
     <#
     .SYNOPSIS
         Retrieves hardware and stream information for a list of camera configuration items.
@@ -25,19 +25,19 @@ function Get-RPTicketBlock {
         PSCustomObject items to the pipeline.
 
     .EXAMPLE
-        Get-RPTicketBlock -Cameras $cameraList -showWindow
+        Get-RpTicketBlock -Cameras $cameraList -showWindow
 
         Retrieves camera hardware information from the specified camera configuration items
         and displays it in a WPF window.
 
     .EXAMPLE
-        $cameraInfo = Get-RPTicketBlock -Cameras $cameraList -ReturnObjects
+        $cameraInfo = Get-RpTicketBlock -Cameras $cameraList -ReturnObjects
 
         Retrieves camera hardware information from the specified camera configuration items
         and returns the results as objects to the pipeline.
 
     .EXAMPLE
-        $cameraList | Get-RPTicketBlock -showWindow
+        $cameraList | Get-RpTicketBlock -showWindow
 
         Pipes a list of camera configuration items and displays the retrieved hardware
         information in a WPF window.
