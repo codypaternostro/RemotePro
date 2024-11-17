@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Get-RPVmsHardwareCustom
+# Get-RpVmsHardwareCustom
 
 ## SYNOPSIS
 Retrieves and displays the hardware settings of VMS items with optional connection validation.
@@ -14,12 +14,12 @@ Retrieves and displays the hardware settings of VMS items with optional connecti
 
 ### NoConnectionCheck (Default)
 ```
-Get-RPVmsHardwareCustom [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpVmsHardwareCustom [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ConnectionCheck
 ```
-Get-RPVmsHardwareCustom [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpVmsHardwareCustom [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ It also provides an optional parameter to validate the connection before process
 
 ### EXAMPLE 1
 ```
-Get-RPVmsHardwareCustom -CheckConnection
+Get-RpVmsHardwareCustom -CheckConnection
 ```
 
 This example validates the VMS connection before retrieving and displaying the hardware settings of the items.

@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Get-RPTicketBlock
+# Get-RpTicketBlock
 
 ## SYNOPSIS
 Retrieves hardware and stream information for a list of camera configuration items.
@@ -13,7 +13,7 @@ Retrieves hardware and stream information for a list of camera configuration ite
 ## SYNTAX
 
 ```
-Get-RPTicketBlock -Cameras <System.Collections.Generic.List`1[VideoOS.Platform.ConfigurationItems.Camera]>
+Get-RpTicketBlock -Cameras <System.Collections.Generic.List`1[VideoOS.Platform.ConfigurationItems.Camera]>
  [-ShowWindow] [-ReturnObjects] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ returned as objects to the pipeline.
 
 ### EXAMPLE 1
 ```
-Get-RPTicketBlock -Cameras $cameraList -showWindow
+Get-RpTicketBlock -Cameras $cameraList -showWindow
 ```
 
 Retrieves camera hardware information from the specified camera configuration items
@@ -39,7 +39,7 @@ and displays it in a WPF window.
 
 ### EXAMPLE 2
 ```
-$cameraInfo = Get-RPTicketBlock -Cameras $cameraList -ReturnObjects
+$cameraInfo = Get-RpTicketBlock -Cameras $cameraList -ReturnObjects
 ```
 
 Retrieves camera hardware information from the specified camera configuration items
@@ -47,7 +47,7 @@ and returns the results as objects to the pipeline.
 
 ### EXAMPLE 3
 ```
-$cameraList | Get-RPTicketBlock -showWindow
+$cameraList | Get-RpTicketBlock -showWindow
 ```
 
 Pipes a list of camera configuration items and displays the retrieved hardware

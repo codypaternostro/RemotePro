@@ -53,86 +53,58 @@ function Import-RpConfig {
                 $commandObject.Parameters.PSObject.TypeNames.Insert(0,"$moduleName.ConfigCommands.$(($commandDetails.CommandName)).Parameters.PSCustomObject")
 
 
-                # Add a script method to dynamically invoke the command
                 $commandObject | Add-Member -MemberType ScriptMethod -Name "InvokeWithId" -Force -Value {
-                    param ($Id)
+                    param (
+                        [String]$Id  # Allow $Id to be optional
+                    )
 
-                    # Verify if the command ID matches the provided one
-                    Write-Verbose "Checking if command ID matches. Expected: $Id, Actual: $($this.Id)"
-                    if ($this.Id -eq $Id) {
-                        Write-Verbose "Command '$($this.CommandName)' with ID $Id matched. Invoking now..."
+                    # Default to the CommandObject's ID if none is provided
+                    if (-not $Id) {
+                        Write-Verbose "No ID provided. Defaulting to CommandObject's ID: $($this.Id)"
+                        $Id = $this.Id
+                    }
 
-                        # Prepare the parameter hashtable
-                        $paramHash = @{}  # To store valid parameters
+                    Write-Verbose "Checking if command ID matches. Provided: $Id, CommandObject ID: $($this.Id)"
+                    if ([String]$this.Id -eq $Id) {
+                        Write-Verbose "Command '$($this.CommandName)' with ID $Id matched. Preparing to invoke..."
 
-                        # Iterate over each parameter in the command
+                        # Construct the parameter hashtable
+                        $paramHash = @{}
                         foreach ($paramName in $this.Parameters.PSObject.Properties.Name) {
                             $paramConfig = $this.Parameters.$paramName
-                            Write-Verbose "Processing parameter: $paramName"
-
-                            # Extract the 'Value' part from the stringified hashtable
                             if ($paramConfig -is [string] -and $paramConfig.StartsWith('@{')) {
                                 try {
-                                    # Split and capture the 'Value' field manually
                                     $paramValue = ($paramConfig -split ';') | ForEach-Object {
                                         if ($_ -match 'Value=(.*)$') { $matches[1].Trim('}') }
                                     }
-
-                                    # Check if we successfully extracted the 'Value'
                                     if ($null -ne $paramValue -and -not [string]::IsNullOrEmpty($paramValue)) {
-                                        Write-Verbose "Extracted value for parameter '$paramName': $paramValue"
-
-                                        # Handle switch parameters
-                                        if ($paramConfig -match 'SwitchParameter') {
-                                            if ($paramValue -eq 'True') {
-                                                $paramHash[$paramName] = $true
-                                            } elseif ($paramValue -eq 'False') {
-                                                $paramHash[$paramName] = $false
-                                            }
-                                        } else {
-                                            # For regular parameters, assign the value
-                                            $paramHash[$paramName] = $paramValue
-                                        }
-                                    } else {
-                                        Write-Warning "Skipping parameter '$paramName' due to missing or empty 'Value'."
+                                        $paramHash[$paramName] = $paramValue
                                     }
                                 } catch {
-                                    Write-Warning "Skipping malformed parameter: '$paramName'. Error: $_"
-                                    continue
+                                    Write-Warning "Skipping malformed parameter '$paramName'. Error: $_"
                                 }
-                            } else {
-                                # Handle cases where the parameter is not a stringified hashtable
-                                if ($null -ne $paramConfig -and $null -ne $paramConfig.Value) {
-                                    $paramHash[$paramName] = $paramConfig.Value
-                                }
+                            } elseif ($null -ne $paramConfig -and $null -ne $paramConfig.Value) {
+                                $paramHash[$paramName] = $paramConfig.Value
                             }
                         }
 
-                        # Debug: Show the final parameters being passed
-                        if ($paramHash.Count -gt 0) {
-                            Write-Verbose "Parameters being passed to the command:"
-                            foreach ($key in $paramHash.Keys) {
-                                Write-Verbose "$key = $($paramHash[$key])"
-                            }
+                        Write-Verbose "Parameters for command '$($this.CommandName)': $paramHash"
 
-                            # Try to invoke the command with splatted parameters
-                            try {
-                                if (Get-Command $this.CommandName -ErrorAction SilentlyContinue) {
-                                    Write-Verbose "Running command '$($this.CommandName)'..."
-                                    & $this.CommandName @paramHash  # Splat the hashtable with valid parameters
-                                } else {
-                                    Write-Error "Command '$($this.CommandName)' not found."
-                                }
-                            } catch {
-                                Write-Error "Error invoking command '$($this.CommandName)': $_"
-                            }
-                        } else {
-                            Write-Verbose "No parameters with valid values are being passed."
+                        try {
+                            # Invoke the command and return the output
+                            Write-Verbose "Invoking command: $($this.CommandName)"
+                            $results = & $this.CommandName @paramHash
+                            Write-Verbose "Command executed successfully. Results: $($results | Out-String)"
+                            return $results
+                        } catch {
+                            Write-Error "Error invoking command '$($this.CommandName)': $_"
                         }
                     } else {
-                        Write-Error "Error: Command ID $Id not found."
+                        Write-Error "Command ID $Id does not match CommandObject ID $($this.Id)."
                     }
                 }
+
+
 
                 # Store the command object by both CommandName and Id
                 if (-not $moduleCommands.ContainsKey($commandDetails.CommandName)) {
