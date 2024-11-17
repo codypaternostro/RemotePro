@@ -143,9 +143,13 @@ function Add-RpConfigCommand {
             $submitButton = $window.FindName("SubmitButton")
             $cancelButton = $window.FindName("CancelButton")
 
-            # Populate Module ComboBox with available modules
+            # Create a mapping of DisplayName -> ModuleName
+            $moduleMapping = @{}
+
             foreach ($module in (Get-Module -ListAvailable)) {
-                [void]$moduleComboBox.Items.Add($module.Name)
+                $displayName = "$($module.Name) ($($module.Version))"
+                $moduleMapping[$displayName] = $module.Name
+                [void]$moduleComboBox.Items.Add($displayName)
             }
 
             # Set default selection to the first item if available
@@ -153,19 +157,20 @@ function Add-RpConfigCommand {
                 $moduleComboBox.SelectedIndex = 0
             }
 
-            # Populate Commands ListBox when a module is selected
+            # Handle module selection and extract the actual module name
             $moduleComboBox.add_SelectionChanged({
                 [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
                 try {
                     $commandListBox.Items.Clear()
-                    $selectedModule = $moduleComboBox.SelectedItem
-                    if ($selectedModule) {
+                    $selectedDisplayName = $moduleComboBox.SelectedItem
+                    if ($selectedDisplayName) {
+                        $selectedModule = $moduleMapping[$selectedDisplayName]
                         foreach ($command in (Get-Command -Module $selectedModule)) {
                             $commandListBox.Items.Add($command.Name)
                         }
                     }
                 } finally {
-                    [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+                    [System.Windows.Input.Mouse]::OverrideCursor = $null
                 }
             })
 
@@ -180,7 +185,7 @@ function Add-RpConfigCommand {
                 [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
                 try {
                     # Capture GUI input values in the hashtable
-                    $dialogResults.ModuleName = $moduleComboBox.SelectedItem
+                    $dialogResults.ModuleName = $moduleMapping[$moduleComboBox.SelectedItem]
                     $dialogResults.CommandNames = @($commandListBox.SelectedItems | ForEach-Object { $_.ToString() })
 
                     # Close dialog
@@ -195,7 +200,7 @@ function Add-RpConfigCommand {
                 [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
                 try {
                     # Capture GUI input values in the hashtable
-                    $dialogResults.ModuleName = $moduleComboBox.SelectedItem
+                    $dialogResults.ModuleName = $moduleMapping[$moduleComboBox.SelectedItem]
                     $dialogResults.CommandNames = @($commandListBox.SelectedItems | ForEach-Object { $_.ToString() })
 
                     # Close dialog
@@ -229,18 +234,21 @@ function Add-RpConfigCommand {
             Write-Verbose "No existing configuration found. Creating a new one."
         }
 
+        # Use the actual ModuleName (not DisplayName or other variables)
+        $actualModuleName = $dialogResults.ModuleName
+
         # Ensure ConfigCommands and Module sections exist
         if (-not $config.PSObject.Properties['ConfigCommands']) {
             $config | Add-Member -MemberType NoteProperty -Name 'ConfigCommands' -Value @{}
         }
-        if (-not $config.ConfigCommands.PSObject.Properties[$moduleName]) {
-            $config.ConfigCommands | Add-Member -MemberType NoteProperty -Name $moduleName -Value @()
+        if (-not $config.ConfigCommands.PSObject.Properties[$actualModuleName]) {
+            $config.ConfigCommands | Add-Member -MemberType NoteProperty -Name $actualModuleName -Value @()
         }
 
         # Add selected commands to the configuration file
         $commands = if ($commandNames) {
             try {
-                Get-Command -Module $ModuleName | Where-Object { $commandNames -contains $_.Name }
+                Get-Command -Module $actualModuleName | Where-Object { $commandNames -contains $_.Name }
             }
             catch {
                 Write-Error "Command was not selected: $_"
@@ -261,7 +269,7 @@ function Add-RpConfigCommand {
 
             # Create command details for configuration
             $commandDetails = [pscustomobject]@{
-                'ModuleName'  = $moduleName
+                'ModuleName'  = $actualModuleName  # Use actual module name
                 'CommandName' = $command.Name
                 'Id'          = [System.Guid]::NewGuid().ToString()
                 'Description' = if ($Description) { $Description } else { "$($command.Name) command description" }
@@ -276,9 +284,12 @@ function Add-RpConfigCommand {
                 Write-Verbose "Command with ID $Id already exists in module '$moduleName'. Skipping addition."
             }
 
+            # Collect the ID for later use
+            $collectedIds += $commandDetails.Id
+
             $resultText += " Assigned ModuleName: $moduleName`n"
             $resultText += "Assigned CommandNames: $commandNames`n"
-            $resultText += "Assigned Id: $($commandDetails.Id)`n"
+            $resultText += "Assigned Id: $($commandDetails.Id)`n`n"
             # Debugging output to confirm assignment
             Write-Verbose "$($resultText)"
         }
@@ -292,10 +303,10 @@ function Add-RpConfigCommand {
             Write-Verbose "Error: ConfigFilePath is empty. Unable to save configuration."
         }
 
-        if ($showDialog -and $commands){
+        if ($showDialog -and $commands) {
             $window = New-Object System.Windows.Window
             $window.Title = "Information"
-            $window.Width = 400
+            $window.Width = 425
             $window.Height = 220
             $window.WindowStartupLocation = "CenterScreen"
             $window.ResizeMode = "NoResize"
@@ -304,37 +315,62 @@ function Add-RpConfigCommand {
             $stackPanel = New-Object System.Windows.Controls.StackPanel
             $stackPanel.Orientation = "Vertical"
 
-            $textBlock = New-Object System.Windows.Controls.TextBlock
-            $textBlock.Text = $resultText
-            $textBlock.Margin = "10"
-            $textBlock.TextWrapping = "Wrap"
-            $textBlock.VerticalAlignment = "Center"
-            [void]$stackPanel.Children.Add($textBlock)
+            # TextBox for displaying resultText
+            $textBox = New-Object System.Windows.Controls.TextBox
+            $textBox.Text = $resultText
+            $textBox.Margin = "10"
+            $textBox.TextWrapping = "Wrap"
+            $textBox.VerticalAlignment = "Top"
+            $textBox.HorizontalAlignment = "Stretch"
+            $textBox.Height = 100  # Restrict height to prevent overflowing
+            $textBox.IsReadOnly = $true
+            $textBox.VerticalScrollBarVisibility = "Auto"
+            $textBox.HorizontalScrollBarVisibility = "Disabled"
+            [void]$stackPanel.Children.Add($textBox)
 
+            # Panel for buttons
             $buttonPanel = New-Object System.Windows.Controls.StackPanel
             $buttonPanel.Orientation = "Horizontal"
             $buttonPanel.HorizontalAlignment = "Center"
             $buttonPanel.Margin = "10"
+
+            # Copy Button
             $copyButton = New-Object System.Windows.Controls.Button
-            $copyButton.Content = "Copy"
+            $copyButton.Content = "Copy Id(s)"
             $copyButton.Margin = "5"
             $copyButton.Width = 80
             $copyButton.Add_Click({
-                [System.Windows.Clipboard]::SetText($resultText)
-                [System.Windows.MessageBox]::Show("Text copied to clipboard.", "Copied", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+                try {
+                    # Join the collected IDs into a comma-separated string
+                    $idsString = $collectedIds -join ", "
+
+                    if (-not [string]::IsNullOrWhiteSpace($idsString)) {
+                        # Copy the IDs to the clipboard
+                        [System.Windows.Clipboard]::SetText($idsString)
+                        [System.Windows.MessageBox]::Show("Command ID(s) copied to clipboard.", "Copied", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+                    } else {
+                        [System.Windows.MessageBox]::Show("No IDs found to copy.", "Error", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Error)
+                    }
+                } catch {
+                    # Handle any errors gracefully
+                    [System.Windows.MessageBox]::Show("An error occurred while copying IDs: $($_.Exception.Message)", "Error", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Error)
+                }
             })
 
+            [void]$buttonPanel.Children.Add($copyButton)
+
+            # OK Button
             $okButton = New-Object System.Windows.Controls.Button
             $okButton.Content = "OK"
             $okButton.Margin = "5"
             $okButton.Width = 80
             $okButton.Add_Click({ $window.Close() })
-
-
-            [void]$buttonPanel.Children.Add($copyButton)
             [void]$buttonPanel.Children.Add($okButton)
+
+            # Add the button panel to the stack panel
             [void]$stackPanel.Children.Add($buttonPanel)
 
+            # Set the stack panel as the content of the window
             $window.Content = $stackPanel
             [void]$window.ShowDialog()
         }
