@@ -92,6 +92,11 @@ function Add-RpConfigCommand {
             $resultText = @()
         }
 
+        # Check if required parameters are missing when not using the dialog
+        if (-not $PSBoundParameters.ContainsKey('ModuleName') -or -not $PSBoundParameters.ContainsKey('CommandNames') -or -not $PSBoundParameters.ContainsKey('ConfigFilePath')) {
+            Write-Warning "Required parameters (ModuleName, CommandNames, ConfigFilePath) are not fully provided. Opening dialog window for input."
+            $ShowDialog = $true
+        }
     }
 
     process {
