@@ -80,12 +80,18 @@ function Add-RpConfigCommand {
         [switch]$ShowDialog
     )
 
-
     begin {
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
             $ConfigFilePath = Get-RPConfigPath
         }
+
+        # Check if the configuration file exists
+        if (-not (Test-Path -Path $(Get-RpConfigPath))){
+            New-RpConfigCommandJson -Type EmptyJson
+        }
+
+        # Initialize variables
         elseif ($ShowDialog) {
             Add-Type -AssemblyName PresentationFramework
 
@@ -240,7 +246,7 @@ function Add-RpConfigCommand {
         }
 
         # Use the actual ModuleName (not DisplayName or other variables)
-        $actualModuleName = $dialogResults.ModuleName
+        $actualModuleName = if ($ShowDialog) { $dialogResults.ModuleName } else { $ModuleName }
 
         # Ensure ConfigCommands and Module sections exist
         if (-not $config.PSObject.Properties['ConfigCommands']) {
@@ -248,7 +254,12 @@ function Add-RpConfigCommand {
         }
         if (-not $config.ConfigCommands.PSObject.Properties[$actualModuleName]) {
             $config.ConfigCommands | Add-Member -MemberType NoteProperty -Name $actualModuleName -Value @()
+        } elseif (-not ($config.ConfigCommands.$actualModuleName -is [System.Collections.IList])) {
+            $config.ConfigCommands.$actualModuleName = @($config.ConfigCommands.$actualModuleName)
         }
+
+        # List to store generated commands
+        $generatedCommands = @()
 
         # Add selected commands to the configuration file
         $commands = if ($commandNames) {
@@ -285,6 +296,7 @@ function Add-RpConfigCommand {
             $existingCommands = $config.ConfigCommands.$ModuleName
             if (-not ($existingCommands | Where-Object { $_.ID -eq $Id })) {
                 $config.ConfigCommands.$ModuleName += $commandDetails
+                $generatedCommands += $commandDetails  # Add to the list of generated commands
             } else {
                 Write-Verbose "Command with ID $Id already exists in module '$moduleName'. Skipping addition."
             }
@@ -292,7 +304,7 @@ function Add-RpConfigCommand {
             # Collect the ID for later use
             $collectedIds += $commandDetails.Id
 
-            $resultText += " Assigned ModuleName: $moduleName`n"
+            $resultText += "Assigned ModuleName: $moduleName`n"
             $resultText += "Assigned CommandNames: $commandNames`n"
             $resultText += "Assigned Id: $($commandDetails.Id)`n`n"
             # Debugging output to confirm assignment
@@ -386,5 +398,6 @@ function Add-RpConfigCommand {
         } elseif ($commands) {
             Set-RpConfigCommands # Update RpControllerObject with added command.
         }
+        return $generatedCommands  # Return the list of generated commands
     }
 }
