@@ -43,11 +43,11 @@ function Get-RpConfigCommand {
     [CmdletBinding()]
     param (
         # The name of the module to retrieve the command from
-        [Parameter(Mandatory=$false, Position=0)]
+        [Parameter(Mandatory=$false, Position=0, ValueFromPipelineByPropertyName = $true)]
         [string]$ModuleName,
 
         # The name of the command to retrieve
-        [Parameter(Mandatory=$false, Position=1)]
+        [Parameter(Mandatory=$false, Position=1, ValueFromPipelineByPropertyName = $true)]
         [string]$CommandName,
 
         # Path to the configuration JSON file

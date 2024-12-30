@@ -45,14 +45,13 @@ function Get-RpTicketBlock {
     [CmdletBinding(DefaultParameterSetName = 'CameraConfigurationItems')]
     param (
         [Parameter(ParameterSetName = 'CameraConfigurationItems', Mandatory = $true, ValueFromPipeline = $true)]
-        [System.Collections.Generic.List[VideoOS.Platform.ConfigurationItems.Camera]]
-        $Cameras,
+        [System.Collections.Generic.List[VideoOS.Platform.ConfigurationItems.Camera]]$Cameras,
+
         [Parameter(ParameterSetName = 'CameraConfigurationItems')]
-        [Switch]
-        $ShowWindow,
+        [Switch]$ShowWindow,
+
         [Parameter(ParameterSetName = 'CameraConfigurationItems')]
-        [Switch]
-        $ReturnObjects
+        [Switch]$ReturnObjects
     )
 
     begin {

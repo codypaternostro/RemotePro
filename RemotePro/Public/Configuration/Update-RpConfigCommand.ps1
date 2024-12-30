@@ -246,8 +246,8 @@ function Update-RpConfigCommand {
         # Apply passed ParameterValues directly if GUI is not used
         else {
             foreach ($paramName in $parameters.Keys) {
-                if ($commandDetails.Parameters[$paramName]) {
-                    $commandDetails.Parameters[$paramName].Value = $parameters[$paramName]
+                if ($commandDetails.Parameters.$paramName) {
+                    $commandDetails.Parameters.$paramName.Value = $parameters[$paramName]
                     Write-Verbose "Parameter '$paramName' updated with value '$($parameters[$paramName])'"
                 } else {
                     Write-Warning "Parameter '$paramName' not found in the command '$CommandName'."

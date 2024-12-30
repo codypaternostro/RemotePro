@@ -10,6 +10,33 @@ function Set-RpConfigDefaults {
     #                    -CommandNames "Get-RpEventHandlers", "Set-RpConfig" `
     #                    -Description "Initial configuration export"
 
+    $defaultCommands = [PSCustomObject]@{}
+
+    $RemoteProCmds = ((Add-RpConfigCommand -ModuleName "RemotePro" -ConfigFilePath (Get-RpConfigPath) `
+                    -CommandNames "Show-RpCamera", "Get-RpTicketBlock", "Select-VideoOSItem", "Get-RpVmsHardwareCustom", "Get-RpVmsItemStateCustom" `
+                    -Description "Initial configuration export"))
+
+    $PSWriteHTMLCmds = ((Add-RpConfigCommand -ModuleName "PSWriteHTML" -ConfigFilePath (Get-RpConfigPath) `
+                    -CommandNames "Out-HtmlView" `
+                    -Description "Initial configuration export"))
+
+    $MilestonePSToolsCmds = ((Add-RpConfigCommand -ModuleName "MilestonePSTools" -ConfigFilePath (Get-RpConfigPath) `
+                    -CommandNames "Get-VmsCameraReport" `
+                    -Description "Initial configuration export"))
+
+
+    $defaultCommands | Add-Member -MemberType NoteProperty -Name "RemotePro" -Value $RemoteProCmds
+    $defaultCommands | Add-Member -MemberType NoteProperty -Name "PSWriteHTML" -Value $PSWriteHTMLCmds
+    $defaultCommands | Add-Member -MemberType NoteProperty -Name "MilestonePSTools" -Value $MilestonePSToolsCmds
+
+    $params = @{
+        "CameraObject" = "`$platformItemcameras"
+        "SpecifiedDaysForSequences" = "7"
+        "DiagnosticLevel" = "3"
+    }
+
+    $defaultCommands.remotepro | Where-Object -FilterScript {$_.commandname -like "Show-RpCamera"} |
+        Update-RpConfigCommand -Parameters $params -Verbose
 
     #Out-HtmlView
         #Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
