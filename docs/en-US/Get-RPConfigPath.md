@@ -14,7 +14,7 @@ MilestonePSTools.
 ## SYNTAX
 
 ```
-Get-RpConfigPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpConfigPath [-DefaultIds] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +34,21 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
+
+### -DefaultIds
+If specified, retrieves the path for the default IDs configuration file.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}

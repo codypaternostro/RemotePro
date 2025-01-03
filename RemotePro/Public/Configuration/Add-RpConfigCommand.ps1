@@ -396,7 +396,7 @@ function Add-RpConfigCommand {
         if ($showDialog){
             $window.Close()
         } elseif ($commands) {
-            Set-RpConfigCommands # Update RpControllerObject with added command.
+            Set-RpConfigCommands # Update RpControllerObject with added commands.
         }
         return $generatedCommands  # Return the list of generated commands
     }

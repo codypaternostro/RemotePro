@@ -1,7 +1,7 @@
 function Get-RpConfigPath {
     <#
     .SYNOPSIS
-    Retrieves the path for RemotePro config uration file by using adapted logic from
+    Retrieves the path for RemotePro configuration file by using adapted logic from
     MilestonePSTools.
 
     .DESCRIPTION
@@ -10,14 +10,24 @@ function Get-RpConfigPath {
     showcases path handling adaptations from MilestonePSTools, tailored for log
     file retrieval in RemotePro.
 
+    .PARAMETER DefaultIds
+    If specified, retrieves the path for the default IDs configuration file.
+
     .LINK
     https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
     #>
     [CmdletBinding()]
     [OutputType([string])]
-    param()
+    param(
+        [Parameter()]
+        [switch]$DefaultIds = $false
+    )
 
     process {
-        Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfig.json'
+        if ($PSBoundParameters.ContainsKey('DefaultIds') -and $DefaultIds) {
+            Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfigDefaultIds.json'
+        } else {
+            Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfig.json'
+        }
     }
 }

@@ -33,9 +33,10 @@ function New-RpConfigCommandJson {
     switch($type){
         "DefaultJson"{
             Invoke-Command $saveConfig -ArgumentList @($config,$configFilePath)
-            #Add-RpConfigCommands.....
-            # This is where the default configuration commands will be added.
-            # Using Set-RpConfigDefault to add default configuration commands.
+
+            # Add default command Ids to seperate configuration file
+            $configCommandIds = Set-RpConfigDefaults
+            Invoke-Command $saveConfig -ArgumentList @($configCommandIds,(Get-RpConfigPath -DefaultIds))
 
         }
         "EmptyJson" {

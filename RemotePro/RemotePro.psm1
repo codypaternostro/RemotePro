@@ -77,7 +77,7 @@ $script:RpRunspaceResults = Initialize-RpRunspaceResults
 $script:logPath = Get-RPLogPath
 $script:configPath = Get-RPConfigPath
 if (-not (Test-Path -Path $(Get-RpConfigPath))){
-    New-RpConfigCommandJson -Type EmptyJson
+    New-RpConfigCommandJson -Type DefaultJson
 }
 Set-RpConfigCommands    #Populate ConfigCommands
 #endregion
