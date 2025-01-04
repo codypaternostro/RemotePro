@@ -107,14 +107,14 @@ function Update-RpConfigCommand {
 
     begin {
         Add-Type -AssemblyName PresentationFramework
+    }
 
+    process {
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
             $ConfigFilePath = Get-RPConfigPath
         }
-    }
 
-    process {
         # Load configuration JSON
         $configContent = Get-Content -Path $ConfigFilePath -Raw
         $config = $configContent | ConvertFrom-Json

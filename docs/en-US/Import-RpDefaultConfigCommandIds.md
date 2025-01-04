@@ -5,28 +5,46 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Reset-RpConfigCommandDefaults
+# Import-RpDefaultConfigCommandIds
 
 ## SYNOPSIS
-Resets the RemotePro configuration to default values.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Reset-RpConfigCommandDefaults [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Import-RpDefaultConfigCommandIds [[-ConfigFilePath] <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function removes existing configuration files and creates new default configuration files for RemotePro.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-Reset-RpConfigCommandDefaults
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
+{{ Add example description here }}
+
 ## PARAMETERS
+
+### -ConfigFilePath
+{{ Fill ConfigFilePath Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
@@ -48,8 +66,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
+### System.Object
 ## NOTES
 
 ## RELATED LINKS

@@ -27,10 +27,10 @@ function Set-RpConfigCommands {
                 $ConfigFilePath = Get-RPConfigPath
             }
 
-            # Define event handlers
+            # Define config commands
             $script:RemotePro.ConfigCommands = Import-RpConfig -ConfigFilePath $ConfigFilePath
 
-            # Attach a custom type to EventHandlers
+            # Attach a custom type to ConfigCommands
             $script:RemotePro.ConfigCommands.PSTypeNames.Insert(0, 'RemotePro.ConfigCommands')
 
             Write-Host "Config Commands have been successfully added to RemotePro.ConfigCommands."
