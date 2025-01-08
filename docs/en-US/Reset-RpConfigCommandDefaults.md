@@ -17,7 +17,14 @@ Reset-RpConfigCommandDefaults [-ProgressAction <ActionPreference>] [<CommonParam
 ```
 
 ## DESCRIPTION
-This function removes existing configuration files and creates new default configuration files for RemotePro.
+This function removes existing configuration files and creates new
+default configuration files for RemotePro.
+
+\`Set-RpConfigCommands\` and \`Set-RpDefaultConfigCommandIds\` are called to
+populate the RemotePro.ConfigCommands and RemotePro.ConfigCommandDefaultIds
+properties.
+In the RpControllerObject, these properties are used to store
+the configuration commands and their default ids.
 
 ## EXAMPLES
 

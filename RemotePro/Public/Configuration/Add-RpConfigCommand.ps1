@@ -60,15 +60,15 @@ function Add-RpConfigCommand {
     [CmdletBinding(DefaultParameterSetName = 'ShowDialog')]
     param (
         # Name of the module to export commands from
-        [Parameter(Mandatory=$true, Position=0, ParameterSetName='ConfigurationItems')]
+        [Parameter(Mandatory=$false, Position=0, ParameterSetName='ConfigurationItems')]
         [string]$ModuleName,
 
         # Optional: List of specific commands to export
-        [Parameter(Mandatory=$true, Position=1, ParameterSetName='ConfigurationItems')]
+        [Parameter(Mandatory=$false, Position=1, ParameterSetName='ConfigurationItems')]
         [string[]]$CommandNames,
 
         # Path to save the configuration JSON file
-        [Parameter(Mandatory=$true, Position=2, ParameterSetName='ConfigurationItems')]
+        [Parameter(Mandatory=$false, Position=2, ParameterSetName='ConfigurationItems')]
         [string]$ConfigFilePath,
 
         # Optional description for the command
@@ -82,9 +82,14 @@ function Add-RpConfigCommand {
 
     begin {
         # Use appdata path if there is not a filepath value.
+        if (-not $PSBoundParameters.ContainsKey('ConfigFilePath') -or [string]::IsNullOrWhiteSpace($ConfigFilePath)) {
+            $ConfigFilePath = Get-RPConfigPath
+        }
+
         if (-not ($ConfigFilePath)){
             $ConfigFilePath = Get-RPConfigPath
         }
+
 
         # Check if the configuration file exists
         if (-not (Test-Path -Path $(Get-RpConfigPath))){
@@ -99,8 +104,8 @@ function Add-RpConfigCommand {
         }
 
         # Check if required parameters are missing when not using the dialog
-        if (-not $PSBoundParameters.ContainsKey('ModuleName') -or -not $PSBoundParameters.ContainsKey('CommandNames') -or -not $PSBoundParameters.ContainsKey('ConfigFilePath')) {
-            Write-Warning "Required parameters (ModuleName, CommandNames, ConfigFilePath) are not fully provided. Opening dialog window for input."
+        if (-not $PSBoundParameters.ContainsKey('ModuleName') -or -not $PSBoundParameters.ContainsKey('CommandNames')) {
+            Write-Warning "Required parameters: `"ModuleName`" and `"CommandNames`" are not fully provided. Opening dialog window for input."
             $ShowDialog = $true
         }
     }

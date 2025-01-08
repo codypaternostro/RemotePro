@@ -21,7 +21,7 @@ Add-RpConfigCommand [-Description <String>] [-ShowDialog] [-ProgressAction <Acti
 
 ### ConfigurationItems
 ```
-Add-RpConfigCommand [-ModuleName] <String> [-CommandNames] <String[]> [-ConfigFilePath] <String>
+Add-RpConfigCommand [[-ModuleName] <String>] [[-CommandNames] <String[]>] [[-ConfigFilePath] <String>]
  [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -70,7 +70,7 @@ Type: String
 Parameter Sets: ConfigurationItems
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -86,7 +86,7 @@ Type: String[]
 Parameter Sets: ConfigurationItems
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -104,7 +104,7 @@ Type: String
 Parameter Sets: ConfigurationItems
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False

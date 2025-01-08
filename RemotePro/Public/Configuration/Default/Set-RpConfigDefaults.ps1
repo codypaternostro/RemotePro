@@ -4,10 +4,13 @@ function Set-RpConfigDefaults {
         Sets the default configuration for RemotePro.
 
     .DESCRIPTION
-        This cmdlet sets the default configuration values for the RemotePro application. It ensures that all necessary settings are initialized with their default values.
+        This cmdlet sets the default configuration values for the RemotePro
+        application. It ensures that all necessary settings are initialized
+        with their default values.
 
     .PARAMETER ConfigFilePath
-        The path to the configuration file where the default settings will be applied.
+        The path to the configuration file where the default settings will
+        be applied.
 
     .EXAMPLE
         PS C:\> Set-RpConfigDefaults -ConfigFilePath "C:\Config\RemoteProConfig.json"
@@ -196,7 +199,7 @@ function Set-RpConfigDefaults {
             #endregion
         }
         catch {
-            Write-Error "An error occurred while setting the default configuration: $_"
+            Write-Error "An error occurred while setting the default configuration: $($_.exception.message)"
         }
         finally {
             Set-RpConfigCommands # Update RpControllerObject with added commands.

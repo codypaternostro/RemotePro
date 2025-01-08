@@ -1,11 +1,16 @@
-
 function Reset-RpConfigCommandDefaults {
     <#
     .SYNOPSIS
         Resets the RemotePro configuration to default values.
 
     .DESCRIPTION
-        This function removes existing configuration files and creates new default configuration files for RemotePro.
+        This function removes existing configuration files and creates new
+        default configuration files for RemotePro.
+
+        `Set-RpConfigCommands` and `Set-RpDefaultConfigCommandIds` are called to
+        populate the RemotePro.ConfigCommands and RemotePro.ConfigCommandDefaultIds
+        properties. In the RpControllerObject, these properties are used to store
+        the configuration commands and their default ids.
 
     .EXAMPLE
         Reset-RpConfigCommandDefaults
@@ -29,7 +34,8 @@ function Reset-RpConfigCommandDefaults {
                 New-RpConfigCommandJson -Type DefaultJson
             }
 
-            Set-RpConfigCommands    #Populate ConfigCommands
+            Set-RpConfigCommands                #Populate ConfigCommands
+            Set-RpDefaultConfigCommandIds       #Populate ConfigCommandDefaultIds
 
         }
         catch {

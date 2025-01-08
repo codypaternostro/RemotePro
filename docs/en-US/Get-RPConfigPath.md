@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-RpConfigPath
 
 ## SYNOPSIS
-Retrieves the path for RemotePro config uration file by using adapted logic from
+Retrieves the path for RemotePro configuration file by using adapted logic from
 MilestonePSTools.
 
 ## SYNTAX

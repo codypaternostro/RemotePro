@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-RpConfigDefaults
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the default configuration for RemotePro.
 
 ## SYNTAX
 
@@ -17,21 +17,24 @@ Set-RpConfigDefaults [[-ConfigFilePath] <String>] [-ProgressAction <ActionPrefer
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet sets the default configuration values for the RemotePro
+application.
+It ensures that all necessary settings are initialized
+with their default values.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Set-RpConfigDefaults -ConfigFilePath "C:\Config\RemoteProConfig.json"
+This example sets the default configuration values in the specified configuration file.
+```
 
 ## PARAMETERS
 
 ### -ConfigFilePath
-The path to the configuration file where the default settings will be applied.
+The path to the configuration file where the default settings will
+be applied.
 
 ```yaml
 Type: String
@@ -65,11 +68,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
+### [string] The path to the configuration file where the default settings will be applied.
 ## OUTPUTS
 
-### System.Object
+### None. This cmdlet does not produce any output.
 ## NOTES
 
 ## RELATED LINKS

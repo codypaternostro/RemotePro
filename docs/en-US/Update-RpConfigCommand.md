@@ -36,7 +36,7 @@ a specified command within a PowerShell module.
 The function retrieves
 configuration information from a JSON file and supports updating parameters
 either by launching a GUI (if \`-ShowDialog\` is specified) or by directly
-passing a hashtable of parameter values through the \`-ParameterValues\`
+passing a hashtable of parameter values through the \`-Parameters\`
 parameter.
 The updated configuration is saved back to the JSON file,
 preserving all previous configurations.
@@ -44,7 +44,7 @@ preserving all previous configurations.
 By default, the function opens a GUI for parameter editing, making it
 user-friendly for interactive scenarios.
 Advanced users and scripts can also
-bypass the GUI and pass values directly through \`-ParameterValues\`.
+bypass the GUI and pass values directly through \`-Parameters\`.
 
 ## EXAMPLES
 
@@ -63,13 +63,13 @@ back to the JSON file.
 ### EXAMPLE 2
 ```
 Update-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName
-'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -ParameterValues
+'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -Parameters
 @{ "Verbose" = $true; "Debug" = $false }
 ```
 
 This example directly sets the 'Verbose' and 'Debug' parameters without
 opening the GUI.
-A hashtable is provided via the \`-ParameterValues\`
+A hashtable is provided via the \`-Parameters\`
 parameter, which updates the configuration in the JSON file with these
 values.
 
@@ -130,7 +130,10 @@ Accept wildcard characters: False
 ```
 
 ### -Parameters
-{{ Fill Parameters Description }}
+(Optional) A hashtable containing parameter names as keys and their desired
+values as values.
+Use this parameter to bypass the GUI and directly update
+the command configuration with the specified values.
 
 ```yaml
 Type: Hashtable
@@ -165,7 +168,7 @@ Accept wildcard characters: False
 ### -ShowDialog
 (Optional) Displays a WPF GUI dialog for interactive parameter editing.
 If
-this switch is specified, any \`ParameterValues\` passed directly will be
+this switch is specified, any \`Parameters\` passed directly will be
 ignored, and the GUI will allow users to make adjustments.
 
 ```yaml

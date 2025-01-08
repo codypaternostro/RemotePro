@@ -9,13 +9,13 @@ function Update-RpConfigCommand {
     a specified command within a PowerShell module. The function retrieves
     configuration information from a JSON file and supports updating parameters
     either by launching a GUI (if `-ShowDialog` is specified) or by directly
-    passing a hashtable of parameter values through the `-ParameterValues`
+    passing a hashtable of parameter values through the `-Parameters`
     parameter. The updated configuration is saved back to the JSON file,
     preserving all previous configurations.
 
     By default, the function opens a GUI for parameter editing, making it
     user-friendly for interactive scenarios. Advanced users and scripts can also
-    bypass the GUI and pass values directly through `-ParameterValues`.
+    bypass the GUI and pass values directly through `-Parameters`.
 
     .PARAMETER ModuleName
     The name of the module containing the command to be modified. This parameter
@@ -37,14 +37,14 @@ function Update-RpConfigCommand {
     stored. This file is required and will be updated with any modified
     parameter values.
 
-    .PARAMETER ParameterValues
+    .PARAMETER Parameters
     (Optional) A hashtable containing parameter names as keys and their desired
     values as values. Use this parameter to bypass the GUI and directly update
     the command configuration with the specified values.
 
     .PARAMETER ShowDialog
     (Optional) Displays a WPF GUI dialog for interactive parameter editing. If
-    this switch is specified, any `ParameterValues` passed directly will be
+    this switch is specified, any `Parameters` passed directly will be
     ignored, and the GUI will allow users to make adjustments.
 
     .EXAMPLE
@@ -58,11 +58,11 @@ function Update-RpConfigCommand {
 
     .EXAMPLE
     Update-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName
-    'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -ParameterValues
+    'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -Parameters
     @{ "Verbose" = $true; "Debug" = $false }
 
     This example directly sets the 'Verbose' and 'Debug' parameters without
-    opening the GUI. A hashtable is provided via the `-ParameterValues`
+    opening the GUI. A hashtable is provided via the `-Parameters`
     parameter, which updates the configuration in the JSON file with these
     values.
 
@@ -106,7 +106,16 @@ function Update-RpConfigCommand {
     )
 
     begin {
-        Add-Type -AssemblyName PresentationFramework
+        try {
+            Add-Type -AssemblyName PresentationFramework
+        } catch {
+            Write-Error "Failed to load PresentationFramework assembly: $_"
+            return
+
+            if (-not $PSBoundParameters.ContainsKey('ConfigFilePath') -or [string]::IsNullOrWhiteSpace($ConfigFilePath)) {
+                $ConfigFilePath = Get-RPConfigPath
+            }
+        }
     }
 
     process {
@@ -156,7 +165,7 @@ function Update-RpConfigCommand {
             }
         }
 
-        # Load values from config if no ParameterValues are provided
+        # Load values from config if no Parameters are provided
         if (-not $parameters) {
             $parameters = @{}
             foreach ($paramName in $commandDetails.Parameters.PSObject.Properties.Name) {
@@ -243,7 +252,7 @@ function Update-RpConfigCommand {
             if (-not $result) { Write-Verbose "No changes made."; return }
         }
 
-        # Apply passed ParameterValues directly if GUI is not used
+        # Apply passed Parameters directly if GUI is not used
         else {
             foreach ($paramName in $parameters.Keys) {
                 if ($commandDetails.Parameters.$paramName) {
