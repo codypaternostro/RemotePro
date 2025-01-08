@@ -1,4 +1,38 @@
 function Import-RpConfig {
+    <#
+    .SYNOPSIS
+    Imports and processes a configuration JSON file for RemotePro.
+
+    .DESCRIPTION
+    The Import-RpConfig function reads a JSON configuration file, converts it into
+    a PowerShell object, and processes each module and command defined in the
+    configuration. It creates a hashtable of modules, each containing a collection
+    of commands with their details and parameters. Each command object includes an
+    InvokeCommand method to execute the command with its parameters.
+
+    .PARAMETER ConfigFilePath
+    Specifies the path to the configuration JSON file. If not provided, the
+    function will use a default path obtained from Get-RPConfigPath.
+
+    .EXAMPLE
+    Import-RpConfig -ConfigFilePath "C:\Path\To\Config.json"
+    Imports and processes the configuration from the specified JSON file.
+
+    .EXAMPLE
+    Import-RpConfig
+    Imports and processes the configuration using the default path.
+
+    .NOTES
+    The function adds custom type names to the objects for better identification
+    and processing. It also includes verbose logging for detailed execution
+    information.
+
+    The following propeties are added to the command object:
+    ModuleName, CommandName, Id, Description, and Parameters.
+
+    The following methods are added to the command object:
+    InvokeCommand: A method to execute the command with its parameters.
+    #>
     [CmdletBinding()]
     param (
         [string]$ConfigFilePath    # Path to the configuration JSON file
@@ -53,7 +87,7 @@ function Import-RpConfig {
                 $commandObject.Parameters.PSObject.TypeNames.Insert(0,"$moduleName.ConfigCommands.$(($commandDetails.CommandName)).Parameters.PSCustomObject")
 
 
-                $commandObject | Add-Member -MemberType ScriptMethod -Name "InvokeWithId" -Force -Value {
+                $commandObject | Add-Member -MemberType ScriptMethod -Name "InvokeCommand" -Force -Value {
                     param (
                         [String]$Id  # Allow $Id to be optional
                     )
@@ -130,5 +164,5 @@ Set-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName 'Get-VmsCameraRe
 
 $modules = Import-RpConfig -ConfigFilePath $(Get-RPConfigPath)
 
-$modules.MilestonePSTools.'Get-VmsCameraReport'[18].InvokeWithId(18)
+$modules.MilestonePSTools.'Get-VmsCameraReport'[18].InvokeCommand(18)
 #>
