@@ -34,7 +34,7 @@ function Get-RpControllerObject {
         [switch]$ListProperties,
 
         [Parameter()]
-        [ValidateSet("EventHandlers","RunspaceEvents","ConfigCommands")]
+        [ValidateSet("EventHandlers","RunspaceEvents","ConfigCommands","ConfigCommandDefaultIds")]
         [OutputType([PSCustomObject])]
         [string]$Property
     )

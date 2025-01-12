@@ -13,8 +13,8 @@ Retrieves details of a specific command or all commands from the config file.
 ## SYNTAX
 
 ```
-Get-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-ConfigFilePath <String>] [-All]
- [-ByModule] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-Id <String>]
+ [-ConfigFilePath <String>] [-All] [-ByModule] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +79,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Id
+The name of the command to retrieve
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ConfigFilePath
 The path to the configuration JSON file that stores the command details.
 
@@ -90,7 +105,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

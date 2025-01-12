@@ -24,6 +24,11 @@ function Get-RpConfigCommand {
     .PARAMETER ByModule
     Retrieves all commands within the specified module.
 
+    .PARAMETER Id
+    Retrieves the command by its unique identifier (Id). Useful for finding a
+    command by Id to debug or troubleshoot when the command name has a
+    duplicate Id.
+
     .EXAMPLE
     Get-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
                         -ConfigFilePath $(Get-RPConfigurationPath)
@@ -39,6 +44,9 @@ function Get-RpConfigCommand {
     Get-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves all commands from all modules in the configuration.
 
+    .EXAMPLE
+    Get-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RPConfigurationPath)
+    Retrieves the command with the Id '12345' from the configuration.
     #>
     [CmdletBinding()]
     param (
@@ -50,8 +58,12 @@ function Get-RpConfigCommand {
         [Parameter(Mandatory=$false, Position=1, ValueFromPipelineByPropertyName = $true)]
         [string]$CommandName,
 
+        # The name of the command to retrieve
+        [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName = $true)]
+        [string]$Id,
+
         # Path to the configuration JSON file
-        [Parameter()]
+        [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName = $true)]
         [string]$ConfigFilePath,
 
         # Retrieve all commands from all modules
@@ -78,6 +90,27 @@ function Get-RpConfigCommand {
         # Retrieve all commands across all modules
         if ($All) {
             return $config.ConfigCommands
+        }
+
+        # If Id is specified, retrieve the command by Id
+        if ($Id){
+
+            # Create a hashtable to store commands by Id
+            $commandById = @{}
+
+            # Iterate through each command and store it in the hashtable
+            foreach ($command in $config.ConfigCommands.PSObject.Properties.Value) {
+                $result = $command | Where-Object { $_.Id -eq $Id }
+
+                if ($result){
+                    $commandById[$result.CommandName] = $result
+                }
+            }
+
+            # Return the command by Id, useful for finding a command by Id
+            # to debug or troubleshoot when the command name is for some
+            # reason has a duplicate Id.
+            return $commandById.Values
         }
 
         # Check if the module exists
