@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-RpConfigCommand
+# Find-RpConfigCommand
 
 ## SYNOPSIS
 Retrieves details of a specific command or all commands from the config file.
@@ -13,12 +13,12 @@ Retrieves details of a specific command or all commands from the config file.
 ## SYNTAX
 
 ```
-Get-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-Id <String>]
+Find-RpConfigCommand [[-ModuleName] <String>] [[-CommandName] <String>] [-Id <String>]
  [-ConfigFilePath <String>] [-All] [-ByModule] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get-RpConfigCommand retrieves the details of a specific command or all
+Find-RpConfigCommand retrieves the details of a specific command or all
 commands from the provided configuration JSON file.
 It can return command
 details for one command, all commands within a module, or all commands
@@ -28,7 +28,7 @@ across all modules using the \`-All\` and \`-ByModule\` parameters.
 
 ### EXAMPLE 1
 ```
-Get-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
+Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
                     -ConfigFilePath $(Get-RPConfigurationPath)
 Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
 using the configuration path from Get-RPConfigurationPath.
@@ -36,15 +36,21 @@ using the configuration path from Get-RPConfigurationPath.
 
 ### EXAMPLE 2
 ```
-Get-RpConfigCommand -ByModule -ModuleName 'RemotePro' `
+Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' `
                     -ConfigFilePath $(Get-RPConfigurationPath)
 Retrieves all commands within the 'RemotePro' module.
 ```
 
 ### EXAMPLE 3
 ```
-Get-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
+Find-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
 Retrieves all commands from all modules in the configuration.
+```
+
+### EXAMPLE 4
+```
+Find-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RPConfigurationPath)
+Retrieves the command with the Id '12345' from the configuration.
 ```
 
 ## PARAMETERS
@@ -80,7 +86,10 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The name of the command to retrieve
+Retrieves the command by its unique identifier (Id).
+Useful for finding a
+command by Id to debug or troubleshoot when the command name has a
+duplicate Id.
 
 ```yaml
 Type: String

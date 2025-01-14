@@ -1,10 +1,10 @@
-function Get-RpConfigCommand {
+function Find-RpConfigCommand {
  <#
     .SYNOPSIS
     Retrieves details of a specific command or all commands from the config file.
 
     .DESCRIPTION
-    Get-RpConfigCommand retrieves the details of a specific command or all
+    Find-RpConfigCommand retrieves the details of a specific command or all
     commands from the provided configuration JSON file. It can return command
     details for one command, all commands within a module, or all commands
     across all modules using the `-All` and `-ByModule` parameters.
@@ -30,22 +30,22 @@ function Get-RpConfigCommand {
     duplicate Id.
 
     .EXAMPLE
-    Get-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
+    Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
                         -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
     using the configuration path from Get-RPConfigurationPath.
 
     .EXAMPLE
-    Get-RpConfigCommand -ByModule -ModuleName 'RemotePro' `
+    Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' `
                         -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves all commands within the 'RemotePro' module.
 
     .EXAMPLE
-    Get-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves all commands from all modules in the configuration.
 
     .EXAMPLE
-    Get-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves the command with the Id '12345' from the configuration.
     #>
     [CmdletBinding()]
@@ -67,15 +67,15 @@ function Get-RpConfigCommand {
         [string]$ConfigFilePath,
 
         # Retrieve all commands from all modules
+        [Parameter(Mandatory=$false)]
         [switch]$All,
 
         # Retrieve all commands in a specific module
+        [Parameter(Mandatory=$false)]
         [switch]$ByModule
     )
 
     begin {
-        Add-Type -AssemblyName PresentationFramework
-
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
             $ConfigFilePath = Get-RPConfigPath
