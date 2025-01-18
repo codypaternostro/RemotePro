@@ -22,7 +22,7 @@ Get-RpRunspaceEvents [-ProgressAction <ActionPreference>] [<CommonParameters>]
 Get-RpRunspaceEvents [-Name] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### AllHandlers
+### AllEvents
 ```
 Get-RpRunspaceEvents [-All] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
@@ -71,7 +71,7 @@ Returns all runspace events as a custom object with a specific type.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: AllHandlers
+Parameter Sets: AllEvents
 Aliases:
 
 Required: True

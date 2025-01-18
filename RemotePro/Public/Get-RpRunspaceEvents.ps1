@@ -30,7 +30,7 @@ function Get-RpRunspaceEvents {
         [Parameter(Position = 0, ParameterSetName = 'ByName', Mandatory = $true)]
         [string]$Name,
 
-        [Parameter(ParameterSetName = 'AllHandlers', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'AllEvents', Mandatory = $true)]
         [switch]$All
     )
 
