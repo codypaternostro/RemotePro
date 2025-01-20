@@ -8,14 +8,26 @@ function New-RpControllerObject {
     properties like EventHandlers. This object is typed as `RemotePro` and
     can be used to manage various aspects of the RemotePro environment.
 
+    .PARAMETER Refresh
+    Forces the creation of a new RemotePro ControllerObject even if one already exists.
+
     .EXAMPLE
     $remotePro = New-RpControllerObject
 
     This example creates a new RemotePro ControllerObject.
+
+    .EXAMPLE
+    $remotePro = New-RpControllerObject -Refresh
+
+    This example forces the creation of a new RemotePro ControllerObject even if one already exists.
     #>
+    param (
+        [Parameter()]
+        [switch]$Refresh
+    )
 
     # Check if $script:RemotePro already exists
-    if (-not $script:RemotePro) {
+    if (-not $script:RemotePro -or $Refresh) {
         $script:RemotePro = [PSCustomObject]@{
             EventHandlers           = @{}
             RunspaceEvents          = @{}
@@ -25,6 +37,13 @@ function New-RpControllerObject {
 
         # Add the RemotePro type to the object
         $script:RemotePro.PSTypeNames.Insert(0, 'RemotePro')
+
+        if ($Refresh){
+            Set-RpEventHandlers
+            Set-RpRunspaceEvents
+            Set-RpConfigCommands
+            Set-RpDefaultConfigCommandIds
+        }
 
         Write-Host "New RemotePro ControllerObject created."
     } else {

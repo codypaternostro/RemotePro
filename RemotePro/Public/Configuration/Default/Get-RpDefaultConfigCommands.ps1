@@ -3,4 +3,5 @@ function Get-RpDefaultConfigCommands {
     # RemotePro controller object.
     [CmdletBinding()]
     param()
+
 }

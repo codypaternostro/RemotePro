@@ -13,7 +13,8 @@ Removes a configuration command from the RemotePro controller object.
 ## SYNTAX
 
 ```
-Remove-RpConfigCommand [-CommandName] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Remove-RpConfigCommand [-CommandName] <String> [-Id] <String> [-Scope] <String>
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,36 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Id
+{{ Fill Id Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+{{ Fill Scope Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
