@@ -31,6 +31,13 @@ $remotePro = New-RpControllerObject
 
 This example creates a new RemotePro ControllerObject.
 
+### EXAMPLE 2
+```
+$remotePro = New-RpControllerObject -Refresh
+```
+
+This example forces the creation of a new RemotePro ControllerObject even if one already exists.
+
 ## PARAMETERS
 
 ### -Refresh

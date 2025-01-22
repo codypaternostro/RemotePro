@@ -13,7 +13,7 @@ Removes a configuration command from the RemotePro controller object.
 ## SYNTAX
 
 ```
-Remove-RpConfigCommand [-CommandName] <String> [-Id] <String> [-Scope] <String>
+Remove-RpConfigCommand [-CommandName] <String> [-Id] <String> [-Scope] <String> [[-ConfigFilePath] <String>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -25,11 +25,11 @@ from the RemotePro controller object.
 
 ### EXAMPLE 1
 ```
-Remove-RpConfigCommand -CommandName "TestCommand"
+Remove-RpConfigCommand -CommandName "TestCommand" -Id "12345" -Scope "Config"
 ```
 
-This command removes the configuration command named "TestCommand" from the
-RemotePro controller object.
+This command removes the configuration command named "TestCommand" with the
+Id "12345" from the configuration file.
 
 ## PARAMETERS
 
@@ -51,7 +51,9 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-{{ Fill Id Description }}
+The unique identifier of the configuration command to remove.
+This parameter
+is mandatory and accepts pipeline input by property name.
 
 ```yaml
 Type: String
@@ -66,7 +68,13 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-{{ Fill Scope Description }}
+Specifies the scope of the configuration command to remove.
+Valid values are
+"ControllerObject" and "ConfigCommand".
+This parameter is mandatory.
+
+Please see Get-RpControllerObject and Find-RpConfigCommand to verify
+the source data being modified.
 
 ```yaml
 Type: String
@@ -75,8 +83,27 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: False
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ConfigFilePath
+The path to the configuration JSON file.
+This parameter is optional and
+accepts pipeline input by property name.
+If not specified, the default
+configuration path is used.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

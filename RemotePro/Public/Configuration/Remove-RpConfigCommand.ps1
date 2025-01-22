@@ -11,11 +11,27 @@ function Remove-RpConfigCommand {
     The name of the configuration command to remove. This parameter is mandatory
     and accepts pipeline input by property name.
 
-    .EXAMPLE
-    Remove-RpConfigCommand -CommandName "TestCommand"
+    .PARAMETER Id
+    The unique identifier of the configuration command to remove. This parameter
+    is mandatory and accepts pipeline input by property name.
 
-    This command removes the configuration command named "TestCommand" from the
-    RemotePro controller object.
+    .PARAMETER Scope
+    Specifies the scope of the configuration command to remove. Valid values are
+    "ControllerObject" and "ConfigCommand". This parameter is mandatory.
+
+    Please see Get-RpControllerObject and Find-RpConfigCommand to verify
+    the source data being modified.
+
+    .PARAMETER ConfigFilePath
+    The path to the configuration JSON file. This parameter is optional and
+    accepts pipeline input by property name. If not specified, the default
+    configuration path is used.
+
+    .EXAMPLE
+    Remove-RpConfigCommand -CommandName "TestCommand" -Id "12345" -Scope "Config"
+
+    This command removes the configuration command named "TestCommand" with the
+    Id "12345" from the configuration file.
 
     .INPUTS
     System.String
@@ -31,13 +47,23 @@ function Remove-RpConfigCommand {
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true)]
         [string]$Id,
 
-        [Parameter(Mandatory = $true)]
-        [ValidateSet("ControllerObject","Config")]
-        [string]$Scope
+        [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("ControllerObject","ConfigCommand")]
+        [string]$Scope,
+
+        # Path to the configuration JSON file
+        [Parameter(Mandatory=$false, ValueFromPipelineByPropertyName = $true)]
+        [string]$ConfigFilePath
     )
 
-    process{
+    begin {
+        # Use appdata path if there is not a filepath value.
+        if (-not ($ConfigFilePath)){
+            $ConfigFilePath = Get-RPConfigPath
+        }
+    }
 
+    process{
         try {
            switch ($PSBoundParameters['Scope']) {
                 "ControllerObject" {
@@ -48,7 +74,6 @@ function Remove-RpConfigCommand {
                         foreach ($module in $($controllerObject.ConfigCommands.Keys)) {
                             Write-Verbose "Processing module: $module"
                             # Iteratre each command in the module
-
                             foreach ($command in $($controllerObject.ConfigCommands.$module.Keys)) {
                                 Write-Verbose "Processing command: $command"
                                 # Remove nested hash table properties per provided Id
@@ -85,42 +110,40 @@ function Remove-RpConfigCommand {
 
                 }
 
-                "Config" {
+                "ConfigCommand" {
                     try {
-                        $configPath = Get-RPConfigPath
-                        $config = Get-Content -Path $configPath | ConvertFrom-Json
+                        $config = Get-Content -Path $configFilePath | ConvertFrom-Json
 
-                        # Iterate each module
-                        foreach ($module in $config.ConfigCommands) {
-                            Write-Verbose "Processing module: $module"
-                            # Iterate each command in the module
+                        foreach ($module in $config.ConfigCommands.PSObject.Properties) {
+                            $moduleName = $module.Name
+                            Write-Verbose "Processing module: $moduleName"
 
-                            foreach ($command in $config.ConfigCommands.$module) {
-                                Write-Verbose "Processing command: $command"
+                            # Retrieve the command list and check if it's modifiable
+                            $commandList = $module.Value
 
+                            if ($commandList -is [System.Array]) {
+                                # Convert array to list for easier modification
+                                $commandList = [System.Collections.Generic.List[Object]]::new($commandList)
+                                $config.ConfigCommands.$moduleName = $commandList
+                            }
 
-                                $command | Where-Object { $_.Id -eq $Id } | ForEach-Object {
+                            # Create a copy of the command list for safe iteration
+                            $commandListCopy = @($commandList)
+
+                            # Iterate over the copied list
+                            foreach ($commandObj in $commandListCopy) {
+                                $commandName = $commandObj.CommandName
+                                Write-Verbose "Processing command: $commandName"
+
+                                # Filter and remove the object with the matching Id
+                                if ($commandObj.Id -eq $Id) {
                                     Write-Verbose "Removing command values with Id: $Id"
-                                    $config.ConfigCommands.$module.$command.PSObject.BaseObject.Values.Remove("$Id")
+
+                                    # Remove the item from the original list
+                                    $commandList.Remove($commandObj)
+
                                     Write-Verbose "Removed command values with Id: $Id"
                                 }
-
-<#
- # {                                # Remove nested hash table properties per provided Id
-                                if ($config.ConfigCommands.$module.$command.Id -eq $Id) {
-                                    Write-Verbose "Removing command values with Id: $Id"
-                                    $config.ConfigCommands.$module.PSObject.BaseObject.Values.Remove("$Id")
-                                    Write-Verbose "Removed command values with Id: $Id"
-
-                                    # Remove the command if no values are left
-                                    if ($config.ConfigCommands.$command.PSObject.BaseObject.Values.Count -eq 0) {
-                                        Write-Verbose "Removing command: $command"
-                                        $config.ConfigCommands.$module.Remove("$commandName")
-                                        Write-Verbose "Removed command: $command"
-                                    }
-
-                                }:ToDo: revise this block of code to remove the command from the config object}
-#>
                             }
                         }
 
@@ -132,7 +155,7 @@ function Remove-RpConfigCommand {
                             Write-Verbose "Successfully updated Config."
                         }
                         catch {
-                            Write-Error "Failed to update Config."
+                            Write-Error "Failed to update Config: $($_.Exception.Message)"
                         }
 
                     }
@@ -150,6 +173,8 @@ function Remove-RpConfigCommand {
         catch {
             Write-Error $_.Exception.Message
         }
+    }
+    end {
         return $script:RemotePro.ConfigCommands
     }
 }
