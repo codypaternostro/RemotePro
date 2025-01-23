@@ -8,29 +8,51 @@ schema: 2.0.0
 # Get-RpConfigCommands
 
 ## SYNOPSIS
-Retrieves the configuration commands from the RemotePro controller
-object.
+Retrieves RemotePro configuration commands.
 
 ## SYNTAX
 
 ```
-Get-RpConfigCommands [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpConfigCommands [-All] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-RpDefaultConfigCommands function is used to retrieve the
-configuration commands from the RemotePro controller object.
-It utilizes the
-Get-RpControllerObject cmdlet to fetch the property ConfigCommands.
+The Get-RpConfigCommands function retrieves configuration commands from
+the RemotePro controller object.
+If the -All switch is specified, it
+returns all configuration commands; otherwise, it returns the
+configuration commands as a single object.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-RpDefaultConfigCommands
+Get-RpConfigCommands
+Retrieves the configuration commands as a single object.
+```
+
+### EXAMPLE 2
+```
+Get-RpConfigCommands -All
+Retrieves all configuration commands as an array of values.
 ```
 
 ## PARAMETERS
+
+### -All
+If specified, retrieves all configuration commands as an hashtable of values.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
@@ -54,6 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Collections.Hashtable
 ## NOTES
 
 ## RELATED LINKS

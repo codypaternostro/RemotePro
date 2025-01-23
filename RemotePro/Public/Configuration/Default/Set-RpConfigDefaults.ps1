@@ -43,7 +43,6 @@ function Set-RpConfigDefaults {
         try {
             # cmdlet to set the default configuration for RemotePro
 
-            # ToDo: 11/28/24 add default configuration command entries with specific syntax
             # ToDo: 11/28/24 need to pass parameters to set-rprunspaceevents scriptblocks
             # ToDo: 11/28/24 add generic out-htmlview command to config file
 

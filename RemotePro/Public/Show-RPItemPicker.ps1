@@ -62,7 +62,7 @@ function Show-RpItemPicker {
     )
 
     begin {
-        import-module C:\RemotePro\RemotePro\RemotePro.psd1
+        #import-module C:\RemotePro\RemotePro\RemotePro.psd1
         Add-Type -AssemblyName PresentationFramework
         $connectionValid = $true
 

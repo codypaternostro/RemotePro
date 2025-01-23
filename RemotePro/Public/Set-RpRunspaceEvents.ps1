@@ -146,6 +146,12 @@ function Set-RpRunspaceEvents {
                     #$platformItemcameras | ogv
 
                     Show-RpCamera -CameraObject $platformItemcameras -SpecifiedDaysForSequences 7 -DiagnosticLevel 3 | Out-Null
+                    # ToDo: 01/22/25 Working in default config commands. Met resistance as these commands are still
+                    # referencing import of older module added with testing.
+                    # $commandId = (Get-RpDefaultConfigCommandDetails).'Show-RpCamera'.Id
+                    # (Get-RpConfigCommands -All).'Get-Show-RpCamera'.$Id.InvokeCommand()
+
+
 
                     if ($null -eq $result) {
                         Write-Output "`nNo result returned from Show-RpCamera."

@@ -1,21 +1,44 @@
 function Get-RpConfigCommands {
     <#
     .SYNOPSIS
-    Retrieves the configuration commands from the RemotePro controller
-    object.
+        Retrieves RemotePro configuration commands.
 
     .DESCRIPTION
-    The Get-RpDefaultConfigCommands function is used to retrieve the
-    configuration commands from the RemotePro controller object. It utilizes the
-    Get-RpControllerObject cmdlet to fetch the property ConfigCommands.
+        The Get-RpConfigCommands function retrieves configuration commands from
+        the RemotePro controller object. If the -All switch is specified, it
+        returns all configuration commands; otherwise, it returns the
+        configuration commands as a single object.
+
+    .PARAMETER All
+        If specified, retrieves all configuration commands as an hashtable of values.
 
     .EXAMPLE
-    Get-RpDefaultConfigCommands
+        Get-RpConfigCommands
+        Retrieves the configuration commands as a single object.
+
+    .EXAMPLE
+        Get-RpConfigCommands -All
+        Retrieves all configuration commands as an array of values.
+    .OUTPUTS
+        System.Collections.Hashtable
     #>
     [CmdletBinding()]
-    param()
+    param(
+        [Parameter(Mandatory=$false)]
+        [switch]$All
+    )
 
-    begin {
-        Get-RpControllerObject -Property ConfigCommands
+    process {
+        try {
+            if ($All){
+                (Get-RpControllerObject -Property ConfigCommands).Values
+            } else {
+                Get-RpControllerObject -Property ConfigCommands
+            }
+        }
+        catch {
+            Write-Error $_.Exception.Message
+        }
     }
+    end {}
 }
