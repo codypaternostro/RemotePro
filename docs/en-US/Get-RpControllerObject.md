@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-RpControllerObject
 
 ## SYNOPSIS
-Retrieves and optionally lists properties of the existing RemotePro ControllerObject.
+Retrieves and optionally lists properties of the existing RemotePro
+ControllerObject.
 
 ## SYNTAX
 
@@ -19,7 +20,8 @@ Get-RpControllerObject [-ListProperties] [[-Property] <String>] [-ProgressAction
 
 ## DESCRIPTION
 The Get-RpControllerObject cmdlet retrieves the existing RemotePro object.
-It can either return the full object, list its properties, or show details of a specific property.
+It can either return the full object, list its properties, or show details
+of a specific property.
 
 ## EXAMPLES
 
@@ -28,7 +30,8 @@ It can either return the full object, list its properties, or show details of a 
 Get-RpControllerObject
 ```
 
-This example retrieves the existing RemotePro ControllerObject and returns it.
+This example retrieves the existing RemotePro ControllerObject and returns
+it.
 
 ### EXAMPLE 2
 ```
@@ -42,12 +45,14 @@ This example lists the properties of the existing RemotePro ControllerObject.
 Get-RpControllerObject -Property EventHandlers
 ```
 
-This example retrieves the value of the 'EventHandlers' property in the RemotePro ControllerObject.
+This example retrieves the value of the 'EventHandlers' property in the
+RemotePro ControllerObject.
 
 ## PARAMETERS
 
 ### -ListProperties
-A switch parameter that, if specified, lists the properties of the RemotePro object.
+A switch parameter that, if specified, lists the properties of the
+RemotePro object.
 
 ```yaml
 Type: SwitchParameter
@@ -63,7 +68,8 @@ Accept wildcard characters: False
 
 ### -Property
 The name of a specific property to display.
-If provided, the value of that property will be returned.
+If provided, the value of that
+property will be returned.
 
 ```yaml
 Type: String

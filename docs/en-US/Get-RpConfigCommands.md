@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-RpConfigCommands
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves the configuration commands from the RemotePro controller
+object.
 
 ## SYNTAX
 
@@ -17,16 +18,17 @@ Get-RpConfigCommands [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-RpDefaultConfigCommands function is used to retrieve the
+configuration commands from the RemotePro controller object.
+It utilizes the
+Get-RpControllerObject cmdlet to fetch the property ConfigCommands.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Get-RpDefaultConfigCommands
+```
 
 ## PARAMETERS
 
@@ -50,11 +52,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

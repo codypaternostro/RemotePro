@@ -1,5 +1,4 @@
-
-function Get-RpDefaultConfigCommands {
+function Get-RpDefaultConfigCommandDetails {
     <#
     .SYNOPSIS
     Retrieves the default configuration commands from the RemotePro controller
