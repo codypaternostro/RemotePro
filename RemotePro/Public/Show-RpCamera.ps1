@@ -104,7 +104,9 @@ function Show-RpCamera {
     )
 
     begin {
-        #import-module C:\RemotePro\RemotePro\RemotePro.psd1
+        # ToDo: Remove this line when the module is imported in the script
+        # replace with correct reference to the module
+        import-module C:\RemotePro\RemotePro\RemotePro.psd1
         Add-Type -AssemblyName PresentationFramework
         $connectionValid = $true
 

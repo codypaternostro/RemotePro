@@ -24,7 +24,7 @@ function Set-RpDefaultConfigCommandIds {
 
             # Use appdata path if there is not a filepath value.
             if (-not ($ConfigFilePath)){
-                $ConfigFilePath = Get-RPConfigPath -defaultIds
+                $ConfigFilePath = Get-RpConfigPath -DefaultIds
             }
 
             # Define config command default ids

@@ -24,7 +24,7 @@ function Get-RpConfigPath {
     )
 
     process {
-        if ($PSBoundParameters.ContainsKey('DefaultIds') -and $DefaultIds) {
+        if ($DefaultIds) {
             Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfigDefaultIds.json'
         } else {
             Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfig.json'
