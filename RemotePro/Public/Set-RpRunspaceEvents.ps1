@@ -145,12 +145,25 @@ function Set-RpRunspaceEvents {
 
                     #$platformItemcameras | ogv
 
-                    Show-RpCamera -CameraObject $platformItemcameras -SpecifiedDaysForSequences 7 -DiagnosticLevel 3 | Out-Null
-                    # ToDo: 01/22/25 Working in default config commands. Met resistance as these commands are still
-                    # referencing import of older module added with testing.
-                    # $commandId = (Get-RpDefaultConfigCommandDetails).'Show-RpCamera'.Id
-                    # (Get-RpConfigCommands -All).'Get-Show-RpCamera'.$Id.InvokeCommand()
+                    # LegacyCall
+                    # Show-RpCamera -CameraObject $platformItemcameras -SpecifiedDaysForSequences 7 -DiagnosticLevel 3 | Out-Null
 
+                    # 01/22/25 Working in default config commands. Met resistance as these commands are still
+                    # referencing import of older module added with testing.
+
+                    # 01/25/25 Found that the issue was related to ScriptMethod call not being freindly with
+                    # dependency module calls.
+                    # -Created Invoke-RpCommandObject to address this.
+                    # -Modified InvokeCommand() to return formatted command object.
+                    # -Renamed InvokeCommand() to FormatCommandObject()
+
+                    # Calling Show-RpCamera from the default config commands.
+                    $commandId = (Get-RpDefaultConfigCommandDetails).'Show-RpCamera'.Id
+                    $AdditionalParameters = @{
+                        CameraObject = $platformItemcameras
+                    }
+                    $commandObject = (Get-RpConfigCommands -All).'Show-RpCamera'.$commandId.FormatCommandObject($commandId,$AdditionalParameters)
+                    $commandObject | Invoke-RpCommandObject
 
 
                     if ($null -eq $result) {
@@ -178,7 +191,16 @@ function Set-RpRunspaceEvents {
 
 
                     $configItemCams += Get-VmsCamera -Id $platformItemcameras.FQID.ObjectId
-                    Get-RpTicketBlock -Cameras $configItemCams -ShowWindow
+                    # LegacyCall
+                    # Get-RpTicketBlock -Cameras $configItemCams -ShowWindow
+
+                    # Calling Get-RpTicketBlock from the default config commands.
+                    $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpTicketBlock'.Id
+                    $AdditionalParameters = @{
+                        Cameras = $configItemCams
+                    }
+                    $commandObject = (Get-RpConfigCommands -All).'Get-RpTicketBlock'.$commandId.FormatCommandObject($commandId,$AdditionalParameters)
+                    $commandObject | Invoke-RpCommandObject
 
                     if ($null -eq $result) {
                         Write-Output "`nNo result returned from Get-RpTicketBlock."
@@ -213,8 +235,16 @@ function Set-RpRunspaceEvents {
                     Import-Module C:\RemotePro\RemotePro\RemotePro.psd1 -ErrorAction Stop
 
 
+                    # LegacyCall
+                    # Get-RpTicketBlock -Cameras $platformItemcameras -ShowWindow
 
-                    Get-RpTicketBlock -Cameras $platformItemcameras -ShowWindow
+                    # Calling Get-RpTicketBlock from the default config commands.
+                    $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpTicketBlock'.Id
+                    $AdditionalParameters = @{
+                        Cameras = $platformItemcameras
+                    }
+                    $commandObject = (Get-RpConfigCommands -All).'Get-RpTicketBlock'.$commandId.FormatCommandObject($commandId,$AdditionalParameters)
+                    $commandObject | Invoke-RpCommandObject
 
                     if ($null -eq $result) {
                         Write-Output "No result returned from Get-RpTicketBlock."
@@ -241,7 +271,14 @@ function Set-RpRunspaceEvents {
 
                     Write-Host "$(Get-Location)"
 
-                    $result = Select-VideoOSItem
+                    # LegacyCall
+                    # $result = Select-VideoOSItem
+
+                    # Calling Select-VideoOSItem from the default config commands.
+                    $commandId = (Get-RpDefaultConfigCommandDetails).'Select-VideoOSItem'.Id
+                    $commandObject = (Get-RpConfigCommands -All).'Select-VideoOSItem'.$commandId.FormatCommandObject($commandId)
+                    $result = $commandObject | Invoke-RpCommandObject
+
                     $result | Add-Member -MemberType NoteProperty -Name ObjectID -Value $item.FQID.ObjectId.Guid
                     $result | Select-Object FQID, ObjectId, Name, Enabled, Encrypt, Icon, MapIconKey, HasRelated, Properties, Authorization, ContextMenu  |
                         Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
@@ -264,7 +301,16 @@ function Set-RpRunspaceEvents {
 
                     Write-Host "$(Get-Location)"
 
-                    $result = Get-RpVmsHardwareCustom -CheckConnection
+                    # LegacyCall
+                    # $result = Get-RpVmsHardwareCustom -CheckConnection
+
+                    # Calling Get-RpVmsHardwareCustom from the default config commands.
+                    $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsHardwareCustom'.Id
+                    $commandObject = (Get-RpConfigCommands -All).'Get-RpVmsHardwareCustom'.$commandId.FormatCommandObject($commandId)
+                    $commandObject | Invoke-RpCommandObject
+
+                    # 01/25/25 ToDo: Add results... Need to add password boolean to Get-RpVmsHardwareCustom
+
                     if ($null -eq $result) {
                         Write-Output "No result returned from Get-RpVmsHardwareCustom."
                     }
@@ -282,7 +328,18 @@ function Set-RpRunspaceEvents {
                     # testing
                     import-module C:\RemotePro\RemotePro\RemotePro.psd1
 
+                    # LegacyCall
                     $result = Get-RpVmsItemStateCustom -CheckConnection | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
+
+<#
+ # {                    $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
+                    $commandObject = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
+                    $result = $commandObject | Invoke-RpCommandObject
+
+                    $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+                    $commandObject = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
+                    $commandObject | Invoke-RpCommandObject :# 01/25/25 ToDo: Invoke-RpCommandObject needs ability to take piped input as a parameter.}
+#>
                     if ($null -eq $result) {
                         Write-Output "No result returned from Get-RpVmsItemStateCustom."
                     }

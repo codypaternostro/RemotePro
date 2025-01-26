@@ -159,11 +159,17 @@ function Show-RpCamera {
             $toSequenceDate = $lastSequence.EventSequence.EndDateTime
 
             # Add squence "From" and "To" property to camera object.
-            $item | Add-Member -MemberType NoteProperty -Name FromSequenceDate -Value $fromSequenceDate
-            $item | Add-Member -MemberType NoteProperty -Name ToSequenceDate -Value $toSequenceDate
+            $item | Add-Member -MemberType NoteProperty -Name FromSequenceDate -Value $fromSequenceDate -Force
+            $item | Add-Member -MemberType NoteProperty -Name ToSequenceDate -Value $toSequenceDate -Force
         }
 
-
+# 01/25/2025 Note for error handling.
+# Replaced Title name from $($MyInvocation.Line) to "Show-RpCamera" due xml
+# parse error when using $($MyInvocation.Line) in XAML.
+# to type "System.Xml.XmlDocument". Error: "An error occurred while parsing EntityName. Line 7, position 25."
+# At line:1 char:38
+# +                     $commandObject | Invoke-RpCommandObject
+# +                                      ~~~~~~~~~~~~~~~~~~~~~~
         $xaml = [xml]@"
 <Window
 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -171,7 +177,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:local="clr-namespace:WpfApp1"
 xmlns:mip="clr-namespace:VideoOS.Platform.Client;assembly=VideoOS.Platform"
-Title="$($MyInvocation.Line)" Height="450" Width="800">
+Title="Show-RpCamera" Height="450" Width="800">
     <TabControl Name="Tabs">
         <TabItem Header="Live" Name="LiveTab">
             <TabItem.Content>

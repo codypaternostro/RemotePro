@@ -62,10 +62,8 @@ Export-ModuleMember -Function $public.Basename
 Install-RpRequiredModules -Verbose
 #endregion
 
-#region Initialize RemotePro main controller object with script scope "$script:RemotePro"
-$script:RemotePro = New-RpControllerObject      #Initalize RemotePro controller object
-Set-RpEventHandlers                             #Populate EventHandlers
-Set-RpRunspaceEvents                            #Populate RunspaceEvents
+
+
 
 #region set runspace log and configuration file.
 $script:logPath = Get-RPLogPath
@@ -75,11 +73,16 @@ $script:configPath = Get-RPConfigPath
 if (-not (Test-Path -Path $(Get-RpConfigPath))){
     New-RpConfigCommandJson -Type DefaultJson
 }
+if (-not (Get-RpControllerObject)) {
+    #region Initialize RemotePro main controller object with script scope "$script:RemotePro"
+    $script:RemotePro = New-RpControllerObject      #Initalize RemotePro controller object
 
-Set-RpConfigCommands                            #Populate ConfigCommands
-Set-RpDefaultConfigCommandIds                   #Populate ConfigCommandDefaultIds
+    Set-RpEventHandlers                             #Populate EventHandlers
+    Set-RpRunspaceEvents                            #Populate RunspaceEvents
+    Set-RpConfigCommands                            #Populate ConfigCommands
+    Set-RpDefaultConfigCommandIds                   #Populate ConfigCommandDefaultIds
+}
 
-#Reset-RpConfigCommandDefaults #Populate ConfigCommands
 #endregion
 
 $script:RpOpenRunspaces = Initialize-RpOpenRunspaces

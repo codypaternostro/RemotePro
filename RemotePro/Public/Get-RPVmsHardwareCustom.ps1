@@ -49,12 +49,11 @@ function Get-RpVmsHardwareCustom {
                 $username = $hardware.username
                 $password = $hardware | Get-VmsHardwarePassword
 
-                $name =     Get-PlatformItem -Id $hardware.Id  | Select-Object -Property Name -ExpandProperty Name
-
+                #$name = $(Get-PlatformItem -Id $hardware.Id)  | Select-Object -Property Name -ExpandProperty Name
+                $platformItem = $(Get-PlatformItem -Id $hardware.Id)
+                $name = $platformItem | Select-Object -Property Name -ExpandProperty Name
 
                 $ip = $Hardware.address -replace '^http://', '' -replace ':8000/$', ''
-
-
 
                 #$hardwareSettings[$hardware.RecorderName] = $recordingServer.Name
                 $hardwareSettings[$hardware.Id] = $hardware | Get-HardwareSetting -Verbose
@@ -70,7 +69,8 @@ function Get-RpVmsHardwareCustom {
         }
         $hardwareResults= $hardwareSettings.Values
 
-        $hardwareResults | Select-Object RecorderName,DetectedModelName, Name, IpAddress, MacAddress, SerialNumber, Username, Password |  Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane  -Title "HardwareReportRefined $($timestamp)"
+        $hardwareResults | Select-Object RecorderName,DetectedModelName, Name, IpAddress, MacAddress, SerialNumber, Username, Password |
+            Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane  -Title "HardwareReportRefined $($timestamp)"
 
         return $hardwareResults
     }
