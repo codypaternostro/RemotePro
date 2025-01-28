@@ -15,6 +15,9 @@ function Import-RpConfig {
     the FormatCommandObject method allows you to add or modify parameters before
     execution.
 
+    Using Invoke-RpCommandObject, you can execute the formatted command locally where
+    as remotely is experimental...
+
     .PARAMETER ConfigFilePath
     The path to the configuration JSON file. If not provided, the function uses the
     default path returned by the `Get-RPConfigPath` function.
@@ -37,23 +40,28 @@ function Import-RpConfig {
     $commandObject = $modules.RemotePro.'Get-RpVmsHardwareCustom'.'1234-5678'
 
     # Format the command object with additional parameters
-    $preparedCommand = $commandObject.FormatCommandObject(
-        AdditionalParameters = @{
+    $AdditionalParameters = @{
             LogLevel = "Verbose"
             CheckConnection = $True
-        }
-    )
+    }
+
+    $preparedCommand = $commandObject.FormatCommandObject('1234-5678', $AdditionalParameters)
 
     .EXAMPLE
     # Execute the formatted command locally using the call operator
     & $preparedCommand.CommandName @($preparedCommand.Parameters)
 
     .EXAMPLE
-    # Execute the formatted command remotely using Invoke-Command
-    Invoke-Command -ScriptBlock {
-        param ($cmd)
-        & $cmd.CommandName @($cmd.Parameters)
-    } -ArgumentList $preparedCommand
+    # Calling Get-RpVmsItemStateCustom from the default config commands.
+    $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
+    $preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
+
+    # Calling Out-HtmlView from the default config commands.
+    $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+    $preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
+
+    # Invoke default config commands.
+    Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
 
     .EXAMPLE
     # Use Invoke-RpCommandObject for execution

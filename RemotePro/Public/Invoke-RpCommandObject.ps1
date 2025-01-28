@@ -21,6 +21,19 @@ function Invoke-RpCommandObject {
     to run the command on.
 
     .EXAMPLE
+    # Calling Get-RpVmsItemStateCustom from the default config commands.
+    $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
+    $commandObject1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
+
+    # Calling Out-HtmlView from the default config commands.
+    $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+    $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
+
+    # Invoke default config commands.
+    Invoke-RpCommandObject -CommandObject $commandObject1 | Invoke-RpCommandObject  -CommandObject $outHtmlView
+
+
+    .EXAMPLE
     $commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
                      -Parameters @{ Key = "Value" }
     $commandObject | Invoke-RpCommandObject
@@ -28,6 +41,7 @@ function Invoke-RpCommandObject {
     This example executes the command using the default call operator.
 
     .EXAMPLE
+    (Expriemental)
     $commandObject | Invoke-RpCommandObject -UseInvokeCommand `
                      -ComputerName "RemoteServer"
 

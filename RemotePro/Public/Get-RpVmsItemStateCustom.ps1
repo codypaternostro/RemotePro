@@ -67,7 +67,7 @@ function Get-RpVmsItemStateCustom {
 
             # Filtering list before output
             $listFiltered = $list | Select-Object Name, State, ServerId, ServerUri, ParentId, ObjectId, Kind, FolderType
-            $listFiltered | Out-HtmlView -EnableScroller -AlphabetSearch -SearchPane
+            #$listFiltered | Out-HtmlView -EnableScroller -AlphabetSearch -SearchPane
             return $listFiltered
 
             $list = $null
