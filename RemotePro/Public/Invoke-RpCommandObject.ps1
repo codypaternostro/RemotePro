@@ -1,8 +1,7 @@
 function Invoke-RpCommandObject {
     <#
     .SYNOPSIS
-    Executes a command object using the call operator (&) by default or Invoke-Command
-    if specified.
+    Executes a command object using the call operator (&) by default or Invoke-Command if specified.
 
     .DESCRIPTION
     This function accepts a command object (via pipeline or parameter) and executes
@@ -20,33 +19,44 @@ function Invoke-RpCommandObject {
     If UseInvokeCommand is specified, this parameter defines the remote system(s)
     to run the command on.
 
+    .PARAMETER PipelineCommandObject
+    An optional object that will be piped into the primary command as input.
+
     .EXAMPLE
     # Calling Get-RpVmsItemStateCustom from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
-    $commandObject1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
+    $commandObject1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom' |
+                      Format-RpCommandObject -CommandName "Get-RpVmsItemStateCustom" `
+                                             -Parameters @{ CommandId = $commandId }
 
     # Calling Out-HtmlView from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
-    $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
+    $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView' |
+                   Format-RpCommandObject -CommandName "Out-HtmlView" `
+                                          -Parameters @{ CommandId = $commandId }
 
-    # Invoke default config commands.
-    Invoke-RpCommandObject -CommandObject $commandObject1 | Invoke-RpCommandObject  -CommandObject $outHtmlView
-
+    # Invoke default config commands with piped results.
+    Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
 
     .EXAMPLE
+    # Format a command object and execute using the call operator.
     $commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
                      -Parameters @{ Key = "Value" }
+
+    # Pass it via pipeline to invoke.
     $commandObject | Invoke-RpCommandObject
 
     This example executes the command using the default call operator.
 
     .EXAMPLE
-    (Expriemental)
+    # Execute the command object on a remote system using Invoke-Command.
+    $commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
+                     -Parameters @{ Key = "RemoteValue" }
+
     $commandObject | Invoke-RpCommandObject -UseInvokeCommand `
                      -ComputerName "RemoteServer"
 
-    This example executes the command on the specified remote system using
-    Invoke-Command.
+    This example executes the command on the specified remote system using Invoke-Command.
 
     .NOTES
     Ensure that the command object includes valid CommandName and Parameters.
@@ -61,46 +71,85 @@ function Invoke-RpCommandObject {
         [switch]$UseInvokeCommand,
 
         [Parameter()]
-        [string[]]$ComputerName
+        [string[]]$ComputerName,
+
+        [Parameter()]
+        [PSObject]$PipelineCommandObject
     )
 
     process {
-        # Validate the command object to ensure it has the required properties
+        # Validate the primary command object
         if (-not $CommandObject.CommandName) {
-            Write-Error "The command object is missing a 'CommandName' property: $($_.Exception.Message)"
+            Write-Error "The primary command object is missing a 'CommandName' property."
             return
         }
         if (-not ($CommandObject.Parameters -is [hashtable])) {
-            Write-Error "The 'Parameters' property in the command object must be a hashtable: $($_.Exception.Message)"
+            Write-Error "The 'Parameters' property in the primary command object must be a hashtable."
             return
         }
 
-        # Extract properties from the command object for execution
-        $commandName = $CommandObject.CommandName
-        $parameters = $CommandObject.Parameters
+        # Validate the PipelineCommandObject (if provided)
+        if ($PipelineCommandObject) {
+            if (-not $PipelineCommandObject.CommandName) {
+                Write-Error "The input pipeline object is missing a 'CommandName' property."
+                return
+            }
+            if (-not ($PipelineCommandObject.Parameters -is [hashtable])) {
+                Write-Error "The 'Parameters' property in the input pipeline object must be a hashtable."
+                return
+            }
+        }
 
-        # Choose the execution method based on the provided switch
+        # Extract properties from the primary command object
+        $primaryCommandName = $CommandObject.CommandName
+        $primaryParameters = $CommandObject.Parameters
+
+        if ($PipelineCommandObject) {
+            # Extract properties from the input pipeline object
+            $inputPipelineCommandName = $PipelineCommandObject.CommandName
+            $inputPipelineParameters = $PipelineCommandObject.Parameters
+        }
+
+        # Isolate primary result
+        $primaryResult = $null
+
+        # Execution logic
         if ($UseInvokeCommand) {
-            Write-Verbose "Using Invoke-Command to execute '$commandName'..."
+            Write-Verbose "Using Invoke-Command to execute '$primaryCommandName'..."
             if (-not $ComputerName) {
-                Write-Error "ComputerName must be specified when using Invoke-Command: $($_.Exception.Message)"
+                Write-Error "ComputerName must be specified when using Invoke-Command."
                 return
             }
 
-            # Execute using Invoke-Command on the specified remote system(s)
-            Invoke-Command -ComputerName $ComputerName -ScriptBlock {
+            # Execute using Invoke-Command
+            $primaryResult = Invoke-Command -ComputerName $ComputerName -ScriptBlock {
                 param ($cmdName, $cmdParams)
-                Write-Verbose "Running command '$cmdName' with parameters..."
                 & $cmdName @cmdParams
-            } -ArgumentList $commandName, $parameters
+            } -ArgumentList $primaryCommandName, $primaryParameters
         } else {
-            Write-Verbose "Using call operator (&) to execute '$commandName'..."
-            # Execute the command locally using the call operator
+            Write-Verbose "Using call operator (&) to execute '$primaryCommandName'..."
             try {
-                & $commandName @parameters
+                $primaryResult = & $primaryCommandName @primaryParameters
             } catch {
-                Write-Error "Error executing command '$commandName': $($_.Exception.Message)"
+                Write-Error "Error executing command '$primaryCommandName': $($_.Exception.Message)"
+                return
             }
+        }
+
+        # Handle input pipeline object (if provided)
+        if ($PipelineCommandObject) {
+            Write-Verbose "Piping primary result into '$inputPipelineCommandName'..."
+            try {
+                # Pipe the primary result into the input pipeline command
+                $pipedResult = $primaryResult | & $inputPipelineCommandName @inputPipelineParameters
+                return $pipedResult
+            } catch {
+                Write-Error "Error piping into command '$inputPipelineCommandName': $($_.Exception.Message)"
+                return
+            }
+        } else {
+            # Return primary result only
+            return $primaryResult
         }
     }
 }

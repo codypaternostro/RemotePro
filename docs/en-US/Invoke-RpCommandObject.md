@@ -14,7 +14,7 @@ Executes a command from a RemotePro command object.
 
 ```
 Invoke-RpCommandObject [-CommandObject] <PSObject> [-UseInvokeCommand] [[-ComputerName] <String[]>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [[-PipelineCommandObject] <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PipelineCommandObject
+An optional object that will be piped into the primary command as input.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

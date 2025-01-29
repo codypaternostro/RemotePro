@@ -90,7 +90,16 @@ function Set-RpRunspaceEvents {
                 # Define a script block with your commands
                 $scriptBlock = {
                     # LegacyCall
-                    # Get-VmsCameraReport | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
+                    Get-VmsCameraReport | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
+
+                    <#
+                    ToDO: 01/28/25 Working in default config commands. Met resistance returning results from
+                    the command object. This may be related to underlying functionalilty of using Get-VmsCameraReport
+                    with a dedicated, resuable, isolated runspace. This was an issue with previous version of MIPSDK
+                    but, may be resolved at this point. Same issue was with present with Show-RpCamera and was resolved
+                    after memory leak was addressed. If this is the case, the command object will need to be modified
+                    to return results through using a standard runspace. Thus, configuration commands can be called
+                    for this report.
 
                     # Calling Get-RpVmsItemStateCustom from the default config commands.
                     $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
@@ -101,10 +110,8 @@ function Set-RpRunspaceEvents {
                     $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
 
                     # Invoke default config commands.
-                    $cameraReport = Invoke-RpCommandObject -CommandObject $commandObject1
-                    #$cameraReport | Invoke-RpCommandObject  -CommandObject $outHtmlView
-
-                    return ($cameraReport | Invoke-RpCommandObject -CommandObject $outHtmlView)
+                    Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
+                    #>
                 }
 
                 # Add the script block to the PowerShell object
@@ -123,8 +130,6 @@ function Set-RpRunspaceEvents {
                     Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
 
                     Write-Host = $logAddJobMessage
-
-                    return $results
 
                 } catch {
                     # Generate a log entry for job removal
@@ -294,24 +299,25 @@ function Set-RpRunspaceEvents {
                         $commandId1 = (Get-RpDefaultConfigCommandDetails).'Select-VideoOSItem'.Id
                         $commandObject1 = (Get-RpConfigCommands -All).'Select-VideoOSItem'.$commandId1.FormatCommandObject($commandId1)
 
+
+<#
+ # {
                         # Invoke command and filter the results.
                         $filteredResult = $commandObject1 | Invoke-RpCommandObject
+                        $filteredResult | Add-Member -MemberType NoteProperty -Name CommandName -Value 'Select-VideoOSItem'
                         $filteredResult | Add-Member -MemberType NoteProperty -Name ObjectID -Value $item.FQID.ObjectId.Guid
                         $filteredResult | Select-Object FQID, ObjectId, Name, Enabled, Encrypt, Icon,
-                            MapIconKey, HasRelated, Properties, Authorization, ContextMenu
+                        MapIconKey, HasRelated, Properties, Authorization, ContextMenu:ToDo: 01/28/25 Will require a command object
+                        to be created using Select-Object for filtering... Not neccessary for now.}
+#>
 
                         # Calling Out-HtmlView from the default config commands.
                         $commandId2 = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
                         $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
 
                         # Invoke default config commands.
-                        $result = $filteredResult | Invoke-RpCommandObject -CommandObject $outHtmlView
+                        $result = Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
 
-<#
- # {                        $result | Add-Member -MemberType NoteProperty -Name ObjectID -Value $item.FQID.ObjectId.Guid
-                        $result | Select-Object FQID, ObjectId, Name, Enabled, Encrypt, Icon, MapIconKey, HasRelated, Properties, Authorization, ContextMenu  |
-                            Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane: ToDo: 01/27/25 Review This}
-#>
                         if ($null -eq $result) {
                             Write-Output "No result returned from Show VideoOSItems."
                         }
@@ -343,7 +349,7 @@ function Set-RpRunspaceEvents {
                         $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
 
                         # Invoke default config commands.
-                        Invoke-RpCommandObject -CommandObject $commandObject1 | Invoke-RpCommandObject -CommandObject $outHtmlView
+                        Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
 
                         # 01/25/25 ToDo: Add results... Need to add password boolean to Get-RpVmsHardwareCustom
                         # replace with "$result = $commandObject | Invoke-RpCommandObject" when completed.
@@ -378,8 +384,7 @@ function Set-RpRunspaceEvents {
                         $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
 
                         # Invoke default config commands.
-                        $result = Invoke-RpCommandObject -CommandObject $commandObject1 |
-                            Invoke-RpCommandObject  -CommandObject $outHtmlView
+                        $result = Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
 
                         if ($null -eq $result) {
                             Write-Output "No result returned from Get-RpVmsItemStateCustom."
