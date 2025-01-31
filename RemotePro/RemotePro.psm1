@@ -88,6 +88,8 @@ if (-not (Get-RpControllerObject)) {
 $script:RpOpenRunspaces = Initialize-RpOpenRunspaces
 $script:RpRunspaceJobs = Initialize-RpRunspaceJobs
 $script:RpRunspaceResults = Initialize-RpRunspaceResults
+
+$script:selectedProfileName
 #endregion
 
 

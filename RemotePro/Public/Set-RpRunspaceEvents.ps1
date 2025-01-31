@@ -75,72 +75,107 @@ function Set-RpRunspaceEvents {
         # Define runspace events
         $handlers = @{
             CamReport_Click = {
-                Write-Verbose "Accessing Runspace: $($script:RpOpenRunspaces.Jobs.Runspace.Runspace.InstanceId)"
-                # TODO: add a warning or please wait if this runspace is currently running
-                $runspaceId = $script:RpOpenRunspaces.Jobs | Where-Object { $_.InstanceId -eq $runspaceJob2 } | Select-Object -ExpandProperty RunspaceId
-                #Runspace.Runspace.InstanceId | Where-Object { $_.InstanceId -eq $script:RpOpenRunspaces.Jobs.runspaceJob2.RunspaceId } | Select-Object -ExpandProperty RunspaceId
-
-                # Retrieve the existing runspace
-                $runspace = Get-Runspace -InstanceId $runspaceId
-
-                # Create a PowerShell object and attach it to the retrieved runspace
-                $ps = [System.Management.Automation.PowerShell]::Create()
-                $ps.Runspace = $runspace
-
-                # Define a script block with your commands
-                $scriptBlock = {
-                    # LegacyCall
-                    Get-VmsCameraReport | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
-
+                Start-RpRunspaceJob -ScriptBlock {
                     <#
-                    ToDO: 01/28/25 Working in default config commands. Met resistance returning results from
-                    the command object. This may be related to underlying functionalilty of using Get-VmsCameraReport
-                    with a dedicated, resuable, isolated runspace. This was an issue with previous version of MIPSDK
-                    but, may be resolved at this point. Same issue was with present with Show-RpCamera and was resolved
-                    after memory leak was addressed. If this is the case, the command object will need to be modified
-                    to return results through using a standard runspace. Thus, configuration commands can be called
-                    for this report.
+                    try {
+                        # testing
+                        Import-Module C:\RemotePro\RemotePro\RemotePro.psd1 -ErrorAction Stop
 
-                    # Calling Get-RpVmsItemStateCustom from the default config commands.
-                    $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
-                    $commandObject1 = (Get-RpConfigCommands -All).'Get-VmsCameraReport'.$commandId1.FormatCommandObject($commandId1)
+                        # Calling Get-RpVmsItemStateCustom from the default config commands.
+                        $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
+                        $commandObject1 = (Get-RpConfigCommands -All).'Get-VmsCameraReport'.$commandId1.FormatCommandObject($commandId1)
 
-                    # Calling Out-HtmlView from the default config commands.
-                    $commandId2 = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
-                    $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
+                        # Calling Out-HtmlView from the default config commands.
+                        $commandId2 = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+                        $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
 
-                    # Invoke default config commands.
-                    Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
+
+
+                        # Invoke default config commands.
+                        $result = Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
+
+                        if ($null -eq $result) {
+                            Write-Output "No result returned from Get-VmsCameraReport."
+                        }
+
+                        return $result
+                    } catch {
+                        Write-Output "Error encountered: $_"
+                        return $error[0]
+
+                    }
+                 } -UseExistingRunspaceState -Argument $platformItemcameras -uiElement $script:Runspace_Mutex_Log -RunspaceJobs $script:RunspaceJobs
                     #>
-                }
 
-                # Add the script block to the PowerShell object
-                $ps.AddScript($scriptBlock)
+                    Write-Verbose "Accessing Runspace: $($script:RpOpenRunspaces.Jobs.Runspace.Runspace.InstanceId)"
+                    # TODO: add a warning or please wait if this runspace is currently running
+                    $runspaceId = $script:RpOpenRunspaces.Jobs | Where-Object { $_.InstanceId -eq $runspaceJob2 } | Select-Object -ExpandProperty RunspaceId
+                    #Runspace.Runspace.InstanceId | Where-Object { $_.InstanceId -eq $script:RpOpenRunspaces.Jobs.runspaceJob2.RunspaceId } | Select-Object -ExpandProperty RunspaceId
 
-                try {
-                    # Begin asynchronous invocation
-                    $results = $ps.BeginInvoke()
+                    # Retrieve the existing runspace
+                    $runspace = Get-Runspace -InstanceId $runspaceId
 
-                    # Generate a log entry for job removal
-                    $logAddJobText = "Job added successfully."
-                    $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
-                    $logAddJobMessage = "$timestamp - INFO  - GUID: $runspaceID - $logAddJobText."
+                    # Create a PowerShell object and attach it to the retrieved runspace
+                    $ps = [System.Management.Automation.PowerShell]::Create()
+                    $ps.Runspace = $runspace
 
-                    # UI and Log message update
-                    Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
+                    # Define a script block with your commands
+                    $scriptBlock = {
+                        # LegacyCall
+                        #Get-VmsCameraReport | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
 
-                    Write-Host = $logAddJobMessage
+                        <#
+                        ToDO: 01/28/25 Working in default config commands. Met resistance returning results from
+                        the command object. This may be related to underlying functionalilty of using Get-VmsCameraReport
+                        with a dedicated, resuable, isolated runspace. This was an issue with previous version of MIPSDK
+                        but, may be resolved at this point. Same issue was with present with Show-RpCamera and was resolved
+                        after memory leak was addressed. If this is the case, the command object will need to be modified
+                        to return results through using a standard runspace. Thus, configuration commands can be called
+                        for this report.#>
 
-                } catch {
-                    # Generate a log entry for job removal
-                    $logAddJobErrorText = "Error adding job to global list: $_"
-                    $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
-                    $logAddJobMessage = "$timestamp - ERROR - GUID: $runspaceID - $logAddJobErrorText."
+                        Import-Module C:\RemotePro\RemotePro\RemotePro.psd1 -ErrorAction Stop
 
-                    # UI and Log message update
-                    Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
+                        # Calling Get-RpVmsItemStateCustom from the default config commands.
+                        $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
+                        $commandObject1 = (Get-RpConfigCommands -All).'Get-VmsCameraReport'.$commandId1.FormatCommandObject($commandId1)
 
-                    Write-Host = $logAddJobErrorMessage
+                        # Calling Out-HtmlView from the default config commands.
+                        $commandId2 = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+                        $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
+
+                        # Invoke default config commands.
+                        Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
+
+                    }
+
+                    # Add the script block to the PowerShell object
+                    $ps.AddScript($scriptBlock)
+
+                    try {
+                        # Begin asynchronous invocation
+                        $results = $ps.BeginInvoke()
+
+                        # Generate a log entry for job removal
+                        $logAddJobText = "Job added successfully."
+                        $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+                        $logAddJobMessage = "$timestamp - INFO  - GUID: $runspaceID - $logAddJobText."
+
+                        # UI and Log message update
+                        Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
+
+                        Write-Host = $logAddJobMessage
+
+                    } catch {
+                        # Generate a log entry for job removal
+                        $logAddJobErrorText = "Error adding job to global list: $_"
+                        $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+                        $logAddJobMessage = "$timestamp - ERROR - GUID: $runspaceID - $logAddJobErrorText."
+
+                        # UI and Log message update
+                        Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
+
+                        Write-Host = $logAddJobErrorMessage
+                    }
                 }
             }
 

@@ -56,7 +56,7 @@ function Set-RpMutexLogAndUI {
             Add-Content -Path $logPath -Value $message
 
             # Check if UI element is provided, then update the UI
-            if ($uiElement -ne $null) {
+            if ($null -ne $uiElement) {
                 $localMessage = $message  # Assign message to a local variable for closure use
 
                 $uiElement.Dispatcher.Invoke([action]{
