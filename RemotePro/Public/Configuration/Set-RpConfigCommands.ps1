@@ -9,7 +9,7 @@ function Set-RpConfigCommands {
         # Ensure RemotePro object is initialized
         if (-not $script:RemotePro) {
             Write-Error "RemotePro object is not initialized. Run New-RpControllerObject first."
-            return
+            #return
         }
     }
 

@@ -29,15 +29,19 @@ function Set-RpConfigDefaults {
         [string]$ConfigFilePath
     )
 
+    begin {
+        if (-not $ConfigFilePath) {
+            if (-not (Test-Path -Path $(Get-RpConfigPath))){
+                Write-Warning "No configuration file path provided. Using default configuration path."
+                New-RpConfigCommandJson -Type EmptyJson
+                $ConfigFilePath = Get-RpConfigPath
+            }
+        }
+    }
+
     process {
         try {
-            if (-not $ConfigFilePath) {
-                if (-not (Test-Path -Path $(Get-RpConfigPath))){
-                    Write-Warning "No configuration file path provided. Using default configuration path."
-                    New-RpConfigCommandJson -Type EmptyJson
-                    $ConfigFilePath = Get-RpConfigPath
-                }
-            }
+
             # cmdlet to set the default configuration for RemotePro
 
             # ToDo: 11/28/24 need to pass parameters to set-rprunspaceevents scriptblocks
