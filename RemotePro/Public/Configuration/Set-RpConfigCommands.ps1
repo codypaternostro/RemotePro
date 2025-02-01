@@ -5,16 +5,14 @@ function Set-RpConfigCommands {
         [string]$ConfigFilePath
     )
 
-<#
- # {    begin {
+    begin {
         # Ensure RemotePro object is initialized
         if (-not $script:RemotePro) {
             Write-Error "RemotePro object is not initialized. Run New-RpControllerObject first."
             return
         }
     }
-:ToDo: 02/1/25 Testing errors for publishing}
-#>
+
     process {
         try {
             # If ConfigCommands is null or not a hashtable, initialize it as an empty hashtable

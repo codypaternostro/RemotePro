@@ -69,13 +69,15 @@ Install-RpRequiredModules -Verbose
 $script:logPath = Get-RPLogPath
 $script:configPath = Get-RPConfigPath
 
-# Check if the configuration file exists, if not create it.
-if (-not (Test-Path -Path $(Get-RpConfigPath))){
-    New-RpConfigCommandJson -Type DefaultJson
-}
+
 if (-not (Get-RpControllerObject)) {
     #region Initialize RemotePro main controller object with script scope "$script:RemotePro"
     $script:RemotePro = New-RpControllerObject      #Initalize RemotePro controller object
+
+    # Check if the configuration file exists, if not create it.
+    if (-not (Test-Path -Path $(Get-RpConfigPath))){
+        New-RpConfigCommandJson -Type DefaultJson
+    }
 
     Set-RpEventHandlers                             #Populate EventHandlers
     Set-RpRunspaceEvents                            #Populate RunspaceEvents
