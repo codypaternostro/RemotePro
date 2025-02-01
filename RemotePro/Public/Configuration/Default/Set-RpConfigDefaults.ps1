@@ -194,14 +194,13 @@ function Set-RpConfigDefaults {
                     Update-RpConfigCommand -Parameters $params -Id $commandId -Verbose
             #endregion
 
+            Set-RpConfigCommands # Update RpControllerObject with added commands.
+
             return $defaultCommandIds
             #endregion
         }
         catch {
             Write-Error "An error occurred while setting the default configuration: $($_.exception.message)"
-        }
-        finally {
-            Set-RpConfigCommands # Update RpControllerObject with added commands.
         }
     }
     end {}
