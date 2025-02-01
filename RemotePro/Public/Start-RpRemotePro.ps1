@@ -171,6 +171,8 @@ function Start-RpRemotePro {
 
     $window.ShowDialog() | Out-Null
 
+    # Dispose of the window when closed
+    $script:window.Close()
 }
 
 
