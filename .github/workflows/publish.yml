@@ -15,7 +15,7 @@ jobs:
         uses: potatoqualitee/psmodulecache@v6.2.1
         with:
           modules-to-cache: BuildHelpers
-      - shell: pwsh
+      - shell: powershell
         # Give an id to the step, so we can reference it later
         id: check_if_versions_bumped
         run: |
