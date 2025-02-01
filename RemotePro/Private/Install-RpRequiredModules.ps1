@@ -14,7 +14,7 @@ function Install-RpRequiredModules {
             Write-Verbose "$($module.Name) is not installed. Attempting to install..."
 
             try {
-                Install-Module -Name $module.Name -Scope CurrentUser -Force -Verbose
+                Install-Module -Name $module.Name -Scope CurrentUser -Force -Verbose -AllowClobber
                 Write-Verbose "$($module.Name) installed successfully." -ForegroundColor Green
             } catch {
                 Write-Error "Failed to install $($module.Name): $_"
