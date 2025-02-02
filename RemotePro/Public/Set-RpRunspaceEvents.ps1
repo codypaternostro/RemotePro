@@ -96,7 +96,7 @@ function Set-RpRunspaceEvents {
                         <#
                         ToDO: 01/28/25 - Solved. Importing module in static runspace each call resolved the issue.#>
 
-                        Import-Module C:\RemotePro\RemotePro\RemotePro.psd1 -ErrorAction Stop
+                        Import-Module -Name RemotePro -ErrorAction Stop
 
                         # Calling Get-RpVmsItemStateCustom from the default config commands.
                         $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
@@ -158,8 +158,7 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        # testing
-                        import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                        Import-Module -Name RemotePro
 
                         #$platformItemcameras | ogv
 
@@ -204,9 +203,7 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        # testing
-                        import-module C:\RemotePro\RemotePro\RemotePro.psd1
-
+                        Import-Module -Name RemotePro
 
                         $configItemCams += Get-VmsCamera -Id $platformItemcameras.FQID.ObjectId
                         # LegacyCall
@@ -249,9 +246,7 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        # testing
-                        Import-Module C:\RemotePro\RemotePro\RemotePro.psd1 -ErrorAction Stop
-
+                        Import-Module -Name RemotePro -ErrorAction Stop
 
                         # LegacyCall
                         # Get-RpTicketBlock -Cameras $platformItemcameras -ShowWindow
@@ -285,8 +280,7 @@ function Set-RpRunspaceEvents {
             ShowVideoOSItems_Click = {
                 Start-RpRunspaceJob -ScriptBlock {
                     try {
-                        # testing
-                        import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                        Import-Module -Name RemotePro
 
                         Write-Host "$(Get-Location)"
 
@@ -330,8 +324,7 @@ function Set-RpRunspaceEvents {
             Hardware_Click = {
                 Start-RpRunspaceJob -ScriptBlock {
                     try {
-                        # testing
-                        import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                        Import-Module -Name RemotePro
 
                         #Write-Host "$(Get-Location)"
 
@@ -367,8 +360,7 @@ function Set-RpRunspaceEvents {
                 Start-RpRunspaceJob -ScriptBlock {
                     param ()
                     try {
-                        # testing
-                        import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                        Import-Module -Name RemotePro
 
                         # LegacyCall
                         # $result = Get-RpVmsItemStateCustom -CheckConnection | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane

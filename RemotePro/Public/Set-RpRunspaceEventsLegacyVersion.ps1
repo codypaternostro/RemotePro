@@ -145,8 +145,7 @@ function Set-RpRunspaceEventsLegacyVersion {
                 )
 
                 try {
-                    # testing
-                    import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                    Import-Module -Name RemotePro
 
                     #$platformItemcameras | ogv
 
@@ -172,8 +171,7 @@ function Set-RpRunspaceEventsLegacyVersion {
                 )
 
                 try {
-                    # testing
-                    import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                    Import-Module -Name RemotePro
 
 
                     $configItemCams += Get-VmsCamera -Id $platformItemcameras.FQID.ObjectId
@@ -208,8 +206,7 @@ function Set-RpRunspaceEventsLegacyVersion {
                 )
 
                 try {
-                    # testing
-                    Import-Module C:\RemotePro\RemotePro\RemotePro.psd1 -ErrorAction Stop
+                    Import-Module -Name RemotePro -ErrorAction Stop
 
 
 
@@ -235,8 +232,7 @@ function Set-RpRunspaceEventsLegacyVersion {
         ShowVideoOSItems_Click = {
             Start-RpRunspaceJob -ScriptBlock {
                 try {
-                    # testing
-                    import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                    Import-Module -Name RemotePro
 
                     Write-Host "$(Get-Location)"
 
@@ -258,8 +254,7 @@ function Set-RpRunspaceEventsLegacyVersion {
         Hardware_Click = {
             Start-RpRunspaceJob -ScriptBlock {
                 try {
-                    # testing
-                    import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                    Import-Module -Name RemotePro
 
                     Write-Host "$(Get-Location)"
 
@@ -278,8 +273,7 @@ function Set-RpRunspaceEventsLegacyVersion {
         ItemState_Click = {
             Start-RpRunspaceJob -ScriptBlock {
                 try {
-                    # testing
-                    import-module C:\RemotePro\RemotePro\RemotePro.psd1
+                    Import-Module -Name RemotePro
 
                     $result = Get-RpVmsItemStateCustom -CheckConnection | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
                     if ($null -eq $result) {
