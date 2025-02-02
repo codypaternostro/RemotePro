@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-RpCommandObject
 
 ## SYNOPSIS
-Executes a command from a RemotePro command object.
+Executes a command object using the call operator (&) by default or Invoke-Command if specified.
 
 ## SYNTAX
 
@@ -18,23 +18,61 @@ Invoke-RpCommandObject [-CommandObject] <PSObject> [-UseInvokeCommand] [[-Comput
 ```
 
 ## DESCRIPTION
-This function takes a command object, ensures the associated module is imported,
-and invokes the specified command with its parameters.
-It includes robust parsing
-for text-based parameters and key-value pairs.
+This function accepts a command object (via pipeline or parameter) and executes
+it.
+You can optionally specify to use Invoke-Command instead of the default
+call operator.
+The function also validates the command and parameters before
+execution.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Invoke-RpCommandObject -CommandObject $commandObject -Id "18"
-Executes the command with ID 18 from the provided command object.
+Calling Get-RpVmsItemStateCustom from the default config commands.
+$commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
+$commandObject1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom' |
+                  Format-RpCommandObject -CommandName "Get-RpVmsItemStateCustom" `
+                                         -Parameters @{ CommandId = $commandId }
 ```
+
+Calling Out-HtmlView from the default config commands.
+$commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+$outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView' |
+               Format-RpCommandObject -CommandName "Out-HtmlView" \`
+                                      -Parameters @{ CommandId = $commandId }
+
+Invoke default config commands with piped results.
+Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
+
+### EXAMPLE 2
+```
+Format a command object and execute using the call operator.
+$commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
+                 -Parameters @{ Key = "Value" }
+```
+
+Pass it via pipeline to invoke.
+$commandObject | Invoke-RpCommandObject
+
+This example executes the command using the default call operator.
+
+### EXAMPLE 3
+```
+Execute the command object on a remote system using Invoke-Command.
+$commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
+                 -Parameters @{ Key = "RemoteValue" }
+```
+
+$commandObject | Invoke-RpCommandObject -UseInvokeCommand \`
+                 -ComputerName "RemoteServer"
+
+This example executes the command on the specified remote system using Invoke-Command.
 
 ## PARAMETERS
 
 ### -CommandObject
-The command object containing details like ModuleName, CommandName, Id, and Parameters.
+The command object containing the CommandName and Parameters properties.
 
 ```yaml
 Type: PSObject
@@ -117,5 +155,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+Ensure that the command object includes valid CommandName and Parameters.
 
 ## RELATED LINKS

@@ -28,16 +28,14 @@ across all modules using the \`-All\` and \`-ByModule\` parameters.
 
 ### EXAMPLE 1
 ```
-Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
-                    -ConfigFilePath $(Get-RPConfigurationPath)
+Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' -ConfigFilePath $(Get-RPConfigurationPath)
 Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
 using the configuration path from Get-RPConfigurationPath.
 ```
 
 ### EXAMPLE 2
 ```
-Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' `
-                    -ConfigFilePath $(Get-RPConfigurationPath)
+Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' -ConfigFilePath $(Get-RPConfigurationPath)
 Retrieves all commands within the 'RemotePro' module.
 ```
 

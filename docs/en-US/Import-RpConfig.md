@@ -17,34 +17,80 @@ Import-RpConfig [[-ConfigFilePath] <String>] [-ProgressAction <ActionPreference>
 ```
 
 ## DESCRIPTION
-The Import-RpConfig function reads a JSON configuration file, converts it into
-a PowerShell object, and processes each module and command defined in the
-configuration.
-It creates a hashtable of modules, each containing a collection
-of commands with their details and parameters.
-Each command object includes an
-InvokeCommand method to execute the command with its parameters.
+This function reads a JSON configuration file, converts it into a PowerShell
+object, and processes each module and command defined in the file.
+It returns a
+hashtable where each key represents a module, and the value is another hashtable
+containing the module's commands.
+Each command object includes properties like
+CommandName, Id, Description, and Parameters, as well as a method
+FormatCommandObject\` to prepare the command for execution.
+
+The command object can be accessed using dot notation for easy navigation, and
+the FormatCommandObject method allows you to add or modify parameters before
+execution.
+
+Using Invoke-RpCommandObject, you can execute the formatted command locally where
+as remotely is experimental...
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Import-RpConfig -ConfigFilePath "C:\Path\To\Config.json"
-Imports and processes the configuration from the specified JSON file.
+Import configuration from a specified file
+$modules = Import-RpConfig -ConfigFilePath $(Get-RpConfigPath)
 ```
 
 ### EXAMPLE 2
 ```
-Import-RpConfig
-Imports and processes the configuration using the default path.
+Import configuration using the default path
+$modules = Import-RpConfig
+```
+
+### EXAMPLE 3
+```
+Access and format a specific command object
+$commandObject = $modules.RemotePro.'Get-RpVmsHardwareCustom'.'1234-5678'
+```
+
+### EXAMPLE 4
+```
+Execute the formatted command locally using the call operator
+& $preparedCommand.CommandName @($preparedCommand.Parameters)
+```
+
+### EXAMPLE 5
+```
+Calling Get-RpVmsItemStateCustom from the default config commands.
+$commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
+$preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
+```
+
+Calling Out-HtmlView from the default config commands.
+$commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+$preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
+
+Invoke default config commands.
+Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
+
+### EXAMPLE 6
+```
+Use Invoke-RpCommandObject for execution
+$preparedCommand | Invoke-RpCommandObject
+```
+
+### EXAMPLE 7
+```
+Use Invoke-RpCommandObject for remote execution
+$preparedCommand | Invoke-RpCommandObject -UseInvokeCommand -ComputerName "RemoteServer"
 ```
 
 ## PARAMETERS
 
 ### -ConfigFilePath
-Specifies the path to the configuration JSON file.
-If not provided, the
-function will use a default path obtained from Get-RPConfigPath.
+The path to the configuration JSON file.
+If not provided, the function uses the
+default path returned by the \`Get-RPConfigPath\` function.
 
 ```yaml
 Type: String
@@ -80,16 +126,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Hashtable
+### Returns a hashtable of modules, where each module contains commands as nested
+### objects.
 ## NOTES
-The function adds custom type names to the objects for better identification
-and processing.
-It also includes verbose logging for detailed execution
-information.
-
-The following propeties are added to the command object:
-ModuleName, CommandName, Id, Description, and Parameters.
-
-The following methods are added to the command object:
-InvokeCommand: A method to execute the command with its parameters.
+- Modules and commands are structured as nested hashtables for easy navigation.
+- The FormatCommandObject method dynamically adds or modifies parameters.
+- Ensure the configuration JSON file follows the required schema for modules and
+  commands.
+- Use dot notation to navigate the resulting $modules hashtable.
 
 ## RELATED LINKS

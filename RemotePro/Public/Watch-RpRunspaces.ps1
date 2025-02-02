@@ -1,59 +1,56 @@
-# Runspace job collection and maintenance of runspaces running in the background.
-# Log relies on .psm1 module manifest definition variable ...
-# The cmdlet Get-RpLogPath for providing location to the RemotePro AppData location.
-# UI relies on...
-# [System.Windows.Controls.TextBox]$uiElement to be set to "Runspace_Mutex_Log" to update the UI
-# Jobs indexing relies on...
-# $script:RunspaceJobs = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))
-# Results relies on...
-# "$script:RunspaceResults = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))"
-# If implemented, static runspaces from "$script:openRunspaces" which relies on...
-# "$script:openRunspaces = New-Object PSObject -Property @{ Jobs = New-Object System.Collections.ObjectModel.ObservableCollection[object]}"
 function Watch-RpRunspaces {
     <#
     .SYNOPSIS
-        Monitors and manages runspaces running in the background.
+    Monitors and manages runspaces running in the background.
 
     .DESCRIPTION
-        This function iterates through the collection of runspace jobs and checks
-        if they have completed. For completed jobs, it collects the results,
-        logs the output, updates the UI (if provided), and safely removes the
-        job from the global collection.
+    This function iterates through the collection of runspace jobs and checks
+    if they have completed. For completed jobs, it collects the results,
+    logs the output, updates the UI (if provided), and safely removes the
+    job from the global collection.
 
     .NOTES
-        - The function relies on the following module variables and collections:
-            - Initialize-RpRunspaceJobs
-                `$script:RunspaceJobs`: Tracks each runspace dispatched.
-            - Initialize-RpRunspaceResults
-                `$script:RunspaceResults`: Collects results from runspaces.
-            - Initialize-RpOpenRunspaces
-                `$script:openRunspaces`: Static collection of active runspaces.
+    - The function relies on the following module variables and collections:
+    - Initialize-RpRunspaceJobs $script:RunspaceJobs: Tracks each runspace dispatched.
+    - Initialize-RpRunspaceResults $script:RunspaceResults: Collects results from runspaces.
+    - Initialize-RpOpenRunspaces $script:openRunspaces: Static collection of active runspaces.
 
-        - The log path is determined using the `Get-RpLogPath` cmdlet, which provides
-            the path to the RemotePro AppData location.
+    - The log path is determined using the Get-RpLogPath cmdlet, which provides
+    the path to the RemotePro AppData location.
 
-        - UI updates rely on a TextBox control (`$uiElement`), where job and status messages
-            are displayed. This UI element must be bound to "Runspace_Mutex_Log" for proper updates.
+    - UI updates rely on a TextBox control ($uiElement), where job and status messages
+    are displayed. This UI element must be bound to "Runspace_Mutex_Log" for proper updates.
 
     .PARAMETER LogPath
-        The path to the log file where job statuses and results are logged. This is mandatory.
+    The path to the log file where job statuses and results are logged. This is mandatory.
 
     .PARAMETER uiElement
-        The UI TextBox element that displays job statuses and messages. This is optional.
+    The UI TextBox element that displays job statuses and messages. This is optional.
 
     .PARAMETER RunspaceJobs
-        A synchronized `ArrayList` that tracks runspaces currently running in the background. This is mandatory.
+    A synchronized ArrayList that tracks runspaces currently running in the background. This is mandatory.
 
     .PARAMETER RunspaceResults
-        A synchronized `ArrayList` that stores the results from completed runspaces. This is mandatory.
+    A synchronized ArrayList that stores the results from completed runspaces. This is mandatory.
 
     .PARAMETER OpenRunspaces
-        A PSObject that holds static information about open runspaces and their jobs. This is mandatory.
+    A PSObject that holds static information about open runspaces and their jobs. This is mandatory.
 
     .EXAMPLE
-        Watch-RpRunspaces -LogPath "C:\Logs\RunspaceLog.txt" `
-            -uiElement $textBoxElement -RunspaceJobs $script:RunspaceJobs `
-            -RunspaceResults $script:RunspaceResults -OpenRunspaces $script:openRunspaces
+    Watch-RpRunspaces -LogPath "C:\Logs\RunspaceLog.txt" -uiElement $textBoxElement -RunspaceJobs $script:RunspaceJobs -RunspaceResults $script:RunspaceResults -OpenRunspaces $script:openRunspaces
+
+    .NOTES
+    Runspace job collection and maintenance of runspaces running in the background.
+    Log relies on .psm1 module manifest definition variable ...
+    The cmdlet Get-RpLogPath for providing location to the RemotePro AppData location.
+    UI relies on...
+    [System.Windows.Controls.TextBox]$uiElement to be set to "Runspace_Mutex_Log" to update the UI
+    Jobs indexing relies on...
+    $script:RunspaceJobs = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))
+    Results relies on...
+    "$script:RunspaceResults = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))"
+    If implemented, static runspaces from "$script:openRunspaces" which relies on...
+    "$script:openRunspaces = New-Object PSObject -Property @{ Jobs = New-Object System.Collections.ObjectModel.ObservableCollection[object]}"
     #>
 
     [CmdletBinding()]

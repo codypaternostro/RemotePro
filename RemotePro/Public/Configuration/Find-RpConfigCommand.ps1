@@ -30,14 +30,12 @@ function Find-RpConfigCommand {
     duplicate Id.
 
     .EXAMPLE
-    Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' `
-                        -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
     using the configuration path from Get-RPConfigurationPath.
 
     .EXAMPLE
-    Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' `
-                        -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' -ConfigFilePath $(Get-RPConfigurationPath)
     Retrieves all commands within the 'RemotePro' module.
 
     .EXAMPLE

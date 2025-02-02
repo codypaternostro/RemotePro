@@ -28,47 +28,39 @@ function Import-RpConfig {
     objects.
 
     .EXAMPLE
-    # Import configuration from a specified file
+    Import configuration from a specified file
     $modules = Import-RpConfig -ConfigFilePath $(Get-RpConfigPath)
 
     .EXAMPLE
-    # Import configuration using the default path
+    Import configuration using the default path
     $modules = Import-RpConfig
 
     .EXAMPLE
-    # Access and format a specific command object
+    Access and format a specific command object
     $commandObject = $modules.RemotePro.'Get-RpVmsHardwareCustom'.'1234-5678'
 
-    # Format the command object with additional parameters
-    $AdditionalParameters = @{
-            LogLevel = "Verbose"
-            CheckConnection = $True
-    }
-
-    $preparedCommand = $commandObject.FormatCommandObject('1234-5678', $AdditionalParameters)
-
     .EXAMPLE
-    # Execute the formatted command locally using the call operator
+    Execute the formatted command locally using the call operator
     & $preparedCommand.CommandName @($preparedCommand.Parameters)
 
     .EXAMPLE
-    # Calling Get-RpVmsItemStateCustom from the default config commands.
+    Calling Get-RpVmsItemStateCustom from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
     $preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
 
-    # Calling Out-HtmlView from the default config commands.
+    Calling Out-HtmlView from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
     $preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
 
-    # Invoke default config commands.
+    Invoke default config commands.
     Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
 
     .EXAMPLE
-    # Use Invoke-RpCommandObject for execution
+    Use Invoke-RpCommandObject for execution
     $preparedCommand | Invoke-RpCommandObject
 
     .EXAMPLE
-    # Use Invoke-RpCommandObject for remote execution
+    Use Invoke-RpCommandObject for remote execution
     $preparedCommand | Invoke-RpCommandObject -UseInvokeCommand -ComputerName "RemoteServer"
 
     .NOTES

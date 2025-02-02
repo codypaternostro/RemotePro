@@ -23,33 +23,33 @@ function Invoke-RpCommandObject {
     An optional object that will be piped into the primary command as input.
 
     .EXAMPLE
-    # Calling Get-RpVmsItemStateCustom from the default config commands.
+    Calling Get-RpVmsItemStateCustom from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
     $commandObject1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom' |
                       Format-RpCommandObject -CommandName "Get-RpVmsItemStateCustom" `
                                              -Parameters @{ CommandId = $commandId }
 
-    # Calling Out-HtmlView from the default config commands.
+    Calling Out-HtmlView from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
     $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView' |
                    Format-RpCommandObject -CommandName "Out-HtmlView" `
                                           -Parameters @{ CommandId = $commandId }
 
-    # Invoke default config commands with piped results.
+    Invoke default config commands with piped results.
     Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
 
     .EXAMPLE
-    # Format a command object and execute using the call operator.
+    Format a command object and execute using the call operator.
     $commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
                      -Parameters @{ Key = "Value" }
 
-    # Pass it via pipeline to invoke.
+    Pass it via pipeline to invoke.
     $commandObject | Invoke-RpCommandObject
 
     This example executes the command using the default call operator.
 
     .EXAMPLE
-    # Execute the command object on a remote system using Invoke-Command.
+    Execute the command object on a remote system using Invoke-Command.
     $commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
                      -Parameters @{ Key = "RemoteValue" }
 

@@ -1,42 +1,42 @@
 function Get-RpConnectionProfile {
     <#
     .SYNOPSIS
-        Retrieves and displays RemotePro connection profiles or the credentials XML.
+    Retrieves and displays RemotePro connection profiles or the credentials XML.
 
     .DESCRIPTION
-        The Get-RpConnectionProfile function retrieves connection profiles based on
-        the provided parameters. It can either show all profiles, a specific profile
-        by name, or open the credentials XML file for direct viewing.
+    The Get-RpConnectionProfile function retrieves connection profiles based on
+    the provided parameters. It can either show all profiles, a specific profile
+    by name, or open the credentials XML file for direct viewing.
 
     .PARAMETER Name
-        The name of the connection profile to retrieve. Used when the user wants to
-        view a specific profile. Only valid in the 'ViewProfiles' parameter set.
+    The name of the connection profile to retrieve. Used when the user wants to
+    view a specific profile. Only valid in the 'ViewProfiles' parameter set.
 
     .PARAMETER All
-        A switch that when specified, retrieves and displays all connection profiles.
-        Only valid in the 'ViewProfiles' parameter set.
+    A switch that when specified, retrieves and displays all connection profiles.
+    Only valid in the 'ViewProfiles' parameter set.
 
     .PARAMETER ViewXml
-        A switch to open the credentials XML file directly. This is the only option
-        in the 'ViewXml' parameter set.
+    A switch to open the credentials XML file directly. This is the only option
+    in the 'ViewXml' parameter set.
 
     .EXAMPLE
-        Get-RpConnectionProfile -All
-        # Displays all available RemotePro connection profiles.
+    Get-RpConnectionProfile -All
+    # Displays all available RemotePro connection profiles.
 
     .EXAMPLE
-        Get-RpConnectionProfile -Name "ProfileName"
-        # Retrieves and displays the connection profile named "ProfileName".
+    Get-RpConnectionProfile -Name "ProfileName"
+    # Retrieves and displays the connection profile named "ProfileName".
 
     .EXAMPLE
-        Get-RpConnectionProfile -ViewXml
-        # Opens the credentials XML file associated with RemotePro connection
-        profiles for direct viewing.
+    Get-RpConnectionProfile -ViewXml
+    # Opens the credentials XML file associated with RemotePro connection
+    profiles for direct viewing.
 
     .NOTES
-        - This function is part of the RemotePro PowerShell module and interacts
-        with video management systems.
-        - The credentials.xml file contains sensitive information; handle with care.
+    - This function is part of the RemotePro PowerShell module and interacts
+    with video management systems.
+    - The credentials.xml file contains sensitive information; handle with care.
     #>
     [CmdletBinding(DefaultParameterSetName = 'ViewProfiles')]
     param (
