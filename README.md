@@ -23,7 +23,7 @@ WPF GUI theme and features:
 
 This module combines LOCALAPPDATA with a subdirectory
 specific to RemotePro. It ensures or creates this directory using modified
-item management techniques from MilestonePSTools. Returns the full path.
+item management techniques from MilestonePSTools.
 See link for MilestonePSTool's explanation of AppData usage.
 [AppDataUsage](https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description)
 
