@@ -1,5 +1,5 @@
-# Helper function to refresh connection profiles
 function Get-RpConnectionProfileRefresh {
+    # Helper function to refresh connection profiles
     [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
 
     try {

@@ -220,16 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-- A timer (\`$script:RunspaceCleanupTimer\`) is used to periodically invoke
-  the \`Watch-RpRunspaces\` function, which is responsible for cleaning up
-  completed runspaces, logging output, and updating the UI.
-
-- The runspace cleanup relies on:
-    - Initialize-RpRunspaceJobs
-      \`$script:RunspaceJobs\`: Tracks each runspace dispatched.
-    - Initialize-RpRunspaceResults
-      \`$script:RunspaceResults\`: Collects results from runspaces.
-    - Initialize-RpOpenRunspaces
-      \`$script:openRunspaces\`: Static collection of active runspaces.
+This function starts a PowerShell job in a runspace and creates identifiers for tracking.
+Relies on "$script:RunspaceJobs = \[System.Collections.ArrayList\]::Synchronized((New-Object System.Collections.ArrayList))"
 
 ## RELATED LINKS

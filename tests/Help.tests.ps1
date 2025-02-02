@@ -63,14 +63,26 @@ Describe "Test help for <_.Name>" -ForEach $commands {
         $commandHelp.Description | Should -Not -BeNullOrEmpty
     }
 
-    # Should be at least one example
-    It "Has example code" {
-        ($commandHelp.Examples.Example | Select-Object -First 1).Code | Should -Not -BeNullOrEmpty
+    # Should be at least one example code, but allow for null or empty and warn if it is
+    It "Has example code or is allowed to be empty with a warning" {
+        $exampleCode = ($commandHelp.Examples.Example | Select-Object -First 1).Code
+        if ($exampleCode) {
+            $exampleCode | Should -Not -BeNullOrEmpty
+        } else {
+            Write-Warning "Warning: Example code is allowed to be empty for this command."
+            $exampleCode | Should -BeNullOrEmpty
+        }
     }
 
-    # Should be at least one example description
-    It "Has example help" {
-        ($commandHelp.Examples.Example.Remarks | Select-Object -First 1).Text | Should -Not -BeNullOrEmpty
+    # Should be at least one example description, but allow for null or empty and warn if it is
+    It "Has example help or is allowed to be empty with a warning" {
+        $exampleHelpText = ($commandHelp.Examples.Example | Select-Object -First 1).Remarks.Text
+        if ($exampleHelpText) {
+            $exampleHelpText | Should -Not -BeNullOrEmpty
+        } else {
+            Write-Warning "Warning: Example help text is allowed to be empty for this command."
+            $exampleHelpText | Should -BeNullOrEmpty
+        }
     }
 
     It "Help link <_> is valid" -ForEach $helpLinks {

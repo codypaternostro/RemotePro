@@ -1,5 +1,5 @@
-#https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
 function Test-RequiresVmsConnection {
+    #https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
     [CmdletBinding()]
     [MilestonePSTools.RequiresVmsConnection(ConnectionRequired, AutoConnect = $false)]
     param()

@@ -1,5 +1,5 @@
-# Ensures required modules are installed.
 function Install-RpRequiredModules {
+    # Ensures required modules are installed.
     $requiredModules = @(
         @{ Name = 'MilestonePSTools'},
         @{ Name = 'PSWriteHTML'},

@@ -1,4 +1,3 @@
-
 function Initialize-RpRunspaceResults {
     <#
     .SYNOPSIS

@@ -1,6 +1,6 @@
-# Fill Connections_Combo_Box with profile names.
-# Refresh "MilestonePSTools Connection Profile Details" tab.
 function Get-RemoteProConnections {
+    # Fill Connections_Combo_Box with profile names.
+    # Refresh "MilestonePSTools Connection Profile Details" tab.
     param(
         [string]$ConnectionFilePath
     )

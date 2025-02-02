@@ -1,6 +1,3 @@
-#region create runspace envionrment
-# This function starts a PowerShell job in a runspace and creates identifiers for tracking.
-# Relies on "$script:RunspaceJobs = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))"
 function Start-RpRunspaceJob {
     <#
         .SYNOPSIS
@@ -61,6 +58,10 @@ function Start-RpRunspaceJob {
         .EXAMPLE
             Start-RpRunspaceJob -ScriptBlock { Get-Process } -ModulesToLoad @('MyModule') `
                 -AssembliesToLoad @('MyAssembly') -RunspaceJobs $global:RunspaceJobs
+
+        .NOTES
+        This function starts a PowerShell job in a runspace and creates identifiers for tracking.
+        Relies on "$script:RunspaceJobs = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))"
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'UseExistingRunspace')]
@@ -77,15 +78,22 @@ function Start-RpRunspaceJob {
         [Parameter(Mandatory = $true)]
         [scriptblock]$ScriptBlock,
 
+        [Parameter()]
         [object[]]$ArgumentList = @(),
+
+        [Parameter()]
         [object]$Argument,
 
         [Parameter(ParameterSetName = 'UseExistingRunspace')]
         [switch]$UseExistingRunspaceState,  # Default parameter set (use current session state)
 
+        [Parameter()]
         [switch]$Id,  # Return job ID
 
+        [Parameter()]
         [System.Windows.Controls.TextBox]$uiElement,  # Optional UI element for updates
+
+        [Parameter()]
         [System.Collections.ArrayList]$RunspaceJobs  # Collection of runspace jobs for tracking
     )
 
@@ -206,4 +214,3 @@ function Start-RpRunspaceJob {
         }
     }
 }
-#endregion

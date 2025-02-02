@@ -29,9 +29,7 @@ job from the global collection.
 
 ### EXAMPLE 1
 ```
-Watch-RpRunspaces -LogPath "C:\Logs\RunspaceLog.txt" `
-    -uiElement $textBoxElement -RunspaceJobs $script:RunspaceJobs `
-    -RunspaceResults $script:RunspaceResults -OpenRunspaces $script:openRunspaces
+Watch-RpRunspaces -LogPath "C:\Logs\RunspaceLog.txt" -uiElement $textBoxElement -RunspaceJobs $script:RunspaceJobs -RunspaceResults $script:RunspaceResults -OpenRunspaces $script:openRunspaces
 ```
 
 ## PARAMETERS
@@ -69,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -RunspaceJobs
-A synchronized \`ArrayList\` that tracks runspaces currently running in the background.
+A synchronized ArrayList that tracks runspaces currently running in the background.
 This is mandatory.
 
 ```yaml
@@ -85,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -RunspaceResults
-A synchronized \`ArrayList\` that stores the results from completed runspaces.
+A synchronized ArrayList that stores the results from completed runspaces.
 This is mandatory.
 
 ```yaml
@@ -140,17 +138,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 - The function relies on the following module variables and collections:
-    - Initialize-RpRunspaceJobs
-        \`$script:RunspaceJobs\`: Tracks each runspace dispatched.
-    - Initialize-RpRunspaceResults
-        \`$script:RunspaceResults\`: Collects results from runspaces.
-    - Initialize-RpOpenRunspaces
-        \`$script:openRunspaces\`: Static collection of active runspaces.
+- Initialize-RpRunspaceJobs $script:RunspaceJobs: Tracks each runspace dispatched.
+- Initialize-RpRunspaceResults $script:RunspaceResults: Collects results from runspaces.
+- Initialize-RpOpenRunspaces $script:openRunspaces: Static collection of active runspaces.
 
-- The log path is determined using the \`Get-RpLogPath\` cmdlet, which provides
-    the path to the RemotePro AppData location.
+- The log path is determined using the Get-RpLogPath cmdlet, which provides
+the path to the RemotePro AppData location.
 
-- UI updates rely on a TextBox control (\`$uiElement\`), where job and status messages
-    are displayed. This UI element must be bound to "Runspace_Mutex_Log" for proper updates.
+- UI updates rely on a TextBox control ($uiElement), where job and status messages
+are displayed. This UI element must be bound to "Runspace_Mutex_Log" for proper updates.
+Runspace job collection and maintenance of runspaces running in the background.
+Log relies on .psm1 module manifest definition variable ...
+The cmdlet Get-RpLogPath for providing location to the RemotePro AppData location.
+UI relies on...
+\[System.Windows.Controls.TextBox\]$uiElement to be set to "Runspace_Mutex_Log" to update the UI
+Jobs indexing relies on...
+$script:RunspaceJobs = \[System.Collections.ArrayList\]::Synchronized((New-Object System.Collections.ArrayList))
+Results relies on...
+"$script:RunspaceResults = \[System.Collections.ArrayList\]::Synchronized((New-Object System.Collections.ArrayList))"
+If implemented, static runspaces from "$script:openRunspaces" which relies on...
+"$script:openRunspaces = New-Object PSObject -Property @{ Jobs = New-Object System.Collections.ObjectModel.ObservableCollection\[object\]}"
 
 ## RELATED LINKS

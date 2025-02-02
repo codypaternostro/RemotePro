@@ -1,5 +1,5 @@
-# Helper function to format connection profiles for textbox
 function Format-RpConnectionProfiles {
+    # Helper function to format connection profiles for textbox
     $profiles = Get-RpConnectionProfile -All
     $formattedProfiles = @()
     foreach ($profile in $profiles) {

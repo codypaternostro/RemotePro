@@ -9,18 +9,6 @@ function Watch-RpRunspaces {
     logs the output, updates the UI (if provided), and safely removes the
     job from the global collection.
 
-    .NOTES
-    - The function relies on the following module variables and collections:
-    - Initialize-RpRunspaceJobs $script:RunspaceJobs: Tracks each runspace dispatched.
-    - Initialize-RpRunspaceResults $script:RunspaceResults: Collects results from runspaces.
-    - Initialize-RpOpenRunspaces $script:openRunspaces: Static collection of active runspaces.
-
-    - The log path is determined using the Get-RpLogPath cmdlet, which provides
-    the path to the RemotePro AppData location.
-
-    - UI updates rely on a TextBox control ($uiElement), where job and status messages
-    are displayed. This UI element must be bound to "Runspace_Mutex_Log" for proper updates.
-
     .PARAMETER LogPath
     The path to the log file where job statuses and results are logged. This is mandatory.
 
@@ -40,6 +28,16 @@ function Watch-RpRunspaces {
     Watch-RpRunspaces -LogPath "C:\Logs\RunspaceLog.txt" -uiElement $textBoxElement -RunspaceJobs $script:RunspaceJobs -RunspaceResults $script:RunspaceResults -OpenRunspaces $script:openRunspaces
 
     .NOTES
+    - The function relies on the following module variables and collections:
+    - Initialize-RpRunspaceJobs $script:RunspaceJobs: Tracks each runspace dispatched.
+    - Initialize-RpRunspaceResults $script:RunspaceResults: Collects results from runspaces.
+    - Initialize-RpOpenRunspaces $script:openRunspaces: Static collection of active runspaces.
+
+    - The log path is determined using the Get-RpLogPath cmdlet, which provides
+    the path to the RemotePro AppData location.
+
+    - UI updates rely on a TextBox control ($uiElement), where job and status messages
+    are displayed. This UI element must be bound to "Runspace_Mutex_Log" for proper updates.
     Runspace job collection and maintenance of runspaces running in the background.
     Log relies on .psm1 module manifest definition variable ...
     The cmdlet Get-RpLogPath for providing location to the RemotePro AppData location.
