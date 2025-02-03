@@ -1,34 +1,41 @@
 name: Publish Module
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: windows-latest
     steps:
-      # Get the current version
+      # Checkout repository
       - uses: actions/checkout@v3
+
+      # Install and cache PowerShell modules
       - name: Install and cache PowerShell modules
         id: psmodulecache
         uses: potatoqualitee/psmodulecache@v6.2.1
         with:
           modules-to-cache: BuildHelpers
-      - shell: pwsh
-        # Give an id to the step, so we can reference it later
+
+      # Check if the version has been bumped
+      - name: Check if version has been bumped
+        shell: pwsh
         id: check_if_versions_bumped
         run: |
           [version]$GalleryVersion = Get-NextNugetPackageVersion -Name RemotePro -ErrorAction Stop
           [version]$GithubVersion = Get-MetaData -Path ./RemotePro/RemotePro.psd1 -PropertyName ModuleVersion -ErrorAction Stop
           $bumped = $GithubVersion -ge $GalleryVersion
 
-          # Set the output named "version_bumped"
-          Write-Host "::set-output name=version_bumped::$bumped"
+          # Set environment variable instead of set-output
+          echo "VERSION_BUMPED=$bumped" >> $env:GITHUB_ENV
 
+      # Publish to PSGallery if version is bumped
       - name: Publish to PSGallery
         shell: pwsh
-        if: steps.check_if_versions_bumped.outputs.version_bumped == 'True'
+        if: env.VERSION_BUMPED == 'True'
         env:
           PSGALLERY_API_KEY: ${{ secrets.PS_GALLERY_KEY }}
         run: ./build.ps1 -Task Publish -Bootstrap
