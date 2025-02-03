@@ -8,7 +8,6 @@
     'Plaster' = 'latest'
     'PowerShellBuild' = 'latest'
     'PSScriptAnalyzer' = 'latest'
-    'MilestonePSTools' = 'latest'
     'PSWriteHTML' = 'latest'
     'ImportExcel' = 'latest'
 }
