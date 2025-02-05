@@ -1,7 +1,7 @@
 site_name: RemotePro
 site_description: PowerShell WPF GUI for MilestonePSTools
 site_author: 'Cody Paternostro'
-repo_url: https://github.com/codypaternostro/RemotePro
+repo_url: https://codypaternostro.github.io/RemotePro
 
 theme:
   name: material
@@ -70,6 +70,10 @@ plugins:
       enable_cache: True
       size: [800, 600]
       extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg']
+
+
+
+
 
 
 
