@@ -14,7 +14,7 @@ nav:
   - Getting Started:
       - Installation: getting-started/installation.md
       - Configuration: getting-started/configuration.md
-      - Usage Guide: getting-started/usage-guide.md
+      - Usage Guide: getting-started/usageguide.md
   - Commands:
       - Add-RpConfigCommand: en-US/Add-RpConfigCommand.md
       - Find-RpConfigCommand: en-US/Find-RpConfigCommand.md
@@ -70,6 +70,12 @@ plugins:
       enable_cache: True
       size: [800, 600]
       extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg']
+
+
+
+
+
+
 
 
 

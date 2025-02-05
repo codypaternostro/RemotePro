@@ -1,2 +1,2 @@
 # Homepage
-Hello!
+Welcome to RemotePro docs page!

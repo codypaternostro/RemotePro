@@ -4,7 +4,7 @@ mkdocs build
 $DocsFolder = ".\docs\en-US"
 $MkDocsFile = ".\mkdocs.yml"
 $ChangelogFile = ".\CHANGELOG.md"
-$ChangelogFolder = ".\docs\CHANGELOG"
+$ChangelogFolder = ".\site\CHANGELOG"
 
 # Ensure the changelog folder exists
 if (-not (Test-Path -Path $ChangelogFolder)) {
