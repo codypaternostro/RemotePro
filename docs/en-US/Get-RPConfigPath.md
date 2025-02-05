@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version:
 schema: 2.0.0
 ---
 
@@ -76,6 +76,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description](https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description)
-

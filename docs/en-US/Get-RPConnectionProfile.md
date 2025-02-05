@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version:
 schema: 2.0.0
 ---
 

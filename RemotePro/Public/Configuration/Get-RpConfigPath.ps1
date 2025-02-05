@@ -12,9 +12,6 @@ function Get-RpConfigPath {
 
     .PARAMETER DefaultIds
     If specified, retrieves the path for the default IDs configuration file.
-
-    .LINK
-    https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
     #>
     [CmdletBinding()]
     [OutputType([string])]
