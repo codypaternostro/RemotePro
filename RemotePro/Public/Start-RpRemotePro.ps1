@@ -1,51 +1,54 @@
 function Start-RpRemotePro {
     <#
     .SYNOPSIS
-        Initializes and manages the RemotePro application interface.
+    Initializes and manages the RemotePro application interface.
 
     .DESCRIPTION
-        The Start-RpRemotePro function sets up a GUI for managing remote connections
-        and commands. It uses WPF for dynamic display and runspaces for managing
-        multiple asynchronous tasks, allowing for responsive interactions during
-        complex operations. This function incorporates the MilestonePSTools and
-        ImportExcel modules, providing essential tools for operation. It dynamically
-        creates UI elements from provided XAML, handles user events, and executes
-        commands. Extensive use of runspaces facilitates efficient execution of
-        background PowerShell commands, managing long-running tasks, and handling
-        concurrent operations to enhance performance.
+    The Start-RpRemotePro function sets up a GUI for managing remote connections
+    and commands. It uses WPF for dynamic display and runspaces for managing
+    multiple asynchronous tasks, allowing for responsive interactions during
+    complex operations. This function incorporates the MilestonePSTools and
+    ImportExcel modules, providing essential tools for operation. It dynamically
+    creates UI elements from provided XAML, handles user events, and executes
+    commands. Extensive use of runspaces facilitates efficient execution of
+    background PowerShell commands, managing long-running tasks, and handling
+    concurrent operations to enhance performance.
 
     .PARAMETERS
-        There are no parameters exposed in the function signature. However, the
-        function uses internally managed variables and runtime configurations to
-        control various features such as connection management, command execution,
-        and event handling through the GUI.
+    There are no parameters exposed in the function signature. However, the
+    function uses internally managed variables and runtime configurations to
+    control various features such as connection management, command execution,
+    and event handling through the GUI.
+
+    .COMPONENT
+    RemoteProGUI
 
     .EXAMPLE
-        Start-RpRemotePro
-        # Launches the RemotePro GUI, initializes all components, and sets up
-        runspaces for asynchronous task management.
+    Start-RpRemotePro
+    # Launches the RemotePro GUI, initializes all components, and sets up
+    runspaces for asynchronous task management.
 
     .NOTES
-        - Requires that necessary modules and dependencies are installed and
-        configured in the running environment.
-        - Employs advanced features such as WPF and runspaces to maintain a smooth
-        operation flow and responsive user interface during intensive tasks.
-        - Runspaces are critical for the application's ability to perform multiple
-        operations simultaneously, such as fetching data, updating the UI, and
-        executing user commands without freezing or crashing.
+    - Requires that necessary modules and dependencies are installed and
+    configured in the running environment.
+    - Employs advanced features such as WPF and runspaces to maintain a smooth
+    operation flow and responsive user interface during intensive tasks.
+    - Runspaces are critical for the application's ability to perform multiple
+    operations simultaneously, such as fetching data, updating the UI, and
+    executing user commands without freezing or crashing.
 
     .LINK
-        https://write-verbose.com/2023/03/21/PowerShellWPFPt1/
-        Guide on integrating PowerShell with WPF for GUI applications.
+    https://write-verbose.com/2023/03/21/PowerShellWPFPt1/
+    Guide on integrating PowerShell with WPF for GUI applications.
 
     .LINK
-        https://gist.github.com/proxb/6bc718831422df3392c4
-        Example of managing complex PowerShell GUI applications.
+    https://gist.github.com/proxb/6bc718831422df3392c4
+    Example of managing complex PowerShell GUI applications.
 
     .LINK
-        https://www.milestonepstools.com/
-        MilestonePSTools website, detailing how it extends Milestone's MIP SDK capabilities
-        to PowerShell for rapid VMS configuration and reporting automation.
+    https://www.milestonepstools.com/
+    MilestonePSTools website, detailing how it extends Milestone's MIP SDK capabilities
+    to PowerShell for rapid VMS configuration and reporting automation.
 
     #>
     [CmdletBinding()]

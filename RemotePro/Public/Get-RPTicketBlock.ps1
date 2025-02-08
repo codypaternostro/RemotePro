@@ -11,6 +11,9 @@ function Get-RpTicketBlock {
         details. Optionally, the information can be displayed in a WPF window and/or
         returned as objects to the pipeline.
 
+    .COMPONENT
+    CustomVMSCmdlets
+
     .PARAMETER Cameras
         A list of camera configuration items (VideoOS.Platform.ConfigurationItems.Camera)
         from which the hardware information will be retrieved. This parameter is mandatory

@@ -9,6 +9,9 @@ function Watch-RpRunspaces {
     logs the output, updates the UI (if provided), and safely removes the
     job from the global collection.
 
+    .COMPONENT
+    Runspaces
+
     .PARAMETER LogPath
     The path to the log file where job statuses and results are logged. This is mandatory.
 

@@ -9,6 +9,9 @@ function Invoke-RpCommandObject {
     call operator. The function also validates the command and parameters before
     execution.
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER CommandObject
     The command object containing the CommandName and Parameters properties.
 

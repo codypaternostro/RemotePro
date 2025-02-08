@@ -9,6 +9,9 @@ function Get-RpControllerObject {
     It can either return the full object, list its properties, or show details
     of a specific property.
 
+    .COMPONENT
+    ControllerObject
+
     .PARAMETER ListProperties
     A switch parameter that, if specified, lists the properties of the
     RemotePro object.

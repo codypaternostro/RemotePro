@@ -9,6 +9,9 @@ function Initialize-RpRunspaceResults {
         thread-safe operations when accessing the results from multiple
         runspaces.
 
+    .COMPONENT
+    Runspaces
+
     .EXAMPLE
         $runspaceResults = Initialize-RpRunspaceResults
         Write-Host "Initialized Runspace Results: $runspaceResults"

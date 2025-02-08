@@ -18,6 +18,9 @@ function Import-RpConfig {
     Using Invoke-RpCommandObject, you can execute the formatted command locally where
     as remotely is experimental...
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER ConfigFilePath
     The path to the configuration JSON file. If not provided, the function uses the
     default path returned by the `Get-RPConfigPath` function.

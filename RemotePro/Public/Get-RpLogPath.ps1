@@ -10,6 +10,9 @@ function Get-RPLogPath {
     adaptations from MilestonePSTools, tailored for log file retrieval in
     RemotePro.
 
+    .COMPONENT
+    Log
+
     .LINK
     https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
     #>

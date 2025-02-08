@@ -1,19 +1,22 @@
 function Show-RPProfileEntryDialog {
     <#
     .SYNOPSIS
-        Displays a dialog for entering or editing a connection profile's details.
+    Displays a dialog for entering or editing a connection profile's details.
 
     .DESCRIPTION
-        This cmdlet shows a graphical dialog window that allows the user
-        to input connection profile details such as Profile Name, Server
-        Address, Username, and other settings. The dialog collects the
-        necessary parameters to create or edit a connection profile.
+    This cmdlet shows a graphical dialog window that allows the user
+    to input connection profile details such as Profile Name, Server
+    Address, Username, and other settings. The dialog collects the
+    necessary parameters to create or edit a connection profile.
+
+    .COMPONENT
+    ConnectionProfiles
 
     .PARAMETER Edit
-        Switch to edit an existing profile. If enabled, it will load the selected profile's details.
+    Switch to edit an existing profile. If enabled, it will load the selected profile's details.
 
     .PARAMETER SelectedProfile
-        The selected connection profile to load into the form when in edit mode.
+    The selected connection profile to load into the form when in edit mode.
     #>
     param (
         [switch]$Edit,

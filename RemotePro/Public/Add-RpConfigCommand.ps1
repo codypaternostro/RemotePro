@@ -14,6 +14,9 @@ function Add-RpConfigCommand {
     module name, command names, file path, optional description, and
     show dialog.
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER ModuleName
     Specifies the name of the PowerShell module from which to export
     commands. Required.

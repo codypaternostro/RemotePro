@@ -1,67 +1,70 @@
 function Start-RpRunspaceJob {
     <#
-        .SYNOPSIS
-            Starts a PowerShell job in a runspace and tracks it.
+    .SYNOPSIS
+    Starts a PowerShell job in a runspace and tracks it.
 
-        .DESCRIPTION
-            This function starts a PowerShell job in a runspace and tracks its status.
-            By default, it uses the existing session state (environment variables and
-            session variables), but you can create a new runspace with specific modules,
-            assemblies, and functions loaded.
+    .DESCRIPTION
+    This function starts a PowerShell job in a runspace and tracks its status.
+    By default, it uses the existing session state (environment variables and
+    session variables), but you can create a new runspace with specific modules,
+    assemblies, and functions loaded.
 
-        .NOTES
-            - A timer (`$script:RunspaceCleanupTimer`) is used to periodically invoke
-              the `Watch-RpRunspaces` function, which is responsible for cleaning up
-              completed runspaces, logging output, and updating the UI.
+    .NOTES
+    - A timer (`$script:RunspaceCleanupTimer`) is used to periodically invoke
+    the `Watch-RpRunspaces` function, which is responsible for cleaning up
+    completed runspaces, logging output, and updating the UI.
 
-            - The runspace cleanup relies on:
-                - Initialize-RpRunspaceJobs
-                  `$script:RunspaceJobs`: Tracks each runspace dispatched.
-                - Initialize-RpRunspaceResults
-                  `$script:RunspaceResults`: Collects results from runspaces.
-                - Initialize-RpOpenRunspaces
-                  `$script:openRunspaces`: Static collection of active runspaces.
+    - The runspace cleanup relies on:
+    - Initialize-RpRunspaceJobs
+    `$script:RunspaceJobs`: Tracks each runspace dispatched.
+    - Initialize-RpRunspaceResults
+    `$script:RunspaceResults`: Collects results from runspaces.
+    - Initialize-RpOpenRunspaces
+    `$script:openRunspaces`: Static collection of active runspaces.
 
-        .PARAMETER ModulesToLoad
-            Modules to load into the runspace environment when not using existing state.
+    .COMPONENT
+    Runspaces
 
-        .PARAMETER AssembliesToLoad
-            Assemblies to load into the runspace environment when not using existing state.
+    .PARAMETER ModulesToLoad
+    Modules to load into the runspace environment when not using existing state.
 
-        .PARAMETER FunctionsToImport
-            Functions to import into the runspace environment when not using existing state.
+    .PARAMETER AssembliesToLoad
+    Assemblies to load into the runspace environment when not using existing state.
 
-        .PARAMETER ScriptBlock
-            The scriptblock to execute in the runspace.
+    .PARAMETER FunctionsToImport
+    Functions to import into the runspace environment when not using existing state.
 
-        .PARAMETER ArgumentList
-            List of arguments to pass to the scriptblock.
+    .PARAMETER ScriptBlock
+    The scriptblock to execute in the runspace.
 
-        .PARAMETER Argument
-            Single argument to pass to the scriptblock.
+    .PARAMETER ArgumentList
+    List of arguments to pass to the scriptblock.
 
-        .PARAMETER UseExistingRunspaceState
-            Uses the current session state (variables and environment) in the new runspace.
+    .PARAMETER Argument
+    Single argument to pass to the scriptblock.
 
-        .PARAMETER Id
-            If specified, returns the runspace job ID.
+    .PARAMETER UseExistingRunspaceState
+    Uses the current session state (variables and environment) in the new runspace.
 
-        .PARAMETER uiElement
-            Optional UI TextBox element to update with runspace status.
+    .PARAMETER Id
+    If specified, returns the runspace job ID.
 
-        .PARAMETER RunspaceJobs
-            Collection of runspace jobs for tracking.
+    .PARAMETER uiElement
+    Optional UI TextBox element to update with runspace status.
 
-        .EXAMPLE
-            Start-RpRunspaceJob -ScriptBlock { Get-Process } -RunspaceJobs $global:RunspaceJobs
+    .PARAMETER RunspaceJobs
+    Collection of runspace jobs for tracking.
 
-        .EXAMPLE
-            Start-RpRunspaceJob -ScriptBlock { Get-Process } -ModulesToLoad @('MyModule') `
-                -AssembliesToLoad @('MyAssembly') -RunspaceJobs $global:RunspaceJobs
+    .EXAMPLE
+    Start-RpRunspaceJob -ScriptBlock { Get-Process } -RunspaceJobs $global:RunspaceJobs
 
-        .NOTES
-        This function starts a PowerShell job in a runspace and creates identifiers for tracking.
-        Relies on "$script:RunspaceJobs = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))"
+    .EXAMPLE
+    Start-RpRunspaceJob -ScriptBlock { Get-Process } -ModulesToLoad @('MyModule') `
+    -AssembliesToLoad @('MyAssembly') -RunspaceJobs $global:RunspaceJobs
+
+    .NOTES
+    This function starts a PowerShell job in a runspace and creates identifiers for tracking.
+    Relies on "$script:RunspaceJobs = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))"
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'UseExistingRunspace')]

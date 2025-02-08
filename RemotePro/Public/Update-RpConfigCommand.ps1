@@ -17,6 +17,9 @@ function Update-RpConfigCommand {
     user-friendly for interactive scenarios. Advanced users and scripts can also
     bypass the GUI and pass values directly through `-Parameters`.
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER ModuleName
     The name of the module containing the command to be modified. This parameter
     is mandatory and required for identifying the correct module in the

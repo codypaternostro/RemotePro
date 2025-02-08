@@ -8,6 +8,9 @@ function Import-RpDefaultConfigCommandIds {
         parses it, and returns a hashtable-like object where each command name
         is a top-level key and contains a nested object with its Id.
 
+    .COMPONENT
+    DefaultConfigCommands
+
     .PARAMETER ConfigFilePath
         The path to the JSON configuration file. If not provided, the function
         attempts to retrieve the default path.

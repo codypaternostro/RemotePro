@@ -1,4 +1,37 @@
 function Set-RpDefaultConfigCommandIds {
+    <#
+    .SYNOPSIS
+    Sets the default configuration command IDs for RemotePro.
+
+    .DESCRIPTION
+    The Set-RpDefaultConfigCommandIds function initializes and sets the default
+    configuration command IDs for the RemotePro object. If the RemotePro object
+    is not initialized, an error is thrown. The function can take an optional
+    ConfigFilePath parameter to specify the path to the configuration file. If
+    the ConfigFilePath is not provided, it uses the default path from
+    Get-RpConfigPath.
+
+    .COMPONENT
+    DefaultConfigCommands
+
+    .PARAMETER ConfigFilePath
+    Optional. Specifies the path to the configuration file. If not provided,
+    the default path is used.
+
+    .EXAMPLE
+    Set-RpDefaultConfigCommandIds -ConfigFilePath "C:\Path\To\ConfigFile.json"
+    Initializes and sets the default configuration command IDs using the
+    specified configuration file.
+
+    .EXAMPLE
+    Set-RpDefaultConfigCommandIds
+    Initializes and sets the default configuration command IDs using the default
+    configuration file path.
+
+    .NOTES
+    Ensure that the RemotePro object is initialized by running
+    New-RpControllerObject before calling this function.
+    #>
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$false)]

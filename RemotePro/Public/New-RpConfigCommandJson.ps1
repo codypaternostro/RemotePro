@@ -1,12 +1,43 @@
 function New-RpConfigCommandJson {
+    <#
+    .SYNOPSIS
+    Creates a new configuration JSON file for RemotePro.
+
+    .DESCRIPTION
+    The New-RpConfigCommandJson function creates a new configuration JSON file
+    based on the specified type. It supports creating a default JSON configuration
+    or an empty JSON configuration. The function also allows specifying a custom
+    path for the configuration file, defaulting to the application data location
+    if not provided.
+
+    .COMPONENT
+    ConfigCommands
+
+    .PARAMETER Type
+    Specifies the type of JSON to be created. Valid values are "DefaultJson" and
+    "EmptyJson". This parameter is mandatory.
+
+    .PARAMETER ConfigFilePath
+    Specifies the path where the configuration file will be saved. If not provided,
+    the default application data location is used.
+
+    .EXAMPLE
+    PS C:\> New-RpConfigCommandJson -Type "DefaultJson"
+
+    Creates a default JSON configuration file at the default application data
+    location.
+
+    .EXAMPLE
+    PS C:\> New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath "C:\Config\config.json"
+
+    Creates an empty JSON configuration file at the specified path.
+    #>
     [CmdletBinding()]
     param (
-        # Specify type of json to be created.
         [Parameter(Mandatory=$true)]
         [ValidateSet("DefaultJson","EmptyJson")]
         [string]$Type,
 
-        # Specify path, default is appdata location.
         [Parameter(Mandatory=$false)]
         [string]$ConfigFilePath
     )

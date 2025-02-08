@@ -8,6 +8,9 @@ function Set-RpConfigDefaults {
         application. It ensures that all necessary settings are initialized
         with their default values.
 
+    .COMPONENT
+    DefaultConfigCommands
+
     .PARAMETER ConfigFilePath
         The path to the configuration file where the default settings will
         be applied.

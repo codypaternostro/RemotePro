@@ -999,7 +999,16 @@
           <li class="md-nav__item">
   <a href="#example-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 1
+      EXAMPLE 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAMPLE 2
     </span>
   </a>
   
@@ -1059,21 +1068,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="INPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#none" class="md-nav__link">
-    <span class="md-ellipsis">
-      None
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1082,21 +1076,6 @@
       OUTPUTS
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OUTPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#systemobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      System.Object
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1598,7 +1577,16 @@
           <li class="md-nav__item">
   <a href="#example-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 1
+      EXAMPLE 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAMPLE 2
     </span>
   </a>
   
@@ -1658,21 +1646,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="INPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#none" class="md-nav__link">
-    <span class="md-ellipsis">
-      None
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1681,21 +1654,6 @@
       OUTPUTS
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OUTPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#systemobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      System.Object
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1737,26 +1695,38 @@
 
 <h1 id="set-rpconfigcommands">Set-RpConfigCommands</h1>
 <h2 id="synopsis">SYNOPSIS</h2>
-<p>{{ Fill in the Synopsis }}</p>
+<p>Sets the configuration commands for the RemotePro object.</p>
 <h2 id="syntax">SYNTAX</h2>
 <pre><code>Set-RpConfigCommands [[-ConfigFilePath] &lt;String&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
 </code></pre>
 <h2 id="description">DESCRIPTION</h2>
-<p>{{ Fill in the Description }}</p>
+<p>The Set-RpConfigCommands function initializes and sets the configuration
+commands for the RemotePro object.
+If the RemotePro object is not initialized,
+an error is thrown.
+The function imports configuration commands from a specified
+file path or uses a default path if none is provided.</p>
 <h2 id="examples">EXAMPLES</h2>
-<h3 id="example-1">Example 1</h3>
-<pre><code class="language-powershell">PS C:\&gt; {{ Add example code here }}
+<h3 id="example-1">EXAMPLE 1</h3>
+<pre><code>Set-RpConfigCommands -ConfigFilePath &quot;C:\Path\To\ConfigFile.json&quot;
+This example sets the configuration commands using the specified configuration
+file path.
 </code></pre>
-<p>{{ Add example description here }}</p>
+<h3 id="example-2">EXAMPLE 2</h3>
+<pre><code>Set-RpConfigCommands
+This example sets the configuration commands using the default configuration
+file path.
+</code></pre>
 <h2 id="parameters">PARAMETERS</h2>
 <h3 id="-configfilepath">-ConfigFilePath</h3>
-<p>{{ Fill ConfigFilePath Description }}</p>
+<p>The file path to the configuration file.
+If not provided, a default path is used.</p>
 <pre><code class="language-yaml">Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -1776,10 +1746,10 @@ Accept wildcard characters: False
 <h3 id="commonparameters">CommonParameters</h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
 <h2 id="inputs">INPUTS</h2>
-<h3 id="none">None</h3>
 <h2 id="outputs">OUTPUTS</h2>
-<h3 id="systemobject">System.Object</h3>
 <h2 id="notes">NOTES</h2>
+<p>Ensure that the RemotePro object is initialized by running New-RpControllerObject
+before calling this function.</p>
 <h2 id="related-links">RELATED LINKS</h2>
 
 

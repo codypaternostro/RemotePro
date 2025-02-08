@@ -10,6 +10,9 @@ function Find-RpDefaultConfigCommands {
     using the Get-RPConfigPath -DefaultIds cmdlet. It can retrieve commands
     by name, by Id, or all commands across all modules.
 
+    .COMPONENT
+    DefaultConfigCommands
+
     .PARAMETER CommandName
     The name of the command to retrieve.
 

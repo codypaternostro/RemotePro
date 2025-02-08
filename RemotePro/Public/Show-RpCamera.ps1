@@ -1,69 +1,73 @@
 function Show-RpCamera {
     <#
     .SYNOPSIS
-        Displays a UI for live viewing or playback of camera feeds in a security
-        system.
+    Displays a UI for live viewing or playback of camera feeds in a security
+    system.
 
     .DESCRIPTION
-        The Show-RpCamera function allows users to interact with camera feeds using
-        different methods of camera selection. It supports viewing live feeds,
-        playback of recorded sequences, and diagnostics overlay on the video feed.
-        Users can select cameras by ID, through a direct camera object, or via user
-        interface dialogs. Please see link for original script from joshooaj who
-        inspired all of RemotePro from sharing this incredible function.
+    The Show-RpCamera function allows users to interact with camera feeds using
+    different methods of camera selection. It supports viewing live feeds,
+    playback of recorded sequences, and diagnostics overlay on the video feed.
+    Users can select cameras by ID, through a direct camera object, or via user
+    interface dialogs. Please see link for original script from joshooaj who
+    inspired all of RemotePro from sharing this incredible function.
+
+    .COMPONENT
+    CustomVMSCmdlets
 
     .PARAMETER CameraObject
-        Directly pass a camera object to alleviate object dependency between
-        threads. Mandatory in the 'CameraObjectSet' parameter set.
+    Directly pass a camera object to alleviate object dependency between
+    threads. Mandatory in the 'CameraObjectSet' parameter set.
 
     .PARAMETER Id
-        Specifies the camera IDs as GUIDs. When this parameter is used, camera
-        selection dialogs are bypassed. Mandatory in the 'IdSet' parameter set.
+    Specifies the camera IDs as GUIDs. When this parameter is used, camera
+    selection dialogs are bypassed. Mandatory in the 'IdSet' parameter set.
 
     .PARAMETER ShowRPItemPicker
-        Displays a custom item picker dialog for camera selection. Mandatory in the
-        'RPItemPickerSet' parameter set.
+    Displays a custom item picker dialog for camera selection. Mandatory in the
+    'RPItemPickerSet' parameter set.
 
     .PARAMETER ShowSelectCamera
-        Uses the default camera selection dialog. Mandatory in the 'SelectCameraSet'
-        parameter set.
+    Uses the default camera selection dialog. Mandatory in the 'SelectCameraSet'
+    parameter set.
 
     .PARAMETER DiagnosticLevel
-        Specifies the diagnostic overlay level (0-4) for the video feed. This is
-        optional and defaults to '0'.
+    Specifies the diagnostic overlay level (0-4) for the video feed. This is
+    optional and defaults to '0'.
 
     .PARAMETER SpecifiedDaysForSequences
-        Specifies the number of days for which to generate and display sequence data
-        from motion-triggered recordings. This parameter is mandatory.
+    Specifies the number of days for which to generate and display sequence data
+    from motion-triggered recordings. This parameter is mandatory.
 
     .PARAMETER CheckConnection
-        Validates the VMS connection before attempting to show cameras. If the
-        connection is invalid, an error dialog is shown. This parameter is optional.
+    Validates the VMS connection before attempting to show cameras. If the
+    connection is invalid, an error dialog is shown. This parameter is optional.
 
     .EXAMPLE
-        Show-RpCamera -ShowSelectCamera
-        # This command opens the standard camera selection dialog and displays the
-        # selected camera feed without any diagnostic overlays.
+    Show-RpCamera -ShowSelectCamera
+    # This command opens the standard camera selection dialog and displays the
+    # selected camera feed without any diagnostic overlays.
 
     .EXAMPLE
-        Show-RpCamera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
-        # This command displays the feed of a camera identified by the specified GUID
-        # with sequence data for the past 7 days.
+    Show-RpCamera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
+    # This command displays the feed of a camera identified by the specified GUID
+    # with sequence data for the past 7 days.
 
     .EXAMPLE
-        Show-RpCamera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
-        # This command uses a custom item picker for camera selection and shows the
-        # selected camera feed with a high diagnostic level overlay for the past 30
-        # days.
+    Show-RpCamera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
+    # This command uses a custom item picker for camera selection and shows the
+    # selected camera feed with a high diagnostic level overlay for the past 30
+    # days.
 
     .NOTES
-        - Requires a connection to a VMS (Video Management System).
-        - Designed for use in environments where monitoring multiple camera feeds is
-        crucial.
-        - Flexible camera selection is provided to accommodate different user
-        preferences and requirements.
+    - Requires a connection to a VMS (Video Management System).
+    - Designed for use in environments where monitoring multiple camera feeds is
+    crucial.
+    - Flexible camera selection is provided to accommodate different user
+    preferences and requirements.
+
     .LINK
-        https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
+    https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
     #>
     [CmdletBinding(DefaultParameterSetName='RPItemPickerSet')]
     param (

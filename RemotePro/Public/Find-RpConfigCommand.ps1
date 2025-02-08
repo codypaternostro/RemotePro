@@ -9,6 +9,9 @@ function Find-RpConfigCommand {
     details for one command, all commands within a module, or all commands
     across all modules using the `-All` and `-ByModule` parameters.
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER ModuleName
     The name of the module where the command is located.
 

@@ -1,22 +1,25 @@
 function Test-RpVmsConnection {
     <#
     .SYNOPSIS
-        Tests the connection to the VMS management server.
+    Tests the connection to the VMS management server.
 
     .DESCRIPTION
-        This function tests whether a connection to the VMS management server is
-        available. By default, it displays an error dialog if the connection fails.
-        The user can optionally suppress the error dialog.
+    This function tests whether a connection to the VMS management server is
+    available. By default, it displays an error dialog if the connection fails.
+    The user can optionally suppress the error dialog.
+
+    .COMPONENT
+    VmsConnection
 
     .PARAMETER ShowErrorDialog
-        Determines if an error dialog should be shown when the connection fails.
-        Default is $true (the error dialog will be shown).
+    Determines if an error dialog should be shown when the connection fails.
+    Default is $true (the error dialog will be shown).
 
     .EXAMPLE
-        Test-RpVmsConnection
+    Test-RpVmsConnection
 
     .EXAMPLE
-        Test-RpVmsConnection -ShowErrorDialog $false
+    Test-RpVmsConnection -ShowErrorDialog $false
     .LINK
     https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
     #>

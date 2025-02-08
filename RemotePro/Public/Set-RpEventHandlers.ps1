@@ -19,6 +19,9 @@ function Set-RpEventHandlers {
     Additionally, the EventHandlers hashtable is assigned a custom type
     'RemotePro.EventHandlers' for easy identification and future use.
 
+    .COMPONENT
+    EventHandlers
+
     .PARAMETER None
     This cmdlet does not accept parameters. It simply initializes and populates
     the EventHandlers property with predefined event handlers.

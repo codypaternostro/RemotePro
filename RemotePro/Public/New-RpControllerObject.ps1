@@ -8,6 +8,9 @@ function New-RpControllerObject {
     properties like EventHandlers. This object is typed as `RemotePro` and
     can be used to manage various aspects of the RemotePro environment.
 
+    .COMPONENT
+    ControllerObject
+
     .PARAMETER Refresh
     Forces the creation of a new RemotePro ControllerObject even if one already exists.
 

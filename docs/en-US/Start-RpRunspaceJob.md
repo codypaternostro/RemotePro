@@ -42,7 +42,7 @@ Start-RpRunspaceJob -ScriptBlock { Get-Process } -RunspaceJobs $global:RunspaceJ
 ### EXAMPLE 2
 ```
 Start-RpRunspaceJob -ScriptBlock { Get-Process } -ModulesToLoad @('MyModule') `
-    -AssembliesToLoad @('MyAssembly') -RunspaceJobs $global:RunspaceJobs
+-AssembliesToLoad @('MyAssembly') -RunspaceJobs $global:RunspaceJobs
 ```
 
 ## PARAMETERS

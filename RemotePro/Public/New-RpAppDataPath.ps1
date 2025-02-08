@@ -10,6 +10,9 @@ function New-RpAppDataPath {
     item management techniques from MilestonePSTools. Returns the full path.
     See link for MilestonePSTool's explanation of AppData usage.
 
+    .COMPONENT
+    AppDataPath
+
     .LINK
     https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
     #>

@@ -9,6 +9,9 @@ function Initialize-RpOpenRunspaces {
         track jobs in static runspaces. The open runspaces object is
         initialized once and shared across the session.
 
+    .COMPONENT
+    Runspaces
+
     .EXAMPLE
         $runspaces = Initialize-RpOpenRunspaces
         Write-Host "Initialized Open Runspaces: $runspaces"

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-RpConfigCommandJson
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new configuration JSON file for RemotePro.
 
 ## SYNTAX
 
@@ -18,21 +18,55 @@ New-RpConfigCommandJson [-Type] <String> [[-ConfigFilePath] <String>] [-Progress
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-RpConfigCommandJson function creates a new configuration JSON file
+based on the specified type.
+It supports creating a default JSON configuration
+or an empty JSON configuration.
+The function also allows specifying a custom
+path for the configuration file, defaulting to the application data location
+if not provided.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+New-RpConfigCommandJson -Type "DefaultJson"
 ```
 
-{{ Add example description here }}
+Creates a default JSON configuration file at the default application data
+location.
+
+### EXAMPLE 2
+```
+New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath "C:\Config\config.json"
+```
+
+Creates an empty JSON configuration file at the specified path.
 
 ## PARAMETERS
 
+### -Type
+Specifies the type of JSON to be created.
+Valid values are "DefaultJson" and
+"EmptyJson".
+This parameter is mandatory.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ConfigFilePath
-{{ Fill ConfigFilePath Description }}
+Specifies the path where the configuration file will be saved.
+If not provided,
+the default application data location is used.
 
 ```yaml
 Type: String
@@ -40,23 +74,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-{{ Fill Type Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-Accepted values: DefaultJson, EmptyJson
-
-Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -82,11 +100,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

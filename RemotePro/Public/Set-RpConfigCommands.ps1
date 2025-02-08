@@ -1,4 +1,34 @@
 function Set-RpConfigCommands {
+    <#
+    .SYNOPSIS
+    Sets the configuration commands for the RemotePro object.
+
+    .DESCRIPTION
+    The Set-RpConfigCommands function initializes and sets the configuration
+    commands for the RemotePro object. If the RemotePro object is not initialized,
+    an error is thrown. The function imports configuration commands from a specified
+    file path or uses a default path if none is provided.
+
+    .COMPONENT
+    ConfigCommands
+
+    .PARAMETER ConfigFilePath
+    The file path to the configuration file. If not provided, a default path is used.
+
+    .EXAMPLE
+    Set-RpConfigCommands -ConfigFilePath "C:\Path\To\ConfigFile.json"
+    This example sets the configuration commands using the specified configuration
+    file path.
+
+    .EXAMPLE
+    Set-RpConfigCommands
+    This example sets the configuration commands using the default configuration
+    file path.
+
+    .NOTES
+    Ensure that the RemotePro object is initialized by running New-RpControllerObject
+    before calling this function.
+    #>
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$false)]

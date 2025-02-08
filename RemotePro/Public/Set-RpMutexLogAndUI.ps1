@@ -1,31 +1,33 @@
 function Set-RpMutexLogAndUI {
     <#
-        .SYNOPSIS
-            Logs a message and updates a UI element with the same message.
+    .SYNOPSIS
+    Logs a message and updates a UI element with the same message.
 
-        .DESCRIPTION
-            This function logs a message to a specified log file and updates a
-            UI element (TextBox) with the same message. If the UI element is not
-            provided, it will only log the message.
+    .DESCRIPTION
+    This function logs a message to a specified log file and updates a
+    UI element (TextBox) with the same message. If the UI element is not
+    provided, it will only log the message.
 
-        .EXAMPLE
-            Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed." `
-                -uiElement $textBoxElement
+    .COMPONENT
+    Runspaces
 
-        .EXAMPLE
-            Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed."
+    .EXAMPLE
+    Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed." -uiElement $textBoxElement
 
-        .PARAMETER mutexName
-            The name of the Mutex used to ensure exclusive access. Defaults to a GUID.
+    .EXAMPLE
+    Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed."
 
-        .PARAMETER logPath
-            The path to the log file where the message will be recorded.
+    .PARAMETER mutexName
+    The name of the Mutex used to ensure exclusive access. Defaults to a GUID.
 
-        .PARAMETER message
-            The actual text that will be logged and optionally shown in the UI.
+    .PARAMETER logPath
+    The path to the log file where the message will be recorded.
 
-        .PARAMETER uiElement
-            The TextBox UI element to be updated with the message.
+    .PARAMETER message
+    The actual text that will be logged and optionally shown in the UI.
+
+    .PARAMETER uiElement
+    The TextBox UI element to be updated with the message.
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'LogAndUI')]

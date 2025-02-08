@@ -10,6 +10,9 @@ function Get-RpConfigPath {
     showcases path handling adaptations from MilestonePSTools, tailored for log
     file retrieval in RemotePro.
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER DefaultIds
     If specified, retrieves the path for the default IDs configuration file.
     #>

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-RequiresVmsConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Tests if a VMS connection is required and attempts to assert the connection.
 
 ## SYNTAX
 
@@ -17,16 +17,20 @@ Test-RequiresVmsConnection [-ProgressAction <ActionPreference>] [<CommonParamete
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Test-RequiresVmsConnection function checks if a VMS connection is
+required using the Assert-VmsRequirementsMet cmdlet.
+If the connection
+requirements are not met, it displays a warning message box and exits.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Example 1:
+PS C:\> Test-RequiresVmsConnection
+This command checks if a VMS connection is required and asserts the
+connection.
+```
 
 ## PARAMETERS
 
@@ -50,11 +54,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
+For more information, visit:
+https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
 
 ## RELATED LINKS

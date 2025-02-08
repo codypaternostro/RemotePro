@@ -8,6 +8,9 @@ function Get-RpRunspaceEvents {
     associated with the RemotePro connection profile UI. It retrieves handlers
     stored in the RemotePro.RunspaceEvents object.
 
+    .COMPONENT
+    RunspaceEvents
+
     .PARAMETER Name
     Retrieves a specific runspace event by its name.
 

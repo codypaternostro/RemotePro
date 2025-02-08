@@ -9,6 +9,9 @@ function Set-RPConnectionProfile {
     profiles. It uses different parameter sets to handle these tasks.
     See link for MilestonePSTool's explanation of AppData usage.
 
+    .COMPONENT
+    ConnectionProfiles
+
     .PARAMETER ExcelFilePath
     Path to the Excel file. This file contains connection profiles or is the
     location where a new template will be created. Mandatory in both

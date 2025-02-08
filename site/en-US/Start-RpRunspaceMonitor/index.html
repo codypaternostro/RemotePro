@@ -1293,7 +1293,7 @@
           <li class="md-nav__item">
   <a href="#example-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 1
+      EXAMPLE 1
     </span>
   </a>
   
@@ -1324,9 +1324,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-openrunspaces" class="md-nav__link">
+  <a href="#-uielement" class="md-nav__link">
     <span class="md-ellipsis">
-      -OpenRunspaces
+      -uiElement
     </span>
   </a>
   
@@ -1351,9 +1351,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-uielement" class="md-nav__link">
+  <a href="#-openrunspaces" class="md-nav__link">
     <span class="md-ellipsis">
-      -uiElement
+      -OpenRunspaces
     </span>
   </a>
   
@@ -1389,21 +1389,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="INPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#none" class="md-nav__link">
-    <span class="md-ellipsis">
-      None
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1412,21 +1397,6 @@
       OUTPUTS
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OUTPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#systemobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      System.Object
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1634,7 +1604,7 @@
           <li class="md-nav__item">
   <a href="#example-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 1
+      EXAMPLE 1
     </span>
   </a>
   
@@ -1665,9 +1635,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-openrunspaces" class="md-nav__link">
+  <a href="#-uielement" class="md-nav__link">
     <span class="md-ellipsis">
-      -OpenRunspaces
+      -uiElement
     </span>
   </a>
   
@@ -1692,9 +1662,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-uielement" class="md-nav__link">
+  <a href="#-openrunspaces" class="md-nav__link">
     <span class="md-ellipsis">
-      -uiElement
+      -OpenRunspaces
     </span>
   </a>
   
@@ -1730,21 +1700,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="INPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#none" class="md-nav__link">
-    <span class="md-ellipsis">
-      None
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1753,21 +1708,6 @@
       OUTPUTS
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OUTPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#systemobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      System.Object
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1809,47 +1749,52 @@
 
 <h1 id="start-rprunspacemonitor">Start-RpRunspaceMonitor</h1>
 <h2 id="synopsis">SYNOPSIS</h2>
-<p>{{ Fill in the Synopsis }}</p>
+<p>Experienced issues calling this command.
+The function is not used in the
+module yet.
+Starts a monitor for runspaces with a specified interval.</p>
 <h2 id="syntax">SYNTAX</h2>
 <pre><code>Start-RpRunspaceMonitor [-LogPath] &lt;String&gt; [-uiElement] &lt;TextBox&gt; [-RunspaceJobs] &lt;ArrayList&gt;
  [-RunspaceResults] &lt;ArrayList&gt; [[-OpenRunspaces] &lt;PSObject&gt;] [-ProgressAction &lt;ActionPreference&gt;]
  [&lt;CommonParameters&gt;]
 </code></pre>
 <h2 id="description">DESCRIPTION</h2>
-<p>{{ Fill in the Description }}</p>
+<p>Experienced issues calling this command.
+The function is not used in the
+module yet.
+The Start-RpRunspaceMonitor function initializes and starts a timer that
+periodically checks the status of runspaces.
+It uses the Watch-RpRunspaces
+function to perform the monitoring tasks.
+The timer interval is set to 2
+seconds.</p>
 <h2 id="examples">EXAMPLES</h2>
-<h3 id="example-1">Example 1</h3>
-<pre><code class="language-powershell">PS C:\&gt; {{ Add example code here }}
+<h3 id="example-1">EXAMPLE 1</h3>
+<pre><code>$timer = Start-RpRunspaceMonitor -LogPath &quot;C:\Logs\runspace.log&quot; `
+    -uiElement $textBox -RunspaceJobs $jobs -RunspaceResults $results
 </code></pre>
-<p>{{ Add example description here }}</p>
+<p>This example starts the runspace monitor with the specified log path, UI
+element, runspace jobs, and runspace results.
+The timer object is stored
+in the $timer variable.</p>
 <h2 id="parameters">PARAMETERS</h2>
 <h3 id="-logpath">-LogPath</h3>
-<p>{{ Fill LogPath Description }}</p>
+<p>Specifies the path to the log file where runspace monitoring information
+will be recorded.</p>
 <pre><code class="language-yaml">Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 </code></pre>
-<h3 id="-openrunspaces">-OpenRunspaces</h3>
-<p>{{ Fill OpenRunspaces Description }}</p>
-<pre><code class="language-yaml">Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-</code></pre>
-<h3 id="-runspacejobs">-RunspaceJobs</h3>
-<p>{{ Fill RunspaceJobs Description }}</p>
-<pre><code class="language-yaml">Type: ArrayList
+<h3 id="-uielement">-uiElement</h3>
+<p>Specifies the UI element (TextBox) where runspace monitoring information
+will be displayed.</p>
+<pre><code class="language-yaml">Type: TextBox
 Parameter Sets: (All)
 Aliases:
 
@@ -1859,8 +1804,8 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 </code></pre>
-<h3 id="-runspaceresults">-RunspaceResults</h3>
-<p>{{ Fill RunspaceResults Description }}</p>
+<h3 id="-runspacejobs">-RunspaceJobs</h3>
+<p>Specifies the collection of runspace jobs to be monitored.</p>
 <pre><code class="language-yaml">Type: ArrayList
 Parameter Sets: (All)
 Aliases:
@@ -1871,14 +1816,27 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 </code></pre>
-<h3 id="-uielement">-uiElement</h3>
-<p>{{ Fill uiElement Description }}</p>
-<pre><code class="language-yaml">Type: TextBox
+<h3 id="-runspaceresults">-RunspaceResults</h3>
+<p>Specifies the collection of runspace results to be monitored.</p>
+<pre><code class="language-yaml">Type: ArrayList
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-openrunspaces">-OpenRunspaces</h3>
+<p>Specifies the collection of open runspaces.
+This parameter is optional.</p>
+<pre><code class="language-yaml">Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -1898,10 +1856,11 @@ Accept wildcard characters: False
 <h3 id="commonparameters">CommonParameters</h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
 <h2 id="inputs">INPUTS</h2>
-<h3 id="none">None</h3>
 <h2 id="outputs">OUTPUTS</h2>
-<h3 id="systemobject">System.Object</h3>
 <h2 id="notes">NOTES</h2>
+<p>Experienced issues calling this command.
+The function is not used in the
+module yet.</p>
 <h2 id="related-links">RELATED LINKS</h2>
 
 

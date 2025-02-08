@@ -8,6 +8,9 @@ function Get-RpConnectionProfile {
     the provided parameters. It can either show all profiles, a specific profile
     by name, or open the credentials XML file for direct viewing.
 
+    .COMPONENT
+    ConnectionProfiles
+
     .PARAMETER Name
     The name of the connection profile to retrieve. Used when the user wants to
     view a specific profile. Only valid in the 'ViewProfiles' parameter set.

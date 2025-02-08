@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-RpDefaultConfigCommandIds
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the default configuration command IDs for RemotePro.
 
 ## SYNTAX
 
@@ -18,21 +18,39 @@ Set-RpDefaultConfigCommandIds [[-ConfigFilePath] <String>] [-ProgressAction <Act
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Set-RpDefaultConfigCommandIds function initializes and sets the default
+configuration command IDs for the RemotePro object.
+If the RemotePro object
+is not initialized, an error is thrown.
+The function can take an optional
+ConfigFilePath parameter to specify the path to the configuration file.
+If
+the ConfigFilePath is not provided, it uses the default path from
+Get-RpConfigPath.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Set-RpDefaultConfigCommandIds -ConfigFilePath "C:\Path\To\ConfigFile.json"
+Initializes and sets the default configuration command IDs using the
+specified configuration file.
 ```
 
-{{ Add example description here }}
+### EXAMPLE 2
+```
+Set-RpDefaultConfigCommandIds
+Initializes and sets the default configuration command IDs using the default
+configuration file path.
+```
 
 ## PARAMETERS
 
 ### -ConfigFilePath
-{{ Fill ConfigFilePath Description }}
+Optional.
+Specifies the path to the configuration file.
+If not provided,
+the default path is used.
 
 ```yaml
 Type: String
@@ -40,7 +58,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -66,11 +84,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
+Ensure that the RemotePro object is initialized by running
+New-RpControllerObject before calling this function.
 
 ## RELATED LINKS

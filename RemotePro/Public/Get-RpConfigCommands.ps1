@@ -9,6 +9,9 @@ function Get-RpConfigCommands {
         returns all configuration commands; otherwise, it returns the
         configuration commands as a single object.
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER All
         If specified, retrieves all configuration commands as an hashtable of values.
 

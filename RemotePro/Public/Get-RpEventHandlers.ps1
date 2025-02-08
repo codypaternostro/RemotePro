@@ -8,6 +8,9 @@ function Get-RpEventHandlers {
     handlers associated with the RemotePro connection profile UI.
     It retrieves handlers stored in the `RemotePro.EventHandlers` object.
 
+    .COMPONENT
+    EventHandlers
+
     .PARAMETER Name
     The name of the specific event handler to retrieve. This parameter is
     mutually exclusive with the All parameter.

@@ -34,8 +34,7 @@ provided, it will only log the message.
 
 ### EXAMPLE 1
 ```
-Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed." `
-    -uiElement $textBoxElement
+Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed." -uiElement $textBoxElement
 ```
 
 ### EXAMPLE 2

@@ -7,6 +7,9 @@ function Get-RpVmsItemStateCustom {
     This function retrieves the state of VMS items, specifically cameras, and displays the results in an HTML view.
     It also provides an optional parameter to validate the connection before processing.
 
+    .COMPONENT
+    CustomVMSCmdlets
+
     .PARAMETER CheckConnection
     Validates the VMS connection before processing the items.
     If the connection is not valid, the function will display an error message and exit early.

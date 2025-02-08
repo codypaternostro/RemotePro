@@ -12,6 +12,9 @@ function Reset-RpConfigCommandDefaults {
         properties. In the RpControllerObject, these properties are used to store
         the configuration commands and their default ids.
 
+    .COMPONENT
+    DefaultConfigCommands
+
     .EXAMPLE
         Reset-RpConfigCommandDefaults
 

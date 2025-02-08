@@ -19,6 +19,9 @@ function Set-RpRunspaceEvents {
     Additionally, the hashtable is assigned a custom type
     'RemotePro.RunspaceEvents' for identification and future use.
 
+    .COMPONENT
+    RunspaceEvents
+
     .PARAMETER None
     This cmdlet does not accept parameters. It initializes and sets up
     event handlers for the RemotePro environment.

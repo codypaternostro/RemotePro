@@ -1,61 +1,64 @@
 function Start-RpRunspaceJobStatic {
     <#
-        .SYNOPSIS
-        Starts static runspace jobs and tracks them in a global collection.
+    .SYNOPSIS
+    Starts static runspace jobs and tracks them in a global collection.
 
-        .DESCRIPTION
-        This cmdlet starts multiple static runspace jobs. Each job is defined
-        with a JobName and JobDetailsVariableName, ensuring consistent and
-        predictable job handling. The job details (including JobName, Runspace
-        ID, and Instance ID) are added to a global collection
-        ($script:RpOpenRunspaces.Jobs) for tracking.
+    .DESCRIPTION
+    This cmdlet starts multiple static runspace jobs. Each job is defined
+    with a JobName and JobDetailsVariableName, ensuring consistent and
+    predictable job handling. The job details (including JobName, Runspace
+    ID, and Instance ID) are added to a global collection
+    ($script:RpOpenRunspaces.Jobs) for tracking.
 
-        .PARAMETER Jobs
-        An array of job definitions. Each job definition is a hashtable with
-        the following keys:
-        - **JobName**: A string that defines the name of the job.
-        - **JobDetailsVariableName**: The variable name for the job details.
-        - **Description**: A string describing the job's purpose.
-        - **ScriptBlock**: The code that will be executed within the runspace.
+    .COMPONENT
+    Runspaces
 
-        .PARAMETER uiElement
-        A `System.Windows.Controls.TextBox` used to pass logs from the runspace job.
+    .PARAMETER Jobs
+    An array of job definitions. Each job definition is a hashtable with
+    the following keys:
+    - **JobName**: A string that defines the name of the job.
+    - **JobDetailsVariableName**: The variable name for the job details.
+    - **Description**: A string describing the job's purpose.
+    - **ScriptBlock**: The code that will be executed within the runspace.
 
-        .PARAMETER OpenRunspaces
-        A collection (ObservableCollection) that stores the details of all
-        runspace jobs.
+    .PARAMETER uiElement
+    A `System.Windows.Controls.TextBox` used to pass logs from the runspace job.
 
-        .PARAMETER RunspaceJobs
-        Optional. An ArrayList that tracks individual runspace jobs.
+    .PARAMETER OpenRunspaces
+    A collection (ObservableCollection) that stores the details of all
+    runspace jobs.
 
-        .EXAMPLE
-        Define the jobs to run
-        $jobsToRun = @(
-            @{
-                JobName                = "VmsCameraReportJob"
-                JobDetailsVariableName = "VmsCameraReportJobDetails"
-                Description            = "Fetches the VMS Camera Report"
-                ScriptBlock            = { Write-Host "Fetching VMS Camera Report..." }
-            },
-            @{
-                JobName                = "ShowCameraJob"
-                JobDetailsVariableName = "ShowCameraJobDetails"
-                Description            = "Displays the camera feed"
-                ScriptBlock            = { Write-Host "Displaying Camera Feed..." }
-            }
-        )
+    .PARAMETER RunspaceJobs
+    Optional. An ArrayList that tracks individual runspace jobs.
 
-        Start the runspace jobs
-        $script:RpOpenRunspaces = Start-RpRunspaceJobStatic
-            -Jobs $jobsToRun
-            -uiElement $script:Runspace_Mutex_Log
-            -OpenRunspaces $script:RpOpenRunspaces
-            -RunspaceJobs $script:RunspaceJobs
-            -Verbose
+    .EXAMPLE
+    Define the jobs to run
+    $jobsToRun = @(
+        @{
+            JobName                = "VmsCameraReportJob"
+            JobDetailsVariableName = "VmsCameraReportJobDetails"
+            Description            = "Fetches the VMS Camera Report"
+            ScriptBlock            = { Write-Host "Fetching VMS Camera Report..." }
+        },
+        @{
+            JobName                = "ShowCameraJob"
+            JobDetailsVariableName = "ShowCameraJobDetails"
+            Description            = "Displays the camera feed"
+            ScriptBlock            = { Write-Host "Displaying Camera Feed..." }
+        }
+    )
 
-        This will start two jobs: one to fetch a VMS camera report and
-        another to display the camera feed. The job details will be stored
-        in $script:RpOpenRunspaces.Jobs.
+    Start the runspace jobs
+    $script:RpOpenRunspaces = Start-RpRunspaceJobStatic
+        -Jobs $jobsToRun
+        -uiElement $script:Runspace_Mutex_Log
+        -OpenRunspaces $script:RpOpenRunspaces
+        -RunspaceJobs $script:RunspaceJobs
+        -Verbose
+
+    This will start two jobs: one to fetch a VMS camera report and
+    another to display the camera feed. The job details will be stored
+    in $script:RpOpenRunspaces.Jobs.
     #>
     [CmdletBinding()]
     param (

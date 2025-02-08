@@ -25,6 +25,9 @@ function Show-RpItemPicker {
             Checks the VMS connection before showing the item picker. If the connection
             fails, the function will not proceed.
 
+    .COMPONENT
+    CustomVMSCmdlets
+
     .EXAMPLE
         Show-RpItemPicker -Title "Select Cameras" -Kind 'Camera'
         # Opens the item picker with the title "Select Cameras" displaying only camera items.

@@ -9,6 +9,9 @@ function Get-RpDefaultConfigCommandDetails {
     configuration commands from the RemotePro controller object. It utilizes the
     Get-RpControllerObject cmdlet to fetch the property ConfigCommandDefaultIds.
 
+    .COMPONENT
+    DefaultConfigCommands
+
     .EXAMPLE
     Get-RpDefaultConfigCommands
     #>

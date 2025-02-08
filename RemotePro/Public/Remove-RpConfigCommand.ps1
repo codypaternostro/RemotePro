@@ -7,6 +7,9 @@ function Remove-RpConfigCommand {
     The Remove-RpConfigCommand cmdlet removes a specified configuration command
     from the RemotePro controller object.
 
+    .COMPONENT
+    ConfigCommands
+
     .PARAMETER CommandName
     The name of the configuration command to remove. This parameter is mandatory
     and accepts pipeline input by property name.

@@ -8,6 +8,9 @@ function Initialize-RpRunspaceJobs {
         runspace jobs safely across multiple threads. It ensures thread-
         safe management of runspace jobs using the Synchronized method.
 
+    .COMPONENT
+    Runspaces
+
     .EXAMPLE
         $runspaceJobs = Initialize-RpRunspaceJobs
         Write-Host "Initialized Runspace Jobs: $runspaceJobs"

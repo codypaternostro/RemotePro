@@ -8,7 +8,10 @@ schema: 2.0.0
 # Start-RpRunspaceMonitor
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Experienced issues calling this command.
+The function is not used in the
+module yet.
+Starts a monitor for runspaces with a specified interval.
 
 ## SYNTAX
 
@@ -19,21 +22,34 @@ Start-RpRunspaceMonitor [-LogPath] <String> [-uiElement] <TextBox> [-RunspaceJob
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Experienced issues calling this command.
+The function is not used in the
+module yet.
+The Start-RpRunspaceMonitor function initializes and starts a timer that
+periodically checks the status of runspaces.
+It uses the Watch-RpRunspaces
+function to perform the monitoring tasks.
+The timer interval is set to 2
+seconds.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+$timer = Start-RpRunspaceMonitor -LogPath "C:\Logs\runspace.log" `
+    -uiElement $textBox -RunspaceJobs $jobs -RunspaceResults $results
 ```
 
-{{ Add example description here }}
+This example starts the runspace monitor with the specified log path, UI
+element, runspace jobs, and runspace results.
+The timer object is stored
+in the $timer variable.
 
 ## PARAMETERS
 
 ### -LogPath
-{{ Fill LogPath Description }}
+Specifies the path to the log file where runspace monitoring information
+will be recorded.
 
 ```yaml
 Type: String
@@ -41,32 +57,18 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OpenRunspaces
-{{ Fill OpenRunspaces Description }}
+### -uiElement
+Specifies the UI element (TextBox) where runspace monitoring information
+will be displayed.
 
 ```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RunspaceJobs
-{{ Fill RunspaceJobs Description }}
-
-```yaml
-Type: ArrayList
+Type: TextBox
 Parameter Sets: (All)
 Aliases:
 
@@ -77,8 +79,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RunspaceResults
-{{ Fill RunspaceResults Description }}
+### -RunspaceJobs
+Specifies the collection of runspace jobs to be monitored.
 
 ```yaml
 Type: ArrayList
@@ -92,16 +94,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -uiElement
-{{ Fill uiElement Description }}
+### -RunspaceResults
+Specifies the collection of runspace results to be monitored.
 
 ```yaml
-Type: TextBox
+Type: ArrayList
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OpenRunspaces
+Specifies the collection of open runspaces.
+This parameter is optional.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -127,11 +145,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
+Experienced issues calling this command.
+The function is not used in the
+module yet.
 
 ## RELATED LINKS
