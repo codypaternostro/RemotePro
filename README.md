@@ -28,7 +28,7 @@ See link for MilestonePSTool's explanation of
 [AppDataUsage](https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description)
 
 For more information please see the mkdocs webpage.
-[DocsSite](https://www.codypaternostro.com/RemotePro/)
+[DocsSite](https://www.remotepro.dev)
 
 ## Installation
 
