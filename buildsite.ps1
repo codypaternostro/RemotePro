@@ -5,8 +5,6 @@ $DocsFolder = ".\docs\en-US"
 $MkDocsFile = ".\mkdocs.yml"
 $ChangelogFile = ".\CHANGELOG.md"
 $ChangelogFolder = ".\docs\CHANGELOG"
-$CNAMEFILE = ".\site\CNAME"
-$CNAMEURL = "www.remotepro.dev"
 
 # Ensure the changelog folder exists
 if (-not (Test-Path -Path $ChangelogFolder)) {
@@ -58,12 +56,3 @@ if ($MkDocsContent -notmatch "  - Changelog:") {
 
 # Save the updated mkdocs.yml
 $MkDocsContent | Set-Content -Path $MkDocsFile -Encoding UTF8
-
-# Check for CNAME file and create one if it doesn't exist
-if (-not (Test-Path -Path $CNAMEFILE)) {
-    New-Item -ItemType File -Path $CNAMEFILE -Force
-    # Add CNAME URL to the CNAME file
-    $CNAMEURL | Set-Content -Path $CNAMEFILE -Encoding UTF8
-    Write-Host "mkdocs.yml and CNAME updated successfully!" -ForegroundColor Green
-}
-
