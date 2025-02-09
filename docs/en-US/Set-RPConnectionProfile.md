@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Set-RPConnectionProfile
+# Set-RpConnectionProfile
 
 ## SYNOPSIS
 Sets RemotePro connection profiles based on Excel file input.
@@ -14,17 +14,17 @@ Sets RemotePro connection profiles based on Excel file input.
 
 ### ProcessProfiles (Default)
 ```
-Set-RPConnectionProfile -ExcelFilePath <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Set-RpConnectionProfile -ExcelFilePath <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### CreateTemplate
 ```
-Set-RPConnectionProfile -ExcelFilePath <String> [-CreateTemplate] [-ProgressAction <ActionPreference>]
+Set-RpConnectionProfile -ExcelFilePath <String> [-CreateTemplate] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-RPConnectionProfile function manages RemotePro connection profiles.
+The Set-RpConnectionProfile function manages RemotePro connection profiles.
 It can process profiles from an Excel file or create a blank template for
 profiles.
 It uses different parameter sets to handle these tasks.
@@ -34,13 +34,13 @@ See link for MilestonePSTool's explanation of AppData usage.
 
 ### EXAMPLE 1
 ```
-Set-RPConnectionProfile -ExcelFilePath "path\to\file.xlsx"
+Set-RpConnectionProfile -ExcelFilePath "path\to\file.xlsx"
 # Processes connection profiles from the specified Excel file.
 ```
 
 ### EXAMPLE 2
 ```
-Set-RPConnectionProfile -ExcelFilePath "path\to\template.xlsx" -CreateTemplate
+Set-RpConnectionProfile -ExcelFilePath "path\to\template.xlsx" -CreateTemplate
 # Creates a blank template at the specified path for entering connection
 # profiles.
 ```

@@ -27,7 +27,7 @@ function Add-RpConfigCommand {
 
     .PARAMETER ConfigFilePath
     Specifies the path where the JSON configuration file is saved. If the
-    file does not exist, it will be created. Default: `Get-RPConfigPath`
+    file does not exist, it will be created. Default: `Get-RpConfigPath`
 
     .PARAMETER Description
     Optional. A brief description for the command being exported.
@@ -86,11 +86,11 @@ function Add-RpConfigCommand {
     begin {
         # Use appdata path if there is not a filepath value.
         if (-not $PSBoundParameters.ContainsKey('ConfigFilePath') -or [string]::IsNullOrWhiteSpace($ConfigFilePath)) {
-            $ConfigFilePath = Get-RPConfigPath
+            $ConfigFilePath = Get-RpConfigPath
         }
 
         if (-not ($ConfigFilePath)){
-            $ConfigFilePath = Get-RPConfigPath
+            $ConfigFilePath = Get-RpConfigPath
         }
 
 

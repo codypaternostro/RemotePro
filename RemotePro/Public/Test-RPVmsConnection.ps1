@@ -29,6 +29,6 @@ function Test-RpVmsConnection {
         [bool]$ShowErrorDialog = $true
     )
 
-    $connectionChecker = New-Object -TypeName RPVmsConnectionChecker -ArgumentList $ShowErrorDialog
+    $connectionChecker = New-Object -TypeName RpVmsConnectionChecker -ArgumentList $ShowErrorDialog
     return $connectionChecker.CheckConnection()
 }

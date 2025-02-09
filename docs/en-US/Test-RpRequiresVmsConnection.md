@@ -5,7 +5,7 @@ online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758
 schema: 2.0.0
 ---
 
-# Test-RequiresVmsConnection
+# Test-RpRequiresVmsConnection
 
 ## SYNOPSIS
 Tests if a VMS connection is required and attempts to assert the connection.
@@ -13,7 +13,7 @@ Tests if a VMS connection is required and attempts to assert the connection.
 ## SYNTAX
 
 ```
-Test-RequiresVmsConnection [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Test-RpRequiresVmsConnection [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

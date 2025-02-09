@@ -5,7 +5,7 @@ online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758
 schema: 2.0.0
 ---
 
-# Show-RPProfileEntryDialog
+# Show-RpProfileEntryDialog
 
 ## SYNOPSIS
 Displays a dialog for entering or editing a connection profile's details.
@@ -13,7 +13,7 @@ Displays a dialog for entering or editing a connection profile's details.
 ## SYNTAX
 
 ```
-Show-RPProfileEntryDialog [-Edit] [[-SelectedProfile] <PSObject>] [<CommonParameters>]
+Show-RpProfileEntryDialog [-Edit] [[-SelectedProfile] <PSObject>]
 ```
 
 ## DESCRIPTION
@@ -64,9 +64,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

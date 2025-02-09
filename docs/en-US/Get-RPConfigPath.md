@@ -18,7 +18,7 @@ Get-RpConfigPath [-DefaultIds] [-ProgressAction <ActionPreference>] [<CommonPara
 ```
 
 ## DESCRIPTION
-This function, Get-RPConfigurationPath, calls New-RpAppDataPath to get the
+This function, Get-RpConfigurationPath, calls New-RpAppDataPath to get the
 app data directory and then appends 'RemoteProParamConfig.json'.
 It
 showcases path handling adaptations from MilestonePSTools, tailored for log

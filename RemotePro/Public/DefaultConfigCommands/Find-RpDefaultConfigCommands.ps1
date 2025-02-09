@@ -7,7 +7,7 @@ function Find-RpDefaultConfigCommands {
     .DESCRIPTION
     The Find-RpDefaultConfigCommands function is used to retrieve the default
     configuration commands from the RemoteProParamConfigDefaultIds.json file
-    using the Get-RPConfigPath -DefaultIds cmdlet. It can retrieve commands
+    using the Get-RpConfigPath -DefaultIds cmdlet. It can retrieve commands
     by name, by Id, or all commands across all modules.
 
     .COMPONENT
@@ -58,7 +58,7 @@ function Find-RpDefaultConfigCommands {
     begin {
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
-            $ConfigFilePath = Get-RPConfigPath -DefaultIds
+            $ConfigFilePath = Get-RpConfigPath -DefaultIds
         }
     }
 

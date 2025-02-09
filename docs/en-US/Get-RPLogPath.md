@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Get-RPLogPath
+# Get-RpLogPath
 
 ## SYNOPSIS
 Retrieves the path for RemotePro log file by using adapted logic from
@@ -14,11 +14,11 @@ MilestonePSTools.
 ## SYNTAX
 
 ```
-Get-RPLogPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpLogPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function, Get-RPLog, calls New-RpAppDataPath to get the app data
+This function, Get-RpLog, calls New-RpAppDataPath to get the app data
 directory and then appends 'RemoteProLog.txt'.
 It showcases path handling
 adaptations from MilestonePSTools, tailored for log file retrieval in

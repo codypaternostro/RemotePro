@@ -54,7 +54,7 @@ function Set-RpConfigCommands {
 
             # Use appdata path if there is not a filepath value.
             if (-not ($ConfigFilePath)){
-                $ConfigFilePath = Get-RPConfigPath
+                $ConfigFilePath = Get-RpConfigPath
             }
 
             # Define config commands

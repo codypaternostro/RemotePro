@@ -1,10 +1,10 @@
-function Set-RPConnectionProfile {
+function Set-RpConnectionProfile {
     <#
     .SYNOPSIS
     Sets RemotePro connection profiles based on Excel file input.
 
     .DESCRIPTION
-    The Set-RPConnectionProfile function manages RemotePro connection profiles.
+    The Set-RpConnectionProfile function manages RemotePro connection profiles.
     It can process profiles from an Excel file or create a blank template for
     profiles. It uses different parameter sets to handle these tasks.
     See link for MilestonePSTool's explanation of AppData usage.
@@ -22,11 +22,11 @@ function Set-RPConnectionProfile {
     defining connection profiles. Mandatory in 'CreateTemplate' parameter set.
 
     .EXAMPLE
-    Set-RPConnectionProfile -ExcelFilePath "path\to\file.xlsx"
+    Set-RpConnectionProfile -ExcelFilePath "path\to\file.xlsx"
     # Processes connection profiles from the specified Excel file.
 
     .EXAMPLE
-    Set-RPConnectionProfile -ExcelFilePath "path\to\template.xlsx" -CreateTemplate
+    Set-RpConnectionProfile -ExcelFilePath "path\to\template.xlsx" -CreateTemplate
     # Creates a blank template at the specified path for entering connection
     # profiles.
 

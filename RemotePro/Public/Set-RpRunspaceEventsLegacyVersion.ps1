@@ -141,7 +141,7 @@ function Set-RpRunspaceEventsLegacyVersion {
                 # Create a PowerShell object and attach it to the retrieved runspace
                 $ps = [System.Management.Automation.PowerShell]::Create()
             #>
-            $platformItemcameras = Show-RPItemPicker -Title "Custom Item Picker" -Kind @("Camera") -CheckConnection
+            $platformItemcameras = Show-RpItemPicker -Title "Custom Item Picker" -Kind @("Camera") -CheckConnection
             Start-RpRunspaceJob -ScriptBlock {
                 param (
                     $platformItemcameras
@@ -200,7 +200,7 @@ function Set-RpRunspaceEventsLegacyVersion {
 
         TicketBlock_Click = {
             $platformItemcameras =  [System.Collections.Generic.List[VideoOS.Platform.ConfigurationItems.Camera]]::new()
-            $platformItemcameras = Show-RPItemPicker -Title "Custom Item Picker" -Kind @("Camera", "Hardware", "Server") -ConfigItemsCamsOnly -CheckConnection
+            $platformItemcameras = Show-RpItemPicker -Title "Custom Item Picker" -Kind @("Camera", "Hardware", "Server") -ConfigItemsCamsOnly -CheckConnection
             Start-RpRunspaceJob -ScriptBlock {
                 param (
                     [Parameter()]

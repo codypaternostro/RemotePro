@@ -1,4 +1,4 @@
-function Show-RPProfileEntryDialog {
+function Show-RpProfileEntryDialog {
     <#
     .SYNOPSIS
     Displays a dialog for entering or editing a connection profile's details.

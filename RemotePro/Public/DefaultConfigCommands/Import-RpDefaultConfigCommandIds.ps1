@@ -30,7 +30,7 @@ function Import-RpDefaultConfigCommandIds {
     process {
         if (-not ($ConfigFilePath)) {
             Write-Verbose "No ConfigFilePath provided. Attempting to retrieve default path."
-            $ConfigFilePath = Get-RPConfigPath -DefaultIds
+            $ConfigFilePath = Get-RpConfigPath -DefaultIds
         }
 
         if (-not (Test-Path -Path $ConfigFilePath)) {

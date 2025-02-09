@@ -90,7 +90,7 @@ $preparedCommand | Invoke-RpCommandObject -UseInvokeCommand -ComputerName "Remot
 ### -ConfigFilePath
 The path to the configuration JSON file.
 If not provided, the function uses the
-default path returned by the \`Get-RPConfigPath\` function.
+default path returned by the \`Get-RpConfigPath\` function.
 
 ```yaml
 Type: String

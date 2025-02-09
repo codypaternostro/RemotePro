@@ -33,20 +33,20 @@ function Find-RpConfigCommand {
     duplicate Id.
 
     .EXAMPLE
-    Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' -ConfigFilePath $(Get-RpConfigurationPath)
     Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
-    using the configuration path from Get-RPConfigurationPath.
+    using the configuration path from Get-RpConfigurationPath.
 
     .EXAMPLE
-    Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' -ConfigFilePath $(Get-RpConfigurationPath)
     Retrieves all commands within the 'RemotePro' module.
 
     .EXAMPLE
-    Find-RpConfigCommand -All -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -All -ConfigFilePath $(Get-RpConfigurationPath)
     Retrieves all commands from all modules in the configuration.
 
     .EXAMPLE
-    Find-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RPConfigurationPath)
+    Find-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RpConfigurationPath)
     Retrieves the command with the Id '12345' from the configuration.
     #>
     [CmdletBinding()]
@@ -79,7 +79,7 @@ function Find-RpConfigCommand {
     begin {
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
-            $ConfigFilePath = Get-RPConfigPath
+            $ConfigFilePath = Get-RpConfigPath
         }
     }
 

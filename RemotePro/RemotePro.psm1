@@ -67,7 +67,7 @@ Install-RpRequiredModules -Verbose
 
 #region set runspace log and configuration file.
 $script:logPath = Get-RPLogPath
-$script:configPath = Get-RPConfigPath
+$script:configPath = Get-RpConfigPath
 
 
 if (-not (Get-RpControllerObject)) {

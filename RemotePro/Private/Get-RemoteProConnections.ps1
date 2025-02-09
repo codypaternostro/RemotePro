@@ -11,7 +11,7 @@ function Get-RemoteProConnections {
         $script:Connections_Combo_Box.Items.Clear()
 
         if ($ConnectionFilePath){
-            Set-RPConnectionProfile -ExcelFilePath $ConnectionFilePath
+            Set-RpConnectionProfile -ExcelFilePath $ConnectionFilePath
         }
 
         $connectionProfiles = Get-RpConnectionProfile -All

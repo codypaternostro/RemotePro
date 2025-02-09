@@ -15,7 +15,7 @@ nav:
       - Installation: getting-started/installation.md
       - Configuration: getting-started/configuration.md
       - Usage Guide: getting-started/usageguide.md
-  - Commands:
+    - Commands:
       - Add-RpConfigCommand: en-US/Add-RpConfigCommand.md
       - Find-RpConfigCommand: en-US/Find-RpConfigCommand.md
       - Find-RpDefaultConfigCommands: en-US/Find-RpDefaultConfigCommands.md
@@ -25,7 +25,7 @@ nav:
       - Get-RpControllerObject: en-US/Get-RpControllerObject.md
       - Get-RpDefaultConfigCommandDetails: en-US/Get-RpDefaultConfigCommandDetails.md
       - Get-RpEventHandlers: en-US/Get-RpEventHandlers.md
-      - Get-RPLogPath: en-US/Get-RPLogPath.md
+      - Get-RpLogPath: en-US/Get-RpLogPath.md
       - Get-RpRunspaceEvents: en-US/Get-RpRunspaceEvents.md
       - Get-RpTicketBlock: en-US/Get-RpTicketBlock.md
       - Get-RpVmsHardwareCustom: en-US/Get-RpVmsHardwareCustom.md
@@ -43,7 +43,7 @@ nav:
       - Reset-RpConfigCommandDefaults: en-US/Reset-RpConfigCommandDefaults.md
       - Set-RpConfigCommands: en-US/Set-RpConfigCommands.md
       - Set-RpConfigDefaults: en-US/Set-RpConfigDefaults.md
-      - Set-RPConnectionProfile: en-US/Set-RPConnectionProfile.md
+      - Set-RpConnectionProfile: en-US/Set-RpConnectionProfile.md
       - Set-RpDefaultConfigCommandIds: en-US/Set-RpDefaultConfigCommandIds.md
       - Set-RpEventHandlers: en-US/Set-RpEventHandlers.md
       - Set-RpMutexLogAndUI: en-US/Set-RpMutexLogAndUI.md
@@ -51,12 +51,12 @@ nav:
       - Set-RpRunspaceEventsLegacyVersion: en-US/Set-RpRunspaceEventsLegacyVersion.md
       - Show-RpCamera: en-US/Show-RpCamera.md
       - Show-RpItemPicker: en-US/Show-RpItemPicker.md
-      - Show-RPProfileEntryDialog: en-US/Show-RPProfileEntryDialog.md
+      - Show-RpProfileEntryDialog: en-US/Show-RpProfileEntryDialog.md
       - Start-RpRemotePro: en-US/Start-RpRemotePro.md
       - Start-RpRunspaceJob: en-US/Start-RpRunspaceJob.md
       - Start-RpRunspaceJobStatic: en-US/Start-RpRunspaceJobStatic.md
       - Start-RpRunspaceMonitor: en-US/Start-RpRunspaceMonitor.md
-      - Test-RequiresVmsConnection: en-US/Test-RequiresVmsConnection.md
+      - Test-RpRequiresVmsConnection: en-US/Test-RpRequiresVmsConnection.md
       - Test-RpVmsConnection: en-US/Test-RpVmsConnection.md
       - Update-RpConfigCommand: en-US/Update-RpConfigCommand.md
       - Watch-RpRunspaces: en-US/Watch-RpRunspaces.md

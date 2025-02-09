@@ -13,9 +13,9 @@ system.
 
 ## SYNTAX
 
-### RPItemPickerSet (Default)
+### RpItemPickerSet (Default)
 ```
-Show-RpCamera [-ShowRPItemPicker] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
+Show-RpCamera [-ShowRpItemPicker] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
  [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Show-RpCamera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequen
 
 ### EXAMPLE 3
 ```
-Show-RpCamera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
+Show-RpCamera -ShowRpItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
 # This command uses a custom item picker for camera selection and shows the
 # selected camera feed with a high diagnostic level overlay for the past 30
 # days.
@@ -108,14 +108,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ShowRPItemPicker
+### -ShowRpItemPicker
 Displays a custom item picker dialog for camera selection.
 Mandatory in the
-'RPItemPickerSet' parameter set.
+'RpItemPickerSet' parameter set.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: RPItemPickerSet
+Parameter Sets: RpItemPickerSet
 Aliases:
 
 Required: True

@@ -23,7 +23,7 @@ function Import-RpConfig {
 
     .PARAMETER ConfigFilePath
     The path to the configuration JSON file. If not provided, the function uses the
-    default path returned by the `Get-RPConfigPath` function.
+    default path returned by the `Get-RpConfigPath` function.
 
     .OUTPUTS
     Hashtable
@@ -83,7 +83,7 @@ function Import-RpConfig {
 
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
-            $ConfigFilePath = Get-RPConfigPath
+            $ConfigFilePath = Get-RpConfigPath
         }
     }
 

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Added
 - Add .COMPONENT to each cmdlet's help section.
-- Remove nested folders in public.
+- Rename nested folders in public directory.
 - CNAME for gh-pages branch
 
 ## [0.1.4] - 2025-02-04

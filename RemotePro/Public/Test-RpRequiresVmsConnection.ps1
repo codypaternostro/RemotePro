@@ -1,4 +1,4 @@
-function Test-RequiresVmsConnection {
+function Test-RpRequiresVmsConnection {
     <#
     .SYNOPSIS
     Tests if a VMS connection is required and attempts to assert the connection.

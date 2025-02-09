@@ -116,7 +116,7 @@ function Update-RpConfigCommand {
             return
 
             if (-not $PSBoundParameters.ContainsKey('ConfigFilePath') -or [string]::IsNullOrWhiteSpace($ConfigFilePath)) {
-                $ConfigFilePath = Get-RPConfigPath
+                $ConfigFilePath = Get-RpConfigPath
             }
         }
     }
@@ -124,7 +124,7 @@ function Update-RpConfigCommand {
     process {
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
-            $ConfigFilePath = Get-RPConfigPath
+            $ConfigFilePath = Get-RpConfigPath
         }
 
         # Load configuration JSON

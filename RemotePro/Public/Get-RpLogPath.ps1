@@ -1,11 +1,11 @@
-function Get-RPLogPath {
+function Get-RpLogPath {
     <#
     .SYNOPSIS
     Retrieves the path for RemotePro log file by using adapted logic from
     MilestonePSTools.
 
     .DESCRIPTION
-    This function, Get-RPLog, calls New-RpAppDataPath to get the app data
+    This function, Get-RpLog, calls New-RpAppDataPath to get the app data
     directory and then appends 'RemoteProLog.txt'. It showcases path handling
     adaptations from MilestonePSTools, tailored for log file retrieval in
     RemotePro.

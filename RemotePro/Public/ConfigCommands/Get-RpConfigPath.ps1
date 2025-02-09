@@ -5,7 +5,7 @@ function Get-RpConfigPath {
     MilestonePSTools.
 
     .DESCRIPTION
-    This function, Get-RPConfigurationPath, calls New-RpAppDataPath to get the
+    This function, Get-RpConfigurationPath, calls New-RpAppDataPath to get the
     app data directory and then appends 'RemoteProParamConfig.json'. It
     showcases path handling adaptations from MilestonePSTools, tailored for log
     file retrieval in RemotePro.

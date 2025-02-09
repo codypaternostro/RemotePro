@@ -1,10 +1,10 @@
 using namespace System.Management.Automation
 using namespace System.Windows
 
-class RPVmsConnectionChecker {
+class RpVmsConnectionChecker {
     [bool]$ShowErrorDialog
 
-    RPVmsConnectionChecker([bool] $showErrorDialog) {
+    RpVmsConnectionChecker([bool] $showErrorDialog) {
         $this.ShowErrorDialog = $showErrorDialog
     }
 

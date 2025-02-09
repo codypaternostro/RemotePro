@@ -62,7 +62,7 @@ function Remove-RpConfigCommand {
     begin {
         # Use appdata path if there is not a filepath value.
         if (-not ($ConfigFilePath)){
-            $ConfigFilePath = Get-RPConfigPath
+            $ConfigFilePath = Get-RpConfigPath
         }
     }
 

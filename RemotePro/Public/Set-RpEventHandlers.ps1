@@ -77,7 +77,7 @@ function Set-RpEventHandlers {
         NewConnectionFile_Click = {
             [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
             try {
-                Set-RPConnectionProfile -CreateTemplate -ExcelFilePath $(Join-Path -Path (New-RpAppDataPath) -ChildPath 'ConnectionFileTemplate.xlsx')
+                Set-RpConnectionProfile -CreateTemplate -ExcelFilePath $(Join-Path -Path (New-RpAppDataPath) -ChildPath 'ConnectionFileTemplate.xlsx')
 
                 $openFileDialog = New-Object System.Windows.Forms.OpenFileDialog
                 $openFileDialog.InitialDirectory = New-RpAppDataPath

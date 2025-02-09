@@ -23,9 +23,9 @@ function Show-RpCamera {
     Specifies the camera IDs as GUIDs. When this parameter is used, camera
     selection dialogs are bypassed. Mandatory in the 'IdSet' parameter set.
 
-    .PARAMETER ShowRPItemPicker
+    .PARAMETER ShowRpItemPicker
     Displays a custom item picker dialog for camera selection. Mandatory in the
-    'RPItemPickerSet' parameter set.
+    'RpItemPickerSet' parameter set.
 
     .PARAMETER ShowSelectCamera
     Uses the default camera selection dialog. Mandatory in the 'SelectCameraSet'
@@ -54,7 +54,7 @@ function Show-RpCamera {
     # with sequence data for the past 7 days.
 
     .EXAMPLE
-    Show-RpCamera -ShowRPItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
+    Show-RpCamera -ShowRpItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
     # This command uses a custom item picker for camera selection and shows the
     # selected camera feed with a high diagnostic level overlay for the past 30
     # days.
@@ -69,7 +69,7 @@ function Show-RpCamera {
     .LINK
     https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
     #>
-    [CmdletBinding(DefaultParameterSetName='RPItemPickerSet')]
+    [CmdletBinding(DefaultParameterSetName='RpItemPickerSet')]
     param (
         # Optional to pass in camera object to alleviate object dependency between threads.
         [Parameter(ValueFromPipeline,ParameterSetName='CameraObjectSet', Mandatory=$true)]
@@ -80,12 +80,12 @@ function Show-RpCamera {
         [guid[]]
         $Id,
 
-        # Show RPItemPicker instead of Select-Camera for making selections
-        [Parameter(ParameterSetName='RPItemPickerSet', Mandatory=$true)]
+        # Show RpItemPicker instead of Select-Camera for making selections
+        [Parameter(ParameterSetName='RpItemPickerSet', Mandatory=$true)]
         [switch]
-        $ShowRPItemPicker,
+        $ShowRpItemPicker,
 
-        # Show Select-Camera instead of Show-RPItemPicker for making selections
+        # Show Select-Camera instead of Show-RpItemPicker for making selections
         [Parameter(ParameterSetName='SelectCameraSet', Mandatory=$true)]
         [switch]
         $ShowSelectCamera,
@@ -131,8 +131,8 @@ function Show-RpCamera {
         elseif ($PSCmdlet.ParameterSetName -eq 'IdSet') {
             $cameraItems = $Id | ForEach-Object { Get-VmsCamera -Id $_ | Get-VmsVideoOSItem -Kind Camera }
         }
-        elseif ($PSCmdlet.ParameterSetName -eq 'RPItemPickerSet') {
-            $cameraItems = Show-RPItemPicker -Title "Custom Item Picker" -Kind @("Camera") -CheckConnection:$CheckConnection
+        elseif ($PSCmdlet.ParameterSetName -eq 'RpItemPickerSet') {
+            $cameraItems = Show-RpItemPicker -Title "Custom Item Picker" -Kind @("Camera") -CheckConnection:$CheckConnection
         }
         elseif ($PSCmdlet.ParameterSetName -eq 'SelectCameraSet') {
             $cameraItems = Select-Camera -Title "Select one or more cameras" -OutputAsItem -AllowFolders -AllowServers -RemoveDuplicates
@@ -143,7 +143,7 @@ function Show-RpCamera {
             return
         }
 
-        # TODO Condition for selecting entire camera folder - could be reworked into Show-RPItemPicker.
+        # TODO Condition for selecting entire camera folder - could be reworked into Show-RpItemPicker.
         if ($cameraItems.GetType().FullName -eq "VideoOS.Platform.SDK.Platform.AllRSFolderItem") {
             $cameraItems = $cameraItems.GetChildren()
         }

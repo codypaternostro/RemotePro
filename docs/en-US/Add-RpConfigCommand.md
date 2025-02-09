@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Specifies the path where the JSON configuration file is saved.
 If the
 file does not exist, it will be created.
-Default: \`Get-RPConfigPath\`
+Default: \`Get-RpConfigPath\`
 
 ```yaml
 Type: String
