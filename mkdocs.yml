@@ -70,3 +70,4 @@ plugins:
       enable_cache: True
       size: [800, 600]
       extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg']
+
