@@ -64,34 +64,34 @@
 
                             <Button Margin="24,0,0,0"
                                     materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
-                                    x:Name="MovePrevCommand"
-                                    Content="{materialDesign:PackIcon Kind=ArrowLeft, Size=24}"
+                                    x:Name="GithubRepositoryCommand"
+                                    Content="{materialDesign:PackIcon Kind=Github, Size=24}"
                                     Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                     Style="{StaticResource MaterialDesignToolButton}"
-                                    ToolTip="Previous Item" />
+                                    ToolTip="Github Repository" />
 
                             <Button Margin="16,0,0,0"
                                     materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
-                                    x:Name="MoveNextCommand"
-                                    Content="{materialDesign:PackIcon Kind=ArrowRight, Size=24}"
+                                    x:Name="PowerShellGalleryCommand"
+                                    Content="{materialDesign:PackIcon Kind=Powershell, Size=24}"
                                     Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                     Style="{StaticResource MaterialDesignToolButton}"
-                                    ToolTip="Next Item" />
+                                    ToolTip="PowerShell Gallery" />
 
                             <Button Margin="16,0,0,0"
                                     materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
-                                    x:Name="HomeCommand"
-                                    Content="{materialDesign:PackIcon Kind=Home, Size=24}"
+                                    x:Name="DocsSiteCommand"
+                                    Content="{materialDesign:PackIcon Kind=Web, Size=24}"
                                     Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                     Style="{StaticResource MaterialDesignToolButton}"
-                                    ToolTip="Home" />
+                                    ToolTip="Module Documentation" />
                         </StackPanel>
 
                         <materialDesign:PopupBox DockPanel.Dock="Right"
                                                  PlacementMode="BottomAndAlignRightEdges"
                                                  StaysOpen="False">
-                            <StackPanel>
-                                <Grid Margin="10">
+                            <StackPanel >
+                                <Grid Margin="10" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -102,21 +102,15 @@
                                         <RowDefinition />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <TextBlock Margin="0,0,10,0" Text="Light" />
-                                    <ToggleButton x:Name="DarkModeToggleButton" Grid.Column="1" />
-                                    <TextBlock Grid.Column="2" Margin="10,0,0,0" Text="Dark" />
-                                    <TextBlock Grid.Row="1" Margin="0,10,10,0" Text="Enabled" />
-                                    <ToggleButton x:Name="ControlsEnabledToggleButton" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" IsChecked="{Binding ControlsEnabled}" />
-                                    <TextBlock Grid.Row="2" Margin="0,10,10,0" Text="LTR" />
+                                    <TextBlock Margin="0,0,10,0" Text="Flow toggle" />
                                     <ToggleButton x:Name="FlowDirectionToggleButton" Grid.Row="2" Grid.Column="1" />
-                                    <TextBlock Grid.Row="2" Grid.Column="2" Margin="10,10,0,0" Text="RTL" />
+                                    <TextBlock Grid.Row="2" Grid.Column="2" Margin="10,10,0,0" Text="RTL" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Separator />
-                                <Button x:Name="HelloButton" Content="Hello World" />
-                                <Button x:Name="NicePopupButton" Content="Nice Popup" />
-                                <Button Content="Can't Touch This" IsEnabled="False" />
+                                <Button x:Name="ReportIssueCommand" Content="Report Issue" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" />
+                                <Button x:Name="LicenseInformationCommand" Content="License" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left"/>
                                 <Separator />
-                                <Button x:Name="GoodbyeButton" Content="Goodbye" />
+                                <Button x:Name="ExitApplicationCommand" Content="Exit Application" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
 
@@ -156,8 +150,8 @@
                                         </Grid.ColumnDefinitions>
 
                                         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80" Width="225">
-                                            <Button Name="New_Connection_File" Content="Create Connection File (.xlsx)" ToolTip="Create template for importing connection profiles." Height="30" Style="{StaticResource MaterialDesignFlatButton}" Margin="5" />
-                                            <Button Name="OpenFile" Content="Import Connections (.xlsx)" ToolTip="Select Excel spreadsheet for importing connection profiles." Height="30" Style="{StaticResource MaterialDesignFlatButton}" Margin="5" />
+                                            <Button Name="New_Connection_File" Content="Create Connection File" ToolTip="Create Excel template for importing connection profiles." Height="30" Style="{StaticResource MaterialDesignFlatButton}" Margin="5" />
+                                            <Button Name="OpenFile" Content="Import Connections" ToolTip="Select Excel spreadsheet for importing connection profiles." Height="30" Style="{StaticResource MaterialDesignFlatButton}" Margin="5" />
                                         </StackPanel>
 
                                         <!-- Dropdown for selecting connection -->
@@ -328,26 +322,28 @@
                                     TextWrapping="Wrap"
                                     IsReadOnly="True"
                                     VerticalAlignment="Top"
-                                    HorizontalAlignment="Stretch"
+                                    HorizontalAlignment="Left"
+                                    Width = "{Binding ActualWidth,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}}"
                                     MaxHeight="800"
                                     VerticalScrollBarVisibility="Auto"
                                     HorizontalScrollBarVisibility="Auto" />
                         </ScrollViewer>
                     </TabItem>
 
-                    <!-- New Tab 2 -->
-                    <TabItem Header="New Tab 2">
+                    <!-- Configuration -->
+                    <TabItem Header="Configuration">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <TextBlock Text="Placeholder content for New Tab 2" Margin="10" />
+                            <TextBlock Text="Placeholder content for Configuration" Margin="10" />
                         </ScrollViewer>
                     </TabItem>
 
-                    <!-- New Tab 3 -->
-                    <TabItem Header="New Tab 3">
+                    <!-- ToDo: Heartbeat Tab
+                    <TabItem Header="Heartbeat">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <TextBlock Text="Placeholder content for New Tab 3" Margin="10" />
+                            <TextBlock Text="Placeholder content for NHeartbeat" Margin="10" />
                         </ScrollViewer>
                     </TabItem>
+                    -->
                 </TabControl>
             </Grid>
         </materialDesign:DrawerHost>

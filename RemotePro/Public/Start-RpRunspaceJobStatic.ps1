@@ -104,6 +104,6 @@ function Start-RpRunspaceJobStatic {
     }
 
     # Return the global runspace jobs collection
-    Write-Verbose "Static runspace jobs created:"
+    Write-Verbose "Static runspace jobs created"
     return $script:RpOpenRunspaces
 }

@@ -77,14 +77,22 @@ function Start-RpRemotePro {
 
     # Automatically find and create script-scoped variables for each named XAML element
     $script:xaml.SelectNodes("//*[@Name]") | ForEach-Object -Process {
-        $variableName = $_.Name
-        $variableValue = $window.FindName($variableName)
+        try {
+            $variableName = $_.Name
+            $variableValue = $window.FindName($variableName)
 
-        # Note: since variables are set at the script scope "$script:" prefix is not needed but can be used.
-        Set-Variable -Name $variableName -Value $variableValue -Scope Script
+            if ($null -eq $variableValue) {
+                throw [System.InvalidOperationException] "No matching UI element found for '$variableName'."
+            }
 
-        # Write the variable name to the host
-        Write-Host "Created script-scoped variable: $variableName"
+            # Note: since variables are set at the script scope "$script:" prefix is not needed but can be used.
+            Set-Variable -Name $variableName -Value $variableValue -Scope Script
+
+            # Write the variable name to the host
+            Write-Verbose "Created script-scoped variable: $variableName"
+        } catch {
+            Write-Verbose "Failed to create script-scoped variable for: $($variableName): $($Error[0].Exception.Message)"
+        }
     }
     #endregion
 
@@ -112,15 +120,15 @@ function Start-RpRemotePro {
     $script:Delete_Profile_Button.Add_Click($script:RemotePro.EventHandlers.DeleteProfileButton_Click)
     $script:Edit_Profile_Button.Add_Click($script:RemotePro.EventHandlers.EditProfileButton_Click)
     $script:Add_Profile_Button.Add_Click($script:RemotePro.EventHandlers.AddProfileButton_Click)
-    $script:MovePrevCommand.Add_Click($script:RemotePro.EventHandlers.MovePrevButton_Click)
-    $script:MoveNextCommand.Add_Click($script:RemotePro.EventHandlers.MoveNextButton_Click)
-    $script:HomeCommand.Add_Click($script:RemotePro.EventHandlers.HomeButton_Click)
-    $script:DarkModeToggleButton.Add_Click($script:RemotePro.EventHandlers.DarkModeToggleButton_Click)
-    $script:ControlsEnabledToggleButton.Add_Click($script:RemotePro.EventHandlers.ControlsEnabledToggleButton_Click)
+
+    $script:GithubRepositoryCommand.Add_Click($script:RemotePro.EventHandlers.GithubRepositoryButton_Click)
+    $script:PowerShellGalleryCommand.Add_Click($script:RemotePro.EventHandlers.PowerShellGalleryButton_Click)
+    $script:DocsSiteCommand.Add_Click($script:RemotePro.EventHandlers.DocsSiteButton_Click)
     $script:FlowDirectionToggleButton.Add_Click($script:RemotePro.EventHandlers.FlowDirectionToggleButton_Click)
-    $script:HelloWorldButton.Add_Click($script:RemotePro.EventHandlers.HelloWorldButton_Click)
-    $script:NicePopupButton.Add_Click($script:RemotePro.EventHandlers.NicePopupButton_Click)
-    $script:GoodbyeButton.Add_Click($script:RemotePro.EventHandlers.GoodbyeButton_Click)
+    $script:ReportIssueCommand.Add_Click($script:RemotePro.EventHandlers.ReportIssueButton_Click)
+    $script:LicenseInformationCommand.Add_Click($script:RemotePro.EventHandlers.LicenseInformationButton_Click)
+    $script:ExitApplicationCommand.Add_Click($script:RemotePro.EventHandlers.Window_AddClosed_Click)
+
     $script:Runspace_Mutex_Log.Add_TextChanged($script:RemotePro.EventHandlers.RunspaceMutexLog_TextChanged)
     $script:Connection_Status_Box.Add_TextChanged($script:RemotePro.EventHandlers.CSB_TextChanged)
 
@@ -131,11 +139,11 @@ function Start-RpRemotePro {
     $script:TicketBlock.Add_Click($script:RemotePro.RunspaceEvents.TicketBlock_Click)
     $script:ShowVideoOSItems.Add_Click($script:RemotePro.RunspaceEvents.ShowVideoOSItems_Click)
     $script:Hardware.Add_Click($script:RemotePro.RunspaceEvents.Hardware_Click)
-    $script:itemState.Add_Click($script:RemotePro.RunspaceEvents.ItemState_Click)
+    $script:ItemState.Add_Click($script:RemotePro.RunspaceEvents.ItemState_Click)
     #endegion
 
     #region clean up main window environment
-    $script:window.Add_Closed($script:RemotePro.EventHandlers.Window_AddClosed)
+    $script:window.Add_Closed($script:RemotePro.EventHandlers.Window_AddClosed_Click)
     #endregion
 
     #region static runspace logic
@@ -174,8 +182,11 @@ function Start-RpRemotePro {
 
     $window.ShowDialog() | Out-Null
 
-    # Dispose of the window when closed
-    $script:window.Close()
+    if ($window){
+        # Dispose of the window when closed
+        $script:window.Close()
+    }
 }
+
 
 

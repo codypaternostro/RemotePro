@@ -99,7 +99,8 @@ function Set-RpRunspaceEvents {
                         <#
                         ToDO: 01/28/25 - Solved. Importing module in static runspace each call resolved the issue.#>
 
-                        Import-Module -Name RemotePro -ErrorAction Stop
+                        Import-Module -Name RemotePro
+ #-ErrorAction Stop
 
                         # Calling Get-RpVmsItemStateCustom from the default config commands.
                         $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
@@ -163,6 +164,8 @@ function Set-RpRunspaceEvents {
                     try {
                         Import-Module -Name RemotePro
 
+
+
                         #$platformItemcameras | ogv
 
                         # LegacyCall
@@ -208,6 +211,8 @@ function Set-RpRunspaceEvents {
                     try {
                         Import-Module -Name RemotePro
 
+
+
                         $configItemCams += Get-VmsCamera -Id $platformItemcameras.FQID.ObjectId
                         # LegacyCall
                         # Get-RpTicketBlock -Cameras $configItemCams -ShowWindow
@@ -249,7 +254,8 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        Import-Module -Name RemotePro -ErrorAction Stop
+                        Import-Module -Name RemotePro
+ #-ErrorAction Stop
 
                         # LegacyCall
                         # Get-RpTicketBlock -Cameras $platformItemcameras -ShowWindow
@@ -284,6 +290,8 @@ function Set-RpRunspaceEvents {
                 Start-RpRunspaceJob -ScriptBlock {
                     try {
                         Import-Module -Name RemotePro
+
+
 
                         Write-Host "$(Get-Location)"
 
@@ -329,6 +337,8 @@ function Set-RpRunspaceEvents {
                     try {
                         Import-Module -Name RemotePro
 
+
+
                         #Write-Host "$(Get-Location)"
 
                         # LegacyCall
@@ -364,6 +374,8 @@ function Set-RpRunspaceEvents {
                     param ()
                     try {
                         Import-Module -Name RemotePro
+
+
 
                         # LegacyCall
                         # $result = Get-RpVmsItemStateCustom -CheckConnection | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane

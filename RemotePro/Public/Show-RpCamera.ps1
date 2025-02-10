@@ -109,6 +109,8 @@ function Show-RpCamera {
 
     begin {
         Import-Module -Name RemotePro
+
+
         Add-Type -AssemblyName PresentationFramework
         $connectionValid = $true
 

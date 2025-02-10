@@ -150,6 +150,8 @@ function Set-RpRunspaceEventsLegacyVersion {
                 try {
                     Import-Module -Name RemotePro
 
+
+
                     #$platformItemcameras | ogv
 
                     Show-RpCamera -CameraObject $platformItemcameras -SpecifiedDaysForSequences 7 -DiagnosticLevel 3 | Out-Null
@@ -175,6 +177,8 @@ function Set-RpRunspaceEventsLegacyVersion {
 
                 try {
                     Import-Module -Name RemotePro
+
+
 
 
                     $configItemCams += Get-VmsCamera -Id $platformItemcameras.FQID.ObjectId
@@ -209,7 +213,9 @@ function Set-RpRunspaceEventsLegacyVersion {
                 )
 
                 try {
-                    Import-Module -Name RemotePro -ErrorAction Stop
+                    Import-Module -Name RemotePro
+
+ -ErrorAction Stop
 
 
 
@@ -237,6 +243,8 @@ function Set-RpRunspaceEventsLegacyVersion {
                 try {
                     Import-Module -Name RemotePro
 
+
+
                     Write-Host "$(Get-Location)"
 
                     $result = Select-VideoOSItem
@@ -259,6 +267,8 @@ function Set-RpRunspaceEventsLegacyVersion {
                 try {
                     Import-Module -Name RemotePro
 
+
+
                     Write-Host "$(Get-Location)"
 
                     $result = Get-RpVmsHardwareCustom -CheckConnection
@@ -277,6 +287,8 @@ function Set-RpRunspaceEventsLegacyVersion {
             Start-RpRunspaceJob -ScriptBlock {
                 try {
                     Import-Module -Name RemotePro
+
+
 
                     $result = Get-RpVmsItemStateCustom -CheckConnection | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
                     if ($null -eq $result) {

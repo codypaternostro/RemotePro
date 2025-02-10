@@ -73,6 +73,7 @@ function Set-RpEventHandlers {
     }
 
     # Define event handlers
+    # ToDo: 02/09/2025 Cleanup output to console. Consider Wite-Verbose.
     $handlers = @{
         NewConnectionFile_Click = {
             [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
@@ -169,8 +170,7 @@ function Set-RpEventHandlers {
 
         RunspaceMutexLog_TextChanged = {
             # Subscribe to Log tab TextChanged event (for logs)
-            $scrollViewer = $script:runspace_mutex_log.Parent
-            $scrollViewer.ScrollToEnd()
+            $script:runspace_mutex_log.ScrollToEnd()
         }
 
         CSB_TextChanged = {
@@ -311,47 +311,19 @@ function Set-RpEventHandlers {
             }
         }
 
-        MovePrevButton_Click = {
-            Write-Host "Moving to the previous item..."
-            # Add logic to navigate to the previous item, e.g., switching tabs or views
+        GithubRepositoryButton_Click = {
+            Write-Host "Opening Remotepro GitHub repository webpage..."
+            Start-Process "https://github.com/codypaternostro/RemotePro"
         }
 
-        MoveNextButton_Click = {
-            Write-Host "Moving to the next item..."
-            # Add logic to navigate to the next item, e.g., switching tabs or views
+        PowerShellGalleryButton_Click = {
+            Write-Host "Opening RemotePro package PowerShell Gallery webpage."
+            Start-Process "https://www.powershellgallery.com/packages/RemotePro"
         }
 
-        HomeButton_Click = {
-            Write-Host "Navigating to the home view..."
-            # Add logic to navigate to the home screen or reset the current view
-        }
-
-        DarkModeToggleButton_Click = {
-            Write-Host "Toggling dark mode..."
-
-            # Assuming $Window is the main window and it has a Resources property
-            $currentTheme = $Window.Resources["BundledTheme"]
-            if ($currentTheme.BaseTheme -eq "Light") {
-                $currentTheme.BaseTheme = "Dark"
-                Write-Host "Switched to Dark mode."
-            } else {
-                $currentTheme.BaseTheme = "Light"
-                Write-Host "Switched to Light mode."
-            }
-        }
-
-        ControlsEnabledToggleButton_Click = {
-            Write-Host "Toggling controls enabled state..."
-
-            $controls = @($script:MovePrevCommand, $script:MoveNextCommand, $script:HomeCommand, $HelloWorldButton, $NicePopupButton, $GoodbyeButton)
-            foreach ($control in $controls) {
-                $control.IsEnabled = $ControlsEnabledToggleButton.IsChecked
-            }
-            if ($ControlsEnabledToggleButton.IsChecked) {
-                Write-Host "Controls are enabled."
-            } else {
-                Write-Host "Controls are disabled."
-            }
+        DocsSiteButton_Click = {
+            Write-Host "Opening DocsSite home webpage."
+            Start-Process "https://www.remotepro.dev"
         }
 
         FlowDirectionToggleButton_Click = {
@@ -366,22 +338,17 @@ function Set-RpEventHandlers {
             }
         }
 
-        HelloWorldButton_Click = {
-            Write-Host "Hello World button clicked"
-            [System.Windows.MessageBox]::Show("Hello World!")
+        ReportIssueButton_Click = {
+            Write-Host "Opening GitHub Issues webpage."
+            Start-Process "https://github.com/codypaternostro/RemotePro/blob/main/LICENSE"
         }
 
-        NicePopupButton_Click = {
-            Write-Host "Nice Popup button clicked"
-            [System.Windows.MessageBox]::Show("This is a nice popup!")
+        LicenseInformationButton_Click = {
+            Write-Host "Opening GitHub License webpage."
+            Start-Process "https://github.com/codypaternostro/RemotePro/blob/main/LICENSE"
         }
 
-        GoodbyeButton_Click = {
-            Write-Host "Goodbye button clicked"
-            [System.Windows.MessageBox]::Show("Goodbye!")
-        }
-
-        Window_AddClosed = {
+        Window_AddClosed_Click = {
             try {
                 #[System.Windows.Application]::Current.Shutdown()  # Ensure the application is shut down properly
                 # Dispose and close runspaces that are closed by monitor-runspaces (intentional)

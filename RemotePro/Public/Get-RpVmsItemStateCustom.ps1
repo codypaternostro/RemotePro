@@ -28,6 +28,8 @@ function Get-RpVmsItemStateCustom {
 
     begin {
         Import-Module -Name RemotePro
+
+
         Add-Type -AssemblyName PresentationFramework
         $connectionValid = $true
 

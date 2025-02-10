@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.5] - 2025-02-09
 ## Added
 - Add .COMPONENT to each cmdlet's help section.
 - Rename nested folders in public directory.
 - CNAME for gh-pages branch
+
+## Fixed
+- Replace Home, MoveNext, and MovePrev with module related websites.
+- Cleanup unused buttons and links from main GUI.
+- Correct runspace log's scaling and ability to scroll to end.
 
 ## [0.1.4] - 2025-02-04
 

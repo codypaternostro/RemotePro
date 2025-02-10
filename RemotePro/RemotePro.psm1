@@ -62,9 +62,6 @@ Export-ModuleMember -Function $public.Basename
 Install-RpRequiredModules -Verbose
 #endregion
 
-
-
-
 #region set runspace log and configuration file.
 $script:logPath = Get-RPLogPath
 $script:configPath = Get-RpConfigPath
@@ -93,5 +90,3 @@ $script:RpRunspaceResults = Initialize-RpRunspaceResults
 
 $script:selectedProfileName
 #endregion
-
-
