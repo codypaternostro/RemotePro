@@ -36,6 +36,7 @@ function New-RpControllerObject {
             RunspaceEvents          = @{}
             ConfigCommands          = @{}
             ConfigCommandDefaultIds = @{}
+            Settings                = @{}
         }
 
         # Add the RemotePro type to the object

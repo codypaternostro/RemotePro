@@ -24,10 +24,16 @@ function Get-RpConfigPath {
     )
 
     process {
+        $configDirectory = Join-Path -Path (New-RpAppDataPath) -ChildPath 'Config'
+
+        if (-not (Test-Path -Path $configDirectory)) {
+            New-Item -Path $configDirectory -ItemType Directory | Out-Null
+        }
+
         if ($DefaultIds) {
-            Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfigDefaultIds.json'
+            Join-Path -Path $configDirectory -ChildPath 'RemoteProParamConfigDefaultIds.json'
         } else {
-            Join-Path -Path (New-RpAppDataPath) -ChildPath 'RemoteProParamConfig.json'
+            Join-Path -Path $configDirectory -ChildPath 'RemoteProParamConfig.json'
         }
     }
 }

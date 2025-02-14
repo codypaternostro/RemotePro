@@ -76,10 +76,16 @@ if (-not (Get-RpControllerObject)) {
         New-RpConfigCommandJson -Type DefaultJson
     }
 
+    # Check if the settings file exists, if not create it.
+    if (-not (Test-Path -Path $(Get-RpSettingsJsonPath))){
+        Set-RpSettingsJsonDefaults -SettingsFilePath $(Get-RpSettingsJsonPath)
+    }
+
     Set-RpEventHandlers                             #Populate EventHandlers
     Set-RpRunspaceEvents                            #Populate RunspaceEvents
     Set-RpConfigCommands                            #Populate ConfigCommands
     Set-RpDefaultConfigCommandIds                   #Populate ConfigCommandDefaultIds
+    Set-RpSettingsJson                              #Populate Settings
 }
 
 #endregion

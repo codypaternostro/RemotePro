@@ -10,7 +10,7 @@ class RpVmsConnectionChecker {
 
     [bool] CheckConnection() {
         Add-Type -AssemblyName PresentationFramework
-        Import-Module -Name RemotePro
+        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
  # -ErrorAction SilentlyContinue
 
         $connectionFailed = $false
