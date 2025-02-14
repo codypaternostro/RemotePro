@@ -7,7 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# Added
+These commands will help manage the main settings for the RemotePro main GUI.
+The XAML needs to be updated with the material theme, and all commands should be tested.
+- Add-RpSettingToJson.ps1
+- Find-RpSettingsJson.ps1
+- Get-RpSettingsJson.ps1
+- Get-RpSettingsJsonPath.ps1
+- Import-RpSettingsJson.ps1
+- New-RpSettingsJson.ps1
+- Reset-RpSettingJson.ps1
+- Set-RpSettingsJson.ps1
+- Set-RpSettingsJsonDefaults.ps1
+- Update-RpSettingsJson.ps1
+
 ## [0.1.5] - 2025-02-09
+
 ## Added
 - Add .COMPONENT to each cmdlet's help section.
 - Rename nested folders in public directory.
