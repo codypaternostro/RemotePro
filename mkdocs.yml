@@ -8,6 +8,12 @@ theme:
   palette:
     scheme: white
     primary: white
+  features:
+  - navigation.instant
+  - navigation.tabs
+  - navigation.top
+  - search.suggest
+  - search.highlight
 
 nav:
   - Home: index.md
@@ -16,50 +22,61 @@ nav:
       - Configuration: getting-started/configuration.md
       - Usage Guide: getting-started/usageguide.md
   - Commands:
-    - Add-RpConfigCommand: en-US/Add-RpConfigCommand.md
-    - Find-RpConfigCommand: en-US/Find-RpConfigCommand.md
-    - Find-RpDefaultConfigCommands: en-US/Find-RpDefaultConfigCommands.md
-    - Get-RpConfigCommands: en-US/Get-RpConfigCommands.md
-    - Get-RpConfigPath: en-US/Get-RpConfigPath.md
-    - Get-RpConnectionProfile: en-US/Get-RpConnectionProfile.md
-    - Get-RpControllerObject: en-US/Get-RpControllerObject.md
-    - Get-RpDefaultConfigCommandDetails: en-US/Get-RpDefaultConfigCommandDetails.md
-    - Get-RpEventHandlers: en-US/Get-RpEventHandlers.md
-    - Get-RpLogPath: en-US/Get-RpLogPath.md
-    - Get-RpRunspaceEvents: en-US/Get-RpRunspaceEvents.md
-    - Get-RpTicketBlock: en-US/Get-RpTicketBlock.md
-    - Get-RpVmsHardwareCustom: en-US/Get-RpVmsHardwareCustom.md
-    - Get-RpVmsItemStateCustom: en-US/Get-RpVmsItemStateCustom.md
-    - Import-RpConfig: en-US/Import-RpConfig.md
-    - Import-RpDefaultConfigCommandIds: en-US/Import-RpDefaultConfigCommandIds.md
-    - Initialize-RpOpenRunspaces: en-US/Initialize-RpOpenRunspaces.md
-    - Initialize-RpRunspaceJobs: en-US/Initialize-RpRunspaceJobs.md
-    - Initialize-RpRunspaceResults: en-US/Initialize-RpRunspaceResults.md
-    - Invoke-RpCommandObject: en-US/Invoke-RpCommandObject.md
-    - New-RpAppDataPath: en-US/New-RpAppDataPath.md
-    - New-RpConfigCommandJson: en-US/New-RpConfigCommandJson.md
-    - New-RpControllerObject: en-US/New-RpControllerObject.md
-    - Remove-RpConfigCommand: en-US/Remove-RpConfigCommand.md
-    - Reset-RpConfigCommandDefaults: en-US/Reset-RpConfigCommandDefaults.md
-    - Set-RpConfigCommands: en-US/Set-RpConfigCommands.md
-    - Set-RpConfigDefaults: en-US/Set-RpConfigDefaults.md
-    - Set-RpConnectionProfile: en-US/Set-RpConnectionProfile.md
-    - Set-RpDefaultConfigCommandIds: en-US/Set-RpDefaultConfigCommandIds.md
-    - Set-RpEventHandlers: en-US/Set-RpEventHandlers.md
-    - Set-RpMutexLogAndUI: en-US/Set-RpMutexLogAndUI.md
-    - Set-RpRunspaceEvents: en-US/Set-RpRunspaceEvents.md
-    - Set-RpRunspaceEventsLegacyVersion: en-US/Set-RpRunspaceEventsLegacyVersion.md
-    - Show-RpCamera: en-US/Show-RpCamera.md
-    - Show-RpItemPicker: en-US/Show-RpItemPicker.md
-    - Show-RpProfileEntryDialog: en-US/Show-RpProfileEntryDialog.md
-    - Start-RpRemotePro: en-US/Start-RpRemotePro.md
-    - Start-RpRunspaceJob: en-US/Start-RpRunspaceJob.md
-    - Start-RpRunspaceJobStatic: en-US/Start-RpRunspaceJobStatic.md
-    - Start-RpRunspaceMonitor: en-US/Start-RpRunspaceMonitor.md
-    - Test-RpRequiresVmsConnection: en-US/Test-RpRequiresVmsConnection.md
-    - Test-RpVmsConnection: en-US/Test-RpVmsConnection.md
-    - Update-RpConfigCommand: en-US/Update-RpConfigCommand.md
-    - Watch-RpRunspaces: en-US/Watch-RpRunspaces.md
+      - Add-RpConfigCommand: en-US/Add-RpConfigCommand.md
+      - Add-RpSettingToJson: en-US/Add-RpSettingToJson.md
+      - Find-RpConfigCommand: en-US/Find-RpConfigCommand.md
+      - Find-RpDefaultConfigCommands: en-US/Find-RpDefaultConfigCommands.md
+      - Find-RpSettingsJson: en-US/Find-RpSettingsJson.md
+      - Get-RpConfigCommands: en-US/Get-RpConfigCommands.md
+      - Get-RpConfigPath: en-US/Get-RpConfigPath.md
+      - Get-RpConnectionProfile: en-US/Get-RpConnectionProfile.md
+      - Get-RpControllerObject: en-US/Get-RpControllerObject.md
+      - Get-RpDefaultConfigCommandDetails: en-US/Get-RpDefaultConfigCommandDetails.md
+      - Get-RpEventHandlers: en-US/Get-RpEventHandlers.md
+      - Get-RpLogPath: en-US/Get-RpLogPath.md
+      - Get-RpRunspaceEvents: en-US/Get-RpRunspaceEvents.md
+      - Get-RpSettings: en-US/Get-RpSettings.md
+      - Get-RpSettingsJsonPath: en-US/Get-RpSettingsJsonPath.md
+      - Get-RpTicketBlock: en-US/Get-RpTicketBlock.md
+      - Get-RpVmsHardwareCustom: en-US/Get-RpVmsHardwareCustom.md
+      - Get-RpVmsItemStateCustom: en-US/Get-RpVmsItemStateCustom.md
+      - Import-RpConfig: en-US/Import-RpConfig.md
+      - Import-RpDefaultConfigCommandIds: en-US/Import-RpDefaultConfigCommandIds.md
+      - Import-RpSettingsFromJson: en-US/Import-RpSettingsFromJson.md
+      - Initialize-RpOpenRunspaces: en-US/Initialize-RpOpenRunspaces.md
+      - Initialize-RpRunspaceJobs: en-US/Initialize-RpRunspaceJobs.md
+      - Initialize-RpRunspaceResults: en-US/Initialize-RpRunspaceResults.md
+      - Invoke-RpCommandObject: en-US/Invoke-RpCommandObject.md
+      - New-RpAppDataPath: en-US/New-RpAppDataPath.md
+      - New-RpConfigCommandJson: en-US/New-RpConfigCommandJson.md
+      - New-RpControllerObject: en-US/New-RpControllerObject.md
+      - New-RpSettingsJson: en-US/New-RpSettingsJson.md
+      - Remove-RpConfigCommand: en-US/Remove-RpConfigCommand.md
+      - Remove-RpSettingFromJson: en-US/Remove-RpSettingFromJson.md
+      - Reset-RpConfigCommandDefaults: en-US/Reset-RpConfigCommandDefaults.md
+      - Reset-RpSettingsJson: en-US/Reset-RpSettingsJson.md
+      - Set-RpConfigCommands: en-US/Set-RpConfigCommands.md
+      - Set-RpConfigDefaults: en-US/Set-RpConfigDefaults.md
+      - Set-RpConnectionProfile: en-US/Set-RpConnectionProfile.md
+      - Set-RpDefaultConfigCommandIds: en-US/Set-RpDefaultConfigCommandIds.md
+      - Set-RpEventHandlers: en-US/Set-RpEventHandlers.md
+      - Set-RpMutexLogAndUI: en-US/Set-RpMutexLogAndUI.md
+      - Set-RpRunspaceEvents: en-US/Set-RpRunspaceEvents.md
+      - Set-RpRunspaceEventsLegacyVersion: en-US/Set-RpRunspaceEventsLegacyVersion.md
+      - Set-RpSettingsJson: en-US/Set-RpSettingsJson.md
+      - Set-RpSettingsJsonDefaults: en-US/Set-RpSettingsJsonDefaults.md
+      - Show-RpCamera: en-US/Show-RpCamera.md
+      - Show-RpItemPicker: en-US/Show-RpItemPicker.md
+      - Show-RpProfileEntryDialog: en-US/Show-RpProfileEntryDialog.md
+      - Start-RpRemotePro: en-US/Start-RpRemotePro.md
+      - Start-RpRunspaceJob: en-US/Start-RpRunspaceJob.md
+      - Start-RpRunspaceJobStatic: en-US/Start-RpRunspaceJobStatic.md
+      - Start-RpRunspaceMonitor: en-US/Start-RpRunspaceMonitor.md
+      - Test-RpRequiresVmsConnection: en-US/Test-RpRequiresVmsConnection.md
+      - Test-RpVmsConnection: en-US/Test-RpVmsConnection.md
+      - Update-RpConfigCommand: en-US/Update-RpConfigCommand.md
+      - Update-RpSettingsJson: en-US/Update-RpSettingsJson.md
+      - Watch-RpRunspaces: en-US/Watch-RpRunspaces.md
   - Changelog: CHANGELOG/CHANGELOG.md
 
 plugins:
@@ -70,5 +87,19 @@ plugins:
       enable_cache: True
       size: [800, 600]
       extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg']
+
+extra:
+  consent:
+    actions:
+    - accept
+    - manage
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+
+
 
 

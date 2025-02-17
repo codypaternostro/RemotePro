@@ -8,71 +8,90 @@ schema: 2.0.0
 # Find-RpSettingsJson
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves settings from the RemotePro Settings JSON file.
 
 ## SYNTAX
 
+### All (Default)
 ```
-Find-RpSettingsJson [[-SettingsFilePath] <String>] [[-Name] <String>] [-All]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Find-RpSettingsJson [-SettingsFilePath <String>] [-All] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
+```
+
+### ByName
+```
+Find-RpSettingsJson [-SettingsFilePath <String>] -Name <String> [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Find-RpSettingsJson function retrieves specific settings or all settings
+from the RemotePro Settings JSON file.
+If no file path is provided, it uses
+the default path from Get-RpSettingsJsonPath.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Find-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json" -Name "SettingName"
 ```
 
-{{ Add example description here }}
+Retrieves the specified setting from the provided JSON file path.
+
+### EXAMPLE 2
+```
+Find-RpSettingsJson -All
+```
+
+Retrieves all settings from the default JSON file path.
 
 ## PARAMETERS
 
-### -All
-{{ Fill All Description }}
+### -SettingsFilePath
+The path to the RemotePro Settings JSON file.
+If not provided, the default
+path is used.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+The name of the setting to retrieve from the JSON file.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
-Required: False
-Position: 1
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SettingsFilePath
-{{ Fill SettingsFilePath Description }}
+### -All
+Switch to retrieve all settings from the JSON file.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: SwitchParameter
+Parameter Sets: All
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,11 +115,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

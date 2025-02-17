@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-RpSettingsJson
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the RemotePro settings from a JSON file.
 
 ## SYNTAX
 
@@ -17,21 +17,31 @@ Set-RpSettingsJson [[-SettingsFilePath] <String>] [-ProgressAction <ActionPrefer
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Set-RpSettingsJson function initializes the RemotePro settings from a JSON
+file.
+If the RemotePro object is not initialized, it throws an error.
+If the
+settings are not a hashtable, it initializes them as an empty hashtable.
+It
+imports the settings from the specified JSON file or from the default appdata
+path if no file path is provided.
+The settings are then attached to the
+RemotePro object with a custom type.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Set-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json"
+This command sets the RemotePro settings from the specified JSON file.
+```
 
 ## PARAMETERS
 
 ### -SettingsFilePath
-{{ Fill SettingsFilePath Description }}
+The path to the JSON file containing the settings.
+If not provided, the default
+appdata path is used.
 
 ```yaml
 Type: String
@@ -39,7 +49,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,11 +75,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
+### [string] The path to the settings JSON file where the default settings will be applied.
 ## OUTPUTS
 
-### System.Object
 ## NOTES
+Ensure that the RemotePro object is initialized by running New-RpControllerObject
+before calling this function.
 
 ## RELATED LINKS

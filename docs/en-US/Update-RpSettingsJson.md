@@ -8,11 +8,11 @@ schema: 2.0.0
 # Update-RpSettingsJson
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates or adds a setting in the RpSettings JSON file.
 
 ## SYNTAX
 
-### UpdateSetting (Default)
+### CommandLineInterface (Default)
 ```
 Update-RpSettingsJson [[-SettingsFilePath] <String>] [-Name] <String> [-Value] <String>
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
@@ -20,55 +20,95 @@ Update-RpSettingsJson [[-SettingsFilePath] <String>] [-Name] <String> [-Value] <
 
 ### ShowDialog
 ```
-Update-RpSettingsJson [-ShowDialog] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-RpSettingsJson [[-SettingsFilePath] <String>] [-ShowDialog] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Update-RpSettingsJson function updates or adds a setting in the RpSettings
+JSON file.
+It can be used via command line interface or a graphical dialog
+interface.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Update-RpSettingsJson -Name "SettingName" -Value "NewValue"
+Updates the setting "SettingName" to "NewValue" in the default settings JSON
+file.
 ```
 
-{{ Add example description here }}
+### EXAMPLE 2
+```
+Update-RpSettingsJson -SettingsFilePath "C:\Path\To\Settings.json" -Name
+"SettingName" -Value "NewValue"
+Updates the setting "SettingName" to "NewValue" in the specified settings JSON
+file.
+```
+
+### EXAMPLE 3
+```
+Update-RpSettingsJson -ShowDialog
+Opens a graphical dialog interface to update or add settings in the default
+settings JSON file.
+```
 
 ## PARAMETERS
 
-### -Name
-{{ Fill Name Description }}
+### -SettingsFilePath
+Specifies the path to the settings JSON file.
+If not provided, the default
+settings file path is used.
 
 ```yaml
 Type: String
-Parameter Sets: UpdateSetting
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SettingsFilePath
-{{ Fill SettingsFilePath Description }}
+### -Name
+Specifies the name of the setting to update or add.
+This parameter is mandatory
+when using the command line interface.
 
 ```yaml
 Type: String
-Parameter Sets: UpdateSetting
+Parameter Sets: CommandLineInterface
 Aliases:
 
-Required: False
-Position: 0
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Value
+Specifies the value of the setting to update or add.
+This parameter is mandatory
+when using the command line interface.
+
+```yaml
+Type: String
+Parameter Sets: CommandLineInterface
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ShowDialog
-{{ Fill ShowDialog Description }}
+If specified, a graphical dialog interface is shown to update or add settings.
 
 ```yaml
 Type: SwitchParameter
@@ -77,22 +117,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Value
-{{ Fill Value Description }}
-
-```yaml
-Type: String
-Parameter Sets: UpdateSetting
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -117,11 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

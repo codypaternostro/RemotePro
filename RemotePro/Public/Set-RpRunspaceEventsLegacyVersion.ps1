@@ -148,7 +148,7 @@ function Set-RpRunspaceEventsLegacyVersion {
                 )
 
                 try {
-                    Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                    Import-Module -Name RemotePro
 
 
 
@@ -176,7 +176,7 @@ function Set-RpRunspaceEventsLegacyVersion {
                 )
 
                 try {
-                    Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                    Import-Module -Name RemotePro
 
 
 
@@ -213,7 +213,7 @@ function Set-RpRunspaceEventsLegacyVersion {
                 )
 
                 try {
-                    Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1" -ErrorAction Stop
+                    Import-Module -Name RemotePro -ErrorAction Stop
 
 
 
@@ -239,7 +239,7 @@ function Set-RpRunspaceEventsLegacyVersion {
         ShowVideoOSItems_Click = {
             Start-RpRunspaceJob -ScriptBlock {
                 try {
-                    Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                    Import-Module -Name RemotePro
 
 
 
@@ -263,7 +263,7 @@ function Set-RpRunspaceEventsLegacyVersion {
         Hardware_Click = {
             Start-RpRunspaceJob -ScriptBlock {
                 try {
-                    Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                    Import-Module -Name RemotePro
 
 
 
@@ -284,7 +284,7 @@ function Set-RpRunspaceEventsLegacyVersion {
         ItemState_Click = {
             Start-RpRunspaceJob -ScriptBlock {
                 try {
-                    Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                    Import-Module -Name RemotePro
 
 
 

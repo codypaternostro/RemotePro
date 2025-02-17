@@ -5,7 +5,7 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Reset-RpSettingJson
+# Reset-RpSettingsJson
 
 ## SYNOPSIS
 Resets the RemotePro settings to default values.
@@ -13,15 +13,12 @@ Resets the RemotePro settings to default values.
 ## SYNTAX
 
 ```
-Reset-RpSettingJson [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Reset-RpSettingsJson [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 This function removes existing settings files and creates a new default
 settings file for RemotePro.
-
-\`Add-RpSettingJson\` is called to populate the RemotePro settings file with
-default settings.
 
 ## EXAMPLES
 

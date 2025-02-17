@@ -12,7 +12,7 @@
 RootModule = 'RemotePro.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.5'
+ModuleVersion = '0.1.6'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,10 +30,10 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2024 Cody Paternostro. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'PowerShell WPF GUI for MilestonePSTools Documentation: https://codypaternostro.github.io/RemotePro'
+Description = 'PowerShell WPF GUI for MilestonePSTools --> Documentation: https://www.remotepro.dev/'
 
 # Minimum version of the Windows PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '5.1'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -42,13 +42,13 @@ Description = 'PowerShell WPF GUI for MilestonePSTools Documentation: https://co
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '4.7'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
 
 # Processor architecture (None, X86, Amd64) required by this module
-# ProcessorArchitecture = ''
+ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
 # RequiredModules = @('MilestonePSTools','PSWriteHTML','ImportExcel')
@@ -95,13 +95,13 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('PowerShell', 'WPF', 'GUI', 'MilestonePSTools', 'RemotePro', 'Automation', 'Remoting')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        # LicenseUri = 'https://github.com/codypaternostro/RemotePro/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        # ProjectUri = 'https://www.remotepro.dev/'
 
         # A URL to an icon representing this module.
         # IconUri = ''

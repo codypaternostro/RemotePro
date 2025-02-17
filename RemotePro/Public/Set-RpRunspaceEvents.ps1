@@ -99,7 +99,7 @@ function Set-RpRunspaceEvents {
                         <#
                         ToDO: 01/28/25 - Solved. Importing module in static runspace each call resolved the issue.#>
 
-                        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                        Import-Module -Name RemotePro
  #-ErrorAction Stop
 
                         # Calling Get-RpVmsItemStateCustom from the default config commands.
@@ -162,7 +162,7 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                        Import-Module -Name RemotePro
 
 
 
@@ -209,7 +209,7 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                        Import-Module -Name RemotePro
 
 
 
@@ -254,7 +254,7 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                        Import-Module -Name RemotePro
  #-ErrorAction Stop
 
                         # LegacyCall
@@ -289,7 +289,7 @@ function Set-RpRunspaceEvents {
             ShowVideoOSItems_Click = {
                 Start-RpRunspaceJob -ScriptBlock {
                     try {
-                        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                        Import-Module -Name RemotePro
 
 
 
@@ -335,7 +335,7 @@ function Set-RpRunspaceEvents {
             Hardware_Click = {
                 Start-RpRunspaceJob -ScriptBlock {
                     try {
-                        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                        Import-Module -Name RemotePro
 
 
 
@@ -373,7 +373,7 @@ function Set-RpRunspaceEvents {
                 Start-RpRunspaceJob -ScriptBlock {
                     param ()
                     try {
-                        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+                        Import-Module -Name RemotePro
 
 
 

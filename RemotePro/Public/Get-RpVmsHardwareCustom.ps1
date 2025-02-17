@@ -26,7 +26,7 @@ function Get-RpVmsHardwareCustom {
     )
 
     begin {
-        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+        Import-Module -Name RemotePro
 
 
         Add-Type -AssemblyName PresentationFramework

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-RpSettingsJsonPath
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves the file path for the RemotePro settings JSON file.
 
 ## SYNTAX
 
@@ -17,16 +17,18 @@ Get-RpSettingsJsonPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-RpSettingsJsonPath function constructs and returns the file path for the
+RemoteProSettings.json file located in the 'Settings' directory within the
+application data path.
+If the 'Settings' directory does not exist, it is created.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Get-RpSettingsJsonPath
+C:\Users\<User>\AppData\Local\RemotePro\Settings\RemoteProSettings.json
+```
 
 ## PARAMETERS
 
@@ -50,12 +52,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
 ### System.String
-
+### The file path to the RemoteProSettings.json file.
 ## NOTES
 
 ## RELATED LINKS

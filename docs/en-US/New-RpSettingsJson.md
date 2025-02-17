@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-RpSettingsJson
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new settings JSON file for RemotePro.
 
 ## SYNTAX
 
@@ -18,21 +18,35 @@ New-RpSettingsJson [[-SettingsFilePath] <String>] [-UseDefaults] [-ProgressActio
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-RpSettingsJson function generates a new settings JSON file for
+RemotePro.
+It can either use a specified file path or determine the path
+automatically.
+Optionally, it can populate the settings with default values.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+New-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json"
 ```
 
-{{ Add example description here }}
+Creates a new settings JSON file at the specified path.
+
+### EXAMPLE 2
+```
+New-RpSettingsJson -UseDefaults
+```
+
+Creates a new settings JSON file with default values at the automatically
+determined path.
 
 ## PARAMETERS
 
 ### -SettingsFilePath
-{{ Fill SettingsFilePath Description }}
+Specifies the file path where the settings JSON file will be saved.
+If not
+provided, the path is determined automatically.
 
 ```yaml
 Type: String
@@ -40,14 +54,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -UseDefaults
-{{ Fill UseDefaults Description }}
+If specified, the settings JSON will be populated with default values.
 
 ```yaml
 Type: SwitchParameter
@@ -56,7 +70,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,11 +95,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

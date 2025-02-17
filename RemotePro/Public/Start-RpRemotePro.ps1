@@ -54,6 +54,8 @@ function Start-RpRemotePro {
     [CmdletBinding()]
     param()
 
+    [System.GC]::Collect()
+
     # Ensure the RemotePro controller and runspace objects are initialized
     if (-not $script:RemotePro) {
         $script:RemotePro = New-RpControllerObject
@@ -72,32 +74,39 @@ function Start-RpRemotePro {
     # Modified XAML with an added button for opening the connection file
     $script:RemoteProXaml = $script:RemoteProXaml -replace '^<Window.*', '<Window' -replace 'mc:Ignorable="d"','' -replace "x:N",'N'
     [xml]$script:xaml = $script:RemoteProXaml
-    $script:xmlreader=(New-Object System.Xml.XmlNodeReader $xaml)
-    $script:window=[Windows.Markup.XamlReader]::Load( $xmlreader )
 
-    # Automatically find and create script-scoped variables for each named XAML element
-    $script:xaml.SelectNodes("//*[@Name]") | ForEach-Object -Process {
-        try {
-            $variableName = $_.Name
-            $variableValue = $window.FindName($variableName)
+    $script:xmlreader = (New-Object System.Xml.XmlNodeReader $xaml)
+    try {
+        $script:window = [Windows.Markup.XamlReader]::Load($xmlreader)
 
-            if ($null -eq $variableValue) {
-                throw [System.InvalidOperationException] "No matching UI element found for '$variableName'."
+        # Automatically find and create script-scoped variables for each named XAML element
+        $script:xaml.SelectNodes("//*[@Name]") | ForEach-Object -Process {
+            try {
+                $variableName = $_.Name
+                $variableValue = $window.FindName($variableName)
+
+                if ($null -eq $variableValue) {
+                    throw [System.InvalidOperationException] "No matching UI element found for '$variableName'."
+                }
+
+                # Note: since variables are set at the script scope "$script:" prefix is not needed but can be used.
+                Set-Variable -Name $variableName -Value $variableValue -Scope Script
+
+                # Write the variable name to the host
+                Write-Verbose "Created script-scoped variable: $variableName"
+            } catch {
+                Write-Verbose "Failed to create script-scoped variable for: $($variableName): $($Error[0].Exception.Message)"
             }
-
-            # Note: since variables are set at the script scope "$script:" prefix is not needed but can be used.
-            Set-Variable -Name $variableName -Value $variableValue -Scope Script
-
-            # Write the variable name to the host
-            Write-Verbose "Created script-scoped variable: $variableName"
-        } catch {
-            Write-Verbose "Failed to create script-scoped variable for: $($variableName): $($Error[0].Exception.Message)"
         }
+    } finally {
+        $xmlreader.Close()
+        $xmlreader.Dispose()
     }
+
     #endregion
 
     #region vms connection and updating main window.
-    Set-RpDefaultConnectionBox            # Helper function for clearing textbox
+    Set-RpDefaultConnectionBox           # Helper function for clearing textbox
     Set-DefaultConnectionProfileBox     # Helper function for populating connection profile textbox.
     Get-RemoteProConnections            # Fill Connections_Combo_Box with profile names.
                                         # Refresh "MilestonePSTools Connection Profile Details" tab.

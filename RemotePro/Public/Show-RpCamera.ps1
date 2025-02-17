@@ -108,8 +108,7 @@ function Show-RpCamera {
     )
 
     begin {
-        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
-
+        Import-Module -Name RemotePro
 
         Add-Type -AssemblyName PresentationFramework
         $connectionValid = $true
@@ -214,7 +213,6 @@ Title="Show-RpCamera" Height="450" Width="800">
         </TabItem>
     </TabControl>
 </Window>
-
 "@
         try {
             $reader = [system.xml.xmlnodereader]::new($xaml)
@@ -339,7 +337,6 @@ Title="Show-RpCamera" Height="450" Width="800">
                 $child.Dispose()
             }
             if ($null -ne $playbackControl -or $null -ne $playbackControl2) {
-
                 $playbackControl.Close()
                 $playbackControl2.Close()
             }
@@ -352,8 +349,11 @@ Title="Show-RpCamera" Height="450" Width="800">
                 #$playbackControl.ReleasePlaybackController() #added 05/22/24
                 #$playbackControl2.ReleasePlaybackController() #added 05/22/24
                 $window.Close()
-
             }
+            $reader.Close()
+            $reader.Dispose()
+            [System.GC]::Collect()
+            [System.GC]::WaitForPendingFinalizers()
         }
 <#
  # {    } else {
@@ -363,7 +363,4 @@ Title="Show-RpCamera" Height="450" Width="800">
     }
 }
 
-[System.GC]::Collect()
-[System.GC]::WaitForPendingFinalizers()
 
-#Show-RpCamera -SpecifiedDaysForSequences 90 -DiagnosticLevel 3

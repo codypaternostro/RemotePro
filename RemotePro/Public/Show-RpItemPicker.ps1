@@ -67,7 +67,7 @@ function Show-RpItemPicker {
     begin {
         # ToDo: Remove this line when the module is imported in the script
         # replace with correct reference to the module
-        Import-Module "C:\Users\Cody\Documents\RemoteProUpload\RemotePro\Output\RemotePro\0.1.5\RemotePro.psd1"
+        Import-Module -Name RemotePro
 
 
         Add-Type -AssemblyName PresentationFramework

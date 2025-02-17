@@ -5,42 +5,50 @@ online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#des
 schema: 2.0.0
 ---
 
-# Import-RpSettingsJson
+# Get-RpSettings
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves RemotePro settings.
 
 ## SYNTAX
 
 ```
-Import-RpSettingsJson [[-SettingsFilePath] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpSettings [-All] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-RpSettings function retrieves the settings from the RemotePro
+controller object.
+If the -All switch is specified, it returns all
+settings values; otherwise, it returns the settings object.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-RpSettings
+Retrieves the settings object from the RemotePro controller.
 ```
 
-{{ Add example description here }}
+### EXAMPLE 2
+```
+Get-RpSettings -All
+Retrieves all settings values from the RemotePro controller.
+```
 
 ## PARAMETERS
 
-### -SettingsFilePath
-{{ Fill SettingsFilePath Description }}
+### -All
+If specified, returns all settings values.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -65,11 +73,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
