@@ -8,6 +8,7 @@ theme:
   palette:
     scheme: white
     primary: white
+  logo: assets/RpLogo.png
   features:
   - navigation.instant
   - navigation.tabs
@@ -99,7 +100,3 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
-
-
-
-

@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Online help links
 - Configuration Tab
 
+## [0.1.7] - 2025-02-19
+
+### Added
+
+- Logo for docs site
+
 ## [0.1.6] - 2025-02-16
 
 ### Added
@@ -30,7 +36,7 @@ Settings that can be accessed.
 - Import-RpSettingsFromJson
 - New-RpSettingsJson
 - Remove-RpSettingFromJson
-- Reset-RpSettingJson
+- Reset-RpSettingsJson
 - Set-RpSettingsJson
 - Set-RpSettingsJsonDefaults
 - Update-RpSettingsJson

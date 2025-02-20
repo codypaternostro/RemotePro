@@ -12,7 +12,7 @@
 RootModule = 'RemotePro.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.6'
+ModuleVersion = '0.1.7'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -104,7 +104,7 @@ PrivateData = @{
         # ProjectUri = 'https://www.remotepro.dev/'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        # IconUri = 'https://www.remotepro.dev/assets/RpLogo.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = 'First released version of RemotePro'
