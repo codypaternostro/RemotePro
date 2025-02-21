@@ -103,10 +103,16 @@ function Start-RpRemotePro {
         $xmlreader.Dispose()
     }
 
+    if ($null -ne $window) {
+        Set-RpWindowIcon -window $window -IconPath "$script:PSScriptRoot\Resources\RpLogo512.ico" -Verbose
+    } else {
+        Write-Warning "WPF window failed to load. Cannot set icon."
+    }
+
     #endregion
 
     #region vms connection and updating main window.
-    Set-RpDefaultConnectionBox           # Helper function for clearing textbox
+    Set-RpDefaultConnectionBox          # Helper function for clearing textbox
     Set-DefaultConnectionProfileBox     # Helper function for populating connection profile textbox.
     Get-RemoteProConnections            # Fill Connections_Combo_Box with profile names.
                                         # Refresh "MilestonePSTools Connection Profile Details" tab.

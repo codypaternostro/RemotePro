@@ -14,6 +14,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Online help links
 - Configuration Tab
+- Add .ico icons to all windows
+
+## [0.1.8] - 2025-02-19
+
+### Added
+
+- Added RpLogo512.ico to Start-RpRemotePro
 
 ## [0.1.7] - 2025-02-19
 

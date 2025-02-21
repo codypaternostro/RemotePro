@@ -66,6 +66,7 @@ nav:
       - Set-RpRunspaceEventsLegacyVersion: en-US/Set-RpRunspaceEventsLegacyVersion.md
       - Set-RpSettingsJson: en-US/Set-RpSettingsJson.md
       - Set-RpSettingsJsonDefaults: en-US/Set-RpSettingsJsonDefaults.md
+      - Set-RpWindowIcon: en-US/Set-RpWindowIcon.md
       - Show-RpCamera: en-US/Show-RpCamera.md
       - Show-RpItemPicker: en-US/Show-RpItemPicker.md
       - Show-RpProfileEntryDialog: en-US/Show-RpProfileEntryDialog.md

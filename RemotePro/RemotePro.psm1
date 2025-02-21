@@ -7,8 +7,36 @@ $script:RemoteProXaml = Get-Content -Path "$PSScriptRoot\Xaml\RemoteProUI.xaml" 
 #endregion
 
 #region Load necessary DLLs and Assemblies
+
+# Ensure WinAPI is loaded before using it
+if (-not ("WinAPI" -as [Type])) {
+    $signature = @"
+using System;
+using System.Runtime.InteropServices;
+
+public static class WinAPI
+{
+    [DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr LoadLibraryEx(string lpLibFileName, IntPtr hFile, uint dwFlags);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    public static extern bool FreeLibrary(IntPtr hModule);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern IntPtr LoadIcon(IntPtr hInstance, IntPtr lpIconName);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool DestroyIcon(IntPtr hIcon);
+}
+"@
+    Add-Type -TypeDefinition $signature -Language CSharp -PassThru
+}
+
 # Get all DLLs in the bin directory relative to the script root
 $bin = Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'bin') -Filter *.dll -Recurse -ErrorAction Stop
+
+# Exclude RpLogoDLL.dll because it's a resource-only DLL (not a .NET assembly)
+$bin = $bin | Where-Object { $_.Name -ne "RpLogoDLL.dll" }
 
 # Verbose output to show the DLLs found in the bin path
 Write-Verbose "Found DLLs in binPath: $($bin.FullName -join ', ')"
