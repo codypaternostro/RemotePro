@@ -16,7 +16,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Configuration Tab
 - Add .ico icons to all windows
 
-## [0.1.8] - 2025-02-19
+## [0.1.9] - 2025-02-20
+
+### Fixed
+
+- Commented out icon link
+- Remove verbose switch from Set-RpWindowIcon
+
+## [0.1.8] - 2025-02-20
 
 ### Added
 

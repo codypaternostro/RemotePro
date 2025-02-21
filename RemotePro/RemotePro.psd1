@@ -12,7 +12,7 @@
 RootModule = 'RemotePro.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.8'
+ModuleVersion = '0.1.9'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -98,13 +98,13 @@ PrivateData = @{
         Tags = @('PowerShell', 'WPF', 'GUI', 'MilestonePSTools', 'RemotePro', 'Automation', 'Remoting')
 
         # A URL to the license for this module.
-        # LicenseUri = 'https://github.com/codypaternostro/RemotePro/blob/main/LICENSE'
+        LicenseUri = 'https://github.com/codypaternostro/RemotePro/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = 'https://www.remotepro.dev/'
+        ProjectUri = 'https://www.remotepro.dev/'
 
         # A URL to an icon representing this module.
-        # IconUri = 'https://www.remotepro.dev/icon/RpLogo512.ico'
+        IconUri = 'https://www.remotepro.dev/icon/RpLogo512.ico'
 
         # ReleaseNotes of this module
         ReleaseNotes = 'First released version of RemotePro'

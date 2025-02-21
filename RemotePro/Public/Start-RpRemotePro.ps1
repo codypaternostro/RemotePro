@@ -104,7 +104,7 @@ function Start-RpRemotePro {
     }
 
     if ($null -ne $window) {
-        Set-RpWindowIcon -window $window -IconPath "$script:PSScriptRoot\Resources\RpLogo512.ico" -Verbose
+        Set-RpWindowIcon -window $window -IconPath "$script:PSScriptRoot\Resources\RpLogo512.ico"
     } else {
         Write-Warning "WPF window failed to load. Cannot set icon."
     }
