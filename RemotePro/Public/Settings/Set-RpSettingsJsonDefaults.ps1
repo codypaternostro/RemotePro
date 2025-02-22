@@ -24,6 +24,9 @@ function Set-RpSettingsJsonDefaults {
 
     .OUTPUTS
     None. This cmdlet does not produce any output.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Set-RpSettingsJsonDefaults
     #>
     [CmdletBinding()]
     param(

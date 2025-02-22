@@ -36,6 +36,9 @@ function Get-RpControllerObject {
 
     This example retrieves the value of the 'EventHandlers' property in the
     RemotePro ControllerObject.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpControllerObject
     #>
     [CmdletBinding()]
     param (

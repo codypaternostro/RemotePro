@@ -15,12 +15,15 @@ function Import-RpSettingsFromJson {
     The path to the JSON configuration file. If not provided, a default path is used.
 
     .EXAMPLE
-    Import-RpSettingsFromJson -SettingsFilePath "C:\path\to\settings.json"
+    Import-RpSettingsFromJson -SettingsFilePath "$(Get-RpSettingsJsonPath)"
     This command imports settings from the specified JSON file.
 
     .EXAMPLE
     Import-RpSettingsFromJson
     This command imports settings from the default JSON file path.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Import-RpSettingsFromJson
     #>
     [CmdletBinding()]
     [OutputType([hashtable])]

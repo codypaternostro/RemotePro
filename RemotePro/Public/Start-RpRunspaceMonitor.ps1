@@ -40,6 +40,8 @@ function Start-RpRunspaceMonitor {
     .NOTES
     Experienced issues calling this command. The function is not used in the
     module yet.
+
+    .LINK
     #>
     [CmdletBinding()]
     param (

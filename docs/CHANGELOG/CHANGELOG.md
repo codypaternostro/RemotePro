@@ -12,7 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelased]
 
-- Online help links
+### Completed
+
+- Online help links for Get-Help switch
+
+### In Progress
+
 - Configuration Tab
 - Add .ico icons to all windows
 

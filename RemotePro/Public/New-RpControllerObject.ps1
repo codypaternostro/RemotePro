@@ -4,15 +4,16 @@ function New-RpControllerObject {
     Creates a new ControllerObject for RemotePro.
 
     .DESCRIPTION
-    The New-RpControllerObject cmdlet creates a new RemotePro object, which includes
-    properties like EventHandlers. This object is typed as `RemotePro` and
-    can be used to manage various aspects of the RemotePro environment.
+    The New-RpControllerObject cmdlet creates a new RemotePro object, which
+    includesproperties like EventHandlers. This object is typed as `RemotePro`
+    and can be used to manage various aspects of the RemotePro environment.
 
     .COMPONENT
     ControllerObject
 
     .PARAMETER Refresh
-    Forces the creation of a new RemotePro ControllerObject even if one already exists.
+    Forces the creation of a new RemotePro ControllerObject even if one already
+    exists.
 
     .EXAMPLE
     $remotePro = New-RpControllerObject
@@ -22,7 +23,11 @@ function New-RpControllerObject {
     .EXAMPLE
     $remotePro = New-RpControllerObject -Refresh
 
-    This example forces the creation of a new RemotePro ControllerObject even if one already exists.
+    This example forces the creation of a new RemotePro ControllerObject even
+    if one already exists.
+
+    .LINK
+    https://www.remotepro.dev/en-US/New-RpControllerObject
     #>
     param (
         [Parameter()]

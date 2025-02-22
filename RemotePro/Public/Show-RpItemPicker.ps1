@@ -1,52 +1,54 @@
 function Show-RpItemPicker {
     <#
     .SYNOPSIS
-        Displays an item picker dialog and allows selection of items based on specified
-        types such as Camera, Hardware, or Server.
+    Displays an item picker dialog and allows selection of items based on specified
+    types such as Camera, Hardware, or Server.
 
     .DESCRIPTION
-        The Show-RpItemPicker function opens a window with a customizable item picker
-        control. Users can select items categorized as Camera, Hardware, or Server.
-        The function supports configuration for displaying only camera items and checks
-        the connection to the VMS system before proceeding.
+    The Show-RpItemPicker function opens a window with a customizable item picker
+    control. Users can select items categorized as Camera, Hardware, or Server.
+    The function supports configuration for displaying only camera items and checks
+    the connection to the VMS system before proceeding.
 
     .PARAMETERS
-        -Title
-            Specifies the title of the item picker window. Default is "Select Item(s)".
+    -Title
+        Specifies the title of the item picker window. Default is "Select Item(s)".
 
-        -Kind
-            Defines the types of items to be displayed in the picker. Accepts multiple
-            values from 'Camera', 'Hardware', 'Server'.
+    -Kind
+        Defines the types of items to be displayed in the picker. Accepts multiple
+        values from 'Camera', 'Hardware', 'Server'.
 
-        -ConfigItemsCamsOnly
-            When specified, filters the results to return only camera items.
+    -ConfigItemsCamsOnly
+        When specified, filters the results to return only camera items.
 
-        -CheckConnection
-            Checks the VMS connection before showing the item picker. If the connection
-            fails, the function will not proceed.
+    -CheckConnection
+        Checks the VMS connection before showing the item picker. If the connection
+        fails, the function will not proceed.
 
     .COMPONENT
     CustomVMSCmdlets
 
     .EXAMPLE
-        Show-RpItemPicker -Title "Select Cameras" -Kind 'Camera'
-        # Opens the item picker with the title "Select Cameras" displaying only camera items.
+    Show-RpItemPicker -Title "Select Cameras" -Kind 'Camera'
+    # Opens the item picker with the title "Select Cameras" displaying only camera items.
 
     .EXAMPLE
-        Show-RpItemPicker -Title "Hardware Selection" -Kind 'Hardware' -CheckConnection
-        # Checks the connection first, then shows a picker for selecting hardware items.
+    Show-RpItemPicker -Title "Hardware Selection" -Kind 'Hardware' -CheckConnection
+    # Checks the connection first, then shows a picker for selecting hardware items.
 
     .NOTES
-        This function relies on the VideoOS.Platform.UI module for UI elements and
-        VideoOS.Platform.SDK to interact with the VMS system. Proper error handling
-        is implemented to manage any exceptions during the operation, ensuring the
-        application remains stable even if an error occurs.
+    This function relies on the VideoOS.Platform.UI module for UI elements and
+    VideoOS.Platform.SDK to interact with the VMS system. Proper error handling
+    is implemented to manage any exceptions during the operation, ensuring the
+    application remains stable even if an error occurs.
 
     .LINK
-        Further documentation on ItemPickerWpfUserControl item management can be found at the
-        official documentation portal.
-        https://doc.developer.milestonesys.com/html/index.html
+    Further documentation on ItemPickerWpfUserControl item management can be found at the
+    official documentation portal.
+    https://doc.developer.milestonesys.com/html/index.html
 
+    .LINK
+    https://www.remotepro.dev/en-US/Show-RpItemPicker
     #>
     [CmdletBinding(DefaultParameterSetName='VideoOS.Platform.SDK.Platform')]
     param (

@@ -26,6 +26,9 @@ function Get-RpRunspaceEvents {
     Get-RpRunspaceEvents -Name "Hardware_Click"
 
     This example retrieves the runspace event associated with the "Hardware_Click" button click event.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpRunspaceEvents
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'default')]

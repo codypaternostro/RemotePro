@@ -1,23 +1,26 @@
 function Initialize-RpOpenRunspaces {
     <#
     .SYNOPSIS
-        Initializes an object to manage open runspaces using a static
-        observable collection.
+    Initializes an object to manage open runspaces using a static
+    observable collection.
 
     .DESCRIPTION
-        This cmdlet creates a PSObject with an observable collection to
-        track jobs in static runspaces. The open runspaces object is
-        initialized once and shared across the session.
+    This cmdlet creates a PSObject with an observable collection to
+    track jobs in static runspaces. The open runspaces object is
+    initialized once and shared across the session.
 
     .COMPONENT
     Runspaces
 
     .EXAMPLE
-        $runspaces = Initialize-RpOpenRunspaces
-        Write-Host "Initialized Open Runspaces: $runspaces"
+    $runspaces = Initialize-RpOpenRunspaces
+    Write-Host "Initialized Open Runspaces: $runspaces"
 
     .PARAMETER None
-        This cmdlet takes no parameters.
+    This cmdlet takes no parameters.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Initialize-RpOpenRunspaces
     #>
     [CmdletBinding()]
     param ()

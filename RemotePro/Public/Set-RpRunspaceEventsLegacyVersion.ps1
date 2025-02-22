@@ -65,7 +65,7 @@ function Set-RpRunspaceEventsLegacyVersion {
     - See New-RpControllerObject and Get-RpRunspaceEvents
 
     .LINK
-
+    https://www.remotepro.dev/en-US/Set-RpRunspaceEventsLegacyVersion
     #>
 
 

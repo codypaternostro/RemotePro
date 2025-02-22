@@ -1,22 +1,25 @@
 function Initialize-RpRunspaceJobs {
     <#
     .SYNOPSIS
-        Initializes a synchronized ArrayList to manage runspace jobs.
+    Initializes a synchronized ArrayList to manage runspace jobs.
 
     .DESCRIPTION
-        This cmdlet creates a synchronized ArrayList to store and manage
-        runspace jobs safely across multiple threads. It ensures thread-
-        safe management of runspace jobs using the Synchronized method.
+    This cmdlet creates a synchronized ArrayList to store and manage
+    runspace jobs safely across multiple threads. It ensures thread-
+    safe management of runspace jobs using the Synchronized method.
 
     .COMPONENT
     Runspaces
 
     .EXAMPLE
-        $runspaceJobs = Initialize-RpRunspaceJobs
-        Write-Host "Initialized Runspace Jobs: $runspaceJobs"
+    $runspaceJobs = Initialize-RpRunspaceJobs
+    Write-Host "Initialized Runspace Jobs: $runspaceJobs"
 
     .PARAMETER None
-        This cmdlet takes no parameters.
+    This cmdlet takes no parameters.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Initialize-RpRunspaceJobs
     #>
     [CmdletBinding()]
     param ()

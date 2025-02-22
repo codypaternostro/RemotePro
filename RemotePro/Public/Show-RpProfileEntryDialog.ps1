@@ -13,11 +13,16 @@ function Show-RpProfileEntryDialog {
     ConnectionProfiles
 
     .PARAMETER Edit
-    Switch to edit an existing profile. If enabled, it will load the selected profile's details.
+    Switch to edit an existing profile. If enabled, it will load the selected
+    profile's details.
 
     .PARAMETER SelectedProfile
     The selected connection profile to load into the form when in edit mode.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Show-RpProfileEntryDialog
     #>
+    [CmdletBinding()]
     param (
         [switch]$Edit,
         [PSCustomObject]$SelectedProfile  # Selected profile passed as a parameter

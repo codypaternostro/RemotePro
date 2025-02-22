@@ -60,6 +60,7 @@ function Set-RpRunspaceEvents {
     - See New-RpControllerObject and Get-RpRunspaceEvents
 
     .LINK
+    https://www.remotepro.dev/en-US/Set-RpRunspaceEvents
     #>
     try {
         # Ensure RemotePro object is initialized

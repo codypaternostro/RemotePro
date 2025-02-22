@@ -1,23 +1,26 @@
 function Initialize-RpRunspaceResults {
     <#
     .SYNOPSIS
-        Initializes a synchronized ArrayList to store runspace results.
+    Initializes a synchronized ArrayList to store runspace results.
 
     .DESCRIPTION
-        This cmdlet creates a synchronized ArrayList to store and manage
-        results from runspace jobs. The synchronized ArrayList ensures
-        thread-safe operations when accessing the results from multiple
-        runspaces.
+    This cmdlet creates a synchronized ArrayList to store and manage
+    results from runspace jobs. The synchronized ArrayList ensures
+    thread-safe operations when accessing the results from multiple
+    runspaces.
 
     .COMPONENT
     Runspaces
 
     .EXAMPLE
-        $runspaceResults = Initialize-RpRunspaceResults
-        Write-Host "Initialized Runspace Results: $runspaceResults"
+    $runspaceResults = Initialize-RpRunspaceResults
+    Write-Host "Initialized Runspace Results: $runspaceResults"
 
     .PARAMETER None
-        This cmdlet takes no parameters.
+    This cmdlet takes no parameters.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Initialize-RpRunspaceResults
     #>
     [CmdletBinding()]
     param ()

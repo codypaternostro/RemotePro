@@ -1,13 +1,14 @@
 function Invoke-RpCommandObject {
     <#
     .SYNOPSIS
-    Executes a command object using the call operator (&) by default or Invoke-Command if specified.
+    Executes a command object using the call operator (&) by default or
+    Invoke-Command if specified.
 
     .DESCRIPTION
-    This function accepts a command object (via pipeline or parameter) and executes
-    it. You can optionally specify to use Invoke-Command instead of the default
-    call operator. The function also validates the command and parameters before
-    execution.
+    This function accepts a command object (via pipeline or parameter) and
+    executes it. You can optionally specify to use Invoke-Command instead
+    of the default call operator. The function also validates the command
+    and parameters before execution.
 
     .COMPONENT
     ConfigCommands
@@ -19,8 +20,8 @@ function Invoke-RpCommandObject {
     Switch to use Invoke-Command instead of the default call operator.
 
     .PARAMETER ComputerName
-    If UseInvokeCommand is specified, this parameter defines the remote system(s)
-    to run the command on.
+    If UseInvokeCommand is specified, this parameter defines the remote
+    system(s)to run the command on.
 
     .PARAMETER PipelineCommandObject
     An optional object that will be piped into the primary command as input.
@@ -63,6 +64,9 @@ function Invoke-RpCommandObject {
 
     .NOTES
     Ensure that the command object includes valid CommandName and Parameters.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Invoke-RpCommandObject
     #>
 
     [CmdletBinding()]

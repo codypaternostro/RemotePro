@@ -43,6 +43,9 @@ function Add-RpSettingToJson {
     .NOTES
     If the settings file does not exist, it will be created. If the setting already
     exists, a message will be displayed indicating that the setting already exists.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Add-RpSettingToJson
     #>
     [CmdletBinding(DefaultParameterSetName='CommandLineInterface')]
     param (

@@ -48,6 +48,9 @@ function Find-RpConfigCommand {
     .EXAMPLE
     Find-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RpConfigurationPath)
     Retrieves the command with the Id '12345' from the configuration.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Find-RpConfigCommand
     #>
     [CmdletBinding()]
     param (

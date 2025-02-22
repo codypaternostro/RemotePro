@@ -1,23 +1,31 @@
 function Get-RpVmsHardwareCustom {
     <#
     .SYNOPSIS
-    Retrieves and displays the hardware settings of VMS items with optional connection validation.
+    Retrieves and displays the hardware settings of VMS items with optional
+    connection validation.
 
     .DESCRIPTION
-    This function retrieves the hardware settings of VMS items and displays the results in an HTML view.
-    It also provides an optional parameter to validate the connection before processing.
+    This function retrieves the hardware settings of VMS items and displays the
+    results in an HTML view.
+    It also provides an optional parameter to validate the connection before
+    processing.
 
     .COMPONENT
     CustomVMSCmdlets
 
     .PARAMETER CheckConnection
     Validates the VMS connection before processing the items.
-    If the connection is not valid, the function will display an error message and exit early.
+    If the connection is not valid, the function will display an error message
+    and exit early.
 
     .EXAMPLE
     Get-RpVmsHardwareCustom -CheckConnection
 
-    This example validates the VMS connection before retrieving and displaying the hardware settings of the items.
+    This example validates the VMS connection before retrieving and
+    displaying the hardware settings of the items.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpVmsHardwareCustom
     #>
     [CmdletBinding(DefaultParameterSetName='NoConnectionCheck')]
     param(

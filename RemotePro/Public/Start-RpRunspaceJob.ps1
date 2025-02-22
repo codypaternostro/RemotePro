@@ -65,6 +65,9 @@ function Start-RpRunspaceJob {
     .NOTES
     This function starts a PowerShell job in a runspace and creates identifiers for tracking.
     Relies on "$script:RunspaceJobs = [System.Collections.ArrayList]::Synchronized((New-Object System.Collections.ArrayList))"
+
+    .LINK
+    https://www.remotepro.dev/en-US/Start-RpRunspaceJob
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'UseExistingRunspace')]

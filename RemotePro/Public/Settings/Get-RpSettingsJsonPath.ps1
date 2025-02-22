@@ -17,7 +17,9 @@ function Get-RpSettingsJsonPath {
 
     .EXAMPLE
     Get-RpSettingsJsonPath
-    C:\Users\<User>\AppData\Local\RemotePro\Settings\RemoteProSettings.json
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpSettingsJsonPath
     #>
     [CmdletBinding()]
     [OutputType([string])]

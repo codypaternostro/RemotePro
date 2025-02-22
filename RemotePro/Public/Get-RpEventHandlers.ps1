@@ -34,6 +34,9 @@ function Get-RpEventHandlers {
     Get-RpEventHandlers -All
 
     This example returns all the event handlers defined in the script.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpEventHandlers
     #>
     [CmdletBinding(DefaultParameterSetName = 'default')]
     param (

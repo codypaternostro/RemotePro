@@ -15,6 +15,9 @@ function Get-RpLogPath {
 
     .LINK
     https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpLogPath
     #>
     [CmdletBinding()]
     [OutputType([string])]

@@ -41,6 +41,9 @@ function Remove-RpConfigCommand {
 
     .OUTPUTS
     System.Object
+
+    .LINK
+    https://www.remotepro.dev/en-US/Remove-RpConfigCommand
     #>
     [CmdletBinding()]
     param (

@@ -81,6 +81,9 @@ function Update-RpConfigCommand {
 
     Ensure that the `PresentationFramework`, `PresentationCore`, and `WindowsBase`
     assemblies are available for WPF support to allow the GUI dialog to open.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Update-RpConfigCommand
     #>
     [CmdletBinding(DefaultParameterSetName = 'ShowDialog')]
     param (

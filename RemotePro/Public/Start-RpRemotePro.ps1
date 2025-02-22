@@ -50,6 +50,14 @@ function Start-RpRemotePro {
     MilestonePSTools website, detailing how it extends Milestone's MIP SDK capabilities
     to PowerShell for rapid VMS configuration and reporting automation.
 
+    .LINK
+    https://www.importexcel.com/
+
+    .LINK
+    https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/Out-HtmlView.md
+
+    .LINK
+    https://www.remotepro.dev/en-US/Start-RpRemotePro
     #>
     [CmdletBinding()]
     param()
@@ -83,7 +91,7 @@ function Start-RpRemotePro {
         $script:xaml.SelectNodes("//*[@Name]") | ForEach-Object -Process {
             try {
                 $variableName = $_.Name
-                $variableValue = $window.FindName($variableName)
+                $variableValue = $script:window.FindName($variableName)
 
                 if ($null -eq $variableValue) {
                     throw [System.InvalidOperationException] "No matching UI element found for '$variableName'."
@@ -103,8 +111,9 @@ function Start-RpRemotePro {
         $xmlreader.Dispose()
     }
 
-    if ($null -ne $window) {
-        Set-RpWindowIcon -window $window -IconPath "$script:PSScriptRoot\Resources\RpLogo512.ico"
+    # Set the window icon
+    if ($null -ne $script:window) {
+        Set-RpWindowIcon -window $script:window -IconPath "$script:PSScriptRoot\Resources\RpLogo512.ico"
     } else {
         Write-Warning "WPF window failed to load. Cannot set icon."
     }
@@ -195,9 +204,9 @@ function Start-RpRemotePro {
     $script:RunspaceCleanupTimer.Start()
     #endregion
 
-    $window.ShowDialog() | Out-Null
+    $script:window.ShowDialog() | Out-Null
 
-    if ($window){
+    if ($script:window){
         # Dispose of the window when closed
         $script:window.Close()
     }

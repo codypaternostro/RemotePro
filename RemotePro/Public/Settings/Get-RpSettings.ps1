@@ -21,6 +21,9 @@ function Get-RpSettings {
     .EXAMPLE
     Get-RpSettings -All
     Retrieves all settings values from the RemotePro controller.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpSettings
     #>
     [CmdletBinding()]
     param(

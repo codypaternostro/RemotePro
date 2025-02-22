@@ -40,6 +40,9 @@ function Get-RpConnectionProfile {
     - This function is part of the RemotePro PowerShell module and interacts
     with video management systems.
     - The credentials.xml file contains sensitive information; handle with care.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpConnectionProfile
     #>
     [CmdletBinding(DefaultParameterSetName = 'ViewProfiles')]
     param (

@@ -29,6 +29,9 @@ function Find-RpSettingsJson {
     Find-RpSettingsJson -All
 
     Retrieves all settings from the default JSON file path.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Find-RpSettingsJson
     #>
     [CmdletBinding(DefaultParameterSetName = 'All')]
     param (

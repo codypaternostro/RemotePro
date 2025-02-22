@@ -36,6 +36,9 @@ function Remove-RpSettingFromJson {
 
     Displays a WPF dialog to input the setting name and removes the specified
     setting from the default JSON settings file.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Remove-RpSettingFromJson
     #>
     param (
         [Parameter(Mandatory=$false, ParameterSetName='CommandLineInterface')]

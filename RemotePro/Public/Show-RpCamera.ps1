@@ -68,6 +68,9 @@ function Show-RpCamera {
 
     .LINK
     https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
+
+    .LINK
+    https://www.remotepro.dev/en-US/Show-RpCamera
     #>
     [CmdletBinding(DefaultParameterSetName='RpItemPickerSet')]
     param (

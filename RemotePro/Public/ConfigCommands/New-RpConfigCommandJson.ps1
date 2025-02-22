@@ -31,6 +31,9 @@ function New-RpConfigCommandJson {
     PS C:\> New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath "C:\Config\config.json"
 
     Creates an empty JSON configuration file at the specified path.
+
+    .LINK
+    https://www.remotepro.dev/en-US/New-RpConfigCommandJson
     #>
     [CmdletBinding()]
     param (

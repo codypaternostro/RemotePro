@@ -72,6 +72,9 @@ function Import-RpConfig {
     - Ensure the configuration JSON file follows the required schema for modules and
       commands.
     - Use dot notation to navigate the resulting $modules hashtable.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Import-RpConfig
     #>
     [CmdletBinding()]
     param (

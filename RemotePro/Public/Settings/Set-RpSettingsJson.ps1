@@ -28,6 +28,9 @@ function Set-RpSettingsJson {
     .NOTES
     Ensure that the RemotePro object is initialized by running New-RpControllerObject
     before calling this function.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Set-RpSettingsJson
     #>
     [CmdletBinding()]
     param(

@@ -19,7 +19,7 @@ function Set-RpDefaultConfigCommandIds {
     the default path is used.
 
     .EXAMPLE
-    Set-RpDefaultConfigCommandIds -ConfigFilePath "C:\Path\To\ConfigFile.json"
+    Set-RpDefaultConfigCommandIds -ConfigFilePath "$(Get-RpConfigPath -DefaultIds)""
     Initializes and sets the default configuration command IDs using the
     specified configuration file.
 
@@ -31,6 +31,9 @@ function Set-RpDefaultConfigCommandIds {
     .NOTES
     Ensure that the RemotePro object is initialized by running
     New-RpControllerObject before calling this function.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Set-RpDefaultConfigCommandIds
     #>
     [CmdletBinding()]
     param(

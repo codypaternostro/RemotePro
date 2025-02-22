@@ -1,49 +1,52 @@
 function Get-RpTicketBlock {
     <#
     .SYNOPSIS
-        Retrieves hardware and stream information for a list of camera configuration items.
+    Retrieves hardware and stream information for a list of camera configuration items.
 
     .DESCRIPTION
-        This function processes a list of camera configuration items, retrieves relevant
-        hardware information such as the recording server, hardware name, stream name,
-        serial number, model, IP address, MAC address, username, and password. The data
-        is grouped into an array of PSCustomObjects representing each camera's hardware
-        details. Optionally, the information can be displayed in a WPF window and/or
-        returned as objects to the pipeline.
+    This function processes a list of camera configuration items, retrieves relevant
+    hardware information such as the recording server, hardware name, stream name,
+    serial number, model, IP address, MAC address, username, and password. The data
+    is grouped into an array of PSCustomObjects representing each camera's hardware
+    details. Optionally, the information can be displayed in a WPF window and/or
+    returned as objects to the pipeline.
 
     .COMPONENT
     CustomVMSCmdlets
 
     .PARAMETER Cameras
-        A list of camera configuration items (VideoOS.Platform.ConfigurationItems.Camera)
-        from which the hardware information will be retrieved. This parameter is mandatory
-        and accepts input from the pipeline.
+    A list of camera configuration items (VideoOS.Platform.ConfigurationItems.Camera)
+    from which the hardware information will be retrieved. This parameter is mandatory
+    and accepts input from the pipeline.
 
     .PARAMETER ShowWindow
-        If specified, a WPF window will display the grouped camera hardware information
-        in a formatted list. The window allows users to click on an item to copy its details.
+    If specified, a WPF window will display the grouped camera hardware information
+    in a formatted list. The window allows users to click on an item to copy its details.
 
     .PARAMETER ReturnObjects
-        If specified, the function returns the grouped camera hardware information as
-        PSCustomObject items to the pipeline.
+    If specified, the function returns the grouped camera hardware information as
+    PSCustomObject items to the pipeline.
 
     .EXAMPLE
-        Get-RpTicketBlock -Cameras $cameraList -showWindow
+    Get-RpTicketBlock -Cameras $cameraList -showWindow
 
-        Retrieves camera hardware information from the specified camera configuration items
-        and displays it in a WPF window.
-
-    .EXAMPLE
-        $cameraInfo = Get-RpTicketBlock -Cameras $cameraList -ReturnObjects
-
-        Retrieves camera hardware information from the specified camera configuration items
-        and returns the results as objects to the pipeline.
+    Retrieves camera hardware information from the specified camera configuration items
+    and displays it in a WPF window.
 
     .EXAMPLE
-        $cameraList | Get-RpTicketBlock -showWindow
+    $cameraInfo = Get-RpTicketBlock -Cameras $cameraList -ReturnObjects
 
-        Pipes a list of camera configuration items and displays the retrieved hardware
-        information in a WPF window.
+    Retrieves camera hardware information from the specified camera configuration items
+    and returns the results as objects to the pipeline.
+
+    .EXAMPLE
+    $cameraList | Get-RpTicketBlock -showWindow
+
+    Pipes a list of camera configuration items and displays the retrieved hardware
+    information in a WPF window.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpTicketBlock
     #>
     [CmdletBinding(DefaultParameterSetName = 'CameraConfigurationItems')]
     param (

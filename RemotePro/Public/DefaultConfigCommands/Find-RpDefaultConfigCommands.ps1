@@ -34,6 +34,9 @@ function Find-RpDefaultConfigCommands {
 
     .EXAMPLE
     Find-RpDefaultConfigCommands -All
+
+    .LINK
+    https://www.remotepro.dev/en-US/Find-RpDefaultConfigCommands
     #>
     [CmdletBinding()]
     param (

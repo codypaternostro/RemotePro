@@ -59,6 +59,9 @@ function Start-RpRunspaceJobStatic {
     This will start two jobs: one to fetch a VMS camera report and
     another to display the camera feed. The job details will be stored
     in $script:RpOpenRunspaces.Jobs.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Start-RpRunspaceJobStatic
     #>
     [CmdletBinding()]
     param (

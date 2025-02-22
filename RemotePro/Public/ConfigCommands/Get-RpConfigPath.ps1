@@ -15,6 +15,9 @@ function Get-RpConfigPath {
 
     .PARAMETER DefaultIds
     If specified, retrieves the path for the default IDs configuration file.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Get-RpConfigPath
     #>
     [CmdletBinding()]
     [OutputType([string])]

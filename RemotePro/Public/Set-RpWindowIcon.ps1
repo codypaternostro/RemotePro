@@ -7,7 +7,11 @@ function Set-RpWindowIcon {
     The Set-RpWindowIcon function sets the icon for a given WPF window and its
     taskbar item using the specified icon file path. It ensures the icon file
     exists, loads the icon, and applies it to both the window and the taskbar
-    item. If the TaskbarItemInfo object does not exist, it creates one.
+    item. If the TaskbarItemInfo object does not exist, it creates one. If
+    icon path is not provided, it uses the default icon path from
+    Get-RpIconPath. Additonally, if the icon file is not found, the function
+    returns without setting the icon.
+
 
     .PARAMETER window
     The WPF window object for which the icon will be set. This parameter is
@@ -17,19 +21,26 @@ function Set-RpWindowIcon {
     The file path to the icon image. This parameter is mandatory.
 
     .EXAMPLE
-    Set-RpWindowIcon -window $mainWindow -IconPath "C:\Icons\app.ico"
+    Set-RpWindowIcon -window $mainWindow -IconPath "$(Get-RpIconPath)"
     Sets the icon for the $mainWindow to the specified icon file.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Set-RpWindowIcon
     #>
     param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory=$true)]
         [System.Windows.Window]$window,
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [string]$IconPath
     )
 
     if (-not (Test-Path $IconPath)) {
-        Write-Warning "Icon file not found: $IconPath"
+        Write-Warning "Using default icon path form Get-RpIconPath"
+        $IconPath = Get-RpIconPath
+    }
+    else {
+        Write-Warning "Icon file not found, icon will not be loaded."
         return
     }
 

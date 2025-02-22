@@ -28,12 +28,13 @@ function Update-RpSettingsJson {
 
     .EXAMPLE
     Update-RpSettingsJson -Name "SettingName" -Value "NewValue"
+
     Updates the setting "SettingName" to "NewValue" in the default settings JSON
     file.
 
     .EXAMPLE
-    Update-RpSettingsJson -SettingsFilePath "C:\Path\To\Settings.json" -Name
-    "SettingName" -Value "NewValue"
+    Update-RpSettingsJson -SettingsFilePath "C:\Path\To\Settings.json" -Name "SettingName" -Value "NewValue"
+
     Updates the setting "SettingName" to "NewValue" in the specified settings JSON
     file.
 
@@ -41,6 +42,9 @@ function Update-RpSettingsJson {
     Update-RpSettingsJson -ShowDialog
     Opens a graphical dialog interface to update or add settings in the default
     settings JSON file.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Update-RpSettingsJson
     #>
     [CmdletBinding(DefaultParameterSetName = 'CommandLineInterface')]
     param (

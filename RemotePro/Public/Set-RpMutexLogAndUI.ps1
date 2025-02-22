@@ -12,10 +12,10 @@ function Set-RpMutexLogAndUI {
     Runspaces
 
     .EXAMPLE
-    Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed." -uiElement $textBoxElement
+    Set-RpMutexLogAndUI -logPath "$(Get-RpLogPath)" -message "Task completed." -uiElement $textBoxElement
 
     .EXAMPLE
-    Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed."
+    Set-RpMutexLogAndUI -logPath "$(Get-RpLogPath)"  -message "Task completed."
 
     .PARAMETER mutexName
     The name of the Mutex used to ensure exclusive access. Defaults to a GUID.
@@ -28,6 +28,9 @@ function Set-RpMutexLogAndUI {
 
     .PARAMETER uiElement
     The TextBox UI element to be updated with the message.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Set-RpMutexLogAndUI
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'LogAndUI')]

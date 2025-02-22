@@ -1,29 +1,32 @@
 function Set-RpConfigDefaults {
     <#
     .SYNOPSIS
-        Sets the default configuration for RemotePro.
+    Sets the default configuration for RemotePro.
 
     .DESCRIPTION
-        This cmdlet sets the default configuration values for the RemotePro
-        application. It ensures that all necessary settings are initialized
-        with their default values.
+    This cmdlet sets the default configuration values for the RemotePro
+    application. It ensures that all necessary settings are initialized
+    with their default values.
 
     .COMPONENT
     DefaultConfigCommands
 
     .PARAMETER ConfigFilePath
-        The path to the configuration file where the default settings will
-        be applied.
+    The path to the configuration file where the default settings will
+    be applied.
 
     .EXAMPLE
-        PS C:\> Set-RpConfigDefaults -ConfigFilePath "C:\Config\RemoteProConfig.json"
-        This example sets the default configuration values in the specified configuration file.
+    PS C:\> Set-RpConfigDefaults -ConfigFilePath "C:\Config\RemoteProConfig.json"
+    This example sets the default configuration values in the specified configuration file.
 
     .INPUTS
-        [string] The path to the configuration file where the default settings will be applied.
+    [string] The path to the configuration file where the default settings will be applied.
 
     .OUTPUTS
-        None. This cmdlet does not produce any output.
+    None. This cmdlet does not produce any output.
+
+    .LINK
+    https://www.remotepro.dev/en-US/Set-RpConfigDefaults
 
     #>
     [CmdletBinding()]

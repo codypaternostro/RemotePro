@@ -12,8 +12,8 @@ function Test-RpRequiresVmsConnection {
     VmsConnection
 
     .EXAMPLE
-    Example 1:
-    PS C:\> Test-RequiresVmsConnection
+    Test-RequiresVmsConnection
+
     This command checks if a VMS connection is required and asserts the
     connection.
 
@@ -21,6 +21,8 @@ function Test-RpRequiresVmsConnection {
     For more information, visit:
     https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
 
+    .LINK
+    https://www.milestonepstools.com/commands/en-US/Test-RpRequiresVmsConnection
     #>
     [CmdletBinding()]
     [MilestonePSTools.RequiresVmsConnection(ConnectionRequired, AutoConnect = $false)]

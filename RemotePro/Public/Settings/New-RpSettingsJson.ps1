@@ -24,10 +24,16 @@ function New-RpSettingsJson {
     Creates a new settings JSON file at the specified path.
 
     .EXAMPLE
+    New-RpSettingsJson -SettingsFilePath "$(Get-RpSettingsJsonPath)"
+
+    .EXAMPLE
     New-RpSettingsJson -UseDefaults
 
     Creates a new settings JSON file with default values at the automatically
     determined path.
+
+    .LINK
+    https://www.remotepro.dev/en-US/New-RpSettingsJson
     #>
     [CmdletBinding()]
     param (

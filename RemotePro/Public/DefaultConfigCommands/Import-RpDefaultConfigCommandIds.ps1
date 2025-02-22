@@ -1,26 +1,29 @@
 function Import-RpDefaultConfigCommandIds {
     <#
     .SYNOPSIS
-        Imports default configuration command IDs from a specified JSON file.
+    Imports default configuration command IDs from a specified JSON file.
 
     .DESCRIPTION
-        This function loads a JSON configuration file containing command IDs,
-        parses it, and returns a hashtable-like object where each command name
-        is a top-level key and contains a nested object with its Id.
+    This function loads a JSON configuration file containing command IDs,
+    parses it, and returns a hashtable-like object where each command name
+    is a top-level key and contains a nested object with its Id.
 
     .COMPONENT
     DefaultConfigCommands
 
     .PARAMETER ConfigFilePath
-        The path to the JSON configuration file. If not provided, the function
-        attempts to retrieve the default path.
+    The path to the JSON configuration file. If not provided, the function
+    attempts to retrieve the default path.
 
     .RETURNS
-        A hashtable-like object where each key is the CommandName and its value
-        is a nested object containing an Id.
+    A hashtable-like object where each key is the CommandName and its value
+    is a nested object containing an Id.
 
     .EXAMPLE
-        Import-RpDefaultConfigCommandIds -ConfigFilePath "C:\path\to\config.json"
+    Import-RpDefaultConfigCommandIds -ConfigFilePath $(Get-RpConfigPath -DefaultIds)
+
+    .LINK
+    https://www.remotepro.dev/en-US/Import-RpDefaultConfigCommandIds
     #>
     [CmdletBinding()]
     param (

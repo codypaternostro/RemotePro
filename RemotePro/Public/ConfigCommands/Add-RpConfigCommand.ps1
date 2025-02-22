@@ -59,6 +59,9 @@ function Add-RpConfigCommand {
     support to allow GUI interaction. A new configuration file will be created
     if it doesn’t already exist.
 
+    .LINK
+    https://www.remotepro.dev/en-US/Add-RpConfigCommand
+
     #>
     [CmdletBinding(DefaultParameterSetName = 'ShowDialog')]
     param (

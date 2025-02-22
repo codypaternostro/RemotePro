@@ -18,6 +18,9 @@ function Reset-RpSettingsJson {
 
     .EXAMPLE
     Reset-RpSettingJson
+
+    .LINK
+    https://www.remotepro.dev/en-US/Reset-RpSettingsJson
     #>
     [CmdletBinding()]
     param()

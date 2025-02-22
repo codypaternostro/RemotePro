@@ -57,6 +57,9 @@ function Set-RpEventHandlers {
     - Event handlers are stored as scriptblocks in the EventHandlers hashtable
     and can be invoked based on user interactions.
     - See **New-RpControllerObject** and **Get-RpEventHandlers**
+
+    .LINK
+    https://www.remotepro.dev/en-US/Set-RpEventHandlers
     #>
 
     # Ensure RemotePro object is initialized
