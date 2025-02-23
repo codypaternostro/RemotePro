@@ -55,7 +55,7 @@ function Add-RpConfigCommand {
     and description, then exports the chosen commands to the JSON file.
 
     .NOTES
-    Ensure that the `PresentationFramework` assembly is available for WPF
+    Ensure that the PresentationFramework assembly is available for WPF
     support to allow GUI interaction. A new configuration file will be created
     if it doesn’t already exist.
 

@@ -4,8 +4,8 @@ function Get-RpIconPath {
     Retrieves the path for RemotePro icon file.
 
     .DESCRIPTION
-    This function, Get-RpIconPath, calls New-RpAppDataPath to get the app data
-    directory and then appends 'Resources\RpLogo512.ico'.
+    This function, Get-RpIconPath, calls module scope $script:scriptRoot
+    path and then appends 'Resources\RpLogo512.ico'.
 
     .COMPONENT
     RemoteProGUI
@@ -18,6 +18,6 @@ function Get-RpIconPath {
     param()
 
     process {
-        Join-Path -Path (New-RpAppDataPath) -ChildPath 'Resources\RpLogo512.ico'
+        Join-Path -Path ($script:scriptRoot) -ChildPath 'Resources\RpLogo512.ico'
     }
 }

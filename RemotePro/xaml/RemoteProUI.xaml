@@ -331,11 +331,11 @@
                     </TabItem>
 
                     <!-- Configuration -->
-                    <!-- <TabItem Header="Configuration">
+                    <TabItem Header="Configuration">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <TextBlock Text="Placeholder content for Configuration" Margin="10" />
                         </ScrollViewer>
-                    </TabItem> -->
+                    </TabItem>
 
 
                     <!-- ToDo: Heartbeat Tab

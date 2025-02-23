@@ -22,7 +22,7 @@ function Test-RpRequiresVmsConnection {
     https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
 
     .LINK
-    https://www.milestonepstools.com/commands/en-US/Test-RpRequiresVmsConnection
+    https://remotepro.dev/en-US/Test-RpRequiresVmsConnection
     #>
     [CmdletBinding()]
     [MilestonePSTools.RequiresVmsConnection(ConnectionRequired, AutoConnect = $false)]

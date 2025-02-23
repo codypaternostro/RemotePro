@@ -113,7 +113,7 @@ function Start-RpRemotePro {
 
     # Set the window icon
     if ($null -ne $script:window) {
-        Set-RpWindowIcon -window $script:window -IconPath "$script:PSScriptRoot\Resources\RpLogo512.ico"
+        Set-RpWindowIcon -window $script:window
     } else {
         Write-Warning "WPF window failed to load. Cannot set icon."
     }
@@ -132,6 +132,8 @@ function Start-RpRemotePro {
     #region button-click processing
     # Attach event handlers to UI elements from RemotePro.EventHandlers
     # Syntax: $xamlVariableName.event($script:RemotePro.EventType.EventName)
+
+    # Manage Connections TAB
     $script:New_Connection_File.Add_Click($script:RemotePro.EventHandlers.NewConnectionFile_Click)
     $script:OpenFile.Add_Click($script:RemotePro.EventHandlers.OpenFile_Click)
     $script:Connections_Combo_Box.Add_SelectionChanged($script:RemotePro.EventHandlers.ConnectionsComboBox_SelectionChanged)
@@ -144,7 +146,9 @@ function Start-RpRemotePro {
     $script:Delete_Profile_Button.Add_Click($script:RemotePro.EventHandlers.DeleteProfileButton_Click)
     $script:Edit_Profile_Button.Add_Click($script:RemotePro.EventHandlers.EditProfileButton_Click)
     $script:Add_Profile_Button.Add_Click($script:RemotePro.EventHandlers.AddProfileButton_Click)
+    $script:Connection_Status_Box.Add_TextChanged($script:RemotePro.EventHandlers.CSB_TextChanged)
 
+    # Toolbar
     $script:GithubRepositoryCommand.Add_Click($script:RemotePro.EventHandlers.GithubRepositoryButton_Click)
     $script:PowerShellGalleryCommand.Add_Click($script:RemotePro.EventHandlers.PowerShellGalleryButton_Click)
     $script:DocsSiteCommand.Add_Click($script:RemotePro.EventHandlers.DocsSiteButton_Click)
@@ -153,8 +157,10 @@ function Start-RpRemotePro {
     $script:LicenseInformationCommand.Add_Click($script:RemotePro.EventHandlers.LicenseInformationButton_Click)
     $script:ExitApplicationCommand.Add_Click($script:RemotePro.EventHandlers.Window_AddClosed_Click)
 
+    # Runspace log TAB
     $script:Runspace_Mutex_Log.Add_TextChanged($script:RemotePro.EventHandlers.RunspaceMutexLog_TextChanged)
-    $script:Connection_Status_Box.Add_TextChanged($script:RemotePro.EventHandlers.CSB_TextChanged)
+
+    # Configuration & Settings TAB
 
     # Attach runspace events to UI elements from RemotePro.RunspaceEvents
     # Syntax: $xamlVariableName.event($script:RemotePro.EventType.RunspaceEventName)
@@ -164,7 +170,12 @@ function Start-RpRemotePro {
     $script:ShowVideoOSItems.Add_Click($script:RemotePro.RunspaceEvents.ShowVideoOSItems_Click)
     $script:Hardware.Add_Click($script:RemotePro.RunspaceEvents.Hardware_Click)
     $script:ItemState.Add_Click($script:RemotePro.RunspaceEvents.ItemState_Click)
+
+
+
     #endegion
+
+
 
     #region clean up main window environment
     $script:window.Add_Closed($script:RemotePro.EventHandlers.Window_AddClosed_Click)

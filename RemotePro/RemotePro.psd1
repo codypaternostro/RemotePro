@@ -12,7 +12,7 @@
 RootModule = 'RemotePro.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.9'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2024 Cody Paternostro. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'PowerShell WPF GUI for MilestonePSTools --> Documentation: https://www.remotepro.dev/'
+Description = 'PowerShell WPF GUI for MilestonePSTools. Documentation: https://www.remotepro.dev/'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'

@@ -1493,7 +1493,25 @@
           <li class="md-nav__item">
   <a href="#example-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 1
+      EXAMPLE 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAMPLE 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAMPLE 3
     </span>
   </a>
   
@@ -1517,7 +1535,16 @@
           <li class="md-nav__item">
   <a href="#-window" class="md-nav__link">
     <span class="md-ellipsis">
-      -window
+      -Window
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-memorystream" class="md-nav__link">
+    <span class="md-ellipsis">
+      -MemoryStream
     </span>
   </a>
   
@@ -1562,21 +1589,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="INPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#none" class="md-nav__link">
-    <span class="md-ellipsis">
-      None
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1585,21 +1597,6 @@
       OUTPUTS
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OUTPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#systemobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      System.Object
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1975,7 +1972,25 @@
           <li class="md-nav__item">
   <a href="#example-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 1
+      EXAMPLE 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAMPLE 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAMPLE 3
     </span>
   </a>
   
@@ -1999,7 +2014,16 @@
           <li class="md-nav__item">
   <a href="#-window" class="md-nav__link">
     <span class="md-ellipsis">
-      -window
+      -Window
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-memorystream" class="md-nav__link">
+    <span class="md-ellipsis">
+      -MemoryStream
     </span>
   </a>
   
@@ -2044,21 +2068,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="INPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#none" class="md-nav__link">
-    <span class="md-ellipsis">
-      None
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2067,21 +2076,6 @@
       OUTPUTS
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OUTPUTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#systemobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      System.Object
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2123,21 +2117,31 @@
 
 <h1 id="set-rpwindowicon">Set-RpWindowIcon</h1>
 <h2 id="synopsis">SYNOPSIS</h2>
-<p>{{ Fill in the Synopsis }}</p>
+<p>Sets the icon for a specified WPF window and its taskbar item.</p>
 <h2 id="syntax">SYNTAX</h2>
-<pre><code>Set-RpWindowIcon [-window] &lt;Window&gt; [[-IconPath] &lt;String&gt;] [-ProgressAction &lt;ActionPreference&gt;]
- [&lt;CommonParameters&gt;]
+<pre><code>Set-RpWindowIcon [-Window] &lt;Window&gt; [[-MemoryStream] &lt;MemoryStream&gt;] [[-IconPath] &lt;String&gt;]
+ [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
 </code></pre>
 <h2 id="description">DESCRIPTION</h2>
-<p>{{ Fill in the Description }}</p>
+<p>This function sets the icon for a WPF window using either a file path or a memory stream.
+It prioritizes the provided MemoryStream and falls back to IconPath if needed.
+If both are missing, it attempts to use a module-scoped MemoryStream @ $script:RpIconStream.</p>
 <h2 id="examples">EXAMPLES</h2>
-<h3 id="example-1">Example 1</h3>
-<pre><code class="language-powershell">PS C:\&gt; {{ Add example code here }}
+<h3 id="example-1">EXAMPLE 1</h3>
+<pre><code>Set-RpWindowIcon -window $mainWindow -IconPath (Get-RpIconPath)
 </code></pre>
-<p>{{ Add example description here }}</p>
+<p>Uses the provided icon file path.</p>
+<h3 id="example-2">EXAMPLE 2</h3>
+<pre><code>Set-RpWindowIcon -window $mainWindow -MemoryStream $iconStream
+</code></pre>
+<p>Uses the provided memory stream.</p>
+<h3 id="example-3">EXAMPLE 3</h3>
+<pre><code>Set-RpWindowIcon -window $mainWindow
+</code></pre>
+<p>Uses the default module-scoped memory stream $script:RpIconStream.</p>
 <h2 id="parameters">PARAMETERS</h2>
-<h3 id="-window">-window</h3>
-<p>{{ Fill window Description }}</p>
+<h3 id="-window">-Window</h3>
+<p>The WPF window object for which the icon will be set.</p>
 <pre><code class="language-yaml">Type: Window
 Parameter Sets: (All)
 Aliases:
@@ -2148,14 +2152,26 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 </code></pre>
-<h3 id="-iconpath">-IconPath</h3>
-<p>{{ Fill IconPath Description }}</p>
-<pre><code class="language-yaml">Type: String
+<h3 id="-memorystream">-MemoryStream</h3>
+<p>The memory stream containing the icon image.</p>
+<pre><code class="language-yaml">Type: MemoryStream
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-iconpath">-IconPath</h3>
+<p>The file path to the icon image.</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -2175,11 +2191,10 @@ Accept wildcard characters: False
 <h3 id="commonparameters">CommonParameters</h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
 <h2 id="inputs">INPUTS</h2>
-<h3 id="none">None</h3>
 <h2 id="outputs">OUTPUTS</h2>
-<h3 id="systemobject">System.Object</h3>
 <h2 id="notes">NOTES</h2>
 <h2 id="related-links">RELATED LINKS</h2>
+<p><a href="https://www.remotepro.dev/en-US/Set-RpWindowIcon">https://www.remotepro.dev/en-US/Set-RpWindowIcon</a></p>
 
 
 

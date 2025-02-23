@@ -20,11 +20,12 @@ function Test-RpVmsConnection {
 
     .EXAMPLE
     Test-RpVmsConnection -ShowErrorDialog $false
+
     .LINK
     https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
 
     .LINK
-    https://www.milestonepstools.com/commands/en-US/Test-RpVmsConnection
+    https://remotepro.dev/en-US/Test-RpVmsConnection
     #>
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (

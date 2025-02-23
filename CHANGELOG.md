@@ -9,18 +9,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-
 ## [Unrelased]
-
-### Completed
-
-- Online help links for Get-Help switch
-- Added Get-RpIconPath
 
 ### In Progress
 
+- Correct example formatting
 - Configuration Tab
 - Add .ico icons to all windows
+
+## [0.2.0] - 2025-02-20
+
+### Added
+
+- Online help links for Get-Help switch parameter
+- Module scope MemoryStream for reading icon file. This is used
+by Set-RpWindowIcon if the stream object is not provided.
+Set-RpWindowIcon will also use Get-RpIconPath by default if a path
+is not provided.
+
+### Fixed
+
+- Get-RpIconPath had incorrect path, correct to use module scope scriptroot
+
 
 ## [0.1.9] - 2025-02-20
 

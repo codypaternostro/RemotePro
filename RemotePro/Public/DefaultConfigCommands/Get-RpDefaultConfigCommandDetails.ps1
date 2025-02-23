@@ -16,7 +16,7 @@ function Get-RpDefaultConfigCommandDetails {
     Get-RpDefaultConfigCommands
 
     .LINK
-    https://www.remotepro.dev/en-US/Get-RpDefaultConfigCommands
+    https://www.remotepro.dev/en-US/Get-RpDefaultConfigCommandDetails
     #>
     [CmdletBinding()]
     param()
