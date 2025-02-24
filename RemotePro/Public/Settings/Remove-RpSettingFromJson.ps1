@@ -26,6 +26,12 @@ function Remove-RpSettingFromJson {
     parameter is mandatory in ShowDialog mode.
 
     .EXAMPLE
+    Remove-RpSettingFromJson -SettingsFilePath (Get-RpSettingsJsonPath) -Name
+    "SettingName"
+
+    Removes the setting named "SettingName" from the default JSON settings file.
+
+    .EXAMPLE
     Remove-RpSettingFromJson -SettingsFilePath "C:\path\to\settings.json" -Name
     "SettingName"
 
@@ -35,7 +41,8 @@ function Remove-RpSettingFromJson {
     Remove-RpSettingFromJson -ShowDialog
 
     Displays a WPF dialog to input the setting name and removes the specified
-    setting from the default JSON settings file.
+    setting from the default JSON settings file. Ability to use custom path
+    can be added in the future.
 
     .LINK
     https://www.remotepro.dev/en-US/Remove-RpSettingFromJson
@@ -114,6 +121,13 @@ function Remove-RpSettingFromJson {
 
                 # Parse XAML and load WPF elements
                 $window = [Windows.Markup.XamlReader]::Parse($xaml)
+
+                # Set the window icon
+                if ($null -ne $window) {
+                    Set-RpWindowIcon -window $window
+                } else {
+                    Write-Warning "WPF window failed to load. Cannot set icon."
+                }
 
                 # Find WPF Controls
                 $settingsListBox = $window.FindName("SettingsListBox")

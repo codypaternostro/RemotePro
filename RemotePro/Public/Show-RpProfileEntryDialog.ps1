@@ -113,6 +113,13 @@ function Show-RpProfileEntryDialog {
     $reader = New-Object System.Xml.XmlNodeReader([xml]$xaml)
     $window = [Windows.Markup.XamlReader]::Load($reader)
 
+    # Set the window icon
+    if ($null -ne $window) {
+        Set-RpWindowIcon -window $window
+    } else {
+        Write-Warning "WPF window failed to load. Cannot set icon."
+    }
+
     # Assign control references
     $profileNameBox = $window.FindName("ProfileNameBox")
     $serverAddressBox = $window.FindName("ServerAddressBox")

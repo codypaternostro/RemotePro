@@ -37,6 +37,9 @@ function Watch-RpRunspaces {
     -RunspaceJobs $script:RunspaceJobs -RunspaceResults $script:RunspaceResults
     -OpenRunspaces $script:openRunspaces
 
+    This example monitors the runspaces and logs the output to "C:\Logs\RunspaceLog.txt".
+    It also updates the UI element with the job statuses and messages.
+
     .NOTES
     - The function relies on the following module variables and collections:
     - Initialize-RpRunspaceJobs $script:RunspaceJobs: Tracks each runspace
@@ -45,10 +48,8 @@ function Watch-RpRunspaces {
         runspaces.
     - Initialize-RpOpenRunspaces $script:openRunspaces: Static collection of active
         runspaces.
-
     - The log path is determined using the Get-RpLogPath cmdlet, which provides the
         path to the RemotePro AppData location.
-
     - UI updates rely on a TextBox control ($uiElement), where job and status
         messages are displayed. This UI element must be bound to "Runspace_Mutex_Log"
         for proper updates.

@@ -13,11 +13,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### In Progress
 
-- Correct example formatting
 - Configuration Tab
-- Add .ico icons to all windows
 
-## [0.2.0] - 2025-02-20
+## [0.2.1] - 2025-02-23
+
+### Added
+
+- RemotePro512.ico added to all windows for cmdlets using ShowDialog parameter.
+- Improved various examples for help comments.
+
+### Fixed
+
+- Added correct link for issues button.
+- Help comments for cmdlets by seperating text and code.
+
+## [0.2.0] - 2025-02-22
 
 ### Added
 

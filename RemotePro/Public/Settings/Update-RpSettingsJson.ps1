@@ -168,6 +168,13 @@ function Update-RpSettingsJson {
                     # Parse XAML and load WPF elements
                     $window = [Windows.Markup.XamlReader]::Parse($xaml)
 
+                    # Set the window icon
+                    if ($null -ne $window) {
+                        Set-RpWindowIcon -window $window
+                    } else {
+                        Write-Warning "WPF window failed to load. Cannot set icon."
+                    }
+
                     # Find WPF Controls
                     $settingsListBox = $window.FindName("SettingsListBox")
                     $valueTextBox = $window.FindName("ValueTextBox")

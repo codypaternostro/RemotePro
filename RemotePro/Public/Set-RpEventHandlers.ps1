@@ -343,7 +343,7 @@ function Set-RpEventHandlers {
 
         ReportIssueButton_Click = {
             Write-Host "Opening GitHub Issues webpage."
-            Start-Process "https://github.com/codypaternostro/RemotePro/blob/main/LICENSE"
+            Start-Process "https://github.com/codypaternostro/RemotePro/issues"
         }
 
         LicenseInformationButton_Click = {

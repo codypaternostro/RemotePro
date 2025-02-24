@@ -16,10 +16,12 @@ function Get-RpSettings {
 
     .EXAMPLE
     Get-RpSettings
+
     Retrieves the settings object from the RemotePro controller.
 
     .EXAMPLE
     Get-RpSettings -All
+
     Retrieves all settings values from the RemotePro controller.
 
     .LINK

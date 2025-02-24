@@ -16,7 +16,7 @@ function Set-RpConfigDefaults {
     be applied.
 
     .EXAMPLE
-    PS C:\> Set-RpConfigDefaults -ConfigFilePath "C:\Config\RemoteProConfig.json"
+    Set-RpConfigDefaults -ConfigFilePath "C:\Config\RemoteProConfig.json"
     This example sets the default configuration values in the specified configuration file.
 
     .INPUTS

@@ -32,7 +32,8 @@ function Add-RpSettingToJson {
     "Dark"
 
     Adds a setting named "Theme" with the value "Dark" to the specified settings
-    file.
+    file. Note this is a hypothetical example and the setting may not exist in the
+    default settings file.
 
     .EXAMPLE
     Add-RpSettingToJson -ShowDialog
@@ -122,6 +123,14 @@ function Add-RpSettingToJson {
 
                 # Parse XAML and load WPF elements
                 $window = [Windows.Markup.XamlReader]::Parse($xaml)
+
+                # Set the window icon
+                if ($null -ne $window) {
+                    Set-RpWindowIcon -window $window
+
+                } else {
+                    Write-Warning "WPF window failed to load. Cannot set icon."
+                }
 
                 # Find WPF Controls
                 $nameTextBox = $window.FindName("NameTextBox")

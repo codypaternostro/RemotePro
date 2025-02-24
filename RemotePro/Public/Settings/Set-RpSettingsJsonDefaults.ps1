@@ -16,7 +16,14 @@ function Set-RpSettingsJsonDefaults {
     be applied.
 
     .EXAMPLE
+    Set-RpSettingsJsonDefaults -SettingsFilePath (Get-RpSettingsJsonPath)
+
+    This example sets the default settings values in the default settings JSON file.
+    This is the default behavior if no settings file path is provided.
+
+    .EXAMPLE
     Set-RpSettingsJsonDefaults -SettingsFilePath "C:\Config\RemoteProSettings.json"
+
     This example sets the default settings values in the specified settings JSON file.
 
     .INPUTS

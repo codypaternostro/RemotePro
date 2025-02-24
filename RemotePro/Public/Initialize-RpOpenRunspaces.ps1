@@ -16,6 +16,9 @@ function Initialize-RpOpenRunspaces {
     $runspaces = Initialize-RpOpenRunspaces
     Write-Host "Initialized Open Runspaces: $runspaces"
 
+    This example initializes the open runspaces object and assigns it
+    to the module scope open runspaces variable, $script:OpenRunspaces.
+
     .PARAMETER None
     This cmdlet takes no parameters.
 

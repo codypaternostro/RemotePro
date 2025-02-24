@@ -22,13 +22,19 @@ function New-RpConfigCommandJson {
     the default application data location is used.
 
     .EXAMPLE
-    PS C:\> New-RpConfigCommandJson -Type "DefaultJson"
+    New-RpConfigCommandJson -Type "DefaultJson"
 
     Creates a default JSON configuration file at the default application data
     location.
 
     .EXAMPLE
-    PS C:\> New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath "C:\Config\config.json"
+    New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath (Get-RpConfigPath)
+
+    Creates an empty JSON configuration file at the default application path.
+    This is the default path if one is specified using ConfigFilePath parameter.
+
+    .EXAMPLE
+    New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath "C:\Config\config.json"
 
     Creates an empty JSON configuration file at the specified path.
 

@@ -210,6 +210,13 @@ function Get-RpTicketBlock {
             $reader = [System.Xml.XmlNodeReader]::new([xml]$xaml)
             $window = [System.Windows.Markup.XamlReader]::Load($reader)
 
+            # Set the window icon
+            if ($null -ne $window) {
+                Set-RpWindowIcon -window $window
+            } else {
+                Write-Warning "WPF window failed to load. Cannot set icon."
+            }
+
             # Initialize the ListBox control
             $cameraList = $window.FindName("CameraList")
             $cameraList.ItemsSource = $groupedCameras

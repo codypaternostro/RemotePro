@@ -31,40 +31,45 @@ function Import-RpConfig {
     objects.
 
     .EXAMPLE
-    Import configuration from a specified file
     $modules = Import-RpConfig -ConfigFilePath $(Get-RpConfigPath)
 
+    Import configuration from a specified file.
+
     .EXAMPLE
-    Import configuration using the default path
     $modules = Import-RpConfig
 
+    Import configuration using the default path.
+
     .EXAMPLE
-    Access and format a specific command object
     $commandObject = $modules.RemotePro.'Get-RpVmsHardwareCustom'.'1234-5678'
 
+    Access and format a specific command object.
+
+
     .EXAMPLE
-    Execute the formatted command locally using the call operator
     & $preparedCommand.CommandName @($preparedCommand.Parameters)
 
+    Execute the formatted command locally using the call operator.
+
     .EXAMPLE
-    Calling Get-RpVmsItemStateCustom from the default config commands.
+    # Calling Get-RpVmsItemStateCustom from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
     $preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
-
-    Calling Out-HtmlView from the default config commands.
+    # Calling Out-HtmlView from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
     $preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
-
-    Invoke default config commands.
+    # Invoke default config commands.
     Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
 
     .EXAMPLE
-    Use Invoke-RpCommandObject for execution
     $preparedCommand | Invoke-RpCommandObject
 
+    Use Invoke-RpCommandObject for execution.
+
     .EXAMPLE
-    Use Invoke-RpCommandObject for remote execution
     $preparedCommand | Invoke-RpCommandObject -UseInvokeCommand -ComputerName "RemoteServer"
+
+    Uses Invoke-RpCommandObject for remote execution.
 
     .NOTES
     - Modules and commands are structured as nested hashtables for easy navigation.

@@ -16,6 +16,10 @@ function Initialize-RpRunspaceResults {
     $runspaceResults = Initialize-RpRunspaceResults
     Write-Host "Initialized Runspace Results: $runspaceResults"
 
+    This example initializes the synchronized ArrayList for runspace
+    results and assigns it to the module scope runspace results variable,
+    $script:RunspaceResults.
+
     .PARAMETER None
     This cmdlet takes no parameters.
 

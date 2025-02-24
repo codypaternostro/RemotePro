@@ -18,8 +18,14 @@ function Test-RpVmsConnection {
     .EXAMPLE
     Test-RpVmsConnection
 
+    Tests the connection to the VMS management server and shows an error dialog
+    if the connection fails.
+
     .EXAMPLE
     Test-RpVmsConnection -ShowErrorDialog $false
+
+    Tests the connection to the VMS management server and suppresses the error
+    dialog if the connection fails.
 
     .LINK
     https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection

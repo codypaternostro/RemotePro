@@ -45,19 +45,22 @@ function Show-RpCamera {
 
     .EXAMPLE
     Show-RpCamera -ShowSelectCamera
-    # This command opens the standard camera selection dialog and displays the
-    # selected camera feed without any diagnostic overlays.
+
+    This command opens the standard camera selection dialog and displays the
+    selected camera feed without any diagnostic overlays.
 
     .EXAMPLE
     Show-RpCamera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
-    # This command displays the feed of a camera identified by the specified GUID
-    # with sequence data for the past 7 days.
+
+    This command displays the feed of a camera identified by the specified GUID
+    with sequence data for the past 7 days.
 
     .EXAMPLE
     Show-RpCamera -ShowRpItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
-    # This command uses a custom item picker for camera selection and shows the
-    # selected camera feed with a high diagnostic level overlay for the past 30
-    # days.
+
+    This command uses a custom item picker for camera selection and shows the
+    selected camera feed with a high diagnostic level overlay for the past 30
+    days.
 
     .NOTES
     - Requires a connection to a VMS (Video Management System).

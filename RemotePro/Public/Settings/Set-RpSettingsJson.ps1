@@ -19,7 +19,14 @@ function Set-RpSettingsJson {
     appdata path is used.
 
     .EXAMPLE
+    Set-RpSettingsJson -SettingsFilePath (Get-RpSettingsJsonPath)
+
+    This command sets the RemotePro settings from the default JSON file path.
+    If the path is not provided, it uses this default appdata path.
+
+    .EXAMPLE
     Set-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json"
+
     This command sets the RemotePro settings from the specified JSON file.
 
     .INPUTS

@@ -13,6 +13,11 @@ function New-RpAppDataPath {
     .COMPONENT
     AppDataPath
 
+    .EXAMPLE
+    New-RpAppDataPath
+
+    This example creates the RemotePro app data directory and returns the full path.
+
     .LINK
     https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
 

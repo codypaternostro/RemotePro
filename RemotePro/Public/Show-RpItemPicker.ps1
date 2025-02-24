@@ -30,11 +30,13 @@ function Show-RpItemPicker {
 
     .EXAMPLE
     Show-RpItemPicker -Title "Select Cameras" -Kind 'Camera'
-    # Opens the item picker with the title "Select Cameras" displaying only camera items.
+
+    Opens the item picker with the title "Select Cameras" displaying only camera items.
 
     .EXAMPLE
     Show-RpItemPicker -Title "Hardware Selection" -Kind 'Hardware' -CheckConnection
-    # Checks the connection first, then shows a picker for selecting hardware items.
+
+    Checks the connection first, then shows a picker for selecting hardware items.
 
     .NOTES
     This function relies on the VideoOS.Platform.UI module for UI elements and
@@ -130,6 +132,13 @@ function Show-RpItemPicker {
 
         # Load the XAML
         $window = [System.Windows.Markup.XamlReader]::Load($reader)
+
+        # Set the window icon
+        if ($null -ne $window) {
+            Set-RpWindowIcon -window $window
+        } else {
+            Write-Warning "WPF window failed to load. Cannot set icon."
+        }
 
         # Create an instance of the ItemPickerWpfUserControl
         $itemPickerControl = New-Object VideoOS.Platform.UI.ItemPickerWpfUserControl
@@ -322,14 +331,3 @@ function Show-RpItemPicker {
         }
     }
 }
-
-    # Clear variables
-<#
-    Remove-Variable $xaml
-    Remove-Variable $reader
-    Remove-Variable $window
-    Remove-Variable $itemPickerControl
-    Remove-Variable $itemsList
-    Remove-Variable $selectedItemDetails
-    Remove-Variable $button
-#>

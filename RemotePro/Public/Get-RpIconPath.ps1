@@ -10,6 +10,11 @@ function Get-RpIconPath {
     .COMPONENT
     RemoteProGUI
 
+    .EXAMPLE
+    Get-RpIconPath
+
+    This example retrieves the path for the RemotePro icon file.
+
     .LINK
     https://www.remotepro.dev/en-US/Get-RpIconPath
     #>

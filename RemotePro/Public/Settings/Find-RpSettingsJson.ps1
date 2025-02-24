@@ -21,6 +21,11 @@ function Find-RpSettingsJson {
     Switch to retrieve all settings from the JSON file.
 
     .EXAMPLE
+    Find-RpSettingsJson -SettingsFilePath (Get-RpSettingsJsonPath) -Name "SettingName"
+
+    Retrieves the specified setting from the default JSON file path.
+
+    .EXAMPLE
     Find-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json" -Name "SettingName"
 
     Retrieves the specified setting from the provided JSON file path.

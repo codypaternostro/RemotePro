@@ -15,8 +15,7 @@ function Import-RpDefaultConfigCommandIds {
     The path to the JSON configuration file. If not provided, the function
     attempts to retrieve the default path.
 
-    .RETURNS
-    A hashtable-like object where each key is the CommandName and its value
+    A hashtable object where each key is the CommandName and its value
     is a nested object containing an Id.
 
     .EXAMPLE

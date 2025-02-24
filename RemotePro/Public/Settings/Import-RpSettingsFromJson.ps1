@@ -16,10 +16,12 @@ function Import-RpSettingsFromJson {
 
     .EXAMPLE
     Import-RpSettingsFromJson -SettingsFilePath "$(Get-RpSettingsJsonPath)"
+
     This command imports settings from the specified JSON file.
 
     .EXAMPLE
     Import-RpSettingsFromJson
+
     This command imports settings from the default JSON file path.
 
     .LINK

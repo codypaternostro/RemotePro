@@ -19,12 +19,14 @@ function Set-RpDefaultConfigCommandIds {
     the default path is used.
 
     .EXAMPLE
-    Set-RpDefaultConfigCommandIds -ConfigFilePath "$(Get-RpConfigPath -DefaultIds)""
+    Set-RpDefaultConfigCommandIds -ConfigFilePath "$(Get-RpConfigPath -DefaultIds)"
+
     Initializes and sets the default configuration command IDs using the
     specified configuration file.
 
     .EXAMPLE
     Set-RpDefaultConfigCommandIds
+
     Initializes and sets the default configuration command IDs using the default
     configuration file path.
 

@@ -17,10 +17,12 @@ function Get-RpConfigCommands {
 
     .EXAMPLE
     Get-RpConfigCommands
+
     Retrieves the configuration commands as a single object.
 
     .EXAMPLE
     Get-RpConfigCommands -All
+
     Retrieves all configuration commands as an array of values.
 
     .OUTPUTS

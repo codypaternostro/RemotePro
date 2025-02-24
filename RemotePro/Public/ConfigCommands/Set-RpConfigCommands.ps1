@@ -16,12 +16,19 @@ function Set-RpConfigCommands {
     The file path to the configuration file. If not provided, a default path is used.
 
     .EXAMPLE
+    Set-RpConfigCommands -ConfigFilePath (Get-RpConfigPath)
+
+    This example sets the configuration commands using the default configuration path.
+
+    .EXAMPLE
     Set-RpConfigCommands -ConfigFilePath "C:\Path\To\ConfigFile.json"
+
     This example sets the configuration commands using the specified configuration
     file path.
 
     .EXAMPLE
     Set-RpConfigCommands
+
     This example sets the configuration commands using the default configuration
     file path.
 

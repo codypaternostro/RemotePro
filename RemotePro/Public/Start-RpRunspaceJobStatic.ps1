@@ -32,7 +32,7 @@ function Start-RpRunspaceJobStatic {
     Optional. An ArrayList that tracks individual runspace jobs.
 
     .EXAMPLE
-    Define the jobs to run
+    # Define the jobs to run
     $jobsToRun = @(
         @{
             JobName                = "VmsCameraReportJob"
@@ -47,8 +47,7 @@ function Start-RpRunspaceJobStatic {
             ScriptBlock            = { Write-Host "Displaying Camera Feed..." }
         }
     )
-
-    Start the runspace jobs
+    #Start the runspace jobs
     $script:RpOpenRunspaces = Start-RpRunspaceJobStatic
         -Jobs $jobsToRun
         -uiElement $script:Runspace_Mutex_Log

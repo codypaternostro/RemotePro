@@ -15,6 +15,10 @@ function Initialize-RpRunspaceJobs {
     $runspaceJobs = Initialize-RpRunspaceJobs
     Write-Host "Initialized Runspace Jobs: $runspaceJobs"
 
+    This example initializes the synchronized ArrayList for runspace
+    jobs and assigns it to the module scope runspace jobs variable,
+    $script:RunspaceJobs.
+
     .PARAMETER None
     This cmdlet takes no parameters.
 

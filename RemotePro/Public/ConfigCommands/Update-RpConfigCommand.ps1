@@ -71,15 +71,15 @@ function Update-RpConfigCommand {
 
     .NOTES
     The configuration file must be in JSON format and already include a structure
-    for `ConfigCommands` and the specified module. Any missing structure will
+    for ConfigCommands and the specified module. Any missing structure will
     cause an error.
 
     Note: The order of parameters in the GUI may not match the JSON file order
     due to how PowerShell handles JSON deserialization. To ensure a specific
-    order, consider using an `OrderedDictionary` or manually managing parameter
+    order, consider using an OrderedDictionary or manually managing parameter
     order.
 
-    Ensure that the `PresentationFramework`, `PresentationCore`, and `WindowsBase`
+    Ensure that the PresentationFramework, PresentationCore, and WindowsBase
     assemblies are available for WPF support to allow the GUI dialog to open.
 
     .LINK
@@ -215,10 +215,18 @@ function Update-RpConfigCommand {
 </Window>
 "@
 
-            $form = [Windows.Markup.XamlReader]::Parse($xaml)
-            $parameterstack = $form.FindName("ParameterStack")
-            $submitButton = $form.FindName("SubmitButton")
-            $cancelButton = $form.FindName("CancelButton")
+            $window = [Windows.Markup.XamlReader]::Parse($xaml)
+
+            # Set the window icon
+            if ($null -ne $window) {
+                Set-RpWindowIcon -window $window
+            } else {
+                Write-Warning "WPF window failed to load. Cannot set icon."
+            }
+
+            $parameterstack = $window.FindName("ParameterStack")
+            $submitButton = $window.FindName("SubmitButton")
+            $cancelButton = $window.FindName("CancelButton")
             $textBoxes = @{}
 
             foreach ($paramName in $parameters.Keys) {
@@ -244,17 +252,17 @@ function Update-RpConfigCommand {
                     $commandDetails.Parameters.$paramName.Value = $textBoxes[$paramName].Text
                     Write-Verbose "Parameter '$paramName' updated with value '$($textBoxes[$paramName].Text)'"
                 }
-                $form.DialogResult = $true
-                $form.Close()
+                $window.DialogResult = $true
+                $window.Close()
             })
 
             $cancelButton.Add_Click({
                 Write-Verbose "User canceled the update."
-                $form.DialogResult = $false
-                $form.Close()
+                $window.DialogResult = $false
+                $window.Close()
             })
 
-            $result = $form.ShowDialog()
+            $result = $window.ShowDialog()
             if (-not $result) { Write-Verbose "No changes made."; return }
         }
 

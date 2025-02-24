@@ -25,15 +25,18 @@ function Get-RpConnectionProfile {
 
     .EXAMPLE
     Get-RpConnectionProfile -All
-    # Displays all available RemotePro connection profiles.
+
+    Displays all available RemotePro connection profiles.
 
     .EXAMPLE
     Get-RpConnectionProfile -Name "ProfileName"
-    # Retrieves and displays the connection profile named "ProfileName".
+
+    Retrieves and displays the connection profile named "ProfileName".
 
     .EXAMPLE
     Get-RpConnectionProfile -ViewXml
-    # Opens the credentials XML file associated with RemotePro connection
+
+    Opens the credentials XML file associated with RemotePro connection
     profiles for direct viewing.
 
     .NOTES

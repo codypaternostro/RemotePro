@@ -11,23 +11,29 @@ function Set-RpMutexLogAndUI {
     .COMPONENT
     Runspaces
 
+    .PARAMETER MutexName
+    The name of the Mutex used to ensure exclusive access. Defaults to a GUID.
+
+    .PARAMETER LogPath
+    The path to the log file where the message will be recorded.
+
+    .PARAMETER Message
+    The actual text that will be logged and optionally shown in the UI.
+
+    .PARAMETER UiElement
+    The TextBox UI element to be updated with the message.
+
     .EXAMPLE
     Set-RpMutexLogAndUI -logPath "$(Get-RpLogPath)" -message "Task completed." -uiElement $textBoxElement
+
+    This example logs the message "Task completed." to the log file and updates the
+    UI element with the same message.
 
     .EXAMPLE
     Set-RpMutexLogAndUI -logPath "$(Get-RpLogPath)"  -message "Task completed."
 
-    .PARAMETER mutexName
-    The name of the Mutex used to ensure exclusive access. Defaults to a GUID.
-
-    .PARAMETER logPath
-    The path to the log file where the message will be recorded.
-
-    .PARAMETER message
-    The actual text that will be logged and optionally shown in the UI.
-
-    .PARAMETER uiElement
-    The TextBox UI element to be updated with the message.
+    This example logs the message "Task completed." to the log file without updating
+    the UI.
 
     .LINK
     https://www.remotepro.dev/en-US/Set-RpMutexLogAndUI
@@ -37,18 +43,18 @@ function Set-RpMutexLogAndUI {
     param (
         [Parameter(ParameterSetName = 'LogOnly')]
         [Parameter(ParameterSetName = 'LogAndUI')]
-        [string]$mutexName = [System.Guid]::NewGuid().ToString(),  # Generate a default GUID
+        [string]$MutexName = [System.Guid]::NewGuid().ToString(),  # Generate a default GUID
 
         [Parameter(Mandatory = $true, ParameterSetName = 'LogOnly')]
         [Parameter(Mandatory = $true, ParameterSetName = 'LogAndUI')]
-        [string]$logPath,   # Path to the log file
+        [string]$LogPath,   # Path to the log file
 
         [Parameter(Mandatory = $true, ParameterSetName = 'LogOnly')]
         [Parameter(Mandatory = $true, ParameterSetName = 'LogAndUI')]
-        [string]$message,   # The message to log and optionally update UI
+        [string]$Message,   # The message to log and optionally update UI
 
         [Parameter(ParameterSetName = 'LogAndUI')]
-        [System.Windows.Controls.TextBox]$uiElement  # UI TextBox to update
+        [System.Windows.Controls.TextBox]$UiElement  # UI TextBox to update
     )
 
     # Create or open a named Mutex

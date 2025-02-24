@@ -34,19 +34,23 @@ function Find-RpConfigCommand {
 
     .EXAMPLE
     Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' -ConfigFilePath $(Get-RpConfigurationPath)
+
     Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
     using the configuration path from Get-RpConfigurationPath.
 
     .EXAMPLE
     Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' -ConfigFilePath $(Get-RpConfigurationPath)
+
     Retrieves all commands within the 'RemotePro' module.
 
     .EXAMPLE
     Find-RpConfigCommand -All -ConfigFilePath $(Get-RpConfigurationPath)
+
     Retrieves all commands from all modules in the configuration.
 
     .EXAMPLE
     Find-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RpConfigurationPath)
+
     Retrieves the command with the Id '12345' from the configuration.
 
     .LINK

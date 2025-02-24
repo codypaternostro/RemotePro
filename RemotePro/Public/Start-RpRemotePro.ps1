@@ -25,7 +25,8 @@ function Start-RpRemotePro {
 
     .EXAMPLE
     Start-RpRemotePro
-    # Launches the RemotePro GUI, initializes all components, and sets up
+
+    Launches the RemotePro GUI, initializes all components, and sets up
     runspaces for asynchronous task management.
 
     .NOTES

@@ -13,6 +13,11 @@ function Get-RpLogPath {
     .COMPONENT
     Log
 
+    .EXAMPLE
+    Get-RpLogPath
+
+    This example retrieves the path for the RemotePro log file.
+
     .LINK
     https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
 

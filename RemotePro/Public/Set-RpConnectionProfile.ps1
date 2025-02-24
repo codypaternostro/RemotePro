@@ -23,12 +23,14 @@ function Set-RpConnectionProfile {
 
     .EXAMPLE
     Set-RpConnectionProfile -ExcelFilePath "path\to\file.xlsx"
-    # Processes connection profiles from the specified Excel file.
+
+    Processes connection profiles from the specified Excel file.
 
     .EXAMPLE
     Set-RpConnectionProfile -ExcelFilePath "path\to\template.xlsx" -CreateTemplate
-    # Creates a blank template at the specified path for entering connection
-    # profiles.
+
+    Creates a blank template at the specified path for entering connection
+    profiles.
 
     .NOTES
     - Ensure the Excel file ends with .xlsx when creating a new template.
