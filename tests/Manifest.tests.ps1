@@ -1,8 +1,8 @@
 BeforeAll {
-    
+
     # NEW: Pre-Specify RegEx Matching Patterns
     $gitTagMatchRegEx   = 'tag:\s?.(\d+(\.\d+)*)' # NOTE - was 'tag:\s*(\d+(?:\.\d+)*)' previously
-    $changelogTagMatchRegEx = "^##\s\[(?<Version>(\d+\.){1,3}\d+)\]"    
+    $changelogTagMatchRegEx = "^##\s\[(?<Version>(\d+\.){1,3}\d+)\]"
 
     $moduleName         = $env:BHProjectName
     $manifest           = Import-PowerShellDataFile -Path $env:BHPSModuleManifest
@@ -72,7 +72,7 @@ Describe 'Module manifest' {
 Describe 'Git tagging' -Skip {
     BeforeAll {
         $gitTagVersion = $null
-        
+
         # Ensure to only pull in a single git executable (in case multiple git's are found on path).
         if ($git = (Get-Command git -CommandType Application -ErrorAction SilentlyContinue)[0]) {
             $thisCommit = & $git log --decorate --oneline HEAD~1..HEAD

@@ -106,7 +106,7 @@ function Set-RpRunspaceEvents {
                            the camera report.
                         #>
 
-                        Import-Module -name RemotePro
+                        Import-Module -Name RemotePro
 
                         # Calling Get-RpVmsItemStateCustom from the default config commands.
                         $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
