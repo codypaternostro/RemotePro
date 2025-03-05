@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unrelased]
 
 
-## [0.2.2] - 2025-03-05
+## [0.2.3] - 2025-03-05
 
 ### Added
 
