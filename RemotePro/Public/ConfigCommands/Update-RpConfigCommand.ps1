@@ -45,6 +45,10 @@ function Update-RpConfigCommand {
     values as values. Use this parameter to bypass the GUI and directly update
     the command configuration with the specified values.
 
+    .PARAMETER Description
+    (Optional) A string containing the new description for the command. Use this
+    parameter to update the command description directly.
+
     .PARAMETER ShowDialog
     (Optional) Displays a WPF GUI dialog for interactive parameter editing. If
     this switch is specified, any `Parameters` passed directly will be
@@ -68,6 +72,14 @@ function Update-RpConfigCommand {
     opening the GUI. A hashtable is provided via the `-Parameters`
     parameter, which updates the configuration in the JSON file with these
     values.
+
+    .EXAMPLE
+    Update-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName
+    'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -Description
+    "New description for the command"
+
+    This example updates the description of the 'Get-VmsCameraReport' command in
+    the 'MilestonePSTools' module without opening the GUI.
 
     .NOTES
     The configuration file must be in JSON format and already include a structure
@@ -102,6 +114,10 @@ function Update-RpConfigCommand {
         [Parameter(ParameterSetName = 'ConfigurationItems', ValueFromPipelineByPropertyName = $true)]
         [Parameter(ParameterSetName = 'NoDialog', ValueFromPipelineByPropertyName = $true)]
         [hashtable]$Parameters,
+
+        [Parameter(ParameterSetName = 'ConfigurationItems', ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ParameterSetName = 'NoDialog', ValueFromPipelineByPropertyName = $true)]
+        [string]$Description,
 
         [Parameter(ParameterSetName = 'ShowDialog')]
         [Parameter(ParameterSetName = 'ConfigurationItems')]
@@ -203,6 +219,7 @@ function Update-RpConfigCommand {
     </Window.Resources>
 
     <StackPanel>
+        <Button Name="HelpButton" Width="100" Margin="10" Content="Get Help" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Right" />
         <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
             <StackPanel Name="ParameterStack">
             </StackPanel>
@@ -227,6 +244,7 @@ function Update-RpConfigCommand {
             $parameterstack = $window.FindName("ParameterStack")
             $submitButton = $window.FindName("SubmitButton")
             $cancelButton = $window.FindName("CancelButton")
+            $helpButton = $window.FindName("HelpButton")
             $textBoxes = @{}
 
             foreach ($paramName in $parameters.Keys) {
@@ -247,11 +265,24 @@ function Update-RpConfigCommand {
                 $textBoxes[$paramName] = $textBox
             }
 
+            # Add description box
+            $descriptionLabel = New-Object Windows.Controls.TextBlock
+            $descriptionLabel.Text = "Description"
+            $descriptionLabel.Margin = "5,5,5,5"
+            $parameterstack.Children.Add($descriptionLabel) | Out-Null
+
+            $descriptionBox = New-Object Windows.Controls.TextBox
+            $descriptionBox.Text = $commandDetails.Description
+            $descriptionBox.Margin = "5,5,5,5"
+            $parameterstack.Children.Add($descriptionBox) | Out-Null
+
             $submitButton.Add_Click({
                 foreach ($paramName in $textBoxes.Keys) {
                     $commandDetails.Parameters.$paramName.Value = $textBoxes[$paramName].Text
                     Write-Verbose "Parameter '$paramName' updated with value '$($textBoxes[$paramName].Text)'"
                 }
+                $commandDetails.Description = $descriptionBox.Text
+                Write-Verbose "Description updated to '$($descriptionBox.Text)'"
                 $window.DialogResult = $true
                 $window.Close()
             })
@@ -260,6 +291,14 @@ function Update-RpConfigCommand {
                 Write-Verbose "User canceled the update."
                 $window.DialogResult = $false
                 $window.Close()
+            })
+
+            $helpButton.Add_Click({
+                try {
+                    Start-Process powershell.exe -ArgumentList "Get-Help $CommandName -Online"
+                } catch {
+                    Write-Warning "Failed to open online help for command '$CommandName'."
+                }
             })
 
             $result = $window.ShowDialog()
@@ -275,6 +314,12 @@ function Update-RpConfigCommand {
                 } else {
                     Write-Warning "Parameter '$paramName' not found in the command '$CommandName'."
                 }
+            }
+
+            # Update description if provided
+            if ($Description) {
+                $commandDetails.Description = $Description
+                Write-Verbose "Description updated to '$Description'"
             }
         }
 

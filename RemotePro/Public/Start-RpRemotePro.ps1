@@ -128,6 +128,11 @@ function Start-RpRemotePro {
                                         # Refresh "MilestonePSTools Connection Profile Details" tab.
     Get-RpConnectionProfileRefresh      # Helper function to refresh connection profiles
                                         # Refresh profiles by default when the main window loads
+    Set-RpDefaultConfigCommandsDataGrid # Helper function for setting the default data grid
+    Set-RpDefaultSettingsListView        # Helper function for setting the default settings list box
+
+
+
     #endregion
 
     #region button-click processing
@@ -156,12 +161,37 @@ function Start-RpRemotePro {
     $script:FlowDirectionToggleButton.Add_Click($script:RemotePro.EventHandlers.FlowDirectionToggleButton_Click)
     $script:ReportIssueCommand.Add_Click($script:RemotePro.EventHandlers.ReportIssueButton_Click)
     $script:LicenseInformationCommand.Add_Click($script:RemotePro.EventHandlers.LicenseInformationButton_Click)
+    $script:AboutCommand.Add_Click($script:RemotePro.EventHandlers.AboutButton_Click)
     $script:ExitApplicationCommand.Add_Click($script:RemotePro.EventHandlers.Window_AddClosed_Click)
 
     # Runspace log TAB
     $script:Runspace_Mutex_Log.Add_TextChanged($script:RemotePro.EventHandlers.RunspaceMutexLog_TextChanged)
 
-    # Configuration & Settings TAB
+    # Configuration > Main Settings TAB
+    $script:RefreshSettings.Add_Click($script:RemotePro.EventHandlers.RefreshSettings_Click)
+    $script:ResetSettings.Add_Click($script:RemotePro.EventHandlers.ResetSettings_Click)
+    $script:DeleteSetting.Add_Click($script:RemotePro.EventHandlers.DeleteSetting_Click)
+    $script:AddSetting.Add_Click($script:RemotePro.EventHandlers.AddSetting_Click)
+    $script:EditSetting.Add_Click($script:RemotePro.EventHandlers.EditSetting_Click)
+
+    # Configuration > ConfigCommands TAB
+    $script:RefreshConfigCommands.Add_Click($script:RemotePro.EventHandlers.RefreshConfigCommands_Click)
+    $script:ResetConfigCommands.Add_Click($script:RemotePro.EventHandlers.ResetConfigCommands_Click)
+    $script:DeleteConfigCommands.Add_Click($script:RemotePro.EventHandlers.DeleteConfigCommands_Click)
+    $script:AddConfigCommand.Add_Click($script:RemotePro.EventHandlers.AddConfigCommand_Click)
+    $script:EditConfigCommand.Add_Click($script:RemotePro.EventHandlers.EditConfigCommand_Click)
+    $script:TxtBox_FilterByName.Add_TextChanged($script:RemotePro.EventHandlers.TxtBox_FilterByName_TextChanged)
+    $script:Commands_HeaderChkBox.Add_Click($script:RemotePro.EventHandlers.Commands_HeaderChkBox_Click)
+    $script:Commands_DataGrid.AddHandler(
+        [System.Windows.Controls.Primitives.ButtonBase]::ClickEvent,
+        [System.Windows.RoutedEventHandler]$script:RemotePro.EventHandlers.Commands_DataGrid_CheckBox_Click
+    )
+    $script:AllItemsChecked = ($script:Commands | Where-Object { -not $_.CheckboxSelect }).Count -eq 0
+    $script:Commands_HeaderChkBox.IsChecked = $script:AllItemsChecked
+    $script:Commands_ScrollViewer.Add_PreviewMouseWheel($script:RemotePro.EventHandlers.Commands_ScrollViewer_PreviewMouseWheel)
+
+    # Configuration > ConfigCommands TAB
+    $script:ConfigurationTabs.Add_SelectionChanged($script:RemotePro.EventHandlers.ConfigurationTabs_SelectionChanged)
 
     # Attach runspace events to UI elements from RemotePro.RunspaceEvents
     # Syntax: $xamlVariableName.event($script:RemotePro.EventType.RunspaceEventName)
@@ -171,9 +201,6 @@ function Start-RpRemotePro {
     $script:ShowVideoOSItems.Add_Click($script:RemotePro.RunspaceEvents.ShowVideoOSItems_Click)
     $script:Hardware.Add_Click($script:RemotePro.RunspaceEvents.Hardware_Click)
     $script:ItemState.Add_Click($script:RemotePro.RunspaceEvents.ItemState_Click)
-
-
-
     #endegion
 
 

@@ -72,16 +72,34 @@ function Set-RpEventHandlers {
     if ($null -eq $script:RemotePro.EventHandlers -or -not ($script:RemotePro.EventHandlers -is [hashtable])) {
         $script:RemotePro.EventHandlers = @{}
 
-        Write-Host "Initialized EventHandlers as a hashtable."
+        Write-Verbose "Initialized EventHandlers as a hashtable."
     }
 
     # Define event handlers
     # ToDo: 02/09/2025 Cleanup output to console. Consider Wite-Verbose.
     $handlers = @{
+        #region Manage Connections
         NewConnectionFile_Click = {
             [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
             try {
-                Set-RpConnectionProfile -CreateTemplate -ExcelFilePath $(Join-Path -Path (New-RpAppDataPath) -ChildPath 'ConnectionFileTemplate.xlsx')
+                $templatePath = Join-Path -Path (New-RpAppDataPath) -ChildPath 'ConnectionFileTemplate.xlsx'
+
+                if (Test-Path -Path $templatePath) {
+                    $confirmationResult = [System.Windows.MessageBox]::Show(
+                    "The file 'ConnectionFileTemplate.xlsx' already exists. Do you want to overwrite it?",
+                    "Confirm Overwrite",
+                    [System.Windows.MessageBoxButton]::YesNo,
+                    [System.Windows.MessageBoxImage]::Warning
+                    )
+
+                    if ($confirmationResult -ne [System.Windows.MessageBoxResult]::Yes) {
+                    Write-Verbose "Operation canceled by user."
+                    return
+                    }
+                }
+
+                # Create a new connection file template
+                Set-RpConnectionProfile -CreateTemplate -ExcelFilePath $templatePath
 
                 $openFileDialog = New-Object System.Windows.Forms.OpenFileDialog
                 $openFileDialog.InitialDirectory = New-RpAppDataPath
@@ -171,11 +189,6 @@ function Set-RpEventHandlers {
             }
         }
 
-        RunspaceMutexLog_TextChanged = {
-            # Subscribe to Log tab TextChanged event (for logs)
-            $script:runspace_mutex_log.ScrollToEnd()
-        }
-
         CSB_TextChanged = {
             $textBox = $args[0]
             if ($textBox.Text -eq "Loading connection properties...") {
@@ -192,17 +205,17 @@ function Set-RpEventHandlers {
             $selectedProfiles = $script:ConnectionProfileListBox.SelectedItems
 
             if ($selectedProfiles -and $selectedProfiles.Count -gt 0) {
-                Write-Host "Selected profiles:"
+                Write-Verbose "Selected profiles:"
                 $script:selectedProfileDetails = @()  # Clear the existing array
                 foreach ($profile in $selectedProfiles) {
                     $script:selectedProfileDetails += $profile  # Add each selected profile to the array
-                    Write-Host " - $($profile.Name)"
-                    Write-Host "Full Details: `n$($profile.FullDetails)"
+                    Write-Verbose " - $($profile.Name)"
+                    Write-Verbose "Full Details: `n$($profile.FullDetails)"
                 }
             } else {
                 # Only show "No profiles selected" if there was a previous selection and now there is none
                 if ($script:selectedProfileDetails.Count -gt 0) {
-                    Write-Host "No profiles selected."
+                    Write-Verbose "No profiles selected."
                 }
                 # Clear the selected profiles array
                 $script:selectedProfileDetails = @()
@@ -212,19 +225,19 @@ function Set-RpEventHandlers {
         PopOutButton_Click = {
             if ($script:selectedProfileDetails.Count -gt 0) {
                 foreach ($profile in $script:selectedProfileDetails) {
-                    Write-Host "Attempting to show profile details..."
+                    Write-Verbose "Attempting to show profile details..."
                     if ($profile.FullDetails) {
-                        Write-Host "FullDetails found, showing details..."
+                        Write-Verbose "FullDetails found, showing details..."
                         [System.Windows.MessageBox]::Show($profile.FullDetails, "Profile Details", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
                     } else {
-                        Write-Host "FullDetails is null or empty."
+                        Write-Verbose "FullDetails is null or empty."
                     }
                 }
 
                 # Refresh drop down connections.
                 Get-RemoteProConnections
             } else {
-                Write-Host "No profile selected."
+                Write-Verbose "No profile selected."
             }
         }
 
@@ -248,7 +261,7 @@ function Set-RpEventHandlers {
 
                     # Remove selected profiles from the collection
                     foreach ($profile in $script:selectedProfileDetails) {
-                        Write-Host "Deleting profile: $($profile.Name)"
+                        Write-Verbose "Deleting profile: $($profile.Name)"
 
                         # Remove the profile using the appropriate command
                         Remove-VmsConnectionProfile -Name $profile.Name
@@ -266,16 +279,16 @@ function Set-RpEventHandlers {
                     # Refresh drop down connections.
                     Get-RemoteProConnections
                 } else {
-                    Write-Host "Deletion canceled by user."
+                    Write-Verbose "Deletion canceled by user."
                 }
             } else {
-                Write-Host "No profile selected."
+                Write-Verbose "No profile selected."
             }
         }
 
         AddProfileButton_Click = {
             # Logic to add a new profile
-            Write-Host "Add Profile button clicked."
+            Write-Verbose "Add Profile button clicked."
 
             # Clear existing items from the ComboBox
             $script:Connections_Combo_Box.Items.Clear()
@@ -297,7 +310,7 @@ function Set-RpEventHandlers {
 
             if ($selectedProfiles -and $selectedProfiles.Count -gt 0) {
                 # Logic to add a new profile
-                Write-Host "Edit Profile button clicked."
+                Write-Verbose "Edit Profile button clicked."
 
                 # Open dialog box to add connection profile
                 Show-RpProfileEntryDialog -Edit -SelectedProfile $script:selectedProfileDetails
@@ -310,47 +323,406 @@ function Set-RpEventHandlers {
                     [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
                 }
             } else {
-                Write-Host "No profiles selected."
+                Write-Verbose "No profiles selected."
+            }
+        }
+        #endregion Manage Connections TAB
+
+        #region Runspace TAB
+        RunspaceMutexLog_TextChanged = {
+            # Subscribe to Log tab TextChanged event (for logs)
+            $script:runspace_mutex_log.ScrollToEnd()
+        }
+        #endregion Runspace TAB
+
+        #region Configuration TAB
+
+        # Configuration TAB > Main Settings
+        RefreshSettings_Click = {
+            Write-Verbose "Refreshing settings from disk file..."
+            [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+            try {
+                # Logic to refresh settings from disk file
+                Set-RpSettingsJson
+                Write-Verbose "Settings refreshed from disk."
+
+                # Refresh the ListBox ItemsSource
+                Set-RpDefaultSettingsListView
+                Write-Verbose "ListBox ItemsSource refreshed."
+            } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
             }
         }
 
+        ResetSettings_Click = {
+            Write-Verbose "Resetting settings to default values..."
+            $confirmationResult = [System.Windows.MessageBox]::Show(
+            "Are you sure you want to reset all settings to their default values?",
+            "Confirm Reset",
+            [System.Windows.MessageBoxButton]::YesNo,
+            [System.Windows.MessageBoxImage]::Warning
+            )
+
+            if ($confirmationResult -eq [System.Windows.MessageBoxResult]::Yes) {
+            [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+            try {
+                Reset-RpSettingsJson
+                Set-RpSettingsJson
+                Set-RpDefaultSettingsListView
+                Write-Verbose "Settings have been reset to default values."
+            } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+            }
+            } else {
+            Write-Verbose "Reset operation canceled by user."
+            }
+        }
+
+        DeleteSetting_Click = {
+            Write-Verbose "Deleting selected setting..."
+
+            # Get the selected item
+            $selectedSetting = $script:Settings.SelectedItem
+
+            if ($selectedSetting) {
+                $confirmationResult = [System.Windows.MessageBox]::Show(
+                    "Are you sure you want to delete '$($selectedSetting.Name)'?",
+                    "Confirm Deletion",
+                    [System.Windows.MessageBoxButton]::YesNo,
+                    [System.Windows.MessageBoxImage]::Warning
+                )
+
+                if ($confirmationResult -eq [System.Windows.MessageBoxResult]::Yes) {
+                    Remove-RpSettingFromJson -Name $selectedSetting.Name
+                    Set-RpDefaultSettingsListView  # Refresh UI
+                    Write-Verbose "Setting deleted: $($selectedSetting.Name)"
+                } else {
+                    Write-Verbose "Deletion canceled."
+                }
+            } else {
+                Write-Verbose "No setting selected."
+            }
+        }
+
+
+        AddSetting_Click = {
+            Write-Verbose "Adding a new setting..."
+            Add-RpSettingToJson -ShowDialog
+            [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+            try {
+                Set-RpDefaultSettingsListView
+            } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+            }
+        }
+
+        EditSetting_Click = {
+            Write-Verbose "Opening edit dialog..."
+            Update-RpSettingsJson  -ShowDialog
+
+            [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+            try {
+                Set-RpDefaultSettingsListView  # Refresh UI after edit
+            } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null
+            }
+
+        }
+
+
+        # Configuration TAB > RemotePro Paths TAB
+        ConfigurationTabs_SelectionChanged = {
+            param($sender, $e)
+
+            # Ensure the event is only processed when a tab is selected
+            if ($e.Source -is [System.Windows.Controls.TabControl]) {
+            $selectedTab = $sender.SelectedItem
+
+            if ($selectedTab.Name -eq "RemoteProPaths") {
+                try {
+                Write-Verbose "Loading RemotePro module paths..."
+                [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+                $paths = @(
+                    [pscustomobject]@{ Command = "New-RpAppDataPath"; Path = New-RpAppDataPath },
+                    [pscustomobject]@{ Command = "Get-RpSettingsJsonPath"; Path = Get-RpSettingsJsonPath },
+                    [pscustomobject]@{ Command = "Get-RpIconPath"; Path = Get-RpIconPath },
+                    [pscustomobject]@{ Command = "Get-RpLogPath"; Path = Get-RpLogPath },
+                    [pscustomobject]@{ Command = "Get-RpConfigPath"; Path = Get-RpConfigPath },
+                    [pscustomobject]@{ Command = "Get-RpConfigPath -DefaultIds"; Path = Get-RpConfigPath -DefaultIds }
+                )
+
+                # Clear existing items from the ListBox
+                $script:RemoteProPathsListBox.Items.Clear()
+
+                # Add each path to the ListBox
+                foreach ($path in $paths) {
+                    $script:RemoteProPathsListBox.Items.Add($path)
+                }
+
+                Write-Verbose "RemotePro module paths loaded successfully."
+                } catch {
+                Write-Verbose "Error loading RemotePro module paths: $_"
+                } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+                }
+            }
+            }
+        }
+
+        # Configuration TAB > ConfigCommands TAB
+        RefreshConfigCommands_Click = {
+            Write-Verbose "Refreshing ConfigCommands from disk file..."
+            [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+            try {
+                # Refresh the ConfigCommands from the disk file
+                Set-RpConfigCommands
+                Write-Verbose "ConfigCommands refreshed from disk."
+
+                # Refresh the DataGrid ItemsSource
+                Set-RpDefaultConfigCommandsDataGrid
+                Write-Verbose "DataGrid ItemsSource refreshed."
+            } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+            }
+        }
+
+        ResetConfigCommands_Click = {
+            Write-Verbose "Resetting config commands to default settings..."
+
+            $confirmationResult = [System.Windows.MessageBox]::Show(
+            "Are you sure you want to reset the config commands to their default settings?",
+            "Confirm Reset",
+            [System.Windows.MessageBoxButton]::YesNo,
+            [System.Windows.MessageBoxImage]::Warning
+            )
+
+            if ($confirmationResult -eq [System.Windows.MessageBoxResult]::Yes) {
+                [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+                try {
+                    Reset-RpConfigCommandDefaults
+                    Set-RpDefaultConfigCommandsDataGrid
+                    Write-Verbose "Config commands have been reset to default settings."
+                } finally {
+                    [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+                }
+            } else {
+            Write-Verbose "Reset operation canceled by user."
+            }
+        }
+
+        DeleteConfigCommands_Click = {
+            Write-Verbose "Deleting selected ConfigCommand..."
+
+            $selectedCommands = @($script:Commands | Where-Object { $_.CheckboxSelect -eq $true })
+            Write-Verbose "DEBUG: Found $($selectedCommands.Count) selected commands."
+
+            foreach ($command in $selectedCommands) {
+                Write-Verbose " - Command: $($command.CommandName), ID: $($command.Id), CheckboxSelect: $($command.CheckboxSelect)"
+            }
+
+            if ($selectedCommands.Count -gt 0) {
+                $confirmationResult = [System.Windows.MessageBox]::Show(
+                "Are you sure you want to delete the selected ConfigCommands?",
+                "Confirm Deletion",
+                [System.Windows.MessageBoxButton]::YesNo,
+                [System.Windows.MessageBoxImage]::Warning
+                )
+
+                if ($confirmationResult -eq [System.Windows.MessageBoxResult]::Yes) {
+                    foreach ($command in $selectedCommands) {
+                        [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+                        try {
+                            Remove-RpConfigCommand -CommandName $command.CommandName -Id $command.Id -Scope "ConfigCommand"
+                        } finally {
+                            [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+                        }
+                    }
+
+                    # Refresh config commands from disk to controller
+                    Set-RpDefaultConfigCommandsDataGrid
+
+                    Write-Verbose "ConfigCommands deleted successfully."
+                } else {
+                    Write-Verbose "Deletion canceled by user."
+                }
+            } else {
+                Write-Verbose "No ConfigCommand selected."
+            }
+        }
+
+        AddConfigCommand_Click = {
+            Write-Verbose "Adding a new ConfigCommand..."
+            [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+            try {
+                # Logic to add a new ConfigCommand
+                Add-RpConfigCommand
+                Set-RpDefaultConfigCommandsDataGrid
+            } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+            }
+        }
+
+        EditConfigCommand_Click = {
+            Write-Verbose "Editing selected ConfigCommand(s)..."
+            $selectedCommands = @($script:Commands | Where-Object { $_.CheckboxSelect -eq $true })
+            if ($selectedCommands.Count -gt 0) {
+            foreach ($selectedCommand in $selectedCommands) {
+                Update-RpConfigCommand -CommandName $selectedCommand.CommandName -Id $selectedCommand.Id -ShowDialog -ModuleName $selectedCommand.ModuleName
+            }
+
+            # Refresh the DataGrid ItemsSource and UI
+            [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+            try {
+                Set-RpDefaultConfigCommandsDataGrid
+            } finally {
+                [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+            }
+            } else {
+                Write-Verbose "Please select at least one ConfigCommand to edit."
+            }
+        }
+
+        Commands_ScrollViewer_PreviewMouseWheel = {
+            # Event handler for scrolling horizontally with Shift + Mouse Wheel
+            param($sender, $e)
+
+            # Check if Shift key is pressed
+            if ([System.Windows.Input.Keyboard]::IsKeyDown([System.Windows.Input.Key]::LeftShift) -or
+                [System.Windows.Input.Keyboard]::IsKeyDown([System.Windows.Input.Key]::RightShift)) {
+
+                # Shift is pressed → Scroll Horizontally
+                $scrollViewer = $sender
+                if ($scrollViewer.HorizontalScrollBarVisibility -ne "Disabled") {
+                    $scrollViewer.ScrollToHorizontalOffset($scrollViewer.HorizontalOffset - $e.Delta)
+                    $e.Handled = $true  # Prevent default vertical scrolling
+                }
+            }
+        }
+
+        TxtBox_FilterByName_TextChanged = {
+            # Event handler for filtering commands by name
+            param($sender, $e)
+
+            $filterText = $sender.Text
+
+            # DEBUG: Print filter text to verify filtering works
+            Write-Verbose "DEBUG: Filtering with text: $filterText"
+
+            # Apply filter to the Commands collection
+            $script:FilteredCommands = @($script:Commands | Where-Object { $_.CommandName -like "*$filterText*" })
+
+            # DEBUG: Print the number of filtered commands
+            Write-Verbose "DEBUG: Filtered commands count: $($script:FilteredCommands.Count)"
+
+            # Update ItemsSource instead of modifying .Items
+            $script:Commands_DataGrid.ItemsSource = $script:FilteredCommands
+        }
+
+        # Event Handler for Header Checkbox Click
+        Commands_HeaderChkBox_Click = {
+            param($chkBoxSender, $e)
+
+            # Check if the header checkbox is checked or unchecked
+            $isChecked = $chkBoxSender.IsChecked
+
+            # Iterate through all rows in the DataGrid and set the checkbox state
+            foreach ($item in $script:Commands) {
+                if ($item.PSObject.Properties.Match('CheckboxSelect').Count -gt 0) {
+                    $item.CheckboxSelect = $isChecked
+                    Write-Verbose "Item: $($item.CommandName), CheckboxSelect: $isChecked"
+                }
+            }
+
+            # Refresh DataGrid to reflect changes
+            $script:Commands_DataGrid.Items.Refresh()
+            Write-Verbose "Header checkbox state changed to: $isChecked"
+        }
+
+        Commands_DataGrid_CheckBox_Click = {
+            param($clickedItem)
+
+            # DEBUG: Print what was received as $clickedItem
+            Write-Verbose "DEBUG: Clicked item type: $($clickedItem.GetType().FullName)"
+
+            # Ensure clickedItem is valid
+            if ($null -eq $clickedItem) {
+                Write-Verbose "ERROR: Clicked item's DataContext is null!"
+                return
+            }
+
+            # Ensure 'CheckboxSelect' property exists
+            if ($clickedItem.PSObject.Properties.Match('CheckboxSelect').Count -eq 0) {
+                Write-Verbose "WARNING: Adding missing 'CheckboxSelect' property to item: $clickedItem"
+                $clickedItem | Add-Member -MemberType NoteProperty -Name 'CheckboxSelect' -Value $false -Force
+            }
+
+            # Toggle checkbox state
+            $clickedItem.CheckboxSelect = -not $clickedItem.CheckboxSelect
+
+            # DEBUG: Print state of clicked item
+            Write-Verbose "DEBUG: Item Updated -> Command: $($clickedItem.CommandName), CheckboxSelect: $($clickedItem.CheckboxSelect)"
+
+            # DEBUG: Verify that $script:Commands contains the expected objects
+            Write-Verbose "DEBUG: Checking state of all commands:"
+            foreach ($item in $script:Commands) {
+                Write-Verbose " - Command: $($item.CommandName), CheckboxSelect: $($item.CheckboxSelect)"
+            }
+
+            # Check if all checkboxes are checked
+            $script:AllItemsChecked = ($script:Commands | Where-Object { -not $_.CheckboxSelect }).Count -eq 0
+            $script:Commands_HeaderChkBox.IsChecked = $script:AllItemsChecked
+
+            # DEBUG: Print final state of header checkbox
+            Write-Verbose "DEBUG: Header checkbox updated to: $script:AllItemsChecked"
+        }
+        #endregion Configuration TAB
+
+        #region Help, About, and Toolbar
         GithubRepositoryButton_Click = {
-            Write-Host "Opening Remotepro GitHub repository webpage..."
+            Write-Verbose "Opening Remotepro GitHub repository webpage..."
             Start-Process "https://github.com/codypaternostro/RemotePro"
         }
 
         PowerShellGalleryButton_Click = {
-            Write-Host "Opening RemotePro package PowerShell Gallery webpage."
+            Write-Verbose "Opening RemotePro package PowerShell Gallery webpage."
             Start-Process "https://www.powershellgallery.com/packages/RemotePro"
         }
 
         DocsSiteButton_Click = {
-            Write-Host "Opening DocsSite home webpage."
+            Write-Verbose "Opening DocsSite home webpage."
             Start-Process "https://www.remotepro.dev"
         }
 
         FlowDirectionToggleButton_Click = {
-            Write-Host "Toggling flow direction..."
+            Write-Verbose "Toggling flow direction..."
 
             if ($Window.FlowDirection -eq [System.Windows.FlowDirection]::LeftToRight) {
                 $Window.FlowDirection = [System.Windows.FlowDirection]::RightToLeft
-                Write-Host "Switched to Right-To-Left layout."
+                Write-Verbose "Switched to Right-To-Left layout."
             } else {
                 $Window.FlowDirection = [System.Windows.FlowDirection]::LeftToRight
-                Write-Host "Switched to Left-To-Right layout."
+                Write-Verbose "Switched to Left-To-Right layout."
             }
         }
 
         ReportIssueButton_Click = {
-            Write-Host "Opening GitHub Issues webpage."
+            Write-Verbose "Opening GitHub Issues webpage."
             Start-Process "https://github.com/codypaternostro/RemotePro/issues"
         }
 
         LicenseInformationButton_Click = {
-            Write-Host "Opening GitHub License webpage."
+            Write-Verbose "Opening GitHub License webpage."
             Start-Process "https://github.com/codypaternostro/RemotePro/blob/main/LICENSE"
         }
 
+        AboutButton_Click = {
+            Write-Verbose "Opening About webpage."
+            Start-Process "https://www.remotepro.dev/getting-started/usageguide/"
+        }
+
+        #endregion Help, About, and Toolbar
+
+        #region Main Window
         Window_AddClosed_Click = {
             try {
                 #[System.Windows.Application]::Current.Shutdown()  # Ensure the application is shut down properly
@@ -383,7 +755,7 @@ function Set-RpEventHandlers {
                 # UI and Log message update
                 Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
 
-                Write-Host = $logAddJobMessage
+                Write-Verbose  "$logAddJobMessage"
 
                 $script:xmlreader = $null
                 $script:window.Close()
@@ -398,9 +770,10 @@ function Set-RpEventHandlers {
                 # UI and Log message update
                 Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
 
-                Write-Host = $logAddJobErrorMessage
+                Write-Verbose "$logAddJobErrorMessage"
             }
         }
+        #endregion Main Window
     }
 
     # Add the event handler to the EventHandlers hashtable
@@ -412,5 +785,5 @@ function Set-RpEventHandlers {
     # Attach a custom type to EventHandlers
     $script:RemotePro.EventHandlers.PSTypeNames.Insert(0, 'RemotePro.EventHandlers')
 
-    Write-Host "Event Handlers have been successfully added to RemotePro.EventHandlers."
+    Write-Verbose "Event Handlers have been successfully added to RemotePro.EventHandlers."
 }

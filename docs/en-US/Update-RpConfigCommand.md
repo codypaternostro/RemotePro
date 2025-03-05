@@ -22,12 +22,13 @@ Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <Stri
 ### ConfigurationItems
 ```
 Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <String>] [-Parameters <Hashtable>]
- [-ConfigFilePath <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Description <String>] [-ConfigFilePath <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### NoDialog
 ```
-Update-RpConfigCommand [-Parameters <Hashtable>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-RpConfigCommand [-Parameters <Hashtable>] [-Description <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,6 +138,22 @@ the command configuration with the specified values.
 
 ```yaml
 Type: Hashtable
+Parameter Sets: ConfigurationItems, NoDialog
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Description
+(Optional) A string containing the new description for the command. Use this
+parameter to update the command description directly.
+
+```yaml
+Type: String
 Parameter Sets: ConfigurationItems, NoDialog
 Aliases:
 

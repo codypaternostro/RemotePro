@@ -101,8 +101,10 @@ function Set-RpConfigDefaults {
                     "SearchPane" = $true
                 }
 
+                $description = "Out-HtmlView: TicketBlock, CamReport, ShowHardware, Show ItemState"
+
                 $defaultCommands.PSWriteHTML | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
-                    Update-RpConfigCommand -Parameters $params -Id $commandId -Verbose
+                    Update-RpConfigCommand -Parameters $params -Id $commandId -Description $description -Verbose
             #endregion
 
             #region CamReport_Click
@@ -113,10 +115,13 @@ function Set-RpConfigDefaults {
                 $commandId = ($defaultCommands.$moduleName | Where-Object -FilterScript {$_.CommandName -like "$commandName"}).Id
                 $defaultCommandIds | Add-Member -MemberType NoteProperty -Name "$commandName" -Value $commandId
 
-                $defaultCommands.MilestonePSTools | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
-                    Update-RpConfigCommand -Id $commandId -Verbose
-            #endregion
+                $params = @{
+                    "Description" = "Button: CamReport"
+                }
 
+                $defaultCommands.MilestonePSTools | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
+                    Update-RpConfigCommand -Parameters $params -Id $commandId -Description $params.Description -Verbose
+            #endregion
 
             #region ShowCameras_Click
                 # command 1
@@ -133,8 +138,10 @@ function Set-RpConfigDefaults {
                     "DiagnosticLevel" = "3"
                 }
 
+                $description = "Button: Show Cameras"
+
                 $defaultCommands.RemotePro | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
-                    Update-RpConfigCommand -Parameters $params -Id $commandId -Verbose
+                    Update-RpConfigCommand -Parameters $params -Id $commandId -Description $description -Verbose
 
                 # command 2
                 #Get-RpTicketBlock -Cameras $configItemCams -ShowWindow
@@ -152,8 +159,10 @@ function Set-RpConfigDefaults {
                     "ShowWindow" = $true
                 }
 
+                $description = "Button: TicketBlock"
+
                 $defaultCommands.RemotePro | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
-                    Update-RpConfigCommand -Parameters $params -Id $commandId -Verbose
+                    Update-RpConfigCommand -Parameters $params -Id $commandId -Description $description -Verbose
             #endregion
 
             #region ShowVideoOSItems_Click
@@ -163,10 +172,14 @@ function Set-RpConfigDefaults {
                 $moduleName = "MilestonePSTools"
 
                 $commandId = ($defaultCommands.$moduleName | Where-Object -FilterScript {$_.CommandName -like "$commandName"}).Id
-                $defaultCommandIds | Add-Member -MemberType NoteProperty -Name "$commandName" -Value "$commandId"
+                $defaultCommandIds | Add-Member -MemberType NoteProperty -Name "$commandName" -Value $commandId
 
-                $defaultCommands.RemotePro | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
-                    Update-RpConfigCommand -Id $commandId -Verbose
+                $params = @{
+                    "Description" = "Button: VideoOSItem"
+                }
+
+                $defaultCommands.MilestonePSTools | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
+                    Update-RpConfigCommand -Parameters $params -Id $commandId -Description $params.Description -Verbose
             #endregion
 
             #region Hardware_Click
@@ -181,8 +194,10 @@ function Set-RpConfigDefaults {
                     "CheckConnection" = $true
                 }
 
+                $description = "Button: Show Hardware" # Add your description here
+
                 $defaultCommands.RemotePro | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
-                    Update-RpConfigCommand -Parameters $params -Id $commandId -Verbose
+                    Update-RpConfigCommand -Parameters $params -Id $commandId -Description $description -Verbose
             #endregion
 
             #region ItemState_Click
@@ -197,8 +212,10 @@ function Set-RpConfigDefaults {
                     "CheckConnection" = $true
                 }
 
+                $description = "Button: Show ItemState" # Add your description here
+
                 $defaultCommands.RemotePro | Where-Object -FilterScript {$_.commandname -like "$commandName"} |
-                    Update-RpConfigCommand -Parameters $params -Id $commandId -Verbose
+                    Update-RpConfigCommand -Parameters $params -Id $commandId -Description $description -Verbose
             #endregion
 
             Set-RpConfigCommands # Update RpControllerObject with added commands.

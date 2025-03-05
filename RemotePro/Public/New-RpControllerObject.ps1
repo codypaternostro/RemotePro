@@ -52,6 +52,7 @@ function New-RpControllerObject {
             Set-RpRunspaceEvents
             Set-RpConfigCommands
             Set-RpDefaultConfigCommandIds
+            Set-RpSettingsJson
         }
 
         Write-Host "New RemotePro ControllerObject created."

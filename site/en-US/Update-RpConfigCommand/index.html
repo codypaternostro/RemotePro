@@ -1803,6 +1803,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      -Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-configfilepath" class="md-nav__link">
     <span class="md-ellipsis">
       -ConfigFilePath
@@ -2123,6 +2132,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      -Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-configfilepath" class="md-nav__link">
     <span class="md-ellipsis">
       -ConfigFilePath
@@ -2228,10 +2246,11 @@ module using a configuration JSON file or an interactive WPF-based GUI.</p>
 </code></pre>
 <h3 id="configurationitems">ConfigurationItems</h3>
 <pre><code>Update-RpConfigCommand [-ModuleName &lt;String&gt;] [-CommandName &lt;String&gt;] [-Id &lt;String&gt;] [-Parameters &lt;Hashtable&gt;]
- [-ConfigFilePath &lt;String&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+ [-Description &lt;String&gt;] [-ConfigFilePath &lt;String&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
 </code></pre>
 <h3 id="nodialog">NoDialog</h3>
-<pre><code>Update-RpConfigCommand [-Parameters &lt;Hashtable&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+<pre><code>Update-RpConfigCommand [-Parameters &lt;Hashtable&gt;] [-Description &lt;String&gt;] [-ProgressAction &lt;ActionPreference&gt;]
+ [&lt;CommonParameters&gt;]
 </code></pre>
 <h2 id="description">DESCRIPTION</h2>
 <p>The `Update-RpConfigCommand` function is used to load and modify parameters for
@@ -2319,6 +2338,19 @@ values as values.
 Use this parameter to bypass the GUI and directly update
 the command configuration with the specified values.</p>
 <pre><code class="language-yaml">Type: Hashtable
+Parameter Sets: ConfigurationItems, NoDialog
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-description">-Description</h3>
+<p>(Optional) A string containing the new description for the command. Use this
+parameter to update the command description directly.</p>
+<pre><code class="language-yaml">Type: String
 Parameter Sets: ConfigurationItems, NoDialog
 Aliases:
 

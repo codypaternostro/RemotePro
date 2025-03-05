@@ -385,6 +385,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -394,6 +405,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1731,6 +1788,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1748,7 +1840,36 @@
 
 
 <h1 id="installation">Installation</h1>
-<p>Add installation guide.</p>
+<h2 id="overview">Overview</h2>
+<p>This module demonstrates the utility of wrapping powershell modules
+into Windows Presentation Framework tools.
+It was not created or endorsed by Milestone or MilestonePSTools and is
+released using standard MIT license.</p>
+<p>This module leverages connection profiles created using MilestonePSTools
+<a href="https://www.milestonepstools.com/blog/2023/09/29/introducing-connection-profiles-and-custom-attributes/">AboutConnectionProfiles</a></p>
+<p>Modules used:
+<a href="https://www.milestonepstools.com/">MilestonePSTools</a>
+<a href="https://github.com/EvotecIT/PSWriteHTML">PSWriteHTML</a>
+<a href="https://github.com/dfinke/ImportExcel">ImportExcel</a></p>
+<p>WPF GUI theme and features:
+<a href="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit">MaterialDesignInXamlToolkit</a>
+<a href="https://github.com/Keboo/ShowMeTheXAML">ShowMeTheXAML</a></p>
+<p>This module combines LOCALAPPDATA with a subdirectory
+specific to RemotePro. It ensures or creates this directory using modified
+item management techniques from MilestonePSTools.
+See link for MilestonePSTool's explanation of
+<a href="https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description">AppDataUsage</a></p>
+<p>For more information please see the mkdocs webpage.
+<a href="https://www.remotepro.dev">DocsSite</a></p>
+<h2 id="installation_1">Installation</h2>
+<p>Available on <a href="https://www.powershellgallery.com/packages/RemotePro">PowerShell Gallery</a></p>
+<blockquote>
+<p>Install-Module -Name RemotePro</p>
+</blockquote>
+<h2 id="examples">Examples</h2>
+<blockquote>
+<p>Start-RpRemotePro</p>
+</blockquote>
 
 
 

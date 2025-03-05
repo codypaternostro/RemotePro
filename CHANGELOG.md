@@ -11,9 +11,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelased]
 
-### In Progress
 
-- Configuration Tab
+## [0.2.2] - 2025-03-05
+
+### Added
+
+- Main Settings Tab
+- ConfigCommands Tab - Datagrid for interacting with button mapped commands.
+- Module Paths Tab
+
+
+### Fixed
+
+- Adjusted logic to have nested runspace call open runspace for processing
+the camera report
+- NewConnectionFile_Click no longer prodocues error if the file exists.
+It is now possible to overwrite file if one exists.
+
 
 ## [0.2.1] - 2025-02-23
 

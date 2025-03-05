@@ -80,6 +80,10 @@ function Set-RpRunspaceEvents {
         $handlers = @{
             CamReport_Click = {
                 Start-RpRunspaceJob -ScriptBlock {
+                    param (
+                        $script:Runspace_Mutex_Log,
+                        $script:RpOpenRunspaces
+                    )
                     Write-Verbose "Accessing Runspace: $($script:RpOpenRunspaces.Jobs.Runspace.Runspace.InstanceId)"
                     # TODO: add a warning or please wait if this runspace is currently running
                     $runspaceId = $script:RpOpenRunspaces.Jobs | Where-Object { $_.InstanceId -eq $runspaceJob2 } | Select-Object -ExpandProperty RunspaceId
@@ -97,11 +101,12 @@ function Set-RpRunspaceEvents {
                         # LegacyCall
                         #Get-VmsCameraReport | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane
 
-                        <#
-                        ToDO: 01/28/25 - Solved. Importing module in static runspace each call resolved the issue.#>
+                        <# 01/28/25 - Solved. Importing module in static runspace each call resolved the issue.
+                           03/01/25 - Adjusted logic to have nested runspace call open runspace for processing
+                           the camera report.
+                        #>
 
-                        Import-Module -Name RemotePro
- #-ErrorAction Stop
+                        Import-Module -name RemotePro
 
                         # Calling Get-RpVmsItemStateCustom from the default config commands.
                         $commandId1 = (Get-RpDefaultConfigCommandDetails).'Get-VmsCameraReport'.Id
@@ -112,8 +117,9 @@ function Set-RpRunspaceEvents {
                         $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
 
                         # Invoke default config commands.
-                        Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
+                        $results = Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
 
+                        return $results
                     }
 
                     # Add the script block to the PowerShell object
@@ -123,16 +129,21 @@ function Set-RpRunspaceEvents {
                         # Begin asynchronous invocation
                         $results = $ps.BeginInvoke()
 
+                        if ($null -eq $result) {
+                            Write-Output "Get-VmsCameraReport processing in nested thread."
+                        }
+
                         # Generate a log entry for job removal
                         $logAddJobText = "Job added successfully."
                         $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
                         $logAddJobMessage = "$timestamp - INFO  - GUID: $runspaceID - $logAddJobText."
 
                         # UI and Log message update
-                        Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
+                        Set-RpMutexLogAndUI -logPath $(Get-RpLogPath) -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
 
                         Write-Host = $logAddJobMessage
 
+                        return $results
                     } catch {
                         # Generate a log entry for job removal
                         $logAddJobErrorText = "Error adding job to global list: $_"
@@ -140,11 +151,14 @@ function Set-RpRunspaceEvents {
                         $logAddJobMessage = "$timestamp - ERROR - GUID: $runspaceID - $logAddJobErrorText."
 
                         # UI and Log message update
-                        Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
+                        Set-RpMutexLogAndUI -logPath $(Get-RpLogPath) -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
 
                         Write-Host = $logAddJobErrorMessage
+
+                        Write-Output "Error encountered: $_"
+                        return $error[0]
                     }
-                }
+                } -UseExistingRunspaceState -ArgumentList @($script:Runspace_Mutex_Log,$script:RpOpenRunspaces) -uiElement $script:Runspace_Mutex_Log -RunspaceJobs $script:RunspaceJobs
             }
 
             ShowCameras_Click = {
@@ -375,8 +389,6 @@ function Set-RpRunspaceEvents {
                     param ()
                     try {
                         Import-Module -Name RemotePro
-
-
 
                         # LegacyCall
                         # $result = Get-RpVmsItemStateCustom -CheckConnection | Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane

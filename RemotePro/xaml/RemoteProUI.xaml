@@ -32,7 +32,6 @@
                     <!-- StackPanel with Your Buttons -->
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0,20,0,0">
                         <Button Content="TicketBlock" Margin="5" Name="TicketBlock" Width="140" Style="{StaticResource MaterialDesignRaisedButton}" />
-                        <Button Content="BlockVid90" Margin="5" Name="BlockVid" Width="140" Style="{StaticResource MaterialDesignRaisedButton}" />
                         <Button Content="CamReport" Margin="5" Name="CamReport" Width="140" Style="{StaticResource MaterialDesignRaisedButton}" />
                         <Button Content="Show Cameras" Margin="5" Name="ShowCameras" Width="140" Style="{StaticResource MaterialDesignRaisedButton}" />
                         <Button Content="VideoOSItems" Margin="5" Name="ShowVideoOSItems" Width="140" Style="{StaticResource MaterialDesignRaisedButton}" />
@@ -109,6 +108,8 @@
                                 <Separator />
                                 <Button x:Name="ReportIssueCommand" Content="Report Issue" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" />
                                 <Button x:Name="LicenseInformationCommand" Content="License" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left"/>
+                                <Button x:Name="AboutCommand" Content="About" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left"/>
+
                                 <Separator />
                                 <Button x:Name="ExitApplicationCommand" Content="Exit Application" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left"/>
                             </StackPanel>
@@ -203,7 +204,7 @@
                                 </mdControls:Card>
 
 
-                                <!-- Site Information -->
+                                <!-- Site Information TAB -->
                                 <TabControl Name="SiteAndProfileTabControl" Grid.Row="3" Margin="0,20,0,0">
                                     <TabItem Header="VMS Connection Overview" ToolTip="View details for current VMS connection.">
                                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="500">
@@ -315,7 +316,7 @@
                         </ScrollViewer>
                     </TabItem>
 
-                    <!-- Commands Tab -->
+                    <!-- Runspace Log TAB -->
                     <TabItem Header="Runspace Log" ToolTip="View logs from runspace dispatched cmdlets.">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Name="LogScrollViewer">
                             <TextBox Name="Runspace_Mutex_Log"
@@ -330,13 +331,299 @@
                         </ScrollViewer>
                     </TabItem>
 
-                    <!-- Configuration -->
+                    <!-- Configuration TAB -->
                     <TabItem Header="Configuration">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <TextBlock Text="Placeholder content for Configuration" Margin="10" />
-                        </ScrollViewer>
-                    </TabItem>
+                        <TabControl Name="ConfigurationTabs" Grid.Row="0" Margin="0,20,0,0">
 
+                            <!-- RemotePro Main Settings -->
+                            <TabItem Header="Main Settings" ToolTip="Interact with RemotePro Main Settings.">
+                                <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Heading bar with Refresh, View Details, Delete, and Add Profile buttons -->
+                                    <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" Margin="5">
+                                        <!-- Refresh Settings Button with Icon -->
+                                        <Button x:Name="RefreshSettings"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Refresh Settings from disk file"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5">
+                                            <materialDesign:PackIcon Kind="Refresh" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Reset Settings Button with Icon -->
+                                        <Button x:Name="ResetSettings"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Reset settings to default values"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5">
+                                            <materialDesign:PackIcon Kind="Alert" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Delete Setting Button with Icon -->
+                                        <Button x:Name="DeleteSetting"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Delete selected Setting"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5">
+                                            <materialDesign:PackIcon Kind="Delete" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Add Setting Button with Icon -->
+                                        <Button x:Name="AddSetting"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Add a new Setting"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5">
+                                            <materialDesign:PackIcon Kind="Plus" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Edit Setting Button with Icon -->
+                                        <Button x:Name="EditSetting"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Edit existing Setting"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5">
+                                            <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24"/>
+                                        </Button>
+                                    </StackPanel>
+
+                                    <mdControls:Card Grid.Row="1" Padding="20" Background="Transparent">
+                                        <ListView x:Name="Settings"
+                                                ToolTip="Modify RemotePro settings and behavior."
+                                                SelectionMode="Extended"
+                                                Background="Transparent"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Top"
+                                                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                                                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" Width="300"/>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                    </mdControls:Card>
+                                </Grid>
+                            </TabItem>
+
+                            <!-- ConfigCommands TAB -->
+                            <TabItem Header="ConfigCommands" ToolTip="Interact with button mapped commands.">
+                                <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Heading bar with Refresh, View Details, Delete, and Add Profile buttons -->
+                                    <Grid Grid.Row="0" HorizontalAlignment="Center" Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Refresh ConfigCommands Button with Icon -->
+                                        <Button x:Name="RefreshConfigCommands"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Refresh ConfigCommands from disk file"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5"
+                                                Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="Refresh" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Delete ConfigCommand Button with Icon -->
+                                        <Button x:Name="DeleteConfigCommands"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Delete selected ConfigCommand(s)"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5"
+                                                Grid.Column="1">
+                                            <materialDesign:PackIcon Kind="Delete" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Add ConfigCommand Button with Icon -->
+                                        <Button x:Name="AddConfigCommand"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Add a new ConfigCommand"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5"
+                                                Grid.Column="2">
+                                            <materialDesign:PackIcon Kind="Plus" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Edit ConfigCommand Button with Icon -->
+                                        <Button x:Name="EditConfigCommand"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Edit existing ConfigCommand"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5"
+                                                Grid.Column="3">
+                                            <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- View ConfigCommand Details Button with Icon -->
+                                        <Button x:Name="ResetConfigCommands"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Reset ConfigCommands to default values"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5"
+                                                Grid.Column="4">
+                                            <materialDesign:PackIcon Kind="Alert" Width="24" Height="24"/>
+                                        </Button>
+                                    </Grid>
+
+                                    <!-- DataGrid in Material Design Card with ScrollViewer -->
+                                    <materialDesign:Card Name="Commands_Card" Grid.Row="1" Background="{DynamicResource PrimaryHueLightBrush}"
+                                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Width="1100" Padding="30" Margin="20,0,0,20">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="60,0,0,10" HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon Kind="FilterVariant" Height="25" Width="25" Margin="0,0,5,0"/>
+                                                <TextBox Name="TxtBox_FilterByName" VerticalAlignment="Top" AcceptsReturn="False"
+                                                        TextWrapping="Wrap" materialDesign:HintAssist.Hint="Filter By Command Name" />
+                                            </StackPanel>
+                                            <ScrollViewer Name="Commands_ScrollViewer"
+                                                        VerticalScrollBarVisibility="Auto"
+                                                        HorizontalScrollBarVisibility="Auto"
+                                                        PanningMode="Both">
+                                                <DataGrid Name="Commands_DataGrid" ItemsSource="{Binding Commands}" SelectionMode="Extended"
+                                                        AutoGenerateColumns="False" SelectionUnit="CellOrRowHeader" CanUserAddRows="False"
+                                                        IsReadOnly="True" GridLinesVisibility="Horizontal" CanUserReorderColumns="True"
+                                                        materialDesign:DataGridAssist.CellPadding="20,10,0,10"
+                                                        materialDesign:DataGridAssist.ColumnHeaderPadding="20,5,0,5"
+                                                        MaxHeight="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=ActualHeight}">
+
+                                                    <!-- Right-Click Context Menu -->
+                                                    <DataGrid.ContextMenu>
+                                                        <ContextMenu>
+                                                            <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
+                                                            <MenuItem Header="Paste" Command="ApplicationCommands.Paste"/>
+                                                        </ContextMenu>
+                                                    </DataGrid.ContextMenu>
+
+                                                    <DataGrid.Columns>
+                                                        <!-- CheckBox Column -->
+                                                        <DataGridTemplateColumn>
+                                                            <DataGridTemplateColumn.Header>
+                                                                <CheckBox Name="Commands_HeaderChkBox" IsThreeState="True"/>
+                                                            </DataGridTemplateColumn.Header>
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <CheckBox IsChecked="{Binding CheckboxSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.Commands_DataGrid_CheckBox_Click}"
+                                                                            CommandParameter="{Binding}"/>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+
+                                                        <!-- Module Name Column -->
+                                                        <DataGridTextColumn Binding="{Binding ModuleName}" IsReadOnly="True">
+                                                            <DataGridTextColumn.Header>
+                                                                <TextBlock Text="Module Name" FontSize="18" />
+                                                            </DataGridTextColumn.Header>
+                                                        </DataGridTextColumn>
+
+                                                        <!-- Command Name Column -->
+                                                        <DataGridTextColumn Binding="{Binding CommandName}" Width="300" IsReadOnly="True">
+                                                            <DataGridTextColumn.Header>
+                                                                <TextBlock Text="Command Name" FontSize="18" />
+                                                            </DataGridTextColumn.Header>
+                                                        </DataGridTextColumn>
+
+                                                        <!-- ID Column -->
+                                                        <DataGridTextColumn Binding="{Binding Id}" IsReadOnly="True">
+                                                            <DataGridTextColumn.Header>
+                                                                <TextBlock Text="ID" FontSize="18" />
+                                                            </DataGridTextColumn.Header>
+                                                        </DataGridTextColumn>
+
+                                                        <!-- Description Column -->
+                                                        <DataGridTextColumn Binding="{Binding Description}" Width="500" IsReadOnly="True">
+                                                            <DataGridTextColumn.Header>
+                                                                <TextBlock Text="Description" FontSize="18" />
+                                                            </DataGridTextColumn.Header>
+                                                        </DataGridTextColumn>
+
+                                                    </DataGrid.Columns>
+                                                </DataGrid>
+                                            </ScrollViewer>
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                </Grid>
+                            </TabItem>
+
+                            <!-- RemotePro Paths -->
+                            <TabItem Name="RemoteProPaths" Header="RemotePro Paths" ToolTip="View paths used by the module.">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Paths List Card -->
+                                    <mdControls:Card Grid.Row="0" Padding="20" Margin="0,0,0,20">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="Auto">
+                                            <ListBox x:Name="RemoteProPathsListBox"
+                                                SelectionMode="Extended"
+                                                Background="{DynamicResource MaterialDesignPaper}"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                                Height="600">
+                                                <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Padding="10">
+                                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+                                                        <!-- Centered Command -->
+                                                        <TextBlock Text="{Binding Command}"
+                                                            FontSize="16"
+                                                            FontWeight="Bold"
+                                                            Foreground="Black"
+                                                            HorizontalAlignment="Center"
+                                                            Margin="0,5,0,10"
+                                                            Width="600"/>
+
+                                                        <!-- Separate ListBox for Paths -->
+                                                        <ListBox Background="Transparent"
+                                                            BorderThickness="0"
+                                                            SelectionMode="Single"
+                                                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                            HorizontalAlignment="Center"
+                                                            Width="600">
+                                                        <ListBoxItem>
+                                                            <TextBox Text="{Binding Path}"
+                                                                FontSize="14"
+                                                                Foreground="Black"
+                                                                Background="Transparent"
+                                                                BorderThickness="0"
+                                                                IsReadOnly="True"
+                                                                TextWrapping="Wrap"
+                                                                Padding="5"
+                                                                Width="600"/>
+                                                        </ListBoxItem>
+                                                        </ListBox>
+                                                    </StackPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                        </ScrollViewer>
+                                    </mdControls:Card>
+                                </Grid>
+                            </TabItem>
+
+                        </TabControl>
+                    </TabItem>
 
                     <!-- ToDo: Heartbeat Tab
                     <TabItem Header="Heartbeat">
