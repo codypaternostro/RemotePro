@@ -28,10 +28,18 @@ See link for MilestonePSTool's explanation of
 For more information please see the mkdocs webpage.
 [DocsSite](https://www.remotepro.dev)
 
-## Installation
+## Install Module
 
-Available on [PowerShell Gallery](https://www.powershellgallery.com/packages/RemotePro)
-> Install-Module -Name RemotePro
+Available on [PowerShell Gallery](https://www.powershellgallery.com/packages/RemotePro).
 
-## Examples
-> Start-RpRemotePro
+If the RemotePro module is not installed, use the command below.
+    ```powershell
+    Install-Module -Name RemotePro
+    ```
+
+## Launch GUI
+
+Enter command in Powershell terminal to load the main window.
+    ```powershell
+    Start-RpRemotePro
+    ```

@@ -2048,8 +2048,8 @@
 <p>Initializes and populates the EventHandlers property of the RemotePro object
 with predefined event handler scripts.</p>
 <h2 id="syntax">SYNTAX</h2>
-<pre><code>Set-RpEventHandlers [&lt;CommonParameters&gt;]
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Set-RpEventHandlers [&lt;CommonParameters&gt;]
+</span></code></pre></div>
 <h2 id="description">DESCRIPTION</h2>
 <p>The Set-RpEventHandlers cmdlet sets up predefined event handlers for various
 operations in the RemotePro environment.
@@ -2066,24 +2066,24 @@ as a key-value pair, where the key is the event name and the value is the script
 'RemotePro.EventHandlers' for easy identification and future use.</p>
 <h2 id="examples">EXAMPLES</h2>
 <h3 id="example-1">EXAMPLE 1</h3>
-<pre><code>Set-RpEventHandlers
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Set-RpEventHandlers
+</span></code></pre></div>
 <p>This example initializes the EventHandlers hashtable and populates it with
 predefined event handlers.
 Each event is associated with a specific scriptblock
 to handle UI actions.</p>
 <h3 id="example-2">EXAMPLE 2</h3>
-<pre><code>Set-RpEventHandlers
-$handlers = $script:RemotePro.EventHandlers
-$handlers[&quot;OpenFile_Click&quot;]
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Set-RpEventHandlers
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$handlers = $script:RemotePro.EventHandlers
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>$handlers[&quot;OpenFile_Click&quot;]
+</span></code></pre></div>
 <p>This example sets up the EventHandlers property, retrieves all event handlers,
 and fetches the handler for the "OpenFile_Click" event.</p>
 <h3 id="example-3">EXAMPLE 3</h3>
-<pre><code>Set-RpEventHandlers
-$handler = $script:RemotePro.EventHandlers[&quot;NewConnectionFile_Click&quot;]
-&amp; $handler
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Set-RpEventHandlers
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$handler = $script:RemotePro.EventHandlers[&quot;NewConnectionFile_Click&quot;]
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&amp; $handler
+</span></code></pre></div>
 <p>This example sets up the event handlers, retrieves the scriptblock for
 "NewConnectionFile_Click", and executes the scriptblock.</p>
 <h2 id="parameters">PARAMETERS</h2>
@@ -2217,7 +2217,7 @@ and can be invoked based on user interactions.</li>
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>

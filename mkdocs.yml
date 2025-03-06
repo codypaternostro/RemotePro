@@ -13,6 +13,8 @@ theme:
     primary: white
   logo: assets/RpLogo.png
   features:
+  - content.code.copy
+  - content.code.annotate
   - navigation.instant
   - navigation.tabs
   - navigation.top
@@ -95,6 +97,22 @@ plugins:
       size: [800, 600]
       extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg']
 
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+
 extra:
   consent:
     actions:
@@ -106,6 +124,13 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
+
+
+
+
+
+
+
 
 
 

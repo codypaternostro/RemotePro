@@ -203,7 +203,6 @@
                                     </Grid>
                                 </mdControls:Card>
 
-
                                 <!-- Site Information TAB -->
                                 <TabControl Name="SiteAndProfileTabControl" Grid.Row="3" Margin="0,20,0,0">
                                     <TabItem Header="VMS Connection Overview" ToolTip="View details for current VMS connection.">
@@ -220,6 +219,7 @@
                                             </mdControls:Card>
                                         </ScrollViewer>
                                     </TabItem>
+
                                     <!-- MilestonePSTools Connection Profile Details Section -->
                                     <TabItem Header="MilestonePSTools Connection Profile Details" ToolTip="View MilestonePSTools connection profile information.">
                                         <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -354,15 +354,6 @@
                                             <materialDesign:PackIcon Kind="Refresh" Width="24" Height="24"/>
                                         </Button>
 
-                                        <!-- Reset Settings Button with Icon -->
-                                        <Button x:Name="ResetSettings"
-                                                VerticalAlignment="Top"
-                                                ToolTip="Reset settings to default values"
-                                                Style="{StaticResource MaterialDesignFlatButton}"
-                                                Margin="5">
-                                            <materialDesign:PackIcon Kind="Alert" Width="24" Height="24"/>
-                                        </Button>
-
                                         <!-- Delete Setting Button with Icon -->
                                         <Button x:Name="DeleteSetting"
                                                 VerticalAlignment="Top"
@@ -388,6 +379,15 @@
                                                 Style="{StaticResource MaterialDesignFlatButton}"
                                                 Margin="5">
                                             <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24"/>
+                                        </Button>
+
+                                        <!-- Reset Settings Button with Icon -->
+                                        <Button x:Name="ResetSettings"
+                                                VerticalAlignment="Top"
+                                                ToolTip="Reset settings to default values"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="5">
+                                            <materialDesign:PackIcon Kind="Alert" Width="24" Height="24"/>
                                         </Button>
                                     </StackPanel>
 

@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration" class="md-skip">
+        <a href="#configuration-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -406,6 +406,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -415,6 +426,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-setting-up-remotepro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Setting Up RemotePro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-preparing-connection-to-xprotect-management-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Preparing Connection to XProtect Management Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-connecting-using-connection-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Connecting Using Connection Profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1731,6 +1806,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-setting-up-remotepro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Setting Up RemotePro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-preparing-connection-to-xprotect-management-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Preparing Connection to XProtect Management Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-connecting-using-connection-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Connecting Using Connection Profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1747,8 +1875,50 @@
   
 
 
-<h1 id="configuration">Configuration</h1>
-<p>Add configuration guide.</p>
+<h1 id="configuration-guide">Configuration Guide</h1>
+<p>This guide will help you configure RemotePro. Follow the steps below to set up your environment.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, ensure you have the following:</p>
+<ul>
+<li>RemotePro module installed</li>
+<li>Access to XProtect Management Server</li>
+</ul>
+<h2 id="step-1-setting-up-remotepro">Step 1: Setting Up RemotePro</h2>
+<ol>
+<li>Open Windows PowerShell terminal by searching for <strong>PowerShell</strong> in the Start menu and selecting <strong>Windows PowerShell</strong> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4zm-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44z"/></svg></span>.</li>
+<li>
+<p>If the RemotePro module is not installed, use the command below.</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">RemotePro</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Open the WPF (Window Presentation Framework) main window with the following cmdlet.</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Start-RpRemotePro</span>
+</span></code></pre></div>
+</li>
+</ol>
+<h2 id="step-2-preparing-connection-to-xprotect-management-server">Step 2: Preparing Connection to XProtect Management Server</h2>
+<ol>
+<li>
+<p>Under the hood of the main window <a href="https://www.milestonepstools.com/">MilestonePSTools</a> is available and offers <a href="https://www.milestonepstools.com/blog/2023/09/29/introducing-connection-profiles-and-custom-attributes/#what-is-a-connection-profile">connection profiles</a> to manage and store connection information to management servers.</p>
+</li>
+<li>
+<p>If you do not have connection profiles configured, you can import them using an excel sheet. Click <strong>Create Connection File</strong>, open the excel file, and enter site information and save the file. You can then click <strong>Import Connections</strong> to navigate to and select the default file created. This will connect to each site in the excel file and create a connection profile. <em>Alternatively</em> you can use the <em>MilestonePSTools Connection Profiles Details</em> tab and click the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg></span> icon to add a site's management server.</p>
+</li>
+</ol>
+<p><img align="center" alt="Picture-AddConnectionProfile" src="../../assets/AddConnectionProfile.png" /></p>
+<h2 id="step-3-connecting-using-connection-profile">Step 3: Connecting Using Connection Profile</h2>
+<ol>
+<li>
+<p>Select your site in the drop down menu and click <strong>Connect</strong> button
+<img align="center" alt="Picture-ConnectClick" src="../../assets/ConnectClick.png" /></p>
+</li>
+<li>
+<p>You are now connected to your management server and can interact with XProtect using RemotePro's GUI!</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>You have successfully configured your RemotePro. More usage guides and examples are in progress!</p>
 
 
 
@@ -1861,7 +2031,7 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
