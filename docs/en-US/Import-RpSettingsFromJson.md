@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Import-RpSettingsFromJson
 schema: 2.0.0
 ---
 
@@ -27,15 +27,17 @@ it uses a default path obtained from Get-RpSettingsJsonPath.
 
 ### EXAMPLE 1
 ```
-Import-RpSettingsFromJson -SettingsFilePath "C:\path\to\settings.json"
-This command imports settings from the specified JSON file.
+Import-RpSettingsFromJson -SettingsFilePath "$(Get-RpSettingsJsonPath)"
 ```
+
+This command imports settings from the specified JSON file.
 
 ### EXAMPLE 2
 ```
 Import-RpSettingsFromJson
-This command imports settings from the default JSON file path.
 ```
+
+This command imports settings from the default JSON file path.
 
 ## PARAMETERS
 
@@ -81,3 +83,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Import-RpSettingsFromJson](https://www.remotepro.dev/en-US/Import-RpSettingsFromJson)
+

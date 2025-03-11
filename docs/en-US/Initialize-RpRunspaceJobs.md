@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Initialize-RpRunspaceJobs
 schema: 2.0.0
 ---
 
@@ -30,6 +30,10 @@ $runspaceJobs = Initialize-RpRunspaceJobs
 Write-Host "Initialized Runspace Jobs: $runspaceJobs"
 ```
 
+This example initializes the synchronized ArrayList for runspace
+jobs and assigns it to the module scope runspace jobs variable,
+$script:RunspaceJobs.
+
 ## PARAMETERS
 
 ### -ProgressAction
@@ -57,3 +61,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Initialize-RpRunspaceJobs](https://www.remotepro.dev/en-US/Initialize-RpRunspaceJobs)
+

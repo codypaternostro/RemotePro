@@ -27,12 +27,12 @@ See link for MilestonePSTool's explanation of AppData usage.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+New-RpAppDataPath
 ```
 
-{{ Add example description here }}
+This example creates the RemotePro app data directory and returns the full path.
 
 ## PARAMETERS
 
@@ -64,4 +64,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description](https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description)
+
+[https://www.remotepro.dev/en-US/New-RpAppDataPath](https://www.remotepro.dev/en-US/New-RpAppDataPath)
 

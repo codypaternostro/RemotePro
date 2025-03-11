@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Set-RpRunspaceEventsLegacyVersion
 schema: 2.0.0
 ---
 
@@ -91,3 +91,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 - See New-RpControllerObject and Get-RpRunspaceEvents
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Set-RpRunspaceEventsLegacyVersion](https://www.remotepro.dev/en-US/Set-RpRunspaceEventsLegacyVersion)
+

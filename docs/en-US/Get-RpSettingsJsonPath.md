@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Get-RpSettingsJsonPath
 schema: 2.0.0
 ---
 
@@ -27,7 +27,6 @@ If the 'Settings' directory does not exist, it is created.
 ### EXAMPLE 1
 ```
 Get-RpSettingsJsonPath
-C:\Users\<User>\AppData\Local\RemotePro\Settings\RemoteProSettings.json
 ```
 
 ## PARAMETERS
@@ -59,3 +58,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Get-RpSettingsJsonPath](https://www.remotepro.dev/en-US/Get-RpSettingsJsonPath)
+

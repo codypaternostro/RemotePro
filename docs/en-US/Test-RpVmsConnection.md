@@ -29,10 +29,16 @@ The user can optionally suppress the error dialog.
 Test-RpVmsConnection
 ```
 
+Tests the connection to the VMS management server and shows an error dialog
+if the connection fails.
+
 ### EXAMPLE 2
 ```
 Test-RpVmsConnection -ShowErrorDialog $false
 ```
+
+Tests the connection to the VMS management server and suppresses the error
+dialog if the connection fails.
 
 ## PARAMETERS
 
@@ -79,4 +85,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection](https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection)
+
+[https://remotepro.dev/en-US/Test-RpVmsConnection](https://remotepro.dev/en-US/Test-RpVmsConnection)
 

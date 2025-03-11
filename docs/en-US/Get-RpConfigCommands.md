@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Get-RpConfigCommands
 schema: 2.0.0
 ---
 
@@ -28,14 +28,16 @@ configuration commands as a single object.
 ### EXAMPLE 1
 ```
 Get-RpConfigCommands
-Retrieves the configuration commands as a single object.
 ```
+
+Retrieves the configuration commands as a single object.
 
 ### EXAMPLE 2
 ```
 Get-RpConfigCommands -All
-Retrieves all configuration commands as an array of values.
 ```
+
+Retrieves all configuration commands as an array of values.
 
 ## PARAMETERS
 
@@ -80,3 +82,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Get-RpConfigCommands](https://www.remotepro.dev/en-US/Get-RpConfigCommands)
+

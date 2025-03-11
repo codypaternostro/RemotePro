@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Initialize-RpOpenRunspaces
 schema: 2.0.0
 ---
 
@@ -31,6 +31,9 @@ $runspaces = Initialize-RpOpenRunspaces
 Write-Host "Initialized Open Runspaces: $runspaces"
 ```
 
+This example initializes the open runspaces object and assigns it
+to the module scope open runspaces variable, $script:OpenRunspaces.
+
 ## PARAMETERS
 
 ### -ProgressAction
@@ -58,3 +61,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Initialize-RpOpenRunspaces](https://www.remotepro.dev/en-US/Initialize-RpOpenRunspaces)
+

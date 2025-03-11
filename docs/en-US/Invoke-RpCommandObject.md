@@ -1,14 +1,15 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Invoke-RpCommandObject
 schema: 2.0.0
 ---
 
 # Invoke-RpCommandObject
 
 ## SYNOPSIS
-Executes a command object using the call operator (&) by default or Invoke-Command if specified.
+Executes a command object using the call operator (&) by default or
+Invoke-Command if specified.
 
 ## SYNTAX
 
@@ -18,12 +19,12 @@ Invoke-RpCommandObject [-CommandObject] <PSObject> [-UseInvokeCommand] [[-Comput
 ```
 
 ## DESCRIPTION
-This function accepts a command object (via pipeline or parameter) and executes
-it.
-You can optionally specify to use Invoke-Command instead of the default
-call operator.
-The function also validates the command and parameters before
-execution.
+This function accepts a command object (via pipeline or parameter) and
+executes it.
+You can optionally specify to use Invoke-Command instead
+of the default call operator.
+The function also validates the command
+and parameters before execution.
 
 ## EXAMPLES
 
@@ -102,8 +103,8 @@ Accept wildcard characters: False
 ```
 
 ### -ComputerName
-If UseInvokeCommand is specified, this parameter defines the remote system(s)
-to run the command on.
+If UseInvokeCommand is specified, this parameter defines the remote
+system(s)to run the command on.
 
 ```yaml
 Type: String[]
@@ -158,3 +159,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Ensure that the command object includes valid CommandName and Parameters.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Invoke-RpCommandObject](https://www.remotepro.dev/en-US/Invoke-RpCommandObject)
+

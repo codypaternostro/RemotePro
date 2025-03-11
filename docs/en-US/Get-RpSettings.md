@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Get-RpSettings
 schema: 2.0.0
 ---
 
@@ -27,14 +27,16 @@ settings values; otherwise, it returns the settings object.
 ### EXAMPLE 1
 ```
 Get-RpSettings
-Retrieves the settings object from the RemotePro controller.
 ```
+
+Retrieves the settings object from the RemotePro controller.
 
 ### EXAMPLE 2
 ```
 Get-RpSettings -All
-Retrieves all settings values from the RemotePro controller.
 ```
+
+Retrieves all settings values from the RemotePro controller.
 
 ## PARAMETERS
 
@@ -78,3 +80,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Get-RpSettings](https://www.remotepro.dev/en-US/Get-RpSettings)
+

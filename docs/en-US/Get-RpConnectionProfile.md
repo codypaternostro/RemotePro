@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Get-RpConnectionProfile
 schema: 2.0.0
 ---
 
@@ -33,21 +33,24 @@ by name, or open the credentials XML file for direct viewing.
 ### EXAMPLE 1
 ```
 Get-RpConnectionProfile -All
-# Displays all available RemotePro connection profiles.
 ```
+
+Displays all available RemotePro connection profiles.
 
 ### EXAMPLE 2
 ```
 Get-RpConnectionProfile -Name "ProfileName"
-# Retrieves and displays the connection profile named "ProfileName".
 ```
+
+Retrieves and displays the connection profile named "ProfileName".
 
 ### EXAMPLE 3
 ```
 Get-RpConnectionProfile -ViewXml
-# Opens the credentials XML file associated with RemotePro connection
-profiles for direct viewing.
 ```
+
+Opens the credentials XML file associated with RemotePro connection
+profiles for direct viewing.
 
 ## PARAMETERS
 
@@ -130,3 +133,6 @@ with video management systems.
 - The credentials.xml file contains sensitive information; handle with care.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Get-RpConnectionProfile](https://www.remotepro.dev/en-US/Get-RpConnectionProfile)
+

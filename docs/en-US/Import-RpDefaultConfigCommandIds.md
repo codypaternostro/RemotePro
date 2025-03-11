@@ -1,14 +1,14 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Import-RpDefaultConfigCommandIds
 schema: 2.0.0
 ---
 
 # Import-RpDefaultConfigCommandIds
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Imports default configuration command IDs from a specified JSON file.
 
 ## SYNTAX
 
@@ -18,21 +18,26 @@ Import-RpDefaultConfigCommandIds [[-ConfigFilePath] <String>] [-ProgressAction <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This function loads a JSON configuration file containing command IDs,
+parses it, and returns a hashtable-like object where each command name
+is a top-level key and contains a nested object with its Id.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Import-RpDefaultConfigCommandIds -ConfigFilePath $(Get-RpConfigPath -DefaultIds)
+```
 
 ## PARAMETERS
 
 ### -ConfigFilePath
-{{ Fill ConfigFilePath Description }}
+The path to the JSON configuration file.
+If not provided, the function
+attempts to retrieve the default path.
+
+A hashtable object where each key is the CommandName and its value
+is a nested object containing an Id.
 
 ```yaml
 Type: String
@@ -66,11 +71,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Import-RpDefaultConfigCommandIds](https://www.remotepro.dev/en-US/Import-RpDefaultConfigCommandIds)
+

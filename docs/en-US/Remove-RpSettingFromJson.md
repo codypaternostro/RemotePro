@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Remove-RpSettingFromJson
 schema: 2.0.0
 ---
 
@@ -38,19 +38,29 @@ name.
 
 ### EXAMPLE 1
 ```
+Remove-RpSettingFromJson -SettingsFilePath (Get-RpSettingsJsonPath) -Name
+"SettingName"
+```
+
+Removes the setting named "SettingName" from the default JSON settings file.
+
+### EXAMPLE 2
+```
 Remove-RpSettingFromJson -SettingsFilePath "C:\path\to\settings.json" -Name
 "SettingName"
 ```
 
 Removes the setting named "SettingName" from the specified JSON settings file.
 
-### EXAMPLE 2
+### EXAMPLE 3
 ```
 Remove-RpSettingFromJson -ShowDialog
 ```
 
 Displays a WPF dialog to input the setting name and removes the specified
 setting from the default JSON settings file.
+Ability to use custom path
+can be added in the future.
 
 ## PARAMETERS
 
@@ -142,3 +152,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Remove-RpSettingFromJson](https://www.remotepro.dev/en-US/Remove-RpSettingFromJson)
+

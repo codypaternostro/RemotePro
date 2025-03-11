@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Set-RpMutexLogAndUI
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Logs a message and updates a UI element with the same message.
 
 ### LogAndUI (Default)
 ```
-Set-RpMutexLogAndUI [-mutexName <String>] -logPath <String> -message <String> [-uiElement <TextBox>]
+Set-RpMutexLogAndUI [-MutexName <String>] -LogPath <String> -Message <String> [-UiElement <TextBox>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### LogOnly
 ```
-Set-RpMutexLogAndUI [-mutexName <String>] -logPath <String> -message <String>
+Set-RpMutexLogAndUI [-MutexName <String>] -LogPath <String> -Message <String>
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -34,17 +34,23 @@ provided, it will only log the message.
 
 ### EXAMPLE 1
 ```
-Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed." -uiElement $textBoxElement
+Set-RpMutexLogAndUI -logPath "$(Get-RpLogPath)" -message "Task completed." -uiElement $textBoxElement
 ```
+
+This example logs the message "Task completed." to the log file and updates the
+UI element with the same message.
 
 ### EXAMPLE 2
 ```
-Set-RpMutexLogAndUI -logPath "C:\logs\logfile.txt" -message "Task completed."
+Set-RpMutexLogAndUI -logPath "$(Get-RpLogPath)"  -message "Task completed."
 ```
+
+This example logs the message "Task completed." to the log file without updating
+the UI.
 
 ## PARAMETERS
 
-### -mutexName
+### -MutexName
 The name of the Mutex used to ensure exclusive access.
 Defaults to a GUID.
 
@@ -60,7 +66,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -logPath
+### -LogPath
 The path to the log file where the message will be recorded.
 
 ```yaml
@@ -75,7 +81,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -message
+### -Message
 The actual text that will be logged and optionally shown in the UI.
 
 ```yaml
@@ -90,7 +96,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -uiElement
+### -UiElement
 The TextBox UI element to be updated with the message.
 
 ```yaml
@@ -130,3 +136,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Set-RpMutexLogAndUI](https://www.remotepro.dev/en-US/Set-RpMutexLogAndUI)
+

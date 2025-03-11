@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Add-RpConfigCommand
 schema: 2.0.0
 ---
 
@@ -168,9 +168,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-Ensure that the \`PresentationFramework\` assembly is available for WPF
+Ensure that the PresentationFramework assembly is available for WPF
 support to allow GUI interaction.
 A new configuration file will be created
 if it doesn't already exist.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Add-RpConfigCommand](https://www.remotepro.dev/en-US/Add-RpConfigCommand)
+

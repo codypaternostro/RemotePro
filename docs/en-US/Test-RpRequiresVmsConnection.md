@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
+online version: https://remotepro.dev/en-US/Test-RpRequiresVmsConnection
 schema: 2.0.0
 ---
 
@@ -26,11 +26,11 @@ requirements are not met, it displays a warning message box and exits.
 
 ### EXAMPLE 1
 ```
-Example 1:
-PS C:\> Test-RequiresVmsConnection
+Test-RequiresVmsConnection
+```
+
 This command checks if a VMS connection is required and asserts the
 connection.
-```
 
 ## PARAMETERS
 
@@ -61,3 +61,6 @@ For more information, visit:
 https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
 
 ## RELATED LINKS
+
+[https://remotepro.dev/en-US/Test-RpRequiresVmsConnection](https://remotepro.dev/en-US/Test-RpRequiresVmsConnection)
+

@@ -1,14 +1,15 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Get-RpVmsHardwareCustom
 schema: 2.0.0
 ---
 
 # Get-RpVmsHardwareCustom
 
 ## SYNOPSIS
-Retrieves and displays the hardware settings of VMS items with optional connection validation.
+Retrieves and displays the hardware settings of VMS items with optional
+connection validation.
 
 ## SYNTAX
 
@@ -23,8 +24,10 @@ Get-RpVmsHardwareCustom [-CheckConnection] [-ProgressAction <ActionPreference>] 
 ```
 
 ## DESCRIPTION
-This function retrieves the hardware settings of VMS items and displays the results in an HTML view.
-It also provides an optional parameter to validate the connection before processing.
+This function retrieves the hardware settings of VMS items and displays the
+results in an HTML view.
+It also provides an optional parameter to validate the connection before
+processing.
 
 ## EXAMPLES
 
@@ -33,13 +36,15 @@ It also provides an optional parameter to validate the connection before process
 Get-RpVmsHardwareCustom -CheckConnection
 ```
 
-This example validates the VMS connection before retrieving and displaying the hardware settings of the items.
+This example validates the VMS connection before retrieving and
+displaying the hardware settings of the items.
 
 ## PARAMETERS
 
 ### -CheckConnection
 Validates the VMS connection before processing the items.
-If the connection is not valid, the function will display an error message and exit early.
+If the connection is not valid, the function will display an error message
+and exit early.
 
 ```yaml
 Type: SwitchParameter
@@ -78,3 +83,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Get-RpVmsHardwareCustom](https://www.remotepro.dev/en-US/Get-RpVmsHardwareCustom)
+

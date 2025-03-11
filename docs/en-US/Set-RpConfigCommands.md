@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Set-RpConfigCommands
 schema: 2.0.0
 ---
 
@@ -28,17 +28,26 @@ file path or uses a default path if none is provided.
 
 ### EXAMPLE 1
 ```
-Set-RpConfigCommands -ConfigFilePath "C:\Path\To\ConfigFile.json"
-This example sets the configuration commands using the specified configuration
-file path.
+Set-RpConfigCommands -ConfigFilePath (Get-RpConfigPath)
 ```
+
+This example sets the configuration commands using the default configuration path.
 
 ### EXAMPLE 2
 ```
+Set-RpConfigCommands -ConfigFilePath "C:\Path\To\ConfigFile.json"
+```
+
+This example sets the configuration commands using the specified configuration
+file path.
+
+### EXAMPLE 3
+```
 Set-RpConfigCommands
+```
+
 This example sets the configuration commands using the default configuration
 file path.
-```
 
 ## PARAMETERS
 
@@ -85,3 +94,6 @@ Ensure that the RemotePro object is initialized by running New-RpControllerObjec
 before calling this function.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Set-RpConfigCommands](https://www.remotepro.dev/en-US/Set-RpConfigCommands)
+

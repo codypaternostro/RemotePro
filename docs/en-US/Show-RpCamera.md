@@ -52,24 +52,27 @@ inspired all of RemotePro from sharing this incredible function.
 ### EXAMPLE 1
 ```
 Show-RpCamera -ShowSelectCamera
-# This command opens the standard camera selection dialog and displays the
-# selected camera feed without any diagnostic overlays.
 ```
+
+This command opens the standard camera selection dialog and displays the
+selected camera feed without any diagnostic overlays.
 
 ### EXAMPLE 2
 ```
 Show-RpCamera -Id '12345678-9abc-def0-1234-567890abcdef' -SpecifiedDaysForSequences 7
-# This command displays the feed of a camera identified by the specified GUID
-# with sequence data for the past 7 days.
 ```
+
+This command displays the feed of a camera identified by the specified GUID
+with sequence data for the past 7 days.
 
 ### EXAMPLE 3
 ```
 Show-RpCamera -ShowRpItemPicker -DiagnosticLevel '3' -SpecifiedDaysForSequences 30
-# This command uses a custom item picker for camera selection and shows the
-# selected camera feed with a high diagnostic level overlay for the past 30
-# days.
 ```
+
+This command uses a custom item picker for camera selection and shows the
+selected camera feed with a high diagnostic level overlay for the past 30
+days.
 
 ## PARAMETERS
 
@@ -226,4 +229,6 @@ preferences and requirements.
 ## RELATED LINKS
 
 [https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f](https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f)
+
+[https://www.remotepro.dev/en-US/Show-RpCamera](https://www.remotepro.dev/en-US/Show-RpCamera)
 

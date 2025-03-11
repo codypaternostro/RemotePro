@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Initialize-RpRunspaceResults
 schema: 2.0.0
 ---
 
@@ -31,6 +31,10 @@ $runspaceResults = Initialize-RpRunspaceResults
 Write-Host "Initialized Runspace Results: $runspaceResults"
 ```
 
+This example initializes the synchronized ArrayList for runspace
+results and assigns it to the module scope runspace results variable,
+$script:RunspaceResults.
+
 ## PARAMETERS
 
 ### -ProgressAction
@@ -58,3 +62,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Initialize-RpRunspaceResults](https://www.remotepro.dev/en-US/Initialize-RpRunspaceResults)
+

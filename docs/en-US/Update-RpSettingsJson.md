@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
+online version: https://www.remotepro.dev/en-US/Update-RpSettingsJson
 schema: 2.0.0
 ---
 
@@ -35,17 +35,18 @@ interface.
 ### EXAMPLE 1
 ```
 Update-RpSettingsJson -Name "SettingName" -Value "NewValue"
+```
+
 Updates the setting "SettingName" to "NewValue" in the default settings JSON
 file.
-```
 
 ### EXAMPLE 2
 ```
-Update-RpSettingsJson -SettingsFilePath "C:\Path\To\Settings.json" -Name
-"SettingName" -Value "NewValue"
+Update-RpSettingsJson -SettingsFilePath "C:\Path\To\Settings.json" -Name "SettingName" -Value "NewValue"
+```
+
 Updates the setting "SettingName" to "NewValue" in the specified settings JSON
 file.
-```
 
 ### EXAMPLE 3
 ```
@@ -147,3 +148,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Update-RpSettingsJson](https://www.remotepro.dev/en-US/Update-RpSettingsJson)
+

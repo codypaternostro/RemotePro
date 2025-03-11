@@ -9,8 +9,15 @@ copyright: >
 theme:
   name: material
   palette:
-    scheme: white
+    scheme: default
     primary: white
+    accent: white
+  icon:
+    admonition:
+    note: octicons/tag-16
+  extra_css:
+    - stylesheets/extra.css
+
   logo: assets/RpLogo.png
   features:
   - content.code.copy
@@ -89,7 +96,9 @@ nav:
   - Changelog: CHANGELOG/CHANGELOG.md
 
 plugins:
-  - search:
+  - glightbox
+  - search
+  - tags
   - resize-images:
       source-dir: assets-large
       target-dir: assets
@@ -112,6 +121,11 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.blocks.caption
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
 
 extra:
   consent:
@@ -124,6 +138,12 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
+
+
+
+
+
+
 
 
 

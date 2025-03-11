@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Add-RpSettingToJson
 schema: 2.0.0
 ---
 
@@ -42,6 +42,8 @@ Add-RpSettingToJson -SettingsFilePath "C:\Settings.json" -Name "Theme" -Value
 
 Adds a setting named "Theme" with the value "Dark" to the specified settings
 file.
+Note this is a hypothetical example and the setting may not exist in the
+default settings file.
 
 ### EXAMPLE 2
 ```
@@ -147,3 +149,6 @@ If the setting already
 exists, a message will be displayed indicating that the setting already exists.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Add-RpSettingToJson](https://www.remotepro.dev/en-US/Add-RpSettingToJson)
+

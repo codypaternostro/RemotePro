@@ -35,15 +35,17 @@ See link for MilestonePSTool's explanation of AppData usage.
 ### EXAMPLE 1
 ```
 Set-RpConnectionProfile -ExcelFilePath "path\to\file.xlsx"
-# Processes connection profiles from the specified Excel file.
 ```
+
+Processes connection profiles from the specified Excel file.
 
 ### EXAMPLE 2
 ```
 Set-RpConnectionProfile -ExcelFilePath "path\to\template.xlsx" -CreateTemplate
-# Creates a blank template at the specified path for entering connection
-# profiles.
 ```
+
+Creates a blank template at the specified path for entering connection
+profiles.
 
 ## PARAMETERS
 
@@ -115,4 +117,6 @@ PowerShell errors.
 ## RELATED LINKS
 
 [https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description](https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description)
+
+[https://www.remotepro.dev/en-US/Set-RpConnectionProfile](https://www.remotepro.dev/en-US/Set-RpConnectionProfile)
 

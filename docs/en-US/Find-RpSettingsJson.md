@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Find-RpSettingsJson
 schema: 2.0.0
 ---
 
@@ -34,12 +34,19 @@ the default path from Get-RpSettingsJsonPath.
 
 ### EXAMPLE 1
 ```
+Find-RpSettingsJson -SettingsFilePath (Get-RpSettingsJsonPath) -Name "SettingName"
+```
+
+Retrieves the specified setting from the default JSON file path.
+
+### EXAMPLE 2
+```
 Find-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json" -Name "SettingName"
 ```
 
 Retrieves the specified setting from the provided JSON file path.
 
-### EXAMPLE 2
+### EXAMPLE 3
 ```
 Find-RpSettingsJson -All
 ```
@@ -120,3 +127,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Find-RpSettingsJson](https://www.remotepro.dev/en-US/Find-RpSettingsJson)
+

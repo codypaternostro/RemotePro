@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Reset-RpConfigCommandDefaults
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Reset-RpConfigCommandDefaults [-ProgressAction <ActionPreference>] [<CommonParam
 This function removes existing configuration files and creates new
 default configuration files for RemotePro.
 
-\`Set-RpConfigCommands\` and \`Set-RpDefaultConfigCommandIds\` are called to
+Set-RpConfigCommands and Set-RpDefaultConfigCommandIds are called to
 populate the RemotePro.ConfigCommands and RemotePro.ConfigCommandDefaultIds
 properties.
 In the RpControllerObject, these properties are used to store
@@ -60,3 +60,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Reset-RpConfigCommandDefaults](https://www.remotepro.dev/en-US/Reset-RpConfigCommandDefaults)
+

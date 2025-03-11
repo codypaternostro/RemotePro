@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
+online version: https://www.remotepro.dev/en-US/Show-RpProfileEntryDialog
 schema: 2.0.0
 ---
 
@@ -37,7 +37,8 @@ PS C:\> {{ Add example code here }}
 
 ### -Edit
 Switch to edit an existing profile.
-If enabled, it will load the selected profile's details.
+If enabled, it will load the selected
+profile's details.
 
 ```yaml
 Type: SwitchParameter
@@ -91,3 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Show-RpProfileEntryDialog](https://www.remotepro.dev/en-US/Show-RpProfileEntryDialog)
+

@@ -17,17 +17,17 @@ Get-RpIconPath [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function, Get-RpIconPath, calls New-RpAppDataPath to get the app data
-directory and then appends 'Resources\RpLogo512.ico'.
+This function, Get-RpIconPath, calls module scope $script:scriptRoot
+path and then appends 'Resources\RpLogo512.ico'.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-RpIconPath
 ```
 
-{{ Add example description here }}
+This example retrieves the path for the RemotePro icon file.
 
 ## PARAMETERS
 

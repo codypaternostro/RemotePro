@@ -26,12 +26,12 @@ RemotePro.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-RpLogPath
 ```
 
-{{ Add example description here }}
+This example retrieves the path for the RemotePro log file.
 
 ## PARAMETERS
 
@@ -63,4 +63,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description](https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description)
+
+[https://www.remotepro.dev/en-US/Get-RpLogPath](https://www.remotepro.dev/en-US/Get-RpLogPath)
 

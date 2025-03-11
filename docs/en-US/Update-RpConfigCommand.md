@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/about_Custom_Attributes.help/#requiresvmsconnection
+online version: https://www.remotepro.dev/en-US/Update-RpConfigCommand
 schema: 2.0.0
 ---
 
@@ -73,6 +73,16 @@ opening the GUI.
 A hashtable is provided via the \`-Parameters\`
 parameter, which updates the configuration in the JSON file with these
 values.
+
+### EXAMPLE 3
+```
+Update-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName
+'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -Description
+"New description for the command"
+```
+
+This example updates the description of the 'Get-VmsCameraReport' command in
+the 'MilestonePSTools' module without opening the GUI.
 
 ## PARAMETERS
 
@@ -149,7 +159,8 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-(Optional) A string containing the new description for the command. Use this
+(Optional) A string containing the new description for the command.
+Use this
 parameter to update the command description directly.
 
 ```yaml
@@ -224,17 +235,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 The configuration file must be in JSON format and already include a structure
-for \`ConfigCommands\` and the specified module.
+for ConfigCommands and the specified module.
 Any missing structure will
 cause an error.
 
 Note: The order of parameters in the GUI may not match the JSON file order
 due to how PowerShell handles JSON deserialization.
 To ensure a specific
-order, consider using an \`OrderedDictionary\` or manually managing parameter
+order, consider using an OrderedDictionary or manually managing parameter
 order.
 
-Ensure that the \`PresentationFramework\`, \`PresentationCore\`, and \`WindowsBase\`
+Ensure that the PresentationFramework, PresentationCore, and WindowsBase
 assemblies are available for WPF support to allow the GUI dialog to open.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Update-RpConfigCommand](https://www.remotepro.dev/en-US/Update-RpConfigCommand)
+

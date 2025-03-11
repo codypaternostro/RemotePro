@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/New-RpSettingsJson
 schema: 2.0.0
 ---
 
@@ -34,6 +34,11 @@ New-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json"
 Creates a new settings JSON file at the specified path.
 
 ### EXAMPLE 2
+```
+New-RpSettingsJson -SettingsFilePath "$(Get-RpSettingsJsonPath)"
+```
+
+### EXAMPLE 3
 ```
 New-RpSettingsJson -UseDefaults
 ```
@@ -100,3 +105,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/New-RpSettingsJson](https://www.remotepro.dev/en-US/New-RpSettingsJson)
+

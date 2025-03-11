@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
+online version: https://www.remotepro.dev/en-US/Start-RpRunspaceJob
 schema: 2.0.0
 ---
 
@@ -224,3 +224,6 @@ This function starts a PowerShell job in a runspace and creates identifiers for 
 Relies on "$script:RunspaceJobs = \[System.Collections.ArrayList\]::Synchronized((New-Object System.Collections.ArrayList))"
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Start-RpRunspaceJob](https://www.remotepro.dev/en-US/Start-RpRunspaceJob)
+

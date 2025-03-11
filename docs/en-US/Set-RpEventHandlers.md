@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Set-RpEventHandlers
 schema: 2.0.0
 ---
 
@@ -85,3 +85,6 @@ and can be invoked based on user interactions.
 - See **New-RpControllerObject** and **Get-RpEventHandlers**
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Set-RpEventHandlers](https://www.remotepro.dev/en-US/Set-RpEventHandlers)
+

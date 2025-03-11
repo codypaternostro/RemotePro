@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Set-RpSettingsJson
 schema: 2.0.0
 ---
 
@@ -32,9 +32,18 @@ RemotePro object with a custom type.
 
 ### EXAMPLE 1
 ```
-Set-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json"
-This command sets the RemotePro settings from the specified JSON file.
+Set-RpSettingsJson -SettingsFilePath (Get-RpSettingsJsonPath)
 ```
+
+This command sets the RemotePro settings from the default JSON file path.
+If the path is not provided, it uses this default appdata path.
+
+### EXAMPLE 2
+```
+Set-RpSettingsJson -SettingsFilePath "C:\path\to\settings.json"
+```
+
+This command sets the RemotePro settings from the specified JSON file.
 
 ## PARAMETERS
 
@@ -83,3 +92,6 @@ Ensure that the RemotePro object is initialized by running New-RpControllerObjec
 before calling this function.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Set-RpSettingsJson](https://www.remotepro.dev/en-US/Set-RpSettingsJson)
+

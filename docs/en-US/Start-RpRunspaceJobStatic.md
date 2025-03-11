@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
+online version: https://www.remotepro.dev/en-US/Start-RpRunspaceJobStatic
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ ID, and Instance ID) are added to a global collection
 
 ### EXAMPLE 1
 ```
-Define the jobs to run
+# Define the jobs to run
 $jobsToRun = @(
     @{
         JobName                = "VmsCameraReportJob"
@@ -46,15 +46,14 @@ $jobsToRun = @(
         ScriptBlock            = { Write-Host "Displaying Camera Feed..." }
     }
 )
-```
-
-Start the runspace jobs
+#Start the runspace jobs
 $script:RpOpenRunspaces = Start-RpRunspaceJobStatic
     -Jobs $jobsToRun
     -uiElement $script:Runspace_Mutex_Log
     -OpenRunspaces $script:RpOpenRunspaces
     -RunspaceJobs $script:RunspaceJobs
     -Verbose
+```
 
 This will start two jobs: one to fetch a VMS camera report and
 another to display the camera feed.
@@ -156,3 +155,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Start-RpRunspaceJobStatic](https://www.remotepro.dev/en-US/Start-RpRunspaceJobStatic)
+

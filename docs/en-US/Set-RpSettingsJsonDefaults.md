@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Set-RpSettingsJsonDefaults
 schema: 2.0.0
 ---
 
@@ -27,9 +27,18 @@ with their default values.
 
 ### EXAMPLE 1
 ```
-Set-RpSettingsJsonDefaults -SettingsFilePath "C:\Config\RemoteProSettings.json"
-This example sets the default settings values in the specified settings JSON file.
+Set-RpSettingsJsonDefaults -SettingsFilePath (Get-RpSettingsJsonPath)
 ```
+
+This example sets the default settings values in the default settings JSON file.
+This is the default behavior if no settings file path is provided.
+
+### EXAMPLE 2
+```
+Set-RpSettingsJsonDefaults -SettingsFilePath "C:\Config\RemoteProSettings.json"
+```
+
+This example sets the default settings values in the specified settings JSON file.
 
 ## PARAMETERS
 
@@ -76,3 +85,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Set-RpSettingsJsonDefaults](https://www.remotepro.dev/en-US/Set-RpSettingsJsonDefaults)
+

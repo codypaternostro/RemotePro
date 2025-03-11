@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f
+online version: https://www.remotepro.dev/en-US/Show-RpProfileEntryDialog
 schema: 2.0.0
 ---
 

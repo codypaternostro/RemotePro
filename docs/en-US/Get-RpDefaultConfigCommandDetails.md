@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Get-RpDefaultConfigCommandDetails
 schema: 2.0.0
 ---
 
@@ -57,3 +57,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Get-RpDefaultConfigCommandDetails](https://www.remotepro.dev/en-US/Get-RpDefaultConfigCommandDetails)
+

@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/Import-RpConfig
 schema: 2.0.0
 ---
 
@@ -37,53 +37,57 @@ as remotely is experimental...
 
 ### EXAMPLE 1
 ```
-Import configuration from a specified file
 $modules = Import-RpConfig -ConfigFilePath $(Get-RpConfigPath)
 ```
 
+Import configuration from a specified file.
+
 ### EXAMPLE 2
 ```
-Import configuration using the default path
 $modules = Import-RpConfig
 ```
 
+Import configuration using the default path.
+
 ### EXAMPLE 3
 ```
-Access and format a specific command object
 $commandObject = $modules.RemotePro.'Get-RpVmsHardwareCustom'.'1234-5678'
 ```
 
+Access and format a specific command object.
+
 ### EXAMPLE 4
 ```
-Execute the formatted command locally using the call operator
 & $preparedCommand.CommandName @($preparedCommand.Parameters)
 ```
 
+Execute the formatted command locally using the call operator.
+
 ### EXAMPLE 5
 ```
-Calling Get-RpVmsItemStateCustom from the default config commands.
+# Calling Get-RpVmsItemStateCustom from the default config commands.
 $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
 $preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
-```
-
-Calling Out-HtmlView from the default config commands.
+# Calling Out-HtmlView from the default config commands.
 $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
 $preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
-
-Invoke default config commands.
+# Invoke default config commands.
 Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
+```
 
 ### EXAMPLE 6
 ```
-Use Invoke-RpCommandObject for execution
 $preparedCommand | Invoke-RpCommandObject
 ```
 
+Use Invoke-RpCommandObject for execution.
+
 ### EXAMPLE 7
 ```
-Use Invoke-RpCommandObject for remote execution
 $preparedCommand | Invoke-RpCommandObject -UseInvokeCommand -ComputerName "RemoteServer"
 ```
+
+Uses Invoke-RpCommandObject for remote execution.
 
 ## PARAMETERS
 
@@ -137,3 +141,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 - Use dot notation to navigate the resulting $modules hashtable.
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Import-RpConfig](https://www.remotepro.dev/en-US/Import-RpConfig)
+

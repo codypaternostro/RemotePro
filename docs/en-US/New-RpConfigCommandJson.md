@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version: https://www.milestonepstools.com/commands/en-US/Connect-Vms/#description
+online version: https://www.remotepro.dev/en-US/New-RpConfigCommandJson
 schema: 2.0.0
 ---
 
@@ -37,6 +37,14 @@ Creates a default JSON configuration file at the default application data
 location.
 
 ### EXAMPLE 2
+```
+New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath (Get-RpConfigPath)
+```
+
+Creates an empty JSON configuration file at the default application path.
+This is the default path if one is specified using ConfigFilePath parameter.
+
+### EXAMPLE 3
 ```
 New-RpConfigCommandJson -Type "EmptyJson" -ConfigFilePath "C:\Config\config.json"
 ```
@@ -105,3 +113,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/New-RpConfigCommandJson](https://www.remotepro.dev/en-US/New-RpConfigCommandJson)
+

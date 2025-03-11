@@ -1,7 +1,7 @@
 ---
 external help file: RemotePro-help.xml
 Module Name: RemotePro
-online version:
+online version: https://www.remotepro.dev/en-US/Find-RpConfigCommand
 schema: 2.0.0
 ---
 
@@ -29,27 +29,31 @@ across all modules using the \`-All\` and \`-ByModule\` parameters.
 ### EXAMPLE 1
 ```
 Find-RpConfigCommand -ModuleName 'RemotePro' -CommandName 'Get-RpLogPath' -ConfigFilePath $(Get-RpConfigurationPath)
+```
+
 Retrieves the 'Get-RpLogPath' command details from the 'RemotePro' module
 using the configuration path from Get-RpConfigurationPath.
-```
 
 ### EXAMPLE 2
 ```
 Find-RpConfigCommand -ByModule -ModuleName 'RemotePro' -ConfigFilePath $(Get-RpConfigurationPath)
-Retrieves all commands within the 'RemotePro' module.
 ```
+
+Retrieves all commands within the 'RemotePro' module.
 
 ### EXAMPLE 3
 ```
 Find-RpConfigCommand -All -ConfigFilePath $(Get-RpConfigurationPath)
-Retrieves all commands from all modules in the configuration.
 ```
+
+Retrieves all commands from all modules in the configuration.
 
 ### EXAMPLE 4
 ```
 Find-RpConfigCommand -Id '12345' -ConfigFilePath $(Get-RpConfigurationPath)
-Retrieves the command with the Id '12345' from the configuration.
 ```
+
+Retrieves the command with the Id '12345' from the configuration.
 
 ## PARAMETERS
 
@@ -171,3 +175,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://www.remotepro.dev/en-US/Find-RpConfigCommand](https://www.remotepro.dev/en-US/Find-RpConfigCommand)
+
