@@ -57,7 +57,16 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1972,12 +1981,12 @@
 <p>If you do not have connection profiles configured, you can import them using an excel sheet. Click <strong>Create Connection File</strong>, open the excel file, and enter site information and save the file. You can then click <strong>Import Connections</strong> to navigate to and select the default file created. This will connect to each site in the excel file and create a connection profile. <em>Alternatively</em> you can use the <em>MilestonePSTools Connection Profiles Details</em> tab and click the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg></span> icon to add a site's management server.</p>
 </li>
 </ol>
-<p><img align="center" alt="Picture-AddConnectionProfile" src="../../assets/AddConnectionProfile.png" /></p>
+<p><a class="glightbox" href="../../assets/AddConnectionProfile.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Picture-AddConnectionProfile" src="../../assets/AddConnectionProfile.png" /></a></p>
 <h2 id="step-3-connecting-using-connection-profile">Step 3: Connecting Using Connection Profile</h2>
 <ol>
 <li>
 <p>Select your site in the drop down menu and click <strong>Connect</strong> button
-<img align="center" alt="Picture-ConnectClick" src="../../assets/ConnectClick.png" /></p>
+<a class="glightbox" href="../../assets/ConnectClick.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Picture-ConnectClick" src="../../assets/ConnectClick.png" /></a></p>
 </li>
 <li>
 <p>You are now connected to your management server and can interact with XProtect using RemotePro's GUI!</p>
@@ -2103,5 +2112,7 @@
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

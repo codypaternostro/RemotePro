@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -322,6 +331,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -332,6 +353,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inspiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspiration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#professional-module-making" class="md-nav__link">
+    <span class="md-ellipsis">
+      Professional Module Making
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-interface-graphical-gui-command-line-cli-or-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Interface: Graphical (GUI), Command-Line (CLI), or Both?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1792,6 +1859,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inspiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspiration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#professional-module-making" class="md-nav__link">
+    <span class="md-ellipsis">
+      Professional Module Making
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-interface-graphical-gui-command-line-cli-or-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Interface: Graphical (GUI), Command-Line (CLI), or Both?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1811,15 +1913,37 @@
   
 
 
-<h1 id="welcome-to-remotepro">Welcome to RemotePro!</h1>
-<p><img alt="Picture-RpLogo" src="assets/RpLogo.png" width="250" /></p>
+<h1 id="welcome-to-remotepro">Welcome to RemotePro</h1>
+<p><em>A PowerShell Windows Presentation Framework (WPF) Graphical User Interface (GUI) for MilestonePSTools.</em></p>
+<ul>
+<li><em>Available on the <a href="https://www.powershellgallery.com/packages/RemotePro/0.2.3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4zm-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44z"/></svg></span>PowerShell Gallery.</a></em></li>
+</ul>
+<p><a class="glightbox" href="assets/RpLogo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Picture-RpLogo" src="assets/RpLogo.png" width="350" /></a></p>
+<ul>
+<li>Please see the <a href="CHANGELOG/CHANGELOG/">ChangeLog</a> for updates.</li>
+<li>See <a href="https://www.remotepro.dev/getting-started/installation/">Installation</a> for access to setup instructions.</li>
+<li>Version 1.0.0 will be the official release of <strong>RemotePro</strong>.</li>
+</ul>
+<h2 id="inspiration">Inspiration</h2>
+<p>Hello! My name is <a href="https://www.linkedin.com/in/codypaternostro/">Cody Paternostro</a>, and this is my project, <strong>RemotePro</strong>. It is an intriguing module that allows anyone familiar with <a href="https://www.milestonepstools.com/">MilestonePSTools</a> and <a href="https://www.milestonesys.com/products/software/xprotect/">Milestone XProtect</a> to interact through a graphical user interface (GUI). The idea for RemotePro originated when <a href="https://gist.github.com/joshooaj">Joshua Hendricks</a>, the developer behind the MilestonePSTools project, shared an interesting <a href="https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f">PowerShell script</a>. This script wasn’t designed for automation; instead, it focused on user interaction by enabling the viewing of live and playback streams from a Video Management System (VMS). He utilized Windows Presentation Framework (WPF), which was new to me at the time. This journey has been a long one, providing an opportunity to create something usable by everyone with minimal effort.</p>
+<h2 id="professional-module-making">Professional Module Making</h2>
+<p>RemotePro is the first module I have ever developed, as this type of programming was unfamiliar to me. Initially, the project started as what I refer to as a <em>mega-script</em>, which was a single large script file containing various functions. The Gainsville PowerShell group hosts meetups, and it just so happened that Josh did a demo on module creation using psstucco -- <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">"The Art &amp; Craft of Module Development using Stucco with Josh Hendricks"</a>. The timing could not have been better for the development of RemotePro, as I had just begun learning how to import functions into an active terminal session. Professional modules take projects to the next level by offering the benefits of using PowerShell data and module files while <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">automating documentation</a>. Most importantly, the concept of a <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-5.1#modules">module and script scope variables</a> are utilized throughout a main PSCustomObject for the <em>RemoteProController</em>. This object allows quick access to all the event handlers for button clicks.</p>
+<h2 id="user-interface-graphical-gui-command-line-cli-or-both">User Interface: Graphical (GUI), Command-Line (CLI), or Both?</h2>
+<p>If what you've read so far doesn't make sense, that's fine; if you understand the concepts, that's great too. The purpose of RemotePro is to provide an attractive base template that allows users to make suggestions or developers to contribute. The idea was to create a starting point without a defined goal. I was initially hesitant to release the module because I wanted the button click functionalities to be modifiable to some extent. I will be working on publishing features and guides on how to utilize RemotePro from the command line interface (CLI) and GUI. There are three important components to this module: the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/xaml/RemoteProUI.xaml">XAML</a>, the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/Public/Start-RpRemotePro.ps1">Start-RpRemotePro</a> command, WPF-enabled cmdlets, and, of course, Runspaces!</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">Disclaimer</p>
+<p>This project's content is not affiliated with MilestonePTools or Milestone XProtect and is released under the permissive open-source <a href="https://github.com/codypaternostro/RemotePro/blob/main/LICENSE">MIT License</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Dependencies</p>
 </div>
-<p>this is some tesxt</p>
-<p><a class="md-button md-button--primary" href="#">PowerShell Gallery <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 55.2V426c0 12.2 9.9 22 22 22 6.3 0 12.4-2.7 16.6-7.5l82.6-94.5 58.1 116.3c7.9 15.8 27.1 22.2 42.9 14.3s22.2-27.1 14.3-42.9L179.8 320h118.1c12.2 0 22.1-9.9 22.1-22.1 0-6.3-2.7-12.3-7.4-16.5L38.6 37.9c-4.3-3.8-9.7-5.9-15.4-5.9C10.4 32 0 42.4 0 55.2"/></svg></span></a></p>
-<p>Welcome to RemotePro docs page! Please see the <a href="CHANGELOG/CHANGELOG/">ChangeLog</a> for updates.</p>
-<p>I decided to develop the module live. Version 1.0.0 will be the official release of RemotePro!</p>
+<ul>
+<li><a href="https://www.milestonepstools.com/">MilestonePSTools</a></li>
+<li><a href="https://github.com/EvotecIT/PSWriteHTML">PSWriteHTML</a></li>
+<li><a href="https://github.com/dfinke/ImportExcel">ImportExcel</a></li>
+<li><a href="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit">MaterialDesignInXamlToolkit</a></li>
+<li><a href="https://github.com/Keboo/ShowMeTheXAML">ShowMeTheXAML</a> <em>included -- currently not used.</em></li>
+</ul>
+</div>
 
 
 
@@ -1943,5 +2067,7 @@
       <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
