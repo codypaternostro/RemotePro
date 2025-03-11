@@ -38,4 +38,3 @@ If what you've read so far doesn't make sense, that's fine; if you understand th
        - [ImportExcel](https://github.com/dfinke/ImportExcel)
        - [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
        - [ShowMeTheXAML](https://github.com/Keboo/ShowMeTheXAML) *included -- currently not used.*
-
