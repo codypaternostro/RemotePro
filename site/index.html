@@ -33,6 +33,12 @@
       
       
 
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>');}</style>
+
 
     
     
@@ -47,6 +53,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -257,6 +265,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="usageguide/usageguide/" class="md-tabs__link">
+        
+  
+    
+  
+  Usage Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="CHANGELOG/CHANGELOG/" class="md-tabs__link">
         
   
@@ -379,6 +404,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#professional-module-making" class="md-nav__link">
     <span class="md-ellipsis">
       Professional Module Making
@@ -477,28 +511,6 @@
   
   <span class="md-ellipsis">
     Configuration
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="getting-started/usageguide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Usage Guide
     
   </span>
   
@@ -1823,6 +1835,27 @@
   
   
     <li class="md-nav__item">
+      <a href="usageguide/usageguide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Usage Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="CHANGELOG/CHANGELOG/" class="md-nav__link">
         
   
@@ -1875,6 +1908,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#professional-module-making" class="md-nav__link">
     <span class="md-ellipsis">
       Professional Module Making
@@ -1913,36 +1955,49 @@
   
 
 
-<h1 id="welcome-to-remotepro">Welcome to RemotePro</h1>
-<p><em>A PowerShell Windows Presentation Framework (WPF) Graphical User Interface (GUI) for MilestonePSTools.</em></p>
-<ul>
-<li><em>Available on the <a href="https://www.powershellgallery.com/packages/RemotePro/0.2.3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4zm-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44z"/></svg></span>PowerShell Gallery.</a></em></li>
-</ul>
-<p><a class="glightbox" href="assets/RpLogo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Picture-RpLogo" src="assets/RpLogo.png" width="350" /></a></p>
-<ul>
-<li>Please see the <a href="CHANGELOG/CHANGELOG/">ChangeLog</a> for updates.</li>
-<li>See <a href="https://www.remotepro.dev/getting-started/installation/">Installation</a> for access to setup instructions.</li>
-<li>Version 1.0.0 will be the official release of <strong>RemotePro</strong>.</li>
-</ul>
-<h2 id="inspiration">Inspiration</h2>
-<p>Hello! My name is <a href="https://www.linkedin.com/in/codypaternostro/">Cody Paternostro</a>, and this is my project, <strong>RemotePro</strong>. It is an intriguing module that allows anyone familiar with <a href="https://www.milestonepstools.com/">MilestonePSTools</a> and <a href="https://www.milestonesys.com/products/software/xprotect/">Milestone XProtect</a> to interact through a graphical user interface (GUI). The idea for RemotePro originated when <a href="https://gist.github.com/joshooaj">Joshua Hendricks</a>, the developer behind the MilestonePSTools project, shared an interesting <a href="https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f">PowerShell script</a>. This script wasn’t designed for automation; instead, it focused on user interaction by enabling the viewing of live and playback streams from a Video Management System (VMS). He utilized Windows Presentation Framework (WPF), which was new to me at the time. This journey has been a long one, providing an opportunity to create something usable by everyone with minimal effort.</p>
-<h2 id="professional-module-making">Professional Module Making</h2>
-<p>RemotePro is the first module I have ever developed, as this type of programming was unfamiliar to me. Initially, the project started as what I refer to as a <em>mega-script</em>, which was a single large script file containing various functions. The Gainsville PowerShell group hosts meetups, and it just so happened that Josh did a demo on module creation using psstucco -- <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">"The Art &amp; Craft of Module Development using Stucco with Josh Hendricks"</a>. The timing could not have been better for the development of RemotePro, as I had just begun learning how to import functions into an active terminal session. Professional modules take projects to the next level by offering the benefits of using PowerShell data and module files while <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">automating documentation</a>. Most importantly, the concept of a <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-5.1#modules">module and script scope variables</a> are utilized throughout a main PSCustomObject for the <em>RemoteProController</em>. This object allows quick access to all the event handlers for button clicks.</p>
-<h2 id="user-interface-graphical-gui-command-line-cli-or-both">User Interface: Graphical (GUI), Command-Line (CLI), or Both?</h2>
-<p>If what you've read so far doesn't make sense, that's fine; if you understand the concepts, that's great too. The purpose of RemotePro is to provide an attractive base template that allows users to make suggestions or developers to contribute. The idea was to create a starting point without a defined goal. I was initially hesitant to release the module because I wanted the button click functionalities to be modifiable to some extent. I will be working on publishing features and guides on how to utilize RemotePro from the command line interface (CLI) and GUI. There are three important components to this module: the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/xaml/RemoteProUI.xaml">XAML</a>, the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/Public/Start-RpRemotePro.ps1">Start-RpRemotePro</a> command, WPF-enabled cmdlets, and, of course, Runspaces!</p>
-<div class="admonition note">
-<p class="admonition-title">Disclaimer</p>
-<p>This project's content is not affiliated with MilestonePTools or Milestone XProtect and is released under the permissive open-source <a href="https://github.com/codypaternostro/RemotePro/blob/main/LICENSE">MIT License</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Dependencies</p>
+<h1 id="welcome-to-remotepro">Welcome to RemotePro<a class="headerlink" href="#welcome-to-remotepro" title="Permanent link">&para;</a></h1>
+<p><a class="glightbox" href="assets/RpLogo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Picture-RpLogo" src="assets/RpLogo.png" width="350" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title"><strong>A PowerShell Windows Presentation Framework (WPF) Graphical User Interface (GUI) for MilestonePSTools</strong></p>
+<p><em>Available on the <a href="https://www.powershellgallery.com/packages/RemotePro/0.2.3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4zm-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44z"/></svg></span>PowerShell Gallery.</a></em></p>
 </div>
+<p><br></p>
+<div align="left" class="annotate">
+<p>(1) Please see the <a href="CHANGELOG/CHANGELOG/">ChangeLog</a> for updates.</p>
+<p>(2) See <a href="https://www.remotepro.dev/getting-started/installation/">Installation</a> for access to setup instructions.</p>
+<p>(3) Version 1.0.0 will be the official release of RemotePro.</p>
+</div>
+<ol>
+<li>In addition to updates and fixes, the unreleased section may showcase current features that are being developed.</li>
+<li>RemotePro is currently in beta stage. If you experience any issues please <a href="https://github.com/codypaternostro/RemotePro/issues"><em>report the issue</em></a></li>
+<li>I am currently developing this module in real-time! Version 1.0.0 will be bumped as a marker of progression.</li>
+</ol>
+<p><br><br><br></p>
+<h2 id="inspiration">Inspiration<a class="headerlink" href="#inspiration" title="Permanent link">&para;</a></h2>
+<p>Hello! My name is <a href="https://www.linkedin.com/in/codypaternostro/">Cody Paternostro</a>, and this is my project, <strong>RemotePro</strong>. It is an intriguing module that allows anyone familiar with <a href="https://www.milestonepstools.com/">MilestonePSTools</a> and <a href="https://www.milestonesys.com/products/software/xprotect/">Milestone XProtect</a> to interact through a graphical user interface (GUI). The idea for RemotePro originated when <a href="https://gist.github.com/joshooaj">Joshua Hendricks</a>, the developer behind the MilestonePSTools project, shared an interesting <a href="https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f">PowerShell script</a>. This script wasn’t designed for automation; instead, it focused on user interaction by enabling the viewing of live and playback streams from a Video Management System (VMS). He utilized Windows Presentation Framework (WPF), which was new to me at the time. This journey has been a long one, providing an opportunity to create something usable by everyone with minimal effort.</p>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Attribution</p>
+<p>RemotePro utilizes existing modules and binaries, integrating them seamlessly. Input, output, and processing are facilitated by these modules. If you are interested in learning more about them, please use the project links below to explore further!</p>
+<div class="admonition info">
+<p class="admonition-title">Project Links</p>
 <ul>
-<li><a href="https://www.milestonepstools.com/">MilestonePSTools</a></li>
-<li><a href="https://github.com/EvotecIT/PSWriteHTML">PSWriteHTML</a></li>
 <li><a href="https://github.com/dfinke/ImportExcel">ImportExcel</a></li>
 <li><a href="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit">MaterialDesignInXamlToolkit</a></li>
-<li><a href="https://github.com/Keboo/ShowMeTheXAML">ShowMeTheXAML</a> <em>included -- currently not used.</em></li>
+<li><a href="https://www.milestonepstools.com/">MilestonePSTools</a></li>
+<li><a href="https://github.com/EvotecIT/PSWriteHTML">PSWriteHTML</a></li>
+<li><a href="https://github.com/Keboo/ShowMeTheXAML">ShowMeTheXAML</a> <em>included -- currently not used yet.</em></li>
 </ul>
+</div>
+</div>
+<h2 id="professional-module-making">Professional Module Making<a class="headerlink" href="#professional-module-making" title="Permanent link">&para;</a></h2>
+<p>RemotePro is the first module I have ever developed, as this type of programming was unfamiliar to me. Initially, the project started as what I refer to as a <em>mega-script</em>, which was a single large script file containing various functions. The Gainsville PowerShell group hosts meetups, and it just so happened that Josh did a demo on module creation using psstucco -- <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">"The Art &amp; Craft of Module Development using Stucco with Josh Hendricks"</a>. The timing could not have been better for the development of RemotePro, as I had just begun learning how to import functions into an active terminal session. Professional modules take projects to the next level by offering the benefits of using PowerShell data and module files while <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">automating documentation</a>. Most importantly, the concept of a <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-5.1#modules">module and script scope variables</a> are utilized throughout a main PSCustomObject for the <em>RemoteProController</em>. This object allows quick access to all the event handlers for button clicks.</p>
+<h2 id="user-interface-graphical-gui-command-line-cli-or-both">User Interface: Graphical (GUI), Command-Line (CLI), or Both?<a class="headerlink" href="#user-interface-graphical-gui-command-line-cli-or-both" title="Permanent link">&para;</a></h2>
+<p>If what you've read so far doesn't make sense, that's fine; if you understand the concepts, that's great too. The purpose of RemotePro is to provide an attractive base template that allows users to make suggestions or developers to contribute. The idea was to create a starting point without a defined goal. I was initially hesitant to release the module because I wanted the button click functionalities to be modifiable to some extent. I will be working on publishing features and guides on how to utilize RemotePro from the command line interface (CLI) and GUI. There are three important components to this module: the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/xaml/RemoteProUI.xaml">XAML</a>, the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/Public/Start-RpRemotePro.ps1">Start-RpRemotePro</a> command, WPF-enabled cmdlets, and, of course, Runspaces!</p>
+<p><br></p>
+<div class="admonition warning">
+<p class="admonition-title">Disclaimer</p>
+<p>This project's content is not affiliated with MilestonePTools or Milestone XProtect and is released under the permissive open-source <a href="https://github.com/codypaternostro/RemotePro/blob/main/LICENSE">MIT License</a>.</p>
 </div>
 
 
@@ -1992,6 +2047,43 @@
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/codypaternostro/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/codypaternostro" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bsky.app/profile/codypaternostro.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
     </a>
   
 </div>

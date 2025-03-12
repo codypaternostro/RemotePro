@@ -15,9 +15,7 @@ theme:
   icon:
     admonition:
     note: octicons/tag-16
-  extra_css:
-    - stylesheets/extra.css
-
+    annotation: material/plus-circle
   logo: assets/RpLogo.png
   features:
   - content.code.copy
@@ -34,7 +32,6 @@ nav:
   - Getting Started:
       - Installation: getting-started/installation.md
       - Configuration: getting-started/configuration.md
-      - Usage Guide: getting-started/usageguide.md
   - Commands:
       - Add-RpConfigCommand: en-US/Add-RpConfigCommand.md
       - Add-RpSettingToJson: en-US/Add-RpSettingToJson.md
@@ -93,6 +90,7 @@ nav:
       - Update-RpConfigCommand: en-US/Update-RpConfigCommand.md
       - Update-RpSettingsJson: en-US/Update-RpSettingsJson.md
       - Watch-RpRunspaces: en-US/Watch-RpRunspaces.md
+  - Usage Guide: usageguide/usageguide.md
   - Changelog: CHANGELOG/CHANGELOG.md
 
 plugins:
@@ -125,9 +123,20 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - toc:
+        permalink: true
 
+extra_css:
+  - stylesheets/extra.css
 
 extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/codypaternostro/
+    - icon: fontawesome/brands/github
+      link: https://github.com/codypaternostro
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/codypaternostro.bsky.social
   consent:
     actions:
     - accept
@@ -138,20 +147,3 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
