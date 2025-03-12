@@ -12,16 +12,19 @@ hide:
 
 <br>
 <div class="annotate" markdown align="left">
-(1) Please see the [ChangeLog](CHANGELOG/CHANGELOG.md) for updates.
+(1) :simple-keepachangelog: Please see the [ChangeLog](CHANGELOG/CHANGELOG.md) for updates.
 
-(2) See [Installation](https://www.remotepro.dev/getting-started/installation/) for access to setup instructions.
+(2) :fontawesome-solid-book-open: See [Installation](https://www.remotepro.dev/getting-started/installation/) for access to setup instructions.
 
-(3) Version 1.0.0 will be the official release of RemotePro.
+(3) :fontawesome-solid-code-branch: Version 1.0.0 will be the official release of RemotePro.
+
+(4) :fontawesome-brands-youtube: See the [YouTube Video Tutorial](usageguide/usageguide/#video-tutorial) for demonstrations of the features.
 
 </div>
 1. In addition to updates and fixes, the unreleased section may showcase current features that are being developed.
 2. RemotePro is currently in beta stage. If you experience any issues please [*report the issue*](https://github.com/codypaternostro/RemotePro/issues)
 3. I am currently developing this module in real-time! Version 1.0.0 will be bumped as a marker of progression.
+4. This is a 15 minute video demonstrating the basic features of RemotePro.
 
 <br><br><br>
 ## Inspiration
@@ -52,5 +55,5 @@ If what you've read so far doesn't make sense, that's fine; if you understand th
 
 <br>
 !!! warning "Disclaimer"
-    This project's content is not affiliated with MilestonePTools or Milestone XProtect and is released under the permissive open-source [MIT License](https://github.com/codypaternostro/RemotePro/blob/main/LICENSE).
+    This project's content is not affiliated with MilestonePSTools or Milestone XProtect and is released under the permissive open-source [MIT License](https://github.com/codypaternostro/RemotePro/blob/main/LICENSE).
 

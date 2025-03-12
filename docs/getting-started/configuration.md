@@ -41,4 +41,4 @@ Before you begin, ensure you have the following:
 
 ## Conclusion
 
-You have successfully configured your RemotePro. More usage guides and examples are in progress!
+You have successfully configured your RemotePro. More usage guides and examples are in progress! Please check the [video tutorial](../../usageguide/usageguide/#video-tutorial) for utilizing features!
