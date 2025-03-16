@@ -15,12 +15,13 @@ connection validation.
 
 ### NoConnectionCheck (Default)
 ```
-Get-RpVmsHardwareCustom [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpVmsHardwareCustom [-IncludeCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ConnectionCheck
 ```
-Get-RpVmsHardwareCustom [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpVmsHardwareCustom [-CheckConnection] [-IncludeCredentials] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +50,21 @@ and exit early.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ConnectionCheck
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeCredentials
+Includes the username and password in the output for each hardware item.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

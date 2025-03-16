@@ -11,6 +11,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelased]
 
+- Open Start-RpRemotePro main window in nested runspace parameter.
+- Heartbeat window for checking status of cameras on current connection.
+- VAPIX command pass through to reboot AXIS cameras.
+- Parameter selection for camera reports.
+
+## [0.2.4] - 2025-03-16
+
+## Added
+
+- Show Hardware button by default would display credentials for hardware.
+This no longer occurs, to see credentials in the hardware
+reports there is a parameter that needs to be enabled, **IncludeCredentials**.
+Navigate the tabs to *Configuration* > *ConfigCommands* and check the box in
+the left column for Get-RpVmsHardwareCustom. Then click the penicl icon
+(:material-pencil:) to change the value to *$ture* or *true* for
+the **IncludeCredentials** parameter. Finally, click *Submit* to save the changes.
+This will update the RemoteProParamConfig.json to store the modification.
+
+## Fixed
+
+- Get-RpVmsHardwareCustom was still using a hardcoded call to Out-HtmlView.
+This would result in opening two tabs when click on the *Show Hardware* button.
+
 ## [0.2.3] - 2025-03-05
 
 ### Fixed

@@ -179,8 +179,6 @@ function Set-RpRunspaceEvents {
                     try {
                         Import-Module -Name RemotePro
 
-
-
                         #$platformItemcameras | ogv
 
                         # LegacyCall
@@ -269,8 +267,7 @@ function Set-RpRunspaceEvents {
                     )
 
                     try {
-                        Import-Module -Name RemotePro
- #-ErrorAction Stop
+                        Import-Module -Name RemotePro #-ErrorAction Stop
 
                         # LegacyCall
                         # Get-RpTicketBlock -Cameras $platformItemcameras -ShowWindow
@@ -305,8 +302,6 @@ function Set-RpRunspaceEvents {
                 Start-RpRunspaceJob -ScriptBlock {
                     try {
                         Import-Module -Name RemotePro
-
-
 
                         Write-Host "$(Get-Location)"
 
@@ -351,8 +346,6 @@ function Set-RpRunspaceEvents {
                 Start-RpRunspaceJob -ScriptBlock {
                     try {
                         Import-Module -Name RemotePro
-
-
 
                         #Write-Host "$(Get-Location)"
 

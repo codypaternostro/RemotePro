@@ -2,13 +2,13 @@ function Get-RpVmsHardwareCustom {
     <#
     .SYNOPSIS
     Retrieves and displays the hardware settings of VMS items with optional
-    connection validation.
+    connection validation and credentials inclusion.
 
     .DESCRIPTION
     This function retrieves the hardware settings of VMS items and displays the
     results in an HTML view.
-    It also provides an optional parameter to validate the connection before
-    processing.
+    It also provides optional parameters to validate the connection before
+    processing and to include credentials in the output.
 
     .COMPONENT
     CustomVMSCmdlets
@@ -18,11 +18,20 @@ function Get-RpVmsHardwareCustom {
     If the connection is not valid, the function will display an error message
     and exit early.
 
+    .PARAMETER IncludeCredentials
+    Includes the username and password in the output for each hardware item.
+
     .EXAMPLE
     Get-RpVmsHardwareCustom -CheckConnection
 
     This example validates the VMS connection before retrieving and
     displaying the hardware settings of the items.
+
+    .EXAMPLE
+    Get-RpVmsHardwareCustom -IncludeCredentials
+
+    This example retrieves and displays the hardware settings of the items,
+    including the username and password for each item.
 
     .LINK
     https://www.remotepro.dev/en-US/Get-RpVmsHardwareCustom
@@ -30,7 +39,10 @@ function Get-RpVmsHardwareCustom {
     [CmdletBinding(DefaultParameterSetName='NoConnectionCheck')]
     param(
         [Parameter(Mandatory=$false, ParameterSetName='ConnectionCheck')]
-        [switch]$CheckConnection
+        [switch]$CheckConnection,
+
+        [Parameter(Mandatory=$false)]
+        [switch]$IncludeCredentials
     )
 
     begin {
@@ -72,8 +84,10 @@ function Get-RpVmsHardwareCustom {
                 $hardwareSettings[$hardware.Id] = $hardware | Get-HardwareSetting -Verbose
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Id -Value $hardware.Id
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name RecorderName -Value $recordingServer.Name
-                $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Username -Value $username
-                $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Password -Value $password
+                if ($IncludeCredentials) {
+                    $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Username -Value $username
+                    $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Password -Value $password
+                }
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name HardwareName -Value $name
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name IpAddress -Value $Ip
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Name -Value $name
@@ -82,8 +96,14 @@ function Get-RpVmsHardwareCustom {
         }
         $hardwareResults= $hardwareSettings.Values
 
-        $hardwareResults | Select-Object RecorderName,DetectedModelName, Name, IpAddress, MacAddress, SerialNumber, Username, Password |
-            Out-HtmlView -EnableScroller -ScrollX -AlphabetSearch -SearchPane  -Title "HardwareReportRefined $($timestamp)"
+        #ToDo: Build parameter for selecting properties to display.
+        # - Create option for WPF window to select properties to display.
+        # - Create option to cache the selected properties for future use.
+        if ($IncludeCredentials) {
+            $hardwareResults | Select-Object RecorderName, DetectedModelName, Name, IpAddress, MacAddress, SerialNumber, Username, Password
+        } else {
+            $hardwareResults | Select-Object RecorderName, DetectedModelName, Name, IpAddress, MacAddress, SerialNumber
+        }
 
         return $hardwareResults
     }
