@@ -8,7 +8,7 @@ hide:
 ![Picture-RpLogo](assets\RpLogo.png){ width=350 align=right }
 
 !!! tip "**A PowerShell Windows Presentation Framework (WPF) Graphical User Interface (GUI) for MilestonePSTools**"
-    *Available on the [:material-powershell:PowerShell Gallery.](https://www.powershellgallery.com/packages/RemotePro/0.2.3)*
+    *Available on the [:material-powershell:PowerShell Gallery.](https://www.powershellgallery.com/packages/RemotePro)*
 
 <br>
 <div class="annotate" markdown align="left">
