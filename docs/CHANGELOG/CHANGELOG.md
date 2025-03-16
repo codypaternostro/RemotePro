@@ -25,7 +25,7 @@ This no longer occurs, to see credentials in the hardware
 reports there is a parameter that needs to be enabled, **IncludeCredentials**.
 Navigate the tabs to *Configuration* > *ConfigCommands* and check the box in
 the left column for Get-RpVmsHardwareCustom. Then click the penicl icon
-(:material-pencil:) to change the value to *$ture* or *true* for
+(:material-pencil:) to change the value to *true* for
 the **IncludeCredentials** parameter. Finally, click *Submit* to save the changes.
 This will update the RemoteProParamConfig.json to store the modification.
 
