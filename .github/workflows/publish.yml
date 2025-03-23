@@ -22,7 +22,7 @@ jobs:
 
       # Check if the version has been bumped
       - name: Check if version has been bumped
-        shell: pwsh
+        shell: powershell
         id: check_if_versions_bumped
         run: |
           [version]$GalleryVersion = Get-NextNugetPackageVersion -Name RemotePro -ErrorAction Stop
