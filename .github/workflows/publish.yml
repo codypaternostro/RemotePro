@@ -22,7 +22,7 @@ jobs:
 
       # Check if the version has been bumped
       - name: Check if version has been bumped
-        shell: powershell
+        shell: pwsh
         id: check_if_versions_bumped
         run: |
           [version]$GalleryVersion = Get-NextNugetPackageVersion -Name RemotePro -ErrorAction Stop
@@ -34,7 +34,7 @@ jobs:
 
       # Publish to PSGallery if version is bumped
       - name: Publish to PSGallery
-        shell: pwsh
+        shell: powershell
         if: env.VERSION_BUMPED == 'True'
         env:
           PSGALLERY_API_KEY: ${{ secrets.PS_GALLERY_KEY }}
