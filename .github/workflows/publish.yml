@@ -10,24 +10,14 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      # Checkout repository
       - uses: actions/checkout@v3
 
-      # Install and cache PowerShell modules
-      - name: Install and cache PowerShell modules
-        id: psmodulecache
-        uses: potatoqualitee/psmodulecache@v6.2.1
-        with:
-          modules-to-cache: BuildHelpers
-
-      # Force load BuildHelpers and verify Update-Metadata
-      - name: Force load BuildHelpers and verify Update-Metadata
+      - name: Install BuildHelpers with AllowClobber
         shell: pwsh
         run: |
+          Install-Module BuildHelpers -Force -AllowClobber -Scope CurrentUser
           Import-Module BuildHelpers -Force
-          (Get-Command Update-Metadata).Source
 
-      # Check if the version has been bumped
       - name: Check if version has been bumped
         shell: pwsh
         id: check_if_versions_bumped
@@ -35,14 +25,11 @@ jobs:
           [version]$GalleryVersion = Get-NextNugetPackageVersion -Name RemotePro -ErrorAction Stop
           [version]$GithubVersion = Get-MetaData -Path ./RemotePro/RemotePro.psd1 -PropertyName ModuleVersion -ErrorAction Stop
           $bumped = $GithubVersion -ge $GalleryVersion
-
-          # Set environment variable instead of set-output
           echo "VERSION_BUMPED=$bumped" >> $env:GITHUB_ENV
 
-      # Publish to PSGallery if version is bumped
       - name: Publish to PSGallery
         shell: powershell
-        if: ${{ env.VERSION_BUMPED == 'True' }}
+        if: env.VERSION_BUMPED == 'True'
         env:
           PSGALLERY_API_KEY: ${{ secrets.PS_GALLERY_KEY }}
         run: ./build.ps1 -Task Publish -Bootstrap
