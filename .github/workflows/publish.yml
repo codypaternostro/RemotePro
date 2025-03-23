@@ -13,36 +13,41 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Install BuildHelpers with AllowClobber
-      - name: Install BuildHelpers with AllowClobber
+      # Install BuildHelpers clean with AllowClobber
+      - name: Install BuildHelpers (Force + AllowClobber)
         shell: pwsh
         run: |
           Install-Module BuildHelpers -Force -AllowClobber -Scope CurrentUser
           Import-Module BuildHelpers -Force
 
-      # Patch Update-Metadata to avoid PropertyName error
-      - name: Patch Update-Metadata
+      # Patch BuildHelpers Update-Metadata to avoid 'PropertyName' error
+      - name: Patch BuildHelpers Update-Metadata
         shell: pwsh
         run: |
-          function Update-Metadata {
-              param (
-                  [string]$Path,
-                  [string]$PropertyName = 'ModuleVersion',
-                  $Value
-              )
-              $content = Get-Content $Path -Raw
-              $pattern = "$PropertyName\s*=\s*'[^']*'"
-              if ($content -match $pattern) {
-                  $content = $content -replace $pattern, "$PropertyName = '$Value'"
-              } else {
-                  Write-Warning "Property $PropertyName not found, appending."
-                  $content += "`n$PropertyName = '$Value'"
+          $patchedModule = New-Module -Name BuildHelpers -ScriptBlock {
+              function Update-Metadata {
+                  param (
+                      [string]$Path,
+                      [string]$PropertyName = 'ModuleVersion',
+                      $Value
+                  )
+                  $content = Get-Content $Path -Raw
+                  $pattern = "$PropertyName\s*=\s*'[^']*'"
+                  if ($content -match $pattern) {
+                      $content = $content -replace $pattern, "$PropertyName = '$Value'"
+                  } else {
+                      Write-Warning "Property $PropertyName not found, appending."
+                      $content += "`n$PropertyName = '$Value'"
+                  }
+                  Set-Content -Path $Path -Value $content -Encoding UTF8
+                  Write-Host "Updated '$PropertyName' in $Path"
               }
-              Set-Content -Path $Path -Value $content -Encoding UTF8
-              Write-Host "Updated '$PropertyName' in $Path"
+              Export-ModuleMember -Function Update-Metadata
           }
-          Set-Alias -Name Update-Metadata -Value Update-Metadata -Scope Global
 
+          Import-Module $patchedModule -Force
+
+      # Check if the version has been bumped
       - name: Check if version has been bumped
         shell: pwsh
         id: check_if_versions_bumped
@@ -52,6 +57,7 @@ jobs:
           $bumped = $GithubVersion -ge $GalleryVersion
           echo "VERSION_BUMPED=$bumped" >> $env:GITHUB_ENV
 
+      # Publish to PSGallery if version is bumped
       - name: Publish to PSGallery
         shell: powershell
         if: env.VERSION_BUMPED == 'True'
