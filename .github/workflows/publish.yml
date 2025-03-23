@@ -9,14 +9,39 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v3
 
+      # Install BuildHelpers with AllowClobber
       - name: Install BuildHelpers with AllowClobber
         shell: pwsh
         run: |
           Install-Module BuildHelpers -Force -AllowClobber -Scope CurrentUser
           Import-Module BuildHelpers -Force
+
+      # Patch Update-Metadata to avoid PropertyName error
+      - name: Patch Update-Metadata
+        shell: pwsh
+        run: |
+          function Update-Metadata {
+              param (
+                  [string]$Path,
+                  [string]$PropertyName = 'ModuleVersion',
+                  $Value
+              )
+              $content = Get-Content $Path -Raw
+              $pattern = "$PropertyName\s*=\s*'[^']*'"
+              if ($content -match $pattern) {
+                  $content = $content -replace $pattern, "$PropertyName = '$Value'"
+              } else {
+                  Write-Warning "Property $PropertyName not found, appending."
+                  $content += "`n$PropertyName = '$Value'"
+              }
+              Set-Content -Path $Path -Value $content -Encoding UTF8
+              Write-Host "Updated '$PropertyName' in $Path"
+          }
+          Set-Alias -Name Update-Metadata -Value Update-Metadata -Scope Global
 
       - name: Check if version has been bumped
         shell: pwsh
