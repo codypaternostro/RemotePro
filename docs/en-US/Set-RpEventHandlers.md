@@ -49,9 +49,10 @@ to handle UI actions.
 ### EXAMPLE 2
 ```
 Set-RpEventHandlers
-$handlers = $script:RemotePro.EventHandlers
-$handlers["OpenFile_Click"]
 ```
+
+$handlers = $script:RemotePro.EventHandlers
+$handlers\["OpenFile_Click"\]
 
 This example sets up the EventHandlers property, retrieves all event handlers,
 and fetches the handler for the "OpenFile_Click" event.
@@ -59,9 +60,10 @@ and fetches the handler for the "OpenFile_Click" event.
 ### EXAMPLE 3
 ```
 Set-RpEventHandlers
-$handler = $script:RemotePro.EventHandlers["NewConnectionFile_Click"]
-& $handler
 ```
+
+$handler = $script:RemotePro.EventHandlers\["NewConnectionFile_Click"\]
+& $handler
 
 This example sets up the event handlers, retrieves the scriptblock for
 "NewConnectionFile_Click", and executes the scriptblock.

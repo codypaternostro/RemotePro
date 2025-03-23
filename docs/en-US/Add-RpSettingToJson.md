@@ -14,14 +14,12 @@ Adds a new setting to a JSON settings file.
 
 ### CommandLineInterface (Default)
 ```
-Add-RpSettingToJson [-SettingsFilePath <String>] -Name <String> -Value <String>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Add-RpSettingToJson [-SettingsFilePath <String>] -Name <String> -Value <String> [<CommonParameters>]
 ```
 
 ### ShowDialog
 ```
-Add-RpSettingToJson [-SettingsFilePath <String>] [-ShowDialog] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Add-RpSettingToJson [-SettingsFilePath <String>] [-ShowDialog] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +35,9 @@ In ShowDialog mode, a WPF GUI is displayed to input the setting name and value.
 ### EXAMPLE 1
 ```
 Add-RpSettingToJson -SettingsFilePath "C:\Settings.json" -Name "Theme" -Value
-"Dark"
 ```
+
+"Dark"
 
 Adds a setting named "Theme" with the value "Dark" to the specified settings
 file.
@@ -117,21 +116,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

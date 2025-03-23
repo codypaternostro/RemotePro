@@ -1,0 +1,20 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RemotePro Loading..."
+        Height="320" Width="320"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Topmost="True"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Grid>
+        <Border CornerRadius="16" Background="White" Padding="20">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image x:Name="SplashIcon" Width="160" Height="160" Margin="0,0,0,10"/>
+                <TextBlock Text="Loading RemotePro..." FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,18 +1,9 @@
 #region Script-Scoped Variables
 $script:scriptRoot = $PSScriptRoot
-Set-Location -Path $script:scriptRoot #Redunancy
+#Set-Location -Path $script:scriptRoot #Redunancy
 
-# Load in main xaml file.
-$script:RemoteProXaml = Get-Content -Path "$PSScriptRoot\Xaml\RemoteProUI.xaml" -Raw
+
 #endregion
-
-#region Load necessary DLLs, Assemblies, and Memory References
-
-# Declare a module-scoped variable for the memory stream (empty, created once)
-$script:RpIconStream = New-Object System.IO.MemoryStream
-Write-Verbose "Initialized module-wide RpIconStream object."
-
-
 
 # Get all DLLs in the bin directory relative to the scriptroot
 $bin = Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'bin') -Filter *.dll -Recurse -ErrorAction Stop
@@ -45,9 +36,18 @@ try {
         Write-Verbose "Successfully loaded $($dll.Name) from memory"
     }
 
-} catch {
-    Write-Error "An error occurred while loading dependencies: $_"
-}
+    }
+    catch {
+        Write-Error "An error occurred while loading dependencies: $_"
+    }
+#endregion
+
+#endregion
+
+# Declare a module-scoped variable for the memory stream (empty, created once)
+$script:RpIconStream = New-Object System.IO.MemoryStream
+Write-Verbose "Initialized module-wide RpIconStream object."
+
 #endregion
 
 #region Dot source public/private functions
@@ -58,6 +58,7 @@ foreach ($import in @($classes + $public + $private)) {
     try {
         . $import.FullName
     } catch {
+        Write-Warning "Unable to dot source $($import.Name) due to error: $_"
         throw "Unable to dot source [$($import.FullName)]"
     }
 }
@@ -66,7 +67,7 @@ Export-ModuleMember -Function $public.Basename
 #endregion
 
 #region Install required modules
-Install-RpRequiredModules -Verbose
+#Install-RpRequiredModules -Verbose
 #endregion
 
 #region set runspace log and configuration file.

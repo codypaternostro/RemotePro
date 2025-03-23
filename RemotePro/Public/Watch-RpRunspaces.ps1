@@ -143,6 +143,9 @@ function Watch-RpRunspaces {
             try {
                 $RunspaceJobs.Remove($job)
 
+                # Remove the job from OpenRunspaces
+                $script:RpOpenRunspaces.Jobs.Remove($job)
+
                 # Generate a log entry for job removal
                 $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
                 $removalStatus = if ($jobSuccessful) { "Job removed successfully." } else { "Job removed with error." }

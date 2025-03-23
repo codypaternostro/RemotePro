@@ -15,7 +15,7 @@ Starts static runspace jobs and tracks them in a global collection.
 ```
 Start-RpRunspaceJobStatic [-Jobs] <Array> [-uiElement] <TextBox>
  [-OpenRunspaces] <System.Collections.ObjectModel.ObservableCollection`1[System.Object]>
- [[-RunspaceJobs] <ArrayList>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [[-RunspaceJobs] <ArrayList>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,8 @@ ID, and Instance ID) are added to a global collection
 ### EXAMPLE 1
 ```
 # Define the jobs to run
+```
+
 $jobsToRun = @(
     @{
         JobName                = "VmsCameraReportJob"
@@ -46,14 +48,13 @@ $jobsToRun = @(
         ScriptBlock            = { Write-Host "Displaying Camera Feed..." }
     }
 )
-#Start the runspace jobs
-$script:RpOpenRunspaces = Start-RpRunspaceJobStatic
-    -Jobs $jobsToRun
-    -uiElement $script:Runspace_Mutex_Log
-    -OpenRunspaces $script:RpOpenRunspaces
-    -RunspaceJobs $script:RunspaceJobs
-    -Verbose
+
+### EXAMPLE 2
 ```
+#Start the runspace jobs
+```
+
+Start-RpRunspaceJobStatic -Jobs $jobsToRun -uiElement $script:Runspace_Mutex_Log -OpenRunspaces $script:RpOpenRunspaces -RunspaceJobs $script:RunspaceJobs -Verbose
 
 This will start two jobs: one to fetch a VMS camera report and
 another to display the camera feed.
@@ -125,21 +126,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

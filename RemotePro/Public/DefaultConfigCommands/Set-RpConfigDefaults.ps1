@@ -155,7 +155,7 @@ function Set-RpConfigDefaults {
                 $defaultCommandIds | Add-Member -MemberType NoteProperty -Name "$commandName" -Value "$commandId"
 
                 $params = @{
-                    "Cameras" = "`$configItemCams"
+                    "Cameras" = "`$platformItemcameras"
                     "ShowWindow" = $true
                 }
 

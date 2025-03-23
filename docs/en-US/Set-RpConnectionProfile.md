@@ -14,13 +14,12 @@ Sets RemotePro connection profiles based on Excel file input.
 
 ### ProcessProfiles (Default)
 ```
-Set-RpConnectionProfile -ExcelFilePath <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Set-RpConnectionProfile -ExcelFilePath <String> [<CommonParameters>]
 ```
 
 ### CreateTemplate
 ```
-Set-RpConnectionProfile -ExcelFilePath <String> [-CreateTemplate] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Set-RpConnectionProfile -ExcelFilePath <String> [-CreateTemplate] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,21 +81,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

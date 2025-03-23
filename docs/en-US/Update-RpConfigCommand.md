@@ -16,19 +16,18 @@ module using a configuration JSON file or an interactive WPF-based GUI.
 ### ShowDialog (Default)
 ```
 Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <String>] [-ConfigFilePath <String>]
- [-ShowDialog] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ShowDialog] [<CommonParameters>]
 ```
 
 ### ConfigurationItems
 ```
 Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <String>] [-Parameters <Hashtable>]
- [-Description <String>] [-ConfigFilePath <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Description <String>] [-ConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### NoDialog
 ```
-Update-RpConfigCommand [-Parameters <Hashtable>] [-Description <String>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Update-RpConfigCommand [-Parameters <Hashtable>] [-Description <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,8 +51,9 @@ bypass the GUI and pass values directly through \`-Parameters\`.
 ### EXAMPLE 1
 ```
 Update-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName
-'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -ShowDialog
 ```
+
+'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -ShowDialog
 
 This example loads the configuration for the 'Get-VmsCameraReport' command in
 the 'MilestonePSTools' module and opens a GUI dialog to allow users to
@@ -64,9 +64,10 @@ back to the JSON file.
 ### EXAMPLE 2
 ```
 Update-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName
+```
+
 'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -Parameters
 @{ "Verbose" = $true; "Debug" = $false }
-```
 
 This example directly sets the 'Verbose' and 'Debug' parameters without
 opening the GUI.
@@ -77,9 +78,10 @@ values.
 ### EXAMPLE 3
 ```
 Update-RpConfigCommand -ModuleName 'MilestonePSTools' -CommandName
+```
+
 'Get-VmsCameraReport' -Id 18 -ConfigFilePath $(Get-Rpconfigpath) -Description
 "New description for the command"
-```
 
 This example updates the description of the 'Get-VmsCameraReport' command in
 the 'MilestonePSTools' module without opening the GUI.
@@ -207,21 +209,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

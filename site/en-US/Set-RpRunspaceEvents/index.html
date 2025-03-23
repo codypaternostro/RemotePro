@@ -1728,6 +1728,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../Show-RpSplashScreen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Show-RpSplashScreen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Start-RpRemotePro/" class="md-nav__link">
         
   
@@ -2173,16 +2195,16 @@ handlers to it, associating each event with its respective scriptblock
 to handle user actions.</p>
 <h3 id="example-2">EXAMPLE 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Set-RpRunspaceEvents
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$events = Get-RpRunspaceEvents -All
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>$events[&quot;CamReport_Click&quot;]
 </span></code></pre></div>
+<p>$events = Get-RpRunspaceEvents -All
+$events["CamReport_Click"]</p>
 <p>This example sets up the event handlers, retrieves all RunspaceEvents,
 and fetches the handler for the "CamReport_Click" event.</p>
 <h3 id="example-3">EXAMPLE 3<a class="headerlink" href="#example-3" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Set-RpRunspaceEvents
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$handler = Get-RpRunspaceEvents -Name &quot;ShowCameras_Click&quot;
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&amp; $handler
 </span></code></pre></div>
+<p>$handler = Get-RpRunspaceEvents -Name "ShowCameras_Click"
+&amp; $handler</p>
 <p>This example sets up the event handlers, retrieves the scriptblock for
 "ShowCameras_Click", and invokes the scriptblock.</p>
 <h2 id="parameters">PARAMETERS<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>

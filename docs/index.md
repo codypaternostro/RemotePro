@@ -38,8 +38,10 @@ Hello! My name is [Cody Paternostro](https://www.linkedin.com/in/codypaternostro
     RemotePro utilizes existing modules and binaries, integrating them seamlessly. Input, output, and processing are facilitated by these modules. If you are interested in learning more about them, please use the project links below to explore further!
 
     !!! info "Project Links"
+        - [ControlzEx](https://github.com/ControlzEx/ControlzEx)
         - [ImportExcel](https://github.com/dfinke/ImportExcel)
         - [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+        - [MahApps.Metro](https://mahapps.com/)
         - [MilestonePSTools](https://www.milestonepstools.com/)
         - [PSWriteHTML](https://github.com/EvotecIT/PSWriteHTML)
         - [ShowMeTheXAML](https://github.com/Keboo/ShowMeTheXAML) *included -- currently not used yet.*

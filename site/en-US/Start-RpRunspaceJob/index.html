@@ -1558,6 +1558,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../Show-RpSplashScreen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Show-RpSplashScreen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Start-RpRemotePro/" class="md-nav__link">
         
   
@@ -1659,6 +1681,15 @@
   <a href="#newrunspace" class="md-nav__link">
     <span class="md-ellipsis">
       NewRunspace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usenewrunspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      UseNewRunspace
     </span>
   </a>
   
@@ -1785,6 +1816,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-usenewrunspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      -UseNewRunspace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-id" class="md-nav__link">
     <span class="md-ellipsis">
       -Id
@@ -1806,15 +1846,6 @@
   <a href="#-runspacejobs" class="md-nav__link">
     <span class="md-ellipsis">
       -RunspaceJobs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-progressaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      -ProgressAction
     </span>
   </a>
   
@@ -2145,6 +2176,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#usenewrunspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      UseNewRunspace
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2266,6 +2306,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-usenewrunspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      -UseNewRunspace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-id" class="md-nav__link">
     <span class="md-ellipsis">
       -Id
@@ -2287,15 +2336,6 @@
   <a href="#-runspacejobs" class="md-nav__link">
     <span class="md-ellipsis">
       -RunspaceJobs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-progressaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      -ProgressAction
     </span>
   </a>
   
@@ -2376,13 +2416,16 @@
 <h2 id="syntax">SYNTAX<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <h3 id="useexistingrunspace-default">UseExistingRunspace (Default)<a class="headerlink" href="#useexistingrunspace-default" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Start-RpRunspaceJob -ScriptBlock &lt;ScriptBlock&gt; [-ArgumentList &lt;Object[]&gt;] [-Argument &lt;Object&gt;]
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> [-UseExistingRunspaceState] [-Id] [-uiElement &lt;TextBox&gt;] [-RunspaceJobs &lt;ArrayList&gt;]
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> [-UseExistingRunspaceState] [-Id] [-uiElement &lt;TextBox&gt;] [-RunspaceJobs &lt;ArrayList&gt;] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h3 id="newrunspace">NewRunspace<a class="headerlink" href="#newrunspace" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Start-RpRunspaceJob [-ModulesToLoad &lt;String[]&gt;] [-AssembliesToLoad &lt;String[]&gt;] [-FunctionsToImport &lt;String[]&gt;]
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> -ScriptBlock &lt;ScriptBlock&gt; [-ArgumentList &lt;Object[]&gt;] [-Argument &lt;Object&gt;] [-Id] [-uiElement &lt;TextBox&gt;]
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> [-RunspaceJobs &lt;ArrayList&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> [-RunspaceJobs &lt;ArrayList&gt;] [&lt;CommonParameters&gt;]
+</span></code></pre></div>
+<h3 id="usenewrunspace">UseNewRunspace<a class="headerlink" href="#usenewrunspace" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Start-RpRunspaceJob -ScriptBlock &lt;ScriptBlock&gt; [-ArgumentList &lt;Object[]&gt;] [-Argument &lt;Object&gt;]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> [-UseNewRunspace] [-Id] [-uiElement &lt;TextBox&gt;] [-RunspaceJobs &lt;ArrayList&gt;] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h2 id="description">DESCRIPTION<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>This function starts a PowerShell job in a runspace and tracks its status.
@@ -2391,27 +2434,15 @@ session variables), but you can create a new runspace with specific modules,
 assemblies, and functions loaded.</p>
 <h2 id="examples">EXAMPLES<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <h3 id="example-1">EXAMPLE 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Start-RpRunspaceJob -ScriptBlock { Get-Process } -RunspaceJobs $global:RunspaceJobs
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Start-RpRunspaceJob -ScriptBlock { Get-Process } -RunspaceJobs $global:RunspaceJobs
 </span></code></pre></div>
 <h3 id="example-2">EXAMPLE 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Start-RpRunspaceJob -ScriptBlock { Get-Process } -ModulesToLoad @(&#39;MyModule&#39;) `
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>-AssembliesToLoad @(&#39;MyAssembly&#39;) -RunspaceJobs $global:RunspaceJobs
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Start-RpRunspaceJob -ScriptBlock { Get-Process } -ModulesToLoad @(&#39;MyModule&#39;) `
 </span></code></pre></div>
+<p>-AssembliesToLoad @('MyAssembly') -RunspaceJobs $global:RunspaceJobs</p>
 <h2 id="parameters">PARAMETERS<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
 <h3 id="-modulestoload">-ModulesToLoad<a class="headerlink" href="#-modulestoload" title="Permanent link">&para;</a></h3>
 <p>Modules to load into the runspace environment when not using existing state.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">String[]</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NewRunspace</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">Aliases</span><span class="p">:</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="err">@</span><span class="l l-Scalar l-Scalar-Plain">()</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span></code></pre></div>
-<h3 id="-assembliestoload">-AssembliesToLoad<a class="headerlink" href="#-assembliestoload" title="Permanent link">&para;</a></h3>
-<p>Assemblies to load into the runspace environment when not using existing state.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">String[]</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NewRunspace</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">Aliases</span><span class="p">:</span>
@@ -2422,8 +2453,8 @@ assemblies, and functions loaded.</p>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-functionstoimport">-FunctionsToImport<a class="headerlink" href="#-functionstoimport" title="Permanent link">&para;</a></h3>
-<p>Functions to import into the runspace environment when not using existing state.</p>
+<h3 id="-assembliestoload">-AssembliesToLoad<a class="headerlink" href="#-assembliestoload" title="Permanent link">&para;</a></h3>
+<p>Assemblies to load into the runspace environment when not using existing state.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">String[]</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NewRunspace</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">Aliases</span><span class="p">:</span>
@@ -2434,58 +2465,58 @@ assemblies, and functions loaded.</p>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-scriptblock">-ScriptBlock<a class="headerlink" href="#-scriptblock" title="Permanent link">&para;</a></h3>
-<p>The scriptblock to execute in the runspace.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ScriptBlock</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<h3 id="-functionstoimport">-FunctionsToImport<a class="headerlink" href="#-functionstoimport" title="Permanent link">&para;</a></h3>
+<p>Functions to import into the runspace environment when not using existing state.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">String[]</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NewRunspace</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="err">@</span><span class="l l-Scalar l-Scalar-Plain">()</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-argumentlist">-ArgumentList<a class="headerlink" href="#-argumentlist" title="Permanent link">&para;</a></h3>
-<p>List of arguments to pass to the scriptblock.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Object[]</span>
+<h3 id="-scriptblock">-ScriptBlock<a class="headerlink" href="#-scriptblock" title="Permanent link">&para;</a></h3>
+<p>The scriptblock to execute in the runspace.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ScriptBlock</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="err">@</span><span class="l l-Scalar l-Scalar-Plain">()</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-argument">-Argument<a class="headerlink" href="#-argument" title="Permanent link">&para;</a></h3>
-<p>Single argument to pass to the scriptblock.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Object</span>
+<h3 id="-argumentlist">-ArgumentList<a class="headerlink" href="#-argumentlist" title="Permanent link">&para;</a></h3>
+<p>List of arguments to pass to the scriptblock.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Object[]</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="err">@</span><span class="l l-Scalar l-Scalar-Plain">()</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-useexistingrunspacestate">-UseExistingRunspaceState<a class="headerlink" href="#-useexistingrunspacestate" title="Permanent link">&para;</a></h3>
-<p>Uses the current session state (variables and environment) in the new runspace.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SwitchParameter</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UseExistingRunspace</span>
+<h3 id="-argument">-Argument<a class="headerlink" href="#-argument" title="Permanent link">&para;</a></h3>
+<p>Single argument to pass to the scriptblock.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Object</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-id">-Id<a class="headerlink" href="#-id" title="Permanent link">&para;</a></h3>
-<p>If specified, returns the runspace job ID.</p>
+<h3 id="-useexistingrunspacestate">-UseExistingRunspaceState<a class="headerlink" href="#-useexistingrunspacestate" title="Permanent link">&para;</a></h3>
+<p>Uses the current session state (variables and environment) in the new runspace.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SwitchParameter</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UseExistingRunspace</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
@@ -2494,41 +2525,53 @@ assemblies, and functions loaded.</p>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-uielement">-uiElement<a class="headerlink" href="#-uielement" title="Permanent link">&para;</a></h3>
-<p>Optional UI TextBox element to update with runspace status.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TextBox</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<h3 id="-usenewrunspace">-UseNewRunspace<a class="headerlink" href="#-usenewrunspace" title="Permanent link">&para;</a></h3>
+<p>Creates a completely new runspace without using the existing session state.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SwitchParameter</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UseNewRunspace</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-runspacejobs">-RunspaceJobs<a class="headerlink" href="#-runspacejobs" title="Permanent link">&para;</a></h3>
-<p>Collection of runspace jobs for tracking.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ArrayList</span>
+<h3 id="-id">-Id<a class="headerlink" href="#-id" title="Permanent link">&para;</a></h3>
+<p>If specified, returns the runspace job ID.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SwitchParameter</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-progressaction">-ProgressAction<a class="headerlink" href="#-progressaction" title="Permanent link">&para;</a></h3>
-<p>{{ Fill ProgressAction Description }}</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActionPreference</span>
+<h3 id="-uielement">-uiElement<a class="headerlink" href="#-uielement" title="Permanent link">&para;</a></h3>
+<p>Optional UI TextBox element to update with runspace status.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TextBox</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proga</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nt">Aliases</span><span class="p">:</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 </span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span></code></pre></div>
+<h3 id="-runspacejobs">-RunspaceJobs<a class="headerlink" href="#-runspacejobs" title="Permanent link">&para;</a></h3>
+<p>Collection of runspace jobs for tracking.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ArrayList</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nt">Aliases</span><span class="p">:</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
 <h3 id="commonparameters">CommonParameters<a class="headerlink" href="#commonparameters" title="Permanent link">&para;</a></h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>

@@ -1092,15 +1092,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-progressaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      -ProgressAction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#commonparameters" class="md-nav__link">
     <span class="md-ellipsis">
       CommonParameters
@@ -1815,6 +1806,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../Show-RpSplashScreen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Show-RpSplashScreen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Start-RpRemotePro/" class="md-nav__link">
         
   
@@ -2206,15 +2219,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-progressaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      -ProgressAction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#commonparameters" class="md-nav__link">
     <span class="md-ellipsis">
       CommonParameters
@@ -2320,7 +2324,7 @@
 <h2 id="synopsis">SYNOPSIS<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
 <p>Imports and processes a configuration JSON file for RemotePro.</p>
 <h2 id="syntax">SYNTAX<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Import-RpConfig [[-ConfigFilePath] &lt;String&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Import-RpConfig [[-ConfigFilePath] &lt;String&gt;] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h2 id="description">DESCRIPTION<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>This function reads a JSON configuration file, converts it into a PowerShell
@@ -2330,12 +2334,12 @@ hashtable where each key represents a module, and the value is another hashtable
 containing the module's commands.
 Each command object includes properties like
 CommandName, Id, Description, and Parameters, as well as a method
-FormatCommandObject` to prepare the command for execution.</p>
-<p>The command object can be accessed using dot notation for easy navigation, and
+FormatCommandObject to prepare the command for execution.
+The command object can be accessed using dot notation for easy navigation, and
 the FormatCommandObject method allows you to add or modify parameters before
-execution.</p>
-<p>Using Invoke-RpCommandObject, you can execute the formatted command locally where
-as remotely is experimental...</p>
+execution.
+Using Invoke-RpCommandObject, you can execute the formatted command locally where
+as remotely is experimental.</p>
 <h2 id="examples">EXAMPLES<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <h3 id="example-1">EXAMPLE 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$modules = Import-RpConfig -ConfigFilePath $(Get-RpConfigPath)
@@ -2354,15 +2358,15 @@ as remotely is experimental...</p>
 </span></code></pre></div>
 <p>Execute the formatted command locally using the call operator.</p>
 <h3 id="example-5">EXAMPLE 5<a class="headerlink" href="#example-5" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># Calling Get-RpVmsItemStateCustom from the default config commands.
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$commandId = (Get-RpDefaultConfigCommandDetails).&#39;Get-RpVmsItemStateCustom&#39;.Id
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>$preparedCommand1 = (Get-RpConfigCommands -All).&#39;Get-RpVmsItemStateCustom&#39;.$commandId.FormatCommandObject($commandId)
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a># Calling Out-HtmlView from the default config commands.
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>$commandId = (Get-RpDefaultConfigCommandDetails).&#39;Out-HtmlView&#39;.Id
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>$preparedCommand2 = (Get-RpConfigCommands -All).&#39;Out-HtmlView&#39;.$commandId.FormatCommandObject($commandId)
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a># Invoke default config commands.
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Calling Get-RpVmsItemStateCustom from the default config commands.
 </span></code></pre></div>
+<p>$commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
+$preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
+Calling Out-HtmlView from the default config commands.
+$commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
+$preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
+Invoke default config commands.
+Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2</p>
 <h3 id="example-6">EXAMPLE 6<a class="headerlink" href="#example-6" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$preparedCommand | Invoke-RpCommandObject
 </span></code></pre></div>
@@ -2385,18 +2389,6 @@ default path returned by the `Get-RpConfigPath` function.</p>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span></code></pre></div>
-<h3 id="-progressaction">-ProgressAction<a class="headerlink" href="#-progressaction" title="Permanent link">&para;</a></h3>
-<p>{{ Fill ProgressAction Description }}</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActionPreference</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proga</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
 <h3 id="commonparameters">CommonParameters<a class="headerlink" href="#commonparameters" title="Permanent link">&para;</a></h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>

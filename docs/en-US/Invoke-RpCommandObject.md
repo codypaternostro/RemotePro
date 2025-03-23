@@ -15,7 +15,7 @@ Invoke-Command if specified.
 
 ```
 Invoke-RpCommandObject [-CommandObject] <PSObject> [-UseInvokeCommand] [[-ComputerName] <String[]>]
- [[-PipelineCommandObject] <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [[-PipelineCommandObject] <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,11 +31,12 @@ and parameters before execution.
 ### EXAMPLE 1
 ```
 Calling Get-RpVmsItemStateCustom from the default config commands.
+```
+
 $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
 $commandObject1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom' |
-                  Format-RpCommandObject -CommandName "Get-RpVmsItemStateCustom" `
+                  Format-RpCommandObject -CommandName "Get-RpVmsItemStateCustom" \`
                                          -Parameters @{ CommandId = $commandId }
-```
 
 Calling Out-HtmlView from the default config commands.
 $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
@@ -49,9 +50,10 @@ Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $ou
 ### EXAMPLE 2
 ```
 Format a command object and execute using the call operator.
-$commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
-                 -Parameters @{ Key = "Value" }
 ```
+
+$commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" \`
+                 -Parameters @{ Key = "Value" }
 
 Pass it via pipeline to invoke.
 $commandObject | Invoke-RpCommandObject
@@ -61,9 +63,10 @@ This example executes the command using the default call operator.
 ### EXAMPLE 3
 ```
 Execute the command object on a remote system using Invoke-Command.
-$commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" `
-                 -Parameters @{ Key = "RemoteValue" }
 ```
+
+$commandObject = Format-RpCommandObject -CommandName "Get-RpDataIsFun" \`
+                 -Parameters @{ Key = "RemoteValue" }
 
 $commandObject | Invoke-RpCommandObject -UseInvokeCommand \`
                  -ComputerName "RemoteServer"
@@ -128,21 +131,6 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

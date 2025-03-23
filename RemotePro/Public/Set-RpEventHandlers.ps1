@@ -565,10 +565,16 @@ function Set-RpEventHandlers {
         EditConfigCommand_Click = {
             Write-Verbose "Editing selected ConfigCommand(s)..."
             $selectedCommands = @($script:Commands | Where-Object { $_.CheckboxSelect -eq $true })
+
             if ($selectedCommands.Count -gt 0) {
-            foreach ($selectedCommand in $selectedCommands) {
-                Update-RpConfigCommand -CommandName $selectedCommand.CommandName -Id $selectedCommand.Id -ShowDialog -ModuleName $selectedCommand.ModuleName
-            }
+                [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+                try {
+                    foreach ($selectedCommand in $selectedCommands) {
+                        Update-RpConfigCommand -CommandName $selectedCommand.CommandName -Id $selectedCommand.Id -ShowDialog -ModuleName $selectedCommand.ModuleName
+                    }
+                } finally {
+                    [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+                }
 
             # Refresh the DataGrid ItemsSource and UI
             [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
@@ -742,10 +748,6 @@ function Set-RpEventHandlers {
                     $_.Close()
                 }
 
-                #Start-Sleep 5 -Seconds # wait for last tick
-                # Stop and discard timer using Monitor-Runspace
-                $script:RunspaceCleanupTimer.Stop()
-                $script:RunspaceCleanupTimer = $null
 
                 # Generate a log entry for job removal
                 $logAddJobText = "Runspace timer stopped and additional runspaces removed successfully."
@@ -757,10 +759,6 @@ function Set-RpEventHandlers {
 
                 Write-Verbose  "$logAddJobMessage"
 
-                $script:xmlreader = $null
-                $script:window.Close()
-                $script:window = $null
-
             } catch {
                 # Generate a log entry for job removal
                 $logAddJobErrorText = "Error closing main window: $_"
@@ -771,6 +769,22 @@ function Set-RpEventHandlers {
                 Set-RpMutexLogAndUI -logPath $logPath -message $logAddJobMessage -uiElement $script:Runspace_Mutex_Log
 
                 Write-Verbose "$logAddJobErrorMessage"
+            } finally {
+                $script:xmlreader = $null
+                $script:window.Close()
+                $script:window = $null
+                #Start-Sleep 5 -Seconds # wait for last tick
+                # Stop and discard timer using Monitor-Runspace
+
+                if ($script:RunspaceCleanupTimer -and $script:RunspaceCleanupTimer.Enabled) {
+                    $script:RunspaceCleanupTimer.Stop()
+                    $script:RunspaceCleanupTimer.Dispose()
+                }
+
+                if ($script:KillRemoteProOnExit) {
+                    [System.Environment]::Exit(0)
+                }
+
             }
         }
         #endregion Main Window

@@ -47,13 +47,10 @@ function Start-RpRunspaceJobStatic {
             ScriptBlock            = { Write-Host "Displaying Camera Feed..." }
         }
     )
+
+    .EXAMPLE
     #Start the runspace jobs
-    $script:RpOpenRunspaces = Start-RpRunspaceJobStatic
-        -Jobs $jobsToRun
-        -uiElement $script:Runspace_Mutex_Log
-        -OpenRunspaces $script:RpOpenRunspaces
-        -RunspaceJobs $script:RunspaceJobs
-        -Verbose
+    Start-RpRunspaceJobStatic -Jobs $jobsToRun -uiElement $script:Runspace_Mutex_Log -OpenRunspaces $script:RpOpenRunspaces -RunspaceJobs $script:RunspaceJobs -Verbose
 
     This will start two jobs: one to fetch a VMS camera report and
     another to display the camera feed. The job details will be stored

@@ -14,17 +14,17 @@ Retrieves event handlers for the RemotePro connection profile UI.
 
 ### default (Default)
 ```
-Get-RpEventHandlers [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpEventHandlers [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-RpEventHandlers [-Name] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpEventHandlers [-Name] <String> [<CommonParameters>]
 ```
 
 ### AllHandlers
 ```
-Get-RpEventHandlers [-All] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpEventHandlers [-All] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,21 +87,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

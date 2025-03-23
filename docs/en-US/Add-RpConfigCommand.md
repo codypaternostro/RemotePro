@@ -15,14 +15,13 @@ Allows GUI-based or parameter-based input for command selection.
 
 ### ShowDialog (Default)
 ```
-Add-RpConfigCommand [-Description <String>] [-ShowDialog] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Add-RpConfigCommand [-Description <String>] [-ShowDialog] [<CommonParameters>]
 ```
 
 ### ConfigurationItems
 ```
 Add-RpConfigCommand [[-ModuleName] <String>] [[-CommandNames] <String[]>] [[-ConfigFilePath] <String>]
- [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Description <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,9 +42,10 @@ show dialog.
 ### EXAMPLE 1
 ```
 Add-RpConfigCommand -ModuleName "RemotePro" -ConfigFilePath "C:\Config.json" `
-                    -CommandNames "Get-RpEventHandlers", "Set-RpConfig" `
-                    -Description "Initial configuration export"
 ```
+
+-CommandNames "Get-RpEventHandlers", "Set-RpConfig" \`
+                    -Description "Initial configuration export"
 
 Exports "Get-RpEventHandlers" and "Set-RpConfig" commands from the
 "RemotePro" module to a JSON file at \`C:\Config.json\`.
@@ -145,21 +145,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -171,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Ensure that the PresentationFramework assembly is available for WPF
 support to allow GUI interaction.
 A new configuration file will be created
-if it doesn't already exist.
+if it doesnâ€™t already exist.
 
 ## RELATED LINKS
 

@@ -14,8 +14,7 @@ Monitors and manages runspaces running in the background.
 
 ```
 Watch-RpRunspaces [[-LogPath] <String>] [[-uiElement] <TextBox>] [[-RunspaceJobs] <ArrayList>]
- [[-RunspaceResults] <ArrayList>] [[-OpenRunspaces] <PSObject>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [[-RunspaceResults] <ArrayList>] [[-OpenRunspaces] <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,9 +29,10 @@ global collection.
 ### EXAMPLE 1
 ```
 Watch-RpRunspaces -LogPath "C:\Logs\RunspaceLog.txt" -uiElement $textBoxElement
+```
+
 -RunspaceJobs $script:RunspaceJobs -RunspaceResults $script:RunspaceResults
 -OpenRunspaces $script:openRunspaces
-```
 
 This example monitors the runspaces and logs the output to "C:\Logs\RunspaceLog.txt".
 It also updates the UI element with the job statuses and messages.
@@ -117,21 +117,6 @@ Aliases:
 
 Required: False
 Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

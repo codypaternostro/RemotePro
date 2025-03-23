@@ -14,14 +14,12 @@ Retrieves settings from the RemotePro Settings JSON file.
 
 ### All (Default)
 ```
-Find-RpSettingsJson [-SettingsFilePath <String>] [-All] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Find-RpSettingsJson [-SettingsFilePath <String>] [-All] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Find-RpSettingsJson [-SettingsFilePath <String>] -Name <String> [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Find-RpSettingsJson [-SettingsFilePath <String>] -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,21 +96,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -13,7 +13,7 @@ Initializes a synchronized ArrayList to manage runspace jobs.
 ## SYNTAX
 
 ```
-Initialize-RpRunspaceJobs [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Initialize-RpRunspaceJobs [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,29 +27,15 @@ safe management of runspace jobs using the Synchronized method.
 ### EXAMPLE 1
 ```
 $runspaceJobs = Initialize-RpRunspaceJobs
-Write-Host "Initialized Runspace Jobs: $runspaceJobs"
 ```
+
+Write-Host "Initialized Runspace Jobs: $runspaceJobs"
 
 This example initializes the synchronized ArrayList for runspace
 jobs and assigns it to the module scope runspace jobs variable,
 $script:RunspaceJobs.
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

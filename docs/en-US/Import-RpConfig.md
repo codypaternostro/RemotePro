@@ -13,7 +13,7 @@ Imports and processes a configuration JSON file for RemotePro.
 ## SYNTAX
 
 ```
-Import-RpConfig [[-ConfigFilePath] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Import-RpConfig [[-ConfigFilePath] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,14 +24,12 @@ hashtable where each key represents a module, and the value is another hashtable
 containing the module's commands.
 Each command object includes properties like
 CommandName, Id, Description, and Parameters, as well as a method
-FormatCommandObject\` to prepare the command for execution.
-
+FormatCommandObject to prepare the command for execution.
 The command object can be accessed using dot notation for easy navigation, and
 the FormatCommandObject method allows you to add or modify parameters before
 execution.
-
 Using Invoke-RpCommandObject, you can execute the formatted command locally where
-as remotely is experimental...
+as remotely is experimental.
 
 ## EXAMPLES
 
@@ -65,15 +63,16 @@ Execute the formatted command locally using the call operator.
 
 ### EXAMPLE 5
 ```
-# Calling Get-RpVmsItemStateCustom from the default config commands.
+Calling Get-RpVmsItemStateCustom from the default config commands.
+```
+
 $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
 $preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
-# Calling Out-HtmlView from the default config commands.
+Calling Out-HtmlView from the default config commands.
 $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
 $preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
-# Invoke default config commands.
+Invoke default config commands.
 Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
-```
 
 ### EXAMPLE 6
 ```
@@ -103,21 +102,6 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

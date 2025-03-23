@@ -689,15 +689,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-progressaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      -ProgressAction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#commonparameters" class="md-nav__link">
     <span class="md-ellipsis">
       CommonParameters
@@ -1797,6 +1788,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../Show-RpSplashScreen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Show-RpSplashScreen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Start-RpRemotePro/" class="md-nav__link">
         
   
@@ -2203,15 +2216,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-progressaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      -ProgressAction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#commonparameters" class="md-nav__link">
     <span class="md-ellipsis">
       CommonParameters
@@ -2286,12 +2290,11 @@
 Allows GUI-based or parameter-based input for command selection.</p>
 <h2 id="syntax">SYNTAX<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <h3 id="showdialog-default">ShowDialog (Default)<a class="headerlink" href="#showdialog-default" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Add-RpConfigCommand [-Description &lt;String&gt;] [-ShowDialog] [-ProgressAction &lt;ActionPreference&gt;]
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> [&lt;CommonParameters&gt;]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Add-RpConfigCommand [-Description &lt;String&gt;] [-ShowDialog] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h3 id="configurationitems">ConfigurationItems<a class="headerlink" href="#configurationitems" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Add-RpConfigCommand [[-ModuleName] &lt;String&gt;] [[-CommandNames] &lt;String[]&gt;] [[-ConfigFilePath] &lt;String&gt;]
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> [-Description &lt;String&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> [-Description &lt;String&gt;] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h2 id="description">DESCRIPTION<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>The `Add-RpConfigCommand` function exports specified commands from a
@@ -2307,9 +2310,9 @@ show dialog.</p>
 <h2 id="examples">EXAMPLES<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <h3 id="example-1">EXAMPLE 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Add-RpConfigCommand -ModuleName &quot;RemotePro&quot; -ConfigFilePath &quot;C:\Config.json&quot; `
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                    -CommandNames &quot;Get-RpEventHandlers&quot;, &quot;Set-RpConfig&quot; `
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                    -Description &quot;Initial configuration export&quot;
 </span></code></pre></div>
+<p>-CommandNames "Get-RpEventHandlers", "Set-RpConfig" `
+                    -Description "Initial configuration export"</p>
 <p>Exports "Get-RpEventHandlers" and "Set-RpConfig" commands from the
 "RemotePro" module to a JSON file at `C:\Config.json`.</p>
 <h3 id="example-2">EXAMPLE 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h3>
@@ -2388,18 +2391,6 @@ parameters are ignored, and user input is collected via the dialog.</p>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
-<h3 id="-progressaction">-ProgressAction<a class="headerlink" href="#-progressaction" title="Permanent link">&para;</a></h3>
-<p>{{ Fill ProgressAction Description }}</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActionPreference</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proga</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span></code></pre></div>
 <h3 id="commonparameters">CommonParameters<a class="headerlink" href="#commonparameters" title="Permanent link">&para;</a></h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
 <h2 id="inputs">INPUTS<a class="headerlink" href="#inputs" title="Permanent link">&para;</a></h2>
@@ -2408,7 +2399,7 @@ parameters are ignored, and user input is collected via the dialog.</p>
 <p>Ensure that the PresentationFramework assembly is available for WPF
 support to allow GUI interaction.
 A new configuration file will be created
-if it doesn't already exist.</p>
+if it doesnâ€™t already exist.</p>
 <h2 id="related-links">RELATED LINKS<a class="headerlink" href="#related-links" title="Permanent link">&para;</a></h2>
 <p><a href="https://www.remotepro.dev/en-US/Add-RpConfigCommand">https://www.remotepro.dev/en-US/Add-RpConfigCommand</a></p>
 

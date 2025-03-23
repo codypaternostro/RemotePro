@@ -224,8 +224,6 @@ function Set-RpRunspaceEvents {
                     try {
                         Import-Module -Name RemotePro
 
-
-
                         $configItemCams += Get-VmsCamera -Id $platformItemcameras.FQID.ObjectId
                         # LegacyCall
                         # Get-RpTicketBlock -Cameras $configItemCams -ShowWindow

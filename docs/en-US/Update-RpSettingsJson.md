@@ -14,14 +14,12 @@ Updates or adds a setting in the RpSettings JSON file.
 
 ### CommandLineInterface (Default)
 ```
-Update-RpSettingsJson [[-SettingsFilePath] <String>] [-Name] <String> [-Value] <String>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-RpSettingsJson [[-SettingsFilePath] <String>] [-Name] <String> [-Value] <String> [<CommonParameters>]
 ```
 
 ### ShowDialog
 ```
-Update-RpSettingsJson [[-SettingsFilePath] <String>] [-ShowDialog] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Update-RpSettingsJson [[-SettingsFilePath] <String>] [-ShowDialog] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,9 +49,10 @@ file.
 ### EXAMPLE 3
 ```
 Update-RpSettingsJson -ShowDialog
+```
+
 Opens a graphical dialog interface to update or add settings in the default
 settings JSON file.
-```
 
 ## PARAMETERS
 
@@ -119,21 +118,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -15,13 +15,12 @@ Logs a message and updates a UI element with the same message.
 ### LogAndUI (Default)
 ```
 Set-RpMutexLogAndUI [-MutexName <String>] -LogPath <String> -Message <String> [-UiElement <TextBox>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### LogOnly
 ```
-Set-RpMutexLogAndUI [-MutexName <String>] -LogPath <String> -Message <String>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Set-RpMutexLogAndUI [-MutexName <String>] -LogPath <String> -Message <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,21 +102,6 @@ The TextBox UI element to be updated with the message.
 Type: TextBox
 Parameter Sets: LogAndUI
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

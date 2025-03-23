@@ -12,7 +12,7 @@
 RootModule = 'RemotePro.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.4'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -42,7 +42,7 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-DotNetFrameworkVersion = '4.7'
+DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -51,11 +51,11 @@ DotNetFrameworkVersion = '4.7'
 ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @('MilestonePSTools','PSWriteHTML','ImportExcel')
+RequiredModules = @('MilestonePSTools','PSWriteHTML','ImportExcel')
+
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @('PresentationFramework','System.Windows.Forms','System.Threading')
-
+RequiredAssemblies = @('PresentationFramework','System.Windows.Forms','System.Threading', 'WindowsBase', 'System.Windows.Forms')
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 #ScriptsToProcess = @()
 

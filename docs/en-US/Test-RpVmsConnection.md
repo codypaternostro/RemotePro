@@ -13,7 +13,7 @@ Tests the connection to the VMS management server.
 ## SYNTAX
 
 ```
-Test-RpVmsConnection [-ShowErrorDialog <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Test-RpVmsConnection [-ShowErrorDialog <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,21 +54,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: True
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

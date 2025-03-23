@@ -14,14 +14,12 @@ Removes a specified setting from a JSON settings file.
 
 ### ShowDialog
 ```
-Remove-RpSettingFromJson [-SettingsFilePath <String>] [-Name <String>] [-ShowDialog]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Remove-RpSettingFromJson [-SettingsFilePath <String>] [-Name <String>] [-ShowDialog] [<CommonParameters>]
 ```
 
 ### CommandLineInterface
 ```
-Remove-RpSettingFromJson [-SettingsFilePath <String>] -Name <String> [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Remove-RpSettingFromJson [-SettingsFilePath <String>] -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,16 +37,18 @@ name.
 ### EXAMPLE 1
 ```
 Remove-RpSettingFromJson -SettingsFilePath (Get-RpSettingsJsonPath) -Name
-"SettingName"
 ```
+
+"SettingName"
 
 Removes the setting named "SettingName" from the default JSON settings file.
 
 ### EXAMPLE 2
 ```
 Remove-RpSettingFromJson -SettingsFilePath "C:\path\to\settings.json" -Name
-"SettingName"
 ```
+
+"SettingName"
 
 Removes the setting named "SettingName" from the specified JSON settings file.
 
@@ -123,21 +123,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

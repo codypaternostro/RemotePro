@@ -11,14 +11,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelased]
 
-- Open Start-RpRemotePro main window in nested runspace parameter.
 - Heartbeat window for checking status of cameras on current connection.
 - VAPIX command pass through to reboot AXIS cameras.
 - Parameter selection for camera reports.
+- Desktop shortcut.
+
+## [0.3.0] - 2025-03-23
+
+### Added
+
+- Improved Update-RpConfigCommand Get-Help online button.
+- Integrated XAML from MaterialDesignXamlToolkit into *Themes* to assist in troubleshooting dependency issues related to nested assembly usage. The resource dictionary is still being referenced from *ResourceDictionary.MergedDictionaries* within the XAML. Ultimately, finding a workaround to eliminate any resources from the XAML would be ideal; however, these will remain for now as they support the development of a robust *System.Windows.Application* base for WPF in PowerShell.
+- Included dependencies in the PowerShell Data File (.psd1).
+- Introduced the *$env:REMOTE_PRO_SESSION* variable to work in conjunction with the WPF application singleton check. This resolves a long-standing issue regarding the handling of nested runspaces. By adopting this approach, the main window for RemotePro is now more closely monitored, and it will initiate a new session when the *$env:REMOTE_PRO_SESSION* variable is flagged.
+- Modified the behavior of *Start-RpRemotePro* to hide the terminal by default. The *-Show-Terminal* parameter can be used to display the terminal as usual. This provides a quick and easy method for troubleshooting the main window in combination with verbose output (e.g., *Start-RpRemotePro -ShowTerminal -Verbose*).
+- Added the *Show-RpSplashScreen* function to display the logo while loading the main window.
+
+### Fixed
+
+- Corrected the parameters for *Get-RpTicketBlock*. This command now functions as expected for retrieving camera information.
+- Resolved a .NET error related to *System.Windows.Forms.Timer* by transitioning to *System.Windows.Threading.DispatcherTimer*. This change prevents .NET runtime errors that occur if *Start-RpRemotePro*'s main window is closed while nested runspaces from that session are still in use. The command initializes a timer to check the runspace status and effectively delegates the cleanup of runspaces.
+- Fixed an improper build that was using the 7.5 core version terminal. Switching to Windows PowerShell has rectified an issue where progress actions were included in cmdlet documentation for common parameters. This was also causing problems when adding modules to the .psd1 file.
 
 ## [0.2.4] - 2025-03-16
 
-## Added
+### Added
 
 - Show Hardware button by default would display credentials for hardware.
 This no longer occurs, to see credentials in the hardware
@@ -29,7 +46,7 @@ the left column for Get-RpVmsHardwareCustom. Then click the penicl icon
 the **IncludeCredentials** parameter. Finally, click *Submit* to save the changes.
 This will update the RemoteProParamConfig.json to store the modification.
 
-## Fixed
+### Fixed
 
 - Get-RpVmsHardwareCustom was still using a hardcoded call to Out-HtmlView.
 This would result in opening two tabs when click on the *Show Hardware* button.

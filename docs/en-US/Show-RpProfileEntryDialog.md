@@ -13,8 +13,7 @@ Displays a dialog for entering or editing a connection profile's details.
 ## SYNTAX
 
 ```
-Show-RpProfileEntryDialog [-Edit] [[-SelectedProfile] <PSObject>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Show-RpProfileEntryDialog [-Edit] [[-SelectedProfile] <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,21 +61,6 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

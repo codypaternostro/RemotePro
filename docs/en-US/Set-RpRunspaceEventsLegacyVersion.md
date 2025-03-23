@@ -54,9 +54,10 @@ to handle user actions.
 ### EXAMPLE 2
 ```
 Set-RpRunspaceEvents
-$events = Get-RpRunspaceEvents -All
-$events["CamReport_Click"]
 ```
+
+$events = Get-RpRunspaceEvents -All
+$events\["CamReport_Click"\]
 
 This example sets up the event handlers, retrieves all RunspaceEvents,
 and fetches the handler for the "CamReport_Click" event.
@@ -64,9 +65,10 @@ and fetches the handler for the "CamReport_Click" event.
 ### EXAMPLE 3
 ```
 Set-RpRunspaceEvents
+```
+
 $handler = Get-RpRunspaceEvents -Name "ShowCameras_Click"
 & $handler
-```
 
 This example sets up the event handlers, retrieves the scriptblock for
 "ShowCameras_Click", and invokes the scriptblock.

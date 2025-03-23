@@ -13,8 +13,7 @@ Sets the default settings for RemotePro JSON configuration.
 ## SYNTAX
 
 ```
-Set-RpSettingsJsonDefaults [[-SettingsFilePath] <String>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Set-RpSettingsJsonDefaults [[-SettingsFilePath] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,21 +54,6 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

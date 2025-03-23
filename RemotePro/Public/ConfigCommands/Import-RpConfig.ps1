@@ -9,14 +9,12 @@ function Import-RpConfig {
     hashtable where each key represents a module, and the value is another hashtable
     containing the module's commands. Each command object includes properties like
     CommandName, Id, Description, and Parameters, as well as a method
-    FormatCommandObject` to prepare the command for execution.
-
+    FormatCommandObject to prepare the command for execution.
     The command object can be accessed using dot notation for easy navigation, and
     the FormatCommandObject method allows you to add or modify parameters before
     execution.
-
     Using Invoke-RpCommandObject, you can execute the formatted command locally where
-    as remotely is experimental...
+    as remotely is experimental.
 
     .COMPONENT
     ConfigCommands
@@ -46,19 +44,20 @@ function Import-RpConfig {
     Access and format a specific command object.
 
 
+
     .EXAMPLE
     & $preparedCommand.CommandName @($preparedCommand.Parameters)
 
     Execute the formatted command locally using the call operator.
 
     .EXAMPLE
-    # Calling Get-RpVmsItemStateCustom from the default config commands.
+    Calling Get-RpVmsItemStateCustom from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Get-RpVmsItemStateCustom'.Id
     $preparedCommand1 = (Get-RpConfigCommands -All).'Get-RpVmsItemStateCustom'.$commandId.FormatCommandObject($commandId)
-    # Calling Out-HtmlView from the default config commands.
+    Calling Out-HtmlView from the default config commands.
     $commandId = (Get-RpDefaultConfigCommandDetails).'Out-HtmlView'.Id
     $preparedCommand2 = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId.FormatCommandObject($commandId)
-    # Invoke default config commands.
+    Invoke default config commands.
     Invoke-RpCommandObject -CommandObject $preparedCommand1 | Invoke-RpCommandObject  -CommandObject $preparedCommand2
 
     .EXAMPLE

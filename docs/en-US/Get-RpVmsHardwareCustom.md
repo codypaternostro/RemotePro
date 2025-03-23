@@ -9,26 +9,25 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Retrieves and displays the hardware settings of VMS items with optional
-connection validation.
+connection validation and credentials inclusion.
 
 ## SYNTAX
 
 ### NoConnectionCheck (Default)
 ```
-Get-RpVmsHardwareCustom [-IncludeCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpVmsHardwareCustom [-IncludeCredentials] [<CommonParameters>]
 ```
 
 ### ConnectionCheck
 ```
-Get-RpVmsHardwareCustom [-CheckConnection] [-IncludeCredentials] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Get-RpVmsHardwareCustom [-CheckConnection] [-IncludeCredentials] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 This function retrieves the hardware settings of VMS items and displays the
 results in an HTML view.
-It also provides an optional parameter to validate the connection before
-processing.
+It also provides optional parameters to validate the connection before
+processing and to include credentials in the output.
 
 ## EXAMPLES
 
@@ -39,6 +38,14 @@ Get-RpVmsHardwareCustom -CheckConnection
 
 This example validates the VMS connection before retrieving and
 displaying the hardware settings of the items.
+
+### EXAMPLE 2
+```
+Get-RpVmsHardwareCustom -IncludeCredentials
+```
+
+This example retrieves and displays the hardware settings of the items,
+including the username and password for each item.
 
 ## PARAMETERS
 
@@ -70,21 +77,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

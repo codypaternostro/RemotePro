@@ -13,7 +13,7 @@ Sets the default configuration for RemotePro.
 ## SYNTAX
 
 ```
-Set-RpConfigDefaults [[-ConfigFilePath] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Set-RpConfigDefaults [[-ConfigFilePath] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,8 +27,9 @@ with their default values.
 ### EXAMPLE 1
 ```
 Set-RpConfigDefaults -ConfigFilePath "C:\Config\RemoteProConfig.json"
-This example sets the default configuration values in the specified configuration file.
 ```
+
+This example sets the default configuration values in the specified configuration file.
 
 ## PARAMETERS
 
@@ -45,21 +46,6 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

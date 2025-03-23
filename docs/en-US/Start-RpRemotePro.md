@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Start-RpRemotePro [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Start-RpRemotePro [-ShowTerminal] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,13 +30,13 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -ShowTerminal
+{{ Fill ShowTerminal Description }}
 
 ```yaml
-Type: ActionPreference
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named

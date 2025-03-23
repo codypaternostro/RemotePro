@@ -17,8 +17,7 @@ Starts a monitor for runspaces with a specified interval.
 
 ```
 Start-RpRunspaceMonitor [-LogPath] <String> [-uiElement] <TextBox> [-RunspaceJobs] <ArrayList>
- [-RunspaceResults] <ArrayList> [[-OpenRunspaces] <PSObject>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-RunspaceResults] <ArrayList> [[-OpenRunspaces] <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +36,9 @@ seconds.
 ### EXAMPLE 1
 ```
 $timer = Start-RpRunspaceMonitor -LogPath "C:\Logs\runspace.log" `
-    -uiElement $textBox -RunspaceJobs $jobs -RunspaceResults $results
 ```
+
+-uiElement $textBox -RunspaceJobs $jobs -RunspaceResults $results
 
 This example starts the runspace monitor with the specified log path, UI
 element, runspace jobs, and runspace results.
@@ -120,21 +120,6 @@ Aliases:
 
 Required: False
 Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,17 +14,17 @@ Retrieves runspace events for the RemotePro connection profile UI.
 
 ### default (Default)
 ```
-Get-RpRunspaceEvents [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpRunspaceEvents [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-RpRunspaceEvents [-Name] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpRunspaceEvents [-Name] <String> [<CommonParameters>]
 ```
 
 ### AllEvents
 ```
-Get-RpRunspaceEvents [-All] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-RpRunspaceEvents [-All] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,21 +77,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

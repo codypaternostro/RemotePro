@@ -295,9 +295,16 @@ function Update-RpConfigCommand {
 
             $helpButton.Add_Click({
                 try {
-                    Start-Process powershell.exe -ArgumentList "Get-Help $CommandName -Online"
+                    [System.Windows.Input.Mouse]::OverrideCursor = [System.Windows.Input.Cursors]::Wait
+                    try {
+                        Get-Help $CommandName -Online
+                    } finally {
+                        [System.Windows.Input.Mouse]::OverrideCursor = $null  # Reset the cursor
+                    }
                 } catch {
                     Write-Warning "Failed to open online help for command '$CommandName'."
+                    [System.Windows.MessageBox]::Show("Failed to open online help for command '$CommandName'.",
+                        "Warning", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning) | Out-Null
                 }
             })
 

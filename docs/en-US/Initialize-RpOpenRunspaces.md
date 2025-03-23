@@ -14,7 +14,7 @@ observable collection.
 ## SYNTAX
 
 ```
-Initialize-RpOpenRunspaces [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Initialize-RpOpenRunspaces [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,28 +28,14 @@ initialized once and shared across the session.
 ### EXAMPLE 1
 ```
 $runspaces = Initialize-RpOpenRunspaces
-Write-Host "Initialized Open Runspaces: $runspaces"
 ```
+
+Write-Host "Initialized Open Runspaces: $runspaces"
 
 This example initializes the open runspaces object and assigns it
 to the module scope open runspaces variable, $script:OpenRunspaces.
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

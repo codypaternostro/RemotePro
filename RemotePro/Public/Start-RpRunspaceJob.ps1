@@ -46,6 +46,9 @@ function Start-RpRunspaceJob {
     .PARAMETER UseExistingRunspaceState
     Uses the current session state (variables and environment) in the new runspace.
 
+    .PARAMETER UseNewRunspace
+    Creates a completely new runspace without using the existing session state.
+
     .PARAMETER Id
     If specified, returns the runspace job ID.
 
@@ -93,6 +96,9 @@ function Start-RpRunspaceJob {
         [Parameter(ParameterSetName = 'UseExistingRunspace')]
         [switch]$UseExistingRunspaceState,  # Default parameter set (use current session state)
 
+        [Parameter(ParameterSetName = 'UseNewRunspace')]
+        [switch]$UseNewRunspace,  # Use a completely new runspace
+
         [Parameter()]
         [switch]$Id,  # Return job ID
 
@@ -106,7 +112,7 @@ function Start-RpRunspaceJob {
     # Create or configure the initial session state
     $initialSessionState = [initialsessionstate]::CreateDefault()
 
-    if ($UseExistingRunspaceState) { # need to fix logic here on the inverted "use existing runspaces"
+    if ($UseExistingRunspaceState) {
         # Replicate environment variables in the initial session state
         $environmentVariables = Get-ChildItem Env: | ForEach-Object { [PSCustomObject]@{ Name = $_.Name; Value = $_.Value } }
         foreach ($var in $environmentVariables) {
@@ -135,9 +141,17 @@ function Start-RpRunspaceJob {
         $psInstance = [powershell]::Create()
         $psInstance.RunspacePool = $runspace
 
-    }
+    } elseif ($UseNewRunspace) {
+        # Create a completely new runspace
+        $runspace = [runspacefactory]::CreateRunspace()
+        $runspace.ApartmentState = [System.Threading.ApartmentState]::STA
+        $runspace.Open()
 
-    if (!$UseExistingRunspaceState) {
+        # Configure the PowerShell instance to use the new runspace
+        $psInstance = [powershell]::Create()
+        $psInstance.Runspace = $runspace
+
+    } else {
         # Load specified modules, assemblies, and functions into the initial session state
         foreach ($module in $ModulesToLoad) {
             $initialSessionState.ImportPSModule($module)

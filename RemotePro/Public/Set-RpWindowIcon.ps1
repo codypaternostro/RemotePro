@@ -98,6 +98,17 @@ function Set-RpWindowIcon {
             $window.TaskbarItemInfo.Description = $window.Title
             Write-Verbose "Taskbar icon updated!"
 
+            # Also set Image control if one is found by name "SplashIcon"
+            try {
+                $splashIconControl = $window.FindName("SplashIcon")
+                if ($splashIconControl -and $splashIconControl -is [System.Windows.Controls.Image]) {
+                    $splashIconControl.Source = $bitmap
+                    Write-Verbose "SplashIcon image source set successfully."
+                }
+            } catch {
+                Write-Warning "Could not set SplashIcon image source: $_"
+            }
+
         } catch {
             Write-Error "Failed to set window/taskbar icon: $_"
         }
