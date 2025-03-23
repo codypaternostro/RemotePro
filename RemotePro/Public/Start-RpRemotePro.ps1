@@ -64,7 +64,7 @@ function Start-RpRemotePro {
     https://www.milestonepstools.com/
 
     .LINK
-    https://www.importexcel.com/
+    https://github.com/dfinke/ImportExcel
 
     .LINK
     https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/Out-HtmlView.md

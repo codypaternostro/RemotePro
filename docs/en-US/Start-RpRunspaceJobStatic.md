@@ -15,7 +15,7 @@ Starts static runspace jobs and tracks them in a global collection.
 ```
 Start-RpRunspaceJobStatic [-Jobs] <Array> [-uiElement] <TextBox>
  [-OpenRunspaces] <System.Collections.ObjectModel.ObservableCollection`1[System.Object]>
- [[-RunspaceJobs] <ArrayList>] [<CommonParameters>]
+ [[-RunspaceJobs] <ArrayList>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,6 +126,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

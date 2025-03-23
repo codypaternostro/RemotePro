@@ -10,6 +10,6 @@
     'PSScriptAnalyzer' = 'latest'
     'PSWriteHTML' = 'latest'
     'ImportExcel' = 'latest'
-    'MilestonePSTools' = 'latest'
+    #'MilestonePSTools' = 'latest'
 }
 

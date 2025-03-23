@@ -67,7 +67,7 @@ Export-ModuleMember -Function $public.Basename
 #endregion
 
 #region Install required modules
-#Install-RpRequiredModules -Verbose
+Install-RpRequiredModules -Verbose
 #endregion
 
 #region set runspace log and configuration file.

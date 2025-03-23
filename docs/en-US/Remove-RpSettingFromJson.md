@@ -14,12 +14,14 @@ Removes a specified setting from a JSON settings file.
 
 ### ShowDialog
 ```
-Remove-RpSettingFromJson [-SettingsFilePath <String>] [-Name <String>] [-ShowDialog] [<CommonParameters>]
+Remove-RpSettingFromJson [-SettingsFilePath <String>] [-Name <String>] [-ShowDialog]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### CommandLineInterface
 ```
-Remove-RpSettingFromJson [-SettingsFilePath <String>] -Name <String> [<CommonParameters>]
+Remove-RpSettingFromJson [-SettingsFilePath <String>] -Name <String> [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,6 +125,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

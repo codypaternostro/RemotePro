@@ -15,20 +15,22 @@ Starts a PowerShell job in a runspace and tracks it.
 ### UseExistingRunspace (Default)
 ```
 Start-RpRunspaceJob -ScriptBlock <ScriptBlock> [-ArgumentList <Object[]>] [-Argument <Object>]
- [-UseExistingRunspaceState] [-Id] [-uiElement <TextBox>] [-RunspaceJobs <ArrayList>] [<CommonParameters>]
+ [-UseExistingRunspaceState] [-Id] [-uiElement <TextBox>] [-RunspaceJobs <ArrayList>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### NewRunspace
 ```
 Start-RpRunspaceJob [-ModulesToLoad <String[]>] [-AssembliesToLoad <String[]>] [-FunctionsToImport <String[]>]
  -ScriptBlock <ScriptBlock> [-ArgumentList <Object[]>] [-Argument <Object>] [-Id] [-uiElement <TextBox>]
- [-RunspaceJobs <ArrayList>] [<CommonParameters>]
+ [-RunspaceJobs <ArrayList>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### UseNewRunspace
 ```
 Start-RpRunspaceJob -ScriptBlock <ScriptBlock> [-ArgumentList <Object[]>] [-Argument <Object>]
- [-UseNewRunspace] [-Id] [-uiElement <TextBox>] [-RunspaceJobs <ArrayList>] [<CommonParameters>]
+ [-UseNewRunspace] [-Id] [-uiElement <TextBox>] [-RunspaceJobs <ArrayList>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -210,6 +212,21 @@ Collection of runspace jobs for tracking.
 Type: ArrayList
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

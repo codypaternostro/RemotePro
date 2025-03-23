@@ -16,25 +16,25 @@ system.
 ### RpItemPickerSet (Default)
 ```
 Show-RpCamera [-ShowRpItemPicker] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
- [-CheckConnection] [<CommonParameters>]
+ [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### CameraObjectSet
 ```
 Show-RpCamera -CameraObject <Object> [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
- [-CheckConnection] [<CommonParameters>]
+ [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### IdSet
 ```
 Show-RpCamera -Id <Guid[]> [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32> [-CheckConnection]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SelectCameraSet
 ```
 Show-RpCamera [-ShowSelectCamera] [-DiagnosticLevel <String>] -SpecifiedDaysForSequences <Int32>
- [-CheckConnection] [<CommonParameters>]
+ [-CheckConnection] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +193,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

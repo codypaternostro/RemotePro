@@ -16,18 +16,19 @@ module using a configuration JSON file or an interactive WPF-based GUI.
 ### ShowDialog (Default)
 ```
 Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <String>] [-ConfigFilePath <String>]
- [-ShowDialog] [<CommonParameters>]
+ [-ShowDialog] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ConfigurationItems
 ```
 Update-RpConfigCommand [-ModuleName <String>] [-CommandName <String>] [-Id <String>] [-Parameters <Hashtable>]
- [-Description <String>] [-ConfigFilePath <String>] [<CommonParameters>]
+ [-Description <String>] [-ConfigFilePath <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### NoDialog
 ```
-Update-RpConfigCommand [-Parameters <Hashtable>] [-Description <String>] [<CommonParameters>]
+Update-RpConfigCommand [-Parameters <Hashtable>] [-Description <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,6 +210,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

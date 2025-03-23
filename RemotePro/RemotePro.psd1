@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('MilestonePSTools','PSWriteHTML','ImportExcel')
+#RequiredModules = @('MilestonePSTools','PSWriteHTML','ImportExcel')
 
 
 # Assemblies that must be loaded prior to importing this module

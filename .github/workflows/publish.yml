@@ -9,43 +9,16 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
+      # Checkout repository
       - uses: actions/checkout@v3
 
-      # Install BuildHelpers clean with AllowClobber
-      - name: Install BuildHelpers (Force + AllowClobber)
-        shell: pwsh
-        run: |
-          Install-Module BuildHelpers -Force -AllowClobber -Scope CurrentUser
-          Import-Module BuildHelpers -Force
-
-      # Patch BuildHelpers Update-Metadata to avoid 'PropertyName' error
-      - name: Patch BuildHelpers Update-Metadata
-        shell: pwsh
-        run: |
-          $patchedModule = New-Module -Name BuildHelpers -ScriptBlock {
-              function Update-Metadata {
-                  param (
-                      [string]$Path,
-                      [string]$PropertyName = 'ModuleVersion',
-                      $Value
-                  )
-                  $content = Get-Content $Path -Raw
-                  $pattern = "$PropertyName\s*=\s*'[^']*'"
-                  if ($content -match $pattern) {
-                      $content = $content -replace $pattern, "$PropertyName = '$Value'"
-                  } else {
-                      Write-Warning "Property $PropertyName not found, appending."
-                      $content += "`n$PropertyName = '$Value'"
-                  }
-                  Set-Content -Path $Path -Value $content -Encoding UTF8
-                  Write-Host "Updated '$PropertyName' in $Path"
-              }
-              Export-ModuleMember -Function Update-Metadata
-          }
-
-          Import-Module $patchedModule -Force
+      # Install and cache PowerShell modules
+      - name: Install and cache PowerShell modules
+        id: psmodulecache
+        uses: potatoqualitee/psmodulecache@v6.2.1
+        with:
+          modules-to-cache: BuildHelpers
 
       # Check if the version has been bumped
       - name: Check if version has been bumped
@@ -55,11 +28,13 @@ jobs:
           [version]$GalleryVersion = Get-NextNugetPackageVersion -Name RemotePro -ErrorAction Stop
           [version]$GithubVersion = Get-MetaData -Path ./RemotePro/RemotePro.psd1 -PropertyName ModuleVersion -ErrorAction Stop
           $bumped = $GithubVersion -ge $GalleryVersion
+
+          # Set environment variable instead of set-output
           echo "VERSION_BUMPED=$bumped" >> $env:GITHUB_ENV
 
       # Publish to PSGallery if version is bumped
       - name: Publish to PSGallery
-        shell: powershell
+        shell: pwsh
         if: env.VERSION_BUMPED == 'True'
         env:
           PSGALLERY_API_KEY: ${{ secrets.PS_GALLERY_KEY }}

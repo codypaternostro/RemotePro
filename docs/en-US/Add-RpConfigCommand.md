@@ -15,13 +15,14 @@ Allows GUI-based or parameter-based input for command selection.
 
 ### ShowDialog (Default)
 ```
-Add-RpConfigCommand [-Description <String>] [-ShowDialog] [<CommonParameters>]
+Add-RpConfigCommand [-Description <String>] [-ShowDialog] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ConfigurationItems
 ```
 Add-RpConfigCommand [[-ModuleName] <String>] [[-CommandNames] <String[]>] [[-ConfigFilePath] <String>]
- [-Description <String>] [<CommonParameters>]
+ [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,6 +142,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
