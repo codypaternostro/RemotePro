@@ -20,6 +20,13 @@ jobs:
         with:
           modules-to-cache: BuildHelpers
 
+      # Force load BuildHelpers and verify Update-Metadata
+      - name: Force load BuildHelpers and verify Update-Metadata
+        shell: pwsh
+        run: |
+          Import-Module BuildHelpers -Force
+          (Get-Command Update-Metadata).Source
+
       # Check if the version has been bumped
       - name: Check if version has been bumped
         shell: pwsh
@@ -35,7 +42,7 @@ jobs:
       # Publish to PSGallery if version is bumped
       - name: Publish to PSGallery
         shell: powershell
-        if: env.VERSION_BUMPED == 'True'
+        if: ${{ env.VERSION_BUMPED == 'True' }}
         env:
           PSGALLERY_API_KEY: ${{ secrets.PS_GALLERY_KEY }}
         run: ./build.ps1 -Task Publish -Bootstrap
