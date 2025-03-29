@@ -1,10 +1,9 @@
 #region Script-Scoped Variables
 $script:scriptRoot = $PSScriptRoot
 #Set-Location -Path $script:scriptRoot #Redunancy
-
-
 #endregion
 
+#region load Assemblies and DLLs
 # Get all DLLs in the bin directory relative to the scriptroot
 $bin = Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'bin') -Filter *.dll -Recurse -ErrorAction Stop
 
@@ -42,12 +41,9 @@ try {
     }
 #endregion
 
-#endregion
-
-# Declare a module-scoped variable for the memory stream (empty, created once)
+#region declare a module-scoped variable for the memory stream (empty, created once)
 $script:RpIconStream = New-Object System.IO.MemoryStream
 Write-Verbose "Initialized module-wide RpIconStream object."
-
 #endregion
 
 #region Dot source public/private functions
@@ -95,12 +91,20 @@ if (-not (Get-RpControllerObject)) {
     Set-RpDefaultConfigCommandIds                   #Populate ConfigCommandDefaultIds
     Set-RpSettingsJson                              #Populate Settings
 }
-
 #endregion
 
+#region Set runspace logic
 $script:RpOpenRunspaces = Initialize-RpOpenRunspaces
 $script:RpRunspaceJobs = Initialize-RpRunspaceJobs
 $script:RpRunspaceResults = Initialize-RpRunspaceResults
+#endregion
+
+#region set desktop shortcut
+switch ($script:RemotePro.Settings.DesktopShortcut) {
+    $true  { New-RpShortcut }
+    $false { New-RpShortcut -DeleteShortcut }
+    default { Write-Warning "Unexpected value for DesktopShortcut: $($script:RemotePro.Settings.DesktopShortcut)" }
+}
 
 $script:selectedProfileName
 #endregion

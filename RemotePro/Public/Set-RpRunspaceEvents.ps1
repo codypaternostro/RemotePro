@@ -416,7 +416,7 @@ function Set-RpRunspaceEvents {
         # Attach a custom type to RunspaceEvents
         $script:RemotePro.RunspaceEvents.PSTypeNames.Insert(0, 'RemotePro.RunspaceEvents')
 
-        Write-Host "Runspace Events have been successfully added to RemotePro.RunspaceEvents."
+        Write-Verbose "Runspace Events have been successfully added to RemotePro.RunspaceEvents."
     } catch {
         Write-Error "Error occured adding runspace events: $($_.Exception.Message)"
     }

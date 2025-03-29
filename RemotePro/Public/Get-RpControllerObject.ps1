@@ -53,7 +53,7 @@ function Get-RpControllerObject {
     process {
         # Check if $script:RemotePro exists
         if (-not $script:RemotePro) {
-            Write-Host "RemotePro ControllerObject does not exist. Please initialize it first using New-RpControllerObject."
+            Write-Verbose "RemotePro ControllerObject does not exist. Please initialize it first using New-RpControllerObject."
             return $null
         }
 

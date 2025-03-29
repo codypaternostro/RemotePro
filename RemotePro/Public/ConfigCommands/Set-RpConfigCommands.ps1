@@ -73,7 +73,7 @@ function Set-RpConfigCommands {
             # Attach a custom type to ConfigCommands
             $script:RemotePro.ConfigCommands.PSTypeNames.Insert(0, 'RemotePro.ConfigCommands')
 
-            Write-Host "Config Commands have been successfully added to RemotePro.ConfigCommands."
+            Write-Verbose "Config Commands have been successfully added to RemotePro.ConfigCommands."
         }
         catch {
             Write-Error "Error: $_"

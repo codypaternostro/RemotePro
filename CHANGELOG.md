@@ -14,7 +14,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Heartbeat window for checking status of cameras on current connection.
 - VAPIX command pass through to reboot AXIS cameras.
 - Parameter selection for camera reports.
-- Desktop shortcut.
+
+
+## [0.3.1] - 2025-03-28
+
+# Added
+
+- New-RpShortcut
+- Desktop shortcut is now enabled by default for Start-RpRemotePro. However, it can be disabled by changing the **True** value to **False**.
+
+# Fixed
+
+- Removed default output while creating ControllerObject. This will now only be shown when Start-RpRemotePro is called with the -Verbose switch. Previously, this would spam the terminal everytime Start-RpRemotePro is called.
 
 ## [0.3.0] - 2025-03-23
 

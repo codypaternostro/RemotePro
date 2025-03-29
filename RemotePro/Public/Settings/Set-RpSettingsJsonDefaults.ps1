@@ -50,7 +50,7 @@ function Set-RpSettingsJsonDefaults {
 
         $DefaultSettings = @{
             "RemoteProSettingsFilePath" = "$(Get-RpSettingsJsonPath)"
-            "Setting2" = "Value2"
+            "DesktopShortcut" = $true
             # Add more default settings here
         }
     }

@@ -71,7 +71,7 @@ function Set-RpDefaultConfigCommandIds {
             # Attach a custom type to ConfigCommandDefaultIds
             $script:RemotePro.ConfigCommandDefaultIds.PSTypeNames.Insert(0, 'RemotePro.ConfigCommandDefaultIds')
 
-            Write-Host "Config Command Default Ids have been successfully added to RemotePro.ConfigCommandDefaultIds."
+            Write-Verbose "Config Command Default Ids have been successfully added to RemotePro.ConfigCommandDefaultIds."
         }
         catch {
             Write-Error "Error: $_"

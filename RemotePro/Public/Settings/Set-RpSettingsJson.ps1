@@ -73,7 +73,7 @@ function Set-RpSettingsJson {
             # Attach a custom type to Settings
             $script:RemotePro.Settings.PSTypeNames.Insert(0, 'RemotePro.Settings')
 
-            Write-Host "Settings have been successfully added to RemotePro.Settings."
+            Write-Verbose "Settings have been successfully added to RemotePro.Settings."
         }
         catch {
             Write-Error "Error occured while setting json to RemoteProController object: $($_.Exception.Message)"

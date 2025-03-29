@@ -1162,6 +1162,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../New-RpShortcut/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    New-RpShortcut
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Remove-RpConfigCommand/" class="md-nav__link">
         
   
@@ -1852,6 +1874,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-progressaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      -ProgressAction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#commonparameters" class="md-nav__link">
     <span class="md-ellipsis">
       CommonParameters
@@ -2342,6 +2373,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-progressaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      -ProgressAction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#commonparameters" class="md-nav__link">
     <span class="md-ellipsis">
       CommonParameters
@@ -2416,16 +2456,18 @@
 <h2 id="syntax">SYNTAX<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <h3 id="useexistingrunspace-default">UseExistingRunspace (Default)<a class="headerlink" href="#useexistingrunspace-default" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Start-RpRunspaceJob -ScriptBlock &lt;ScriptBlock&gt; [-ArgumentList &lt;Object[]&gt;] [-Argument &lt;Object&gt;]
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> [-UseExistingRunspaceState] [-Id] [-uiElement &lt;TextBox&gt;] [-RunspaceJobs &lt;ArrayList&gt;] [&lt;CommonParameters&gt;]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> [-UseExistingRunspaceState] [-Id] [-uiElement &lt;TextBox&gt;] [-RunspaceJobs &lt;ArrayList&gt;]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h3 id="newrunspace">NewRunspace<a class="headerlink" href="#newrunspace" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Start-RpRunspaceJob [-ModulesToLoad &lt;String[]&gt;] [-AssembliesToLoad &lt;String[]&gt;] [-FunctionsToImport &lt;String[]&gt;]
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> -ScriptBlock &lt;ScriptBlock&gt; [-ArgumentList &lt;Object[]&gt;] [-Argument &lt;Object&gt;] [-Id] [-uiElement &lt;TextBox&gt;]
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> [-RunspaceJobs &lt;ArrayList&gt;] [&lt;CommonParameters&gt;]
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> [-RunspaceJobs &lt;ArrayList&gt;] [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h3 id="usenewrunspace">UseNewRunspace<a class="headerlink" href="#usenewrunspace" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Start-RpRunspaceJob -ScriptBlock &lt;ScriptBlock&gt; [-ArgumentList &lt;Object[]&gt;] [-Argument &lt;Object&gt;]
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> [-UseNewRunspace] [-Id] [-uiElement &lt;TextBox&gt;] [-RunspaceJobs &lt;ArrayList&gt;] [&lt;CommonParameters&gt;]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> [-UseNewRunspace] [-Id] [-uiElement &lt;TextBox&gt;] [-RunspaceJobs &lt;ArrayList&gt;]
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
 </span></code></pre></div>
 <h2 id="description">DESCRIPTION<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>This function starts a PowerShell job in a runspace and tracks its status.
@@ -2572,6 +2614,18 @@ assemblies, and functions loaded.</p>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 </span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span></code></pre></div>
+<h3 id="-progressaction">-ProgressAction<a class="headerlink" href="#-progressaction" title="Permanent link">&para;</a></h3>
+<p>{{ Fill ProgressAction Description }}</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActionPreference</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nt">Parameter Sets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proga</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Named</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nt">Default value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nt">Accept pipeline input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nt">Accept wildcard characters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 </span></code></pre></div>
 <h3 id="commonparameters">CommonParameters<a class="headerlink" href="#commonparameters" title="Permanent link">&para;</a></h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>

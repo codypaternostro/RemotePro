@@ -1,4 +1,4 @@
-﻿site_name: RemotePro
+site_name: RemotePro
 site_description: PowerShell WPF GUI for MilestonePSTools
 site_author: 'Cody Paternostro'
 repo_url: https://github.com/codypaternostro/RemotePro
@@ -63,6 +63,7 @@ nav:
       - New-RpConfigCommandJson: en-US/New-RpConfigCommandJson.md
       - New-RpControllerObject: en-US/New-RpControllerObject.md
       - New-RpSettingsJson: en-US/New-RpSettingsJson.md
+      - New-RpShortcut: en-US/New-RpShortcut.md
       - Remove-RpConfigCommand: en-US/Remove-RpConfigCommand.md
       - Remove-RpSettingFromJson: en-US/Remove-RpSettingFromJson.md
       - Reset-RpConfigCommandDefaults: en-US/Reset-RpConfigCommandDefaults.md

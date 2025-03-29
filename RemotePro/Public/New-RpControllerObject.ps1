@@ -55,9 +55,9 @@ function New-RpControllerObject {
             Set-RpSettingsJson
         }
 
-        Write-Host "New RemotePro ControllerObject created."
+        Write-Verbose "New RemotePro ControllerObject created."
     } else {
-        Write-Host "RemotePro ControllerObject already exists, skipping creation."
+        Write-verbose "RemotePro ControllerObject already exists, skipping creation."
     }
 
     return $script:RemotePro

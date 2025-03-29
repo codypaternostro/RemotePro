@@ -43,6 +43,7 @@ Hello! My name is [Cody Paternostro](https://www.linkedin.com/in/codypaternostro
         - [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
         - [MahApps.Metro](https://mahapps.com/)
         - [MilestonePSTools](https://www.milestonepstools.com/)
+        - [MipSdk](https://doc.developer.milestonesys.com/html/index.html)
         - [PSWriteHTML](https://github.com/EvotecIT/PSWriteHTML)
         - [ShowMeTheXAML](https://github.com/Keboo/ShowMeTheXAML) *included -- currently not used yet.*
 
