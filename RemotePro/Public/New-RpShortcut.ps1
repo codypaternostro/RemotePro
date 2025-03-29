@@ -101,7 +101,7 @@ function New-RpShortcut {
         }
 
         $shortcut.Save()
-        Write-Warning "Shortcut created: $fullShortcutPath" -ForegroundColor Green
+        Write-Warning "Shortcut created: $fullShortcutPath"
     } catch {
         Write-Error "Failed to create shortcut: $_"
     }

@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Heartbeat window for checking status of cameras on current connection.
 - VAPIX command pass through to reboot AXIS cameras.
 - Parameter selection for camera reports.
-
+- Add RecorderReport
 
 ## [0.3.1] - 2025-03-28
 
