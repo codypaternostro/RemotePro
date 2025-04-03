@@ -1,0 +1,2301 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PowerShell WPF GUI for MilestonePSTools">
+      
+      
+        <meta name="author" content="Cody Paternostro">
+      
+      
+      
+      
+        <link rel="next" href="getting-started/installation/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>RemotePro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17%2013h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="white">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#welcome-to-remotepro" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="RemotePro" class="md-header__button md-logo" aria-label="RemotePro" data-md-component="logo">
+      
+  <img src="assets/RpLogo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RemotePro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/codypaternostro/RemotePro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="en-US/Add-RpConfigCommand/" class="md-tabs__link">
+          
+  
+  
+  Commands
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="usageguide/usageguide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Usage Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="CHANGELOG/CHANGELOG/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="RemotePro" class="md-nav__button md-logo" aria-label="RemotePro" data-md-component="logo">
+      
+  <img src="assets/RpLogo.png" alt="logo">
+
+    </a>
+    RemotePro
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/codypaternostro/RemotePro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inspiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspiration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#professional-module-making" class="md-nav__link">
+    <span class="md-ellipsis">
+      Professional Module Making
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-interface-graphical-gui-command-line-cli-or-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Interface: Graphical (GUI), Command-Line (CLI), or Both?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Commands
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Add-RpConfigCommand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Add-RpConfigCommand
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Add-RpSettingToJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Add-RpSettingToJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Find-RpConfigCommand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Find-RpConfigCommand
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Find-RpDefaultConfigCommands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Find-RpDefaultConfigCommands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Find-RpSettingsJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Find-RpSettingsJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpConfigCommands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpConfigCommands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpConfigPath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpConfigPath
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpConnectionProfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpConnectionProfile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpControllerObject/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpControllerObject
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpDefaultConfigCommandDetails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpDefaultConfigCommandDetails
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpEventHandlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpEventHandlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpIconPath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpIconPath
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpLogPath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpLogPath
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpRunspaceEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpRunspaceEvents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpSettings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpSettings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpSettingsJsonPath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpSettingsJsonPath
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpTicketBlock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpTicketBlock
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpVmsHardwareCustom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpVmsHardwareCustom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Get-RpVmsItemStateCustom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get-RpVmsItemStateCustom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Import-RpConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Import-RpConfig
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Import-RpDefaultConfigCommandIds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Import-RpDefaultConfigCommandIds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Import-RpSettingsFromJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Import-RpSettingsFromJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Initialize-RpOpenRunspaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize-RpOpenRunspaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Initialize-RpRunspaceJobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize-RpRunspaceJobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Initialize-RpRunspaceResults/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize-RpRunspaceResults
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Invoke-RpCommandObject/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Invoke-RpCommandObject
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/New-RpAppDataPath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New-RpAppDataPath
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/New-RpConfigCommandJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New-RpConfigCommandJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/New-RpControllerObject/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New-RpControllerObject
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/New-RpSettingsJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New-RpSettingsJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/New-RpShortcut/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New-RpShortcut
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Remove-RpConfigCommand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remove-RpConfigCommand
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Remove-RpSettingFromJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remove-RpSettingFromJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Reset-RpConfigCommandDefaults/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reset-RpConfigCommandDefaults
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Reset-RpSettingsJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reset-RpSettingsJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpConfigCommands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpConfigCommands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpConfigDefaults/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpConfigDefaults
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpConnectionProfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpConnectionProfile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpDefaultConfigCommandIds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpDefaultConfigCommandIds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpEventHandlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpEventHandlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpMutexLogAndUI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpMutexLogAndUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpRunspaceEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpRunspaceEvents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpRunspaceEventsLegacyVersion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpRunspaceEventsLegacyVersion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpSettingsJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpSettingsJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpSettingsJsonDefaults/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpSettingsJsonDefaults
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Set-RpWindowIcon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set-RpWindowIcon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Show-RpCamera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Show-RpCamera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Show-RpItemPicker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Show-RpItemPicker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Show-RpProfileEntryDialog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Show-RpProfileEntryDialog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Show-RpSplashScreen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Show-RpSplashScreen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Start-RpRemotePro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Start-RpRemotePro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Start-RpRunspaceJob/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Start-RpRunspaceJob
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Start-RpRunspaceJobStatic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Start-RpRunspaceJobStatic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Start-RpRunspaceMonitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Start-RpRunspaceMonitor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Test-RpRequiresVmsConnection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test-RpRequiresVmsConnection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Test-RpVmsConnection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test-RpVmsConnection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Update-RpConfigCommand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update-RpConfigCommand
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Update-RpSettingsJson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update-RpSettingsJson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="en-US/Watch-RpRunspaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Watch-RpRunspaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usageguide/usageguide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Usage Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG/CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inspiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspiration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#professional-module-making" class="md-nav__link">
+    <span class="md-ellipsis">
+      Professional Module Making
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-interface-graphical-gui-command-line-cli-or-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Interface: Graphical (GUI), Command-Line (CLI), or Both?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+<h1 id="welcome-to-remotepro">Welcome to RemotePro<a class="headerlink" href="#welcome-to-remotepro" title="Permanent link">&para;</a></h1>
+<p><a class="glightbox" href="assets\RpLogo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Picture-RpLogo" src="assets\RpLogo.png" width="350" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title"><strong>A PowerShell Windows Presentation Framework (WPF) Graphical User Interface (GUI) for MilestonePSTools</strong></p>
+<p><em>Available on the <a href="https://www.powershellgallery.com/packages/RemotePro"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4zm-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44z"/></svg></span>PowerShell Gallery.</a></em></p>
+</div>
+<p><br></p>
+<div align="left" class="annotate">
+<p>(1) <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.803.179Q8.76.171 7.72.38C5.639.797 3.974 1.828 2.77 3.445 1.232 5.515.367 8.072.049 11.492c-.125 1.353.008 2.711.181 4.216a9.97 9.97 0 0 0 2.144 5.214c.933 1.157 2.004 1.917 3.272 2.324a12 12 0 0 0 3.336.574 6 6 0 0 0 .795-.034l.416-.041a93 93 0 0 0 1.721-.186 21.4 21.4 0 0 0 7.393-2.257c2.007-1.048 3.41-2.594 4.17-4.597.354-.93.523-1.713.523-2.445a4.6 4.6 0 0 0-.064-.762c-.405-2.379-1.235-4.428-2.555-6.264-1.634-2.276-3.288-3.878-5.202-5.045C13.993.86 11.89.193 9.803.18Zm-.439 1.064q1.154-.032 2.376.237h-.001c2.73.597 5.137 2.002 7.154 4.173 2.288 2.46 3.591 5.045 3.988 7.899.071.528-.013 1.114-.096 1.622-.388 2.327-1.663 4.063-3.786 5.16a21 21 0 0 1-7.166 2.182c-.558.066-1.12.123-1.757.187l-.088.01a6.8 6.8 0 0 1-1.658-.03c-.69-.098-1.472-.21-2.224-.389-1.767-.42-3.069-1.622-3.978-3.658-.684-1.538-1.038-3.245-1.081-5.233a17.9 17.9 0 0 1 1.149-6.798c.62-1.641 1.517-3.453 3.462-4.418a8.75 8.75 0 0 1 3.706-.944m1.108 1.47a7.8 7.8 0 0 0-2.24.41c-1.6.525-2.718 1.304-3.523 2.438-1.499 2.118-2.275 4.58-2.31 7.325a10.1 10.1 0 0 0 .803 4.388c1.081 2.569 3.053 4.064 5.707 4.326 2.796.27 5.543-.381 8.178-1.937a8.1 8.1 0 0 0 2.772-2.624 7.1 7.1 0 0 0 1.168-3.86c0-2.162-1.015-4.47-3.049-6.862a6.4 6.4 0 0 0-.704-.707c-2.333-2.006-4.567-2.966-6.802-2.898zm.099 1.035c1.492-.022 3.015.475 4.672 1.508 1.783 1.117 3.161 2.763 4.091 4.909.887 2.02.905 3.938.058 5.696a6.8 6.8 0 0 1-2.907 2.988c-2.253 1.232-4.315 1.776-6.458 1.713h-.022c-1.55.06-2.89-.32-4.098-1.163-.7-.488-1.241-1.202-1.655-2.183a10.9 10.9 0 0 1-.872-4.273A12.7 12.7 0 0 1 4.404 8.09a12 12 0 0 1 .874-1.622l.163-.27c.67-1.108 1.725-1.639 3.103-2.099a6.8 6.8 0 0 1 2.027-.35zm.03 1.62c-1.18.037-2.28.465-3.289 1.283-1.395 1.13-2.23 2.72-2.63 4.993a7.24 7.24 0 0 0 .676 4.613c1.062 2.054 2.8 3.11 5.026 3.05h.008c2.958-.155 5.11-1.249 6.573-3.347a5.6 5.6 0 0 0 1.06-3.245 5.8 5.8 0 0 0-.242-1.639c-.72-2.435-2.161-4.145-4.29-5.085q-1.514-.667-2.892-.624Zm.312 1.064c.77.008 1.547.191 2.35.55 1.862.833 3.073 2.332 3.598 4.462.526 2.13-.27 4.205-2.066 5.423-1.479.999-2.93 1.447-4.438 1.367h-.04c-1.004.08-1.994-.226-2.943-.91a3.67 3.67 0 0 1-1.29-1.72 7.6 7.6 0 0 1-.514-2.727 8.5 8.5 0 0 1 .747-3.38c.676-1.556 1.724-2.503 3.215-2.893q.69-.18 1.38-.172zM9.455 8.758v6.882h1.155v-1.908l1.68 1.908h1.462l-2.273-2.5 1.871-1.958h-1.509l-1.231 1.337V8.758Z"/></svg></span> Please see the <a href="CHANGELOG/CHANGELOG/">ChangeLog</a> for updates.</p>
+<p>(2) <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5V78.6c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32 93.5 32 46.3 45.3 18.1 56.1 6.8 60.5 0 71.7 0 83.8v370.3c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5m76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6 11.3 3.8 24.1-4.6 24.1-16.5V83.8c0-12.1-6.8-23.3-18.1-27.6C529.7 45.3 482.5 32 432 32c-58.4 0-103.4 20-123 35.6-3.3 2.6-5 6.8-5 11V456c0 11.4 11.7 19.3 22.4 15.5"/></svg></span> See <a href="https://www.remotepro.dev/getting-started/installation/">Installation</a> for access to setup instructions.</p>
+<p>(3) <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M80 104a24 24 0 1 0 0-48 24 24 0 1 0 0 48m80-24c0 32.8-19.7 61-48 73.3v87.8c18.8-10.9 40.7-17.1 64-17.1h96c35.3 0 64-28.7 64-64v-6.7c-28.3-12.3-48-40.5-48-73.3 0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3v6.7c0 70.7-57.3 128-128 128h-96c-35.3 0-64 28.7-64 64v6.7c28.3 12.3 48 40.5 48 73.3 0 44.2-35.8 80-80 80S0 476.2 0 432c0-32.8 19.7-61 48-73.3V153.3C19.7 141 0 112.8 0 80 0 35.8 35.8 0 80 0s80 35.8 80 80m232 0a24 24 0 1 0-48 0 24 24 0 1 0 48 0M80 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48"/></svg></span> Version 1.0.0 will be the official release of RemotePro.</p>
+<p>(4) <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg></span> See the <a href="usageguide/usageguide/#video-tutorial">YouTube Video Tutorial</a> for demonstrations of the features.</p>
+</div>
+<ol>
+<li>In addition to updates and fixes, the unreleased section may showcase current features that are being developed.</li>
+<li>RemotePro is currently in beta stage. If you experience any issues please <a href="https://github.com/codypaternostro/RemotePro/issues"><em>report the issue</em></a></li>
+<li>I am currently developing this module in real-time! Version 1.0.0 will be bumped as a marker of progression.</li>
+<li>This is a 15 minute video demonstrating the basic features of RemotePro.</li>
+</ol>
+<p><br><br><br></p>
+<h2 id="inspiration">Inspiration<a class="headerlink" href="#inspiration" title="Permanent link">&para;</a></h2>
+<p>Hello! My name is <a href="https://www.linkedin.com/in/codypaternostro/">Cody Paternostro</a>, and this is my project, <strong>RemotePro</strong>. It is an intriguing module that allows anyone familiar with <a href="https://www.milestonepstools.com/">MilestonePSTools</a> and <a href="https://www.milestonesys.com/products/software/xprotect/">Milestone XProtect</a> to interact through a graphical user interface (GUI). The idea for RemotePro originated when <a href="https://gist.github.com/joshooaj">Joshua Hendricks</a>, the developer behind the MilestonePSTools project, shared an interesting <a href="https://gist.github.com/joshooaj/9cf16a92c7e57496b6156928a22f758f">PowerShell script</a>. This script wasn’t designed for automation; instead, it focused on user interaction by enabling the viewing of live and playback streams from a Video Management System (VMS). He utilized Windows Presentation Framework (WPF), which was new to me at the time. This journey has been a long one, providing an opportunity to create something usable by everyone with minimal effort.</p>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Attribution</p>
+<p>RemotePro utilizes existing modules and binaries, integrating them seamlessly. Input, output, and processing are facilitated by these modules. If you are interested in learning more about them, please use the project links below to explore further!</p>
+<div class="admonition info">
+<p class="admonition-title">Project Links</p>
+<ul>
+<li><a href="https://github.com/ControlzEx/ControlzEx">ControlzEx</a></li>
+<li><a href="https://github.com/dfinke/ImportExcel">ImportExcel</a></li>
+<li><a href="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit">MaterialDesignInXamlToolkit</a></li>
+<li><a href="https://mahapps.com/">MahApps.Metro</a></li>
+<li><a href="https://www.milestonepstools.com/">MilestonePSTools</a></li>
+<li><a href="https://doc.developer.milestonesys.com/html/index.html">MipSdk</a></li>
+<li><a href="https://github.com/EvotecIT/PSWriteHTML">PSWriteHTML</a></li>
+<li><a href="https://github.com/Keboo/ShowMeTheXAML">ShowMeTheXAML</a> <em>included -- currently not used yet.</em></li>
+</ul>
+</div>
+</div>
+<h2 id="professional-module-making">Professional Module Making<a class="headerlink" href="#professional-module-making" title="Permanent link">&para;</a></h2>
+<p>RemotePro is the first module I have ever developed, as this type of programming was unfamiliar to me. Initially, the project started as what I refer to as a <em>mega-script</em>, which was a single large script file containing various functions. The Gainsville PowerShell group hosts meetups, and it just so happened that Josh did a demo on module creation using psstucco -- <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">"The Art &amp; Craft of Module Development using Stucco with Josh Hendricks"</a>. The timing could not have been better for the development of RemotePro, as I had just begun learning how to import functions into an active terminal session. Professional modules take projects to the next level by offering the benefits of using PowerShell data and module files while <a href="https://www.youtube.com/watch?v=gDJ3Ods1hbo&amp;t=2055s">automating documentation</a>. Most importantly, the concept of a <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-5.1#modules">module and script scope variables</a> are utilized throughout a main PSCustomObject for the <em>RemoteProController</em>. This object allows quick access to all the event handlers for button clicks.</p>
+<h2 id="user-interface-graphical-gui-command-line-cli-or-both">User Interface: Graphical (GUI), Command-Line (CLI), or Both?<a class="headerlink" href="#user-interface-graphical-gui-command-line-cli-or-both" title="Permanent link">&para;</a></h2>
+<p>If what you've read so far doesn't make sense, that's fine; if you understand the concepts, that's great too. The purpose of RemotePro is to provide an attractive base template that allows users to make suggestions or developers to contribute. The idea was to create a starting point without a defined goal. I was initially hesitant to release the module because I wanted the button click functionalities to be modifiable to some extent. I will be working on publishing features and guides on how to utilize RemotePro from the command line interface (CLI) and GUI. There are three important components to this module: the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/xaml/RemoteProUI.xaml">XAML</a>, the <a href="https://github.com/codypaternostro/RemotePro/blob/main/RemotePro/Public/Start-RpRemotePro.ps1">Start-RpRemotePro</a> command, WPF-enabled cmdlets, and, of course, Runspaces!</p>
+<p><br></p>
+<div class="admonition warning">
+<p class="admonition-title">Disclaimer</p>
+<p>This project's content is not affiliated with MilestonePSTools or Milestone XProtect and is released under the permissive open-source <a href="https://github.com/codypaternostro/RemotePro/blob/main/LICENSE">MIT License</a>.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024-2025 Cody Paternostro. All rights reserved. <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/codypaternostro/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/codypaternostro" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bsky.app/profile/codypaternostro.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
