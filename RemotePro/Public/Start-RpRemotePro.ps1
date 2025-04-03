@@ -82,7 +82,7 @@ function Start-RpRemotePro {
         if (-not $env:REMOTE_PRO_SESSION) {
             $env:REMOTE_PRO_SESSION = $true
 
-            $baseCommand = 'if (-not (Get-Module -Name RemotePro)) { Import-Module RemotePro -Force };'
+            $baseCommand = 'if (-not (Get-Module -Name RemotePro)) { Import-Module -Name RemotePro -Force };'
 
             if ($ShowTerminal) {
             $launchCommand = "$baseCommand Start-RpRemotePro -ShowTerminal"
@@ -112,7 +112,7 @@ function Start-RpRemotePro {
                     Write-Warning "Detected existing WPF Application. Relaunching in isolated session..."
 
                     # Fallback: Always show terminal if we hit this (safe default)
-                    $launchCommand = 'Import-Module RemotePro -Force; Start-RpRemotePro -ShowTerminal'
+                    $launchCommand = 'Import-Module -RemotePro -Force; Start-RpRemotePro -ShowTerminal'
                     Start-Process powershell.exe -ArgumentList "-NoExit", "-Command", $launchCommand -WindowStyle Normal
 
                     Stop-Process -Id $PID

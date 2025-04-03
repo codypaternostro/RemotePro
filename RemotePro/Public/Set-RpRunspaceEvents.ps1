@@ -359,7 +359,7 @@ function Set-RpRunspaceEvents {
                         $outHtmlView = (Get-RpConfigCommands -All).'Out-HtmlView'.$commandId2.FormatCommandObject($commandId2)
 
                         # Invoke default config commands.
-                        Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
+                        $result = Invoke-RpCommandObject -CommandObject $commandObject1 -PipelineCommandObject $outHtmlView
 
                         # 01/25/25 ToDo: Add results... Need to add password boolean to Get-RpVmsHardwareCustom
                         # replace with "$result = $commandObject | Invoke-RpCommandObject" when completed.
@@ -367,7 +367,7 @@ function Set-RpRunspaceEvents {
                         if ($null -eq $result) {
                             Write-Output "No result returned from Get-RpVmsHardwareCustom."
                         }
-                        return $result | gm # Why GM?
+                        return $result
                     } catch {
                         Write-Output "Error encountered: $_"
                         return $_.Exception.Message

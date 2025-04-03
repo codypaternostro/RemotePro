@@ -84,27 +84,23 @@ function Get-RpVmsHardwareCustom {
                 $hardwareSettings[$hardware.Id] = $hardware | Get-HardwareSetting -Verbose
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Id -Value $hardware.Id
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name RecorderName -Value $recordingServer.Name
-                if ($IncludeCredentials) {
-                    $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Username -Value $username
-                    $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Password -Value $password
-                }
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name HardwareName -Value $name
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name IpAddress -Value $Ip
                 $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Name -Value $name
 
+                if ($IncludeCredentials) {
+                    $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Username -Value $username
+                    $hardwareSettings[$hardware.Id] | Add-Member -MemberType NoteProperty -Name Password -Value $password
+                }
+
             }
         }
-        $hardwareResults= $hardwareSettings.Values
+
 
         #ToDo: Build parameter for selecting properties to display.
         # - Create option for WPF window to select properties to display.
         # - Create option to cache the selected properties for future use.
-        if ($IncludeCredentials) {
-            $hardwareResults | Select-Object RecorderName, DetectedModelName, Name, IpAddress, MacAddress, SerialNumber, Username, Password
-        } else {
-            $hardwareResults | Select-Object RecorderName, DetectedModelName, Name, IpAddress, MacAddress, SerialNumber
-        }
 
-        return $hardwareResults
+        return $hardwareSettings.Values
     }
 }
